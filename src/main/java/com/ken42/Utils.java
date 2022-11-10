@@ -8,7 +8,7 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.io.BufferedReader;
@@ -71,13 +71,13 @@ public class Utils {
 			}
 		}
 	}
-public static void getAndSentOTP() throws Exception{
+public static void getAndSentOTP(WebDriver driver) throws Exception{
     String OTP = "";
-    OTP= readOTP.check("imap.gmail.com", "imap", "sprutirajtest@gmail.com", "cgdizxcledbpwzxn");
+    OTP= readOTP.check("imap.gmail.com", "imap", "test2.ken42@gmail.com", "qdbfadralxdxiihz");
       
-				Thread.sleep(40000);
+				//Thread.sleep(400);
 				System.out.println("OTP ***** " +OTP);
-                Utils.callSendkeys(null, ActionXpath.Inputotp, OTP, OTP);
+                Utils.callSendkeys(driver,ActionXpath.Inputotp, OTP, "OTP");
 
 			
 }
@@ -104,4 +104,9 @@ public static void getAndSentOTP() throws Exception{
 		return false;
 
 	}
+	@Test
+    public static void scrollUpOrDown(WebDriver driver, int pixel){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,10)");
+    }
 }

@@ -42,9 +42,9 @@ public class App_portal {
 		CSVReader csvReader;
 		int count = 0;
 		csvReader = new CSVReader(new FileReader(CSV_PATH));
-		WebDriverManager.chromedriver().setup();
-		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		// WebDriverManager.chromedriver().setup();
+		// driver = new ChromeDriver();
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	
 		String[] csvCell;
 		while ((csvCell = csvReader.readNext()) != null) {
@@ -68,13 +68,14 @@ public class App_portal {
 			// Below If will execute all Student related test cases
 			for(int i=from;i<=to;i++){  
 				switch (i){
-					case 1 :Application.testApp(url, driver, Email, csvCell);
+					case 1 :Application.testApp(url, driver, csvCell);
 					break;
-					case 2:Application.ApplyforCourse(url, driver, Email);
+					case 2:Application.ApplyforCourse(url, driver);
 					break;
-					case 3: Application.BasicDetails(url, driver, Email, csvCell);
+					case 3: Application.BasicDetails(url, driver, csvCell);
 					break;
-					case 4: Application.EmploymentInfo(url, driver, Email);
+					case 4: Application.EmploymentInfo(url, driver, csvCell);
+					break;
 
 
 					

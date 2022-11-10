@@ -14,7 +14,7 @@ public class readOTP {
 	public static boolean textIsHtml = false;
 	private static final class AuthenticatorExtension extends javax.mail.Authenticator {
 		protected PasswordAuthentication getPasswordAuthentication() {
-			return new PasswordAuthentication("sprutirajtest@gmail.com.com", "admin@01");
+			return new PasswordAuthentication("test2.ken42@gmail.com", "admin@01");
 		}
 	}
 
@@ -133,8 +133,8 @@ public class readOTP {
 
 		String host = "imap.gmail.com";
 		String mailStoreType = "imap";
-		String username = "sprutirajtest@gmail.com";
-		String password = "cgdizxcledbpwzxn";
+		String username = "test2.ken42@gmail.com";
+		String password = "qdbfadralxdxiihz";
 
 		 //check(host, mailStoreType, username, password);
 
