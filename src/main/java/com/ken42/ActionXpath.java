@@ -179,7 +179,19 @@ static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
  static String clicksubmit="//*[text()='Submit']";
  static String backtohome="//*[text()='Homepage']";
 
-
+//tc -9
+static String SalesforceEmail="//input[@type='email']";
+static String SalesforcePassword="//input[@type='password']";
+static String loginSalesforce="//input[@type='submit']";
+static String ClickApplication="//span[text()='Applications']";
+static String SearchForAppliacant="(//input[@type='search'])[2]";
+static String clickTheApplicanetName="//a[@title='test Student']";
+static String clickonAppliations="//a[@data-label='Applications']";
+static String clickApplicationView="//a[text()='Application View']";
+static String clickApplicatioID="//span[text()='APP-1714']";
+static String clickDelete="(//button[text()='Delete'])[2]";
+static String ClickProfileForLogout="//span[@data-aura-rendered-by='6:519;a']";
+static String ClickLOgout="//a[text()='Log Out']";
 
 
 
