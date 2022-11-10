@@ -15,7 +15,10 @@ public class ActionXpath {
     static String Selectmentor="(//*[@id='outlined-select-currency'])[1]";
     static String selectYes="//li[@data-value='Yes']";
     static String SelectCampus="//div[text()='EMBA Combination 1']";
-    static String Specilization="//div[text()='EMBA Marketing']";
+    static String Campus="(//*[@id='outlined-select-currency'])[2]";
+    static String selectSpecilization="//div[text()='EMBA Marketing']";
+    static String Specilization="(//*[@id='outlined-select-currency'])[3]";
+
     //static String goappliaction="//p[text()='Go To Your Application']";
     //Tc-3
     static String dob="//input[@name='applicant[dateOfBirth]']";
@@ -28,12 +31,16 @@ public class ActionXpath {
     static String selectcountry="(//*[@id='outlined-select-currency'])[1]";
 
     static String country="li[@data-value='India']";
-    static String selectstate="(//*[@id='outlined-select-currency'])[1]";
+    static String selectstate="(//*[@id='outlined-select-currency'])[2]";
     static String State = "//input[@name='addresses[0][mailingState]' and @value='Karnataka']";
-    static String selectDist="(//*[@id='outlined-select-currency'])[1]";
+    static String selectDist="(//*[@id='outlined-select-currency'])[3]";
     static String District ="//input[@name='addresses[0][mailingDistrict]' and @value='Bangalore Rural']";
-    static String street="input[@name='addresses[0][mailingStreet]']";
-    static String PostalCode="input[@name='addresses[0][mailingPostalCode]']";
+    static String street="//input[@name='addresses[0][mailingStreet]']";
+    static String PostalCode="//input[@name='addresses[0][mailingPostalCode]']";
+    static String currentaddress="(//*[@id='outlined-select-currency'])[4]";
+    static String selectcurrentaddress="//*[text()='Yes']";
+    static String clicknext="//*[text()='Next']";
+    
     //Tc-4
     static String selectrelationship="(//*[@id='outlined-select-currency'])[1]";
     static String relationType="//div[text()='Sibling']";
@@ -50,16 +57,20 @@ public class ActionXpath {
     static String currencyType="//div[text()='Indian Rupee (INR)']";
     static String address="//li[@data-value='YES']";
 //tc-5
+static String clickyes="(//*[text()='Yes'])[1]";
 static String SelectjobType="(//*[@id='outlined-select-currency'])[1]";
 static String jobType="//li[@data-value='Full Time']";
 static String company="//input[@name='workExperiences.0.organisationName']";
-static String IndustryType="//input[@name='workExperiences.0.industryType']";
+static String IndustryType="(//*[@id='outlined-select-currency'])[2]";
 static String location="//input[@name='workExperiences.0.location']";
 static String designation="//input[@name='workExperiences.0.designation']";
 static String role="//input[@name='workExperiences.0.roles']";
 static String DateJoin="//input[@name='workExperiences.0.dateOfJoining']";
-static String CurrentCompany="(//*[@id='outlined-select-currency'])[2]";
+static String CurrentCompany="(//*[@id='outlined-select-currency'])[3]";
+static String selectCurrentCompany="(//*[text()='Yes'])[2]";
 static String Experience="//input[@name='workExperiences.0.noOfMonths']";
+static String currencytype="(//*[@id='outlined-select-currency'])[4]";
+static String selectcurrencytype="//li[@data-value='Indian Rupee (INR)']";
 static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
 //Tc-6
     //pg
@@ -79,7 +90,7 @@ static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
     static String pgselectcity="//*[text()='Bangalore Rural']";
 
     //ug
-    static String ugyear="educationHistories[1][yearOfPassing]";
+    static String ugyear="//*[@name='educationHistories[1][yearOfPassing]']";
     static String uguniversity="//*[@name='educationHistories[1][institutionName]']";
     static String ugcollege="//*[@name='educationHistories[1][placeOfStudy]']";
     static String ugpercentage="//*[@name='educationHistories[1][obtainedMarks]']";
@@ -121,7 +132,7 @@ static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
     //10
     static String sslcedtype="(//*[@id='outlined-select-currency'])[19]";
     static String sslcselectedtype="(//*[text()='Full time'])[4]";
-    static String sslcboard="(//*[text()='KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD'])[2]";
+    static String sslcboard="(//*[@id='outlined-select-currency'])[20]";
     static String sslcselectboard="//*[@name='educationHistories[0][yearOfPassing]']";
     static String sslcgrade="(//*[@id='outlined-select-currency'])[21]";
     static String sslcselectgrade="//*[text()='CGPA']";

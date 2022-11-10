@@ -74,7 +74,15 @@ public class App_portal {
 					break;
 					case 3: Application.BasicDetails(url, driver, csvCell);
 					break;
-					case 4: Application.EmploymentInfo(url, driver, csvCell);
+					case 4: Application.FamilyInfo(url, driver, csvCell);
+					break;
+					case 5: Application.EmploymentInfo(url, driver, csvCell);
+					break;
+					case 6: Application.EducationINFO(url, driver, csvCell);
+					break;
+					case 7: Application.other(url, driver, csvCell);
+					break;
+					case 8: Application.summaryanddeclaration(url, driver, csvCell);
 					break;
 
 
