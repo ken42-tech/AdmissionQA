@@ -70,7 +70,7 @@ public class App_portal {
 				switch (i){
 					case 1 :Application.testApp(url, driver, csvCell);
 					break;
-					case 2:Application.ApplyforCourse(url, driver);
+					case 2:Application.ApplyforCourse(url, driver, csvCell);
 					break;
 					case 3: Application.BasicDetails(url, driver, csvCell);
 					break;

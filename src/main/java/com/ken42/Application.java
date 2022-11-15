@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 import org.testng.annotations.Test;
 
+import com.beust.jcommander.JCommander.ProgramName;
 import com.mongodb.util.Util;
 
 public class Application {
@@ -38,7 +39,7 @@ public class Application {
     }
     
     @Test(priority = 2)
-    public static void ApplyforCourse(String url,WebDriver driver){
+    public static void ApplyforCourse(String url,WebDriver driver,String[] csvCell){
         try{
             System.out.println("TC:2: Starting Apply for Course programe Test Executation ");
             Utils.clickXpath(driver, ActionXpath.Apply, time, "Click on the Apply now Button");
@@ -47,7 +48,20 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.selectPost, time, "Select the appropiraite Department ");
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
-            Utils.clickXpath(driver, ActionXpath.selectPrograme, time, "Select the appropriate Programe");
+            String Programe=csvCell[52];
+           // Utils.clickXpath(driver, ActionXpath.selectPrograme, time, "Select the appropriate Programe");
+           List<WebElement> ProgramName = driver.findElements(By.xpath("//div[text()='"+Programe+"']"));
+           //li[@role='option']
+           //div[text()='All Programs']
+           //li[@data-value='all']
+   for (int i = 0; i < ProgramName.size(); i++) {
+
+       if (ProgramName.get(i).getText().contains(Programe)) {
+        ProgramName.get(i).click();
+           break;
+       }
+
+   }
             Utils.clickXpath(driver, ActionXpath.ApplyNow, time, "Click on apply");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.clickXpath(driver, ActionXpath.Selectmentor, time, "Slect the mentor");
@@ -56,8 +70,8 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.Campus, time, "Select the campus");
             Utils.clickXpath(driver, ActionXpath.SelectCampus, time, "Select the campus");
             Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the campus");
-            Utils.clickXpath(driver, ActionXpath.selectSpecilization, time, "Select the Specilization");
+            //Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the campus");
+           // Utils.clickXpath(driver, ActionXpath.selectSpecilization, time, "Select the Specilization");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             log.info("  TC-2: Apply for Course programe test case PASSED \n");
         } catch (Exception e) {

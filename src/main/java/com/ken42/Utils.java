@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -108,5 +109,27 @@ public static void getAndSentOTP(WebDriver driver) throws Exception{
     public static void scrollUpOrDown(WebDriver driver, int pixel){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,10)");
+    }
+	public static void cleartext(WebDriver driver, String Xpath) throws Exception {
+        int count = 0;
+        int maxTries = 4;
+        while (true) {
+            try {
+                log.info("clear value");
+
+                Thread.sleep(4000);
+                WebElement elee = driver.findElement(By.xpath(Xpath));
+                elee.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+
+                break;
+            } catch (Exception e) {
+                Thread.sleep(250);
+                log.warning("Failed to clear value  ");
+                if (++count == maxTries) {
+                    Utils.printException(e);
+                    throw e;
+                }
+            }
+        }
     }
 }

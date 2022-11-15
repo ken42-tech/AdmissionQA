@@ -7,9 +7,9 @@ public class ActionXpath {
     static String Inputotp="//input[@aria-label='Please enter verification code. Digit 1']";
     static String Apply="(//button[text()='Apply Now'])[2]";
     static String ClickDropDepartment="//html/body/div/div/div/div/main/div[1]/div[3]/div[1]/div/div/div/div[1]/div/div/div/div";
-    static String selectPost="//li[@data-value='0011y00000P7qGbAAJ']";
-    static String ClickPorogrameDrop="/html/body/div/div/div/div/main/div[1]/div[3]/div[1]/div/div/div/div[2]/div/div/div/div";
-    static String selectPrograme="//li[@data-value='0011y00000PkWBmAAN']";
+    static String selectPost="(//div[text()='All Departments'])[2]";
+    static String ClickPorogrameDrop="(//div[@aria-haspopup='listbox'])[2]";
+    static String selectPrograme="//li[@role='option']";
     static String ApplyNow="//button[text()='Apply']";
     static String ClickNext="//button[text()='Next']";
     static String Selectmentor="(//*[@id='outlined-select-currency'])[1]";
@@ -192,6 +192,22 @@ static String clickApplicatioID="//span[text()='APP-1714']";
 static String clickDelete="(//button[text()='Delete'])[2]";
 static String ClickProfileForLogout="//span[@data-aura-rendered-by='6:519;a']";
 static String ClickLOgout="//a[text()='Log Out']";
+//workbench
+static String clickEnvronment="//select[@id='oauth_env']";
+static String selectSandbox="//option[@value='test.salesforce.com']";
+static String checkBox="//input[@id='termsAccepted']";
+static String LoginSalesforce="//input[@id='loginBtn']";
+static String entertheURL="//input[@id='urlInput']";
+static String clickExecute="//input[@id='execBtn']";
+static String clickapplicant="//li[text()='applicant']";
+static String getEmail="//li[text()='alternateEmail: ']";
+static String getFirstName="//li[text()='firstName: ']";
+static String getMiddlName="//li[text()='middleName: ']";
+static String getLastName="//li[text()='lastName: ']";
+
+
+
+
 
 
 
