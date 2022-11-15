@@ -62,6 +62,9 @@ static String SelectjobType="(//*[@id='outlined-select-currency'])[1]";
 static String jobType="//li[@data-value='Full Time']";
 static String company="//input[@name='workExperiences.0.organisationName']";
 static String IndustryType="(//*[@id='outlined-select-currency'])[2]";
+static String Country="(//*[@id='outlined-select-currency'])[3]";
+static String state="(//*[@id='outlined-select-currency'])[4]";
+static String city="(//*[@id='outlined-select-currency'])[5]";
 static String location="//input[@name='workExperiences.0.location']";
 static String designation="//input[@name='workExperiences.0.designation']";
 static String role="//input[@name='workExperiences.0.roles']";
@@ -69,7 +72,7 @@ static String DateJoin="//input[@name='workExperiences.0.dateOfJoining']";
 static String CurrentCompany="(//*[@id='outlined-select-currency'])[3]";
 static String selectCurrentCompany="(//*[text()='Yes'])[2]";
 static String Experience="//input[@name='workExperiences.0.noOfMonths']";
-static String currencytype="(//*[@id='outlined-select-currency'])[4]";
+static String currencytype="(//*[@id='outlined-select-currency'])[6]";
 static String selectcurrencytype="//li[@data-value='Indian Rupee (INR)']";
 static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
 //Tc-6
