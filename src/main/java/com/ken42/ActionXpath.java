@@ -22,6 +22,8 @@ public class ActionXpath {
     //static String goappliaction="//p[text()='Go To Your Application']";
     //Tc-3
     static String dob="//input[@name='applicant[dateOfBirth]']";
+    static String Nationaliydrop="(//*[@id='outlined-select-currency'])[1]";
+    static String selectnationality="//div[text()='Indian']";
     static String nationality="//input[@name='applicant[nationality]']";
     static String passport="//input[@name='applicant[passportNumber]']";
     //static String Gender="//input[@value='Male']";
@@ -93,6 +95,9 @@ static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
     static String pgselectcity="//*[text()='Bangalore Rural']";
 
     //ug
+    static String EducationType="(//*[@id='outlined-select-currency'])[4]";
+    static String country3="(//*[@id='outlined-select-currency'])[6]";
+
     static String ugyear="//*[@name='educationHistories[1][yearOfPassing]']";
     static String uguniversity="//*[@name='educationHistories[1][institutionName]']";
     static String ugcollege="//*[@name='educationHistories[1][placeOfStudy]']";

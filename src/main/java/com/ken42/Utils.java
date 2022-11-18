@@ -132,4 +132,9 @@ public static void getAndSentOTP(WebDriver driver) throws Exception{
             }
         }
     }
+	@Test
+	public static void validatePassportNumber(WebDriver driver,String Xpath,String[] csvCell){
+		String nationality=csvCell[7];
+
+	}
 }

@@ -85,7 +85,7 @@ public class Application {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
 
             String dob =csvCell[6];
-			String nationality=csvCell[7];
+            String nationality=csvCell[7];
 			String passport=csvCell[8];
 			String street=csvCell[9];
 			String PostalCode=csvCell[10];
@@ -93,8 +93,15 @@ public class Application {
             System.out.println("TC:3: Starting BasicDetails Test Executation ");
             Utils.callSendkeys(driver,ActionXpath.dob, dob, "Set tu date of birth");
             Utils.scrollUpOrDown(driver, time);
-            Utils.cleartext(driver, ActionXpath.nationality);
-            Utils.callSendkeys(driver, ActionXpath.nationality,nationality, "Enter Your Nationality");
+            Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
+            List<WebElement> Nationality = driver.findElements(By.xpath("//div[text()='"+nationality+"']"));
+    for (int i = 0; i < Nationality.size(); i++) {
+        if (Nationality.get(i).getText().contains(nationality)) {
+            Nationality.get(i).click();
+            break;
+        }
+    }
+            
             Utils.cleartext(driver, ActionXpath.passport);
             Utils.callSendkeys(driver, ActionXpath.passport,passport, "Enter your Passport");
             Utils.scrollUpOrDown(driver, time);
@@ -277,30 +284,20 @@ for (int i = 0; i < Citys.size(); i++) {
         }
     }
     @Test(priority = 6)
-    public static void EducationINFO(String url,WebDriver driver, String[] csvCell){
-        try{
+    public static void EducationINFO(String url, WebDriver driver, String[] csvCell) {
+        try {
             System.out.println("TC:6: Starting Education Test Executation ");
-           Utils.bigSleepBetweenClicks(1);
-           String pgyear=csvCell[26];
-           String pguniversity=csvCell[27];
-           String pgcollege=csvCell[28];
-           String pgpercentage=csvCell[29];
-           String ugyear=csvCell[30];
-           String uguniversity=csvCell[31];
-           String ugcollege=csvCell[32];
-           String ugpercentage=csvCell[33];
-           String ugmark1=csvCell[34];
-           String ugmaxmark1=csvCell[35];
-           String ugmark2=csvCell[36];
-           String ugmaxmark2=csvCell[37];
-           String hscpercentage=csvCell[38];
-           String hscyear=csvCell[39];
-           String hscschool=csvCell[40];
-           String sslcpercentage=csvCell[41];
-           String sslcyear=csvCell[42];
-           String sslcschool=csvCell[43];
-           
-            //pg
+            Utils.bigSleepBetweenClicks(1);
+            String pgyear = csvCell[29];
+            String pguniversity = csvCell[30];
+            String pgcollege = csvCell[31];
+            String pgpercentage = csvCell[32];
+            String pgdegree = csvCell[33];
+            String pgcountry = csvCell[34];
+            String pgstate = csvCell[35];
+            String pgcity = csvCell[36];
+
+            // pg
             Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
             Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
             Utils.scrollUpOrDown(driver, time);
@@ -312,104 +309,120 @@ for (int i = 0; i < Citys.size(); i++) {
             Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
             // Utils.clickXpath(driver, ActionXpath.pgselectdegree, time, "pgselectdegree");
             java.util.List<WebElement> gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Bachelor of Fine Arts (BFA)"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(pgdegree)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgcountry, time, "pgcountry");
-            // Utils.clickXpath(driver, ActionXpath.pgselectcountry, time, "pgselectcountry");
+            // Utils.clickXpath(driver, ActionXpath.pgselectcountry, time,
+            // "pgselectcountry");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("India"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(pgcountry)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.clickXpath(driver, ActionXpath.pgstate, time, "pgstate");
             // Utils.clickXpath(driver, ActionXpath.pgselectstate, time, "pgselectstate");
-             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+            gram = driver
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Karnataka"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(pgstate)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgcity, time, "pgcity");
             // Utils.clickXpath(driver, ActionXpath.pgselectcity, time, "pgselectcity");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Bangalore Rural"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(pgcity)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
-            //ug
+            // ug
+
+            String ugyear = csvCell[37];
+            String uguniversity = csvCell[38];
+            String ugcollege = csvCell[39];
+            String ugpercentage = csvCell[40];
+            String ugdegree = csvCell[41];
+            String ugcountry = csvCell[42];
+            String ugstate = csvCell[43];
+            String ugcity = csvCell[44];
+            String ugmark1 = csvCell[45];
+            String ugmaxmark1 = csvCell[46];
+            String ugmark2 = csvCell[47];
+            String ugmaxmark2 = csvCell[48];
+
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
             Utils.callSendkeys(driver, ActionXpath.uguniversity, uguniversity, "uguniversity");
             Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.ugcollege, ugcollege, "ugcollege");
-            Utils.callSendkeys(driver, ActionXpath.ugpercentage,ugpercentage, "ugpercentage");
+            Utils.callSendkeys(driver, ActionXpath.ugpercentage, ugpercentage, "ugpercentage");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugedtype, time, "ugedtype");
             Utils.clickXpath(driver, ActionXpath.ugselectedtype, time, "ugselectedtype");
             Utils.clickXpath(driver, ActionXpath.ugdegree, time, "ugdegree");
             // Utils.clickXpath(driver, ActionXpath.ugselectdegree, time, "ugselectdegree");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Bachelor of Management Science (BMS)"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(ugdegree)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugcountry, time, "ugcountry");
-            // Utils.clickXpath(driver, ActionXpath.ugselectcountry, time, "ugselectcountry");
-             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+            // Utils.clickXpath(driver, ActionXpath.ugselectcountry, time,
+            // "ugselectcountry");
+            gram = driver
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("India"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(ugcountry)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.clickXpath(driver, ActionXpath.ugstate, time, "ugstate");
             // Utils.clickXpath(driver, ActionXpath.ugselectstate, time, "ugselectstate");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Karnataka"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(ugstate)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugcity, time, "ugcity");
             // Utils.clickXpath(driver, ActionXpath.ugselectcity, time, "ugselectcity");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Bangalore Rural"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(ugcity)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugtype, time, "ugtype");
@@ -426,20 +439,27 @@ for (int i = 0; i < Citys.size(); i++) {
             Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.ugmaxmark2, ugmaxmark2, "ugmaxmark2");
             Utils.scrollUpOrDown(driver, time);
-            
-            //12
+
+            // 12
+            String hscboard = csvCell[49];
+            String hscpercentage = csvCell[50];
+            String hscyear = csvCell[51];
+            String hscschool = csvCell[52];
+            String hsccountry = csvCell[53];
+            String hscstate = csvCell[54];
+            String hsccity = csvCell[55];
             Utils.clickXpath(driver, ActionXpath.hscedtype, time, "hscedtype");
             Utils.clickXpath(driver, ActionXpath.hscselectedtype, time, "hscselectedtype");
             Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
             // Utils.clickXpath(driver, ActionXpath.hscselectboard, time, "hscselectboard");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(hscboard)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.hscpercentage, hscpercentage, "hscpercentage");
@@ -447,56 +467,65 @@ for (int i = 0; i < Citys.size(); i++) {
             Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.hscschool, hscschool, "hscschool");
             Utils.clickXpath(driver, ActionXpath.hsccountry, time, "hsccountry");
-            // Utils.clickXpath(driver, ActionXpath.hscselectcountry, time, "hscselectcountry");
+            // Utils.clickXpath(driver, ActionXpath.hscselectcountry, time,
+            // "hscselectcountry");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("India"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(hsccountry)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.hscstate, time, "hscstate");
             // Utils.clickXpath(driver, ActionXpath.hscselectstate, time, "hscselectstate");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Karnataka"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(hscstate)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.hsccity, time, "hsccity");
             // Utils.clickXpath(driver, ActionXpath.hscselectcity, time, "ugselectcity");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Bangalore Rural"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(hsccity)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
 
-            //10
+            // 10
+            String sslcboard = csvCell[56];
+            String sslcpercentage = csvCell[57];
+            String sslcyear = csvCell[58];
+            String sslcschool = csvCell[59];
+            String sslccountry = csvCell[60];
+            String sslcstate = csvCell[61];
+            String sslccity = csvCell[62];
             Utils.clickXpath(driver, ActionXpath.sslcedtype, time, "sslcedtype");
             Utils.clickXpath(driver, ActionXpath.sslcselectedtype, time, "sslcselectedtype");
             Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
-            // Utils.clickXpath(driver, ActionXpath.sslcselectboard, time, "sslcselectboard");
+            // Utils.clickXpath(driver, ActionXpath.sslcselectboard, time,
+            // "sslcselectboard");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(sslcboard)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslcgrade, time, "sslcgrade");
@@ -507,45 +536,46 @@ for (int i = 0; i < Citys.size(); i++) {
             Utils.callSendkeys(driver, ActionXpath.sslcschool, sslcschool, "sslcschool");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslccountry, time, "sslccountry");
-            // Utils.clickXpath(driver, ActionXpath.sslcselectcountry, time, "sslcselectcountry");
+            // Utils.clickXpath(driver, ActionXpath.sslcselectcountry, time,
+            // "sslcselectcountry");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("India"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(sslccountry)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.clickXpath(driver, ActionXpath.sslcstate, time, "sslcstate");
-            // Utils.clickXpath(driver, ActionXpath.sslcselectstate, time, "sslcselectstate");
+            // Utils.clickXpath(driver, ActionXpath.sslcselectstate, time,
+            // "sslcselectstate");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Karnataka"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().contains(sslcstate)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslccity, time, "sslccity");
             // Utils.clickXpath(driver, ActionXpath.sslcselectcity, time, "sslcselectcity");
             gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Bangalore Rural"))
-            {
-             gram.get(i).click();
-             break;
+                if (gram.get(i).getText().contains(sslccity)) {
+                    gram.get(i).click();
+                    break;
+                }
             }
-            }
-            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next"); 
-           
+            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+
             log.info("  TC-6: Fill the Education test case PASSED \n");
 
-        
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.warning("TC-6: Fill the Education test case FAILED \n");
         }
     }
