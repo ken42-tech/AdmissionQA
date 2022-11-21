@@ -47,7 +47,7 @@ public class Utils {
 			}
 		}
 	}
-    private static void printException(Exception e) {
+    static void printException(Exception e) {
         log.warning("Exception is  "+e);
 
     }

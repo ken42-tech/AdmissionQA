@@ -214,6 +214,42 @@ static String getMiddlName="//li[text()='middleName: ']";
 static String getLastName="//li[text()='lastName: ']";
 
 
+//error xpath
+    static String errorpassport1 = "//p[text()='Please Input a valid Passport Number']";
+    static String errorpassport2 = "//p[text()='This field cannot be more than 12 characters']";
+    static String errorstreet1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errorstreet2 = "//p[text()='Please input a correct value']";
+    static String errorzipcode1 = "//p[text()='Please Input a valid Zipcode']";
+    static String errorzipcode2 = "//p[text()='This field cannot be more than 10 characters']";
+    static String errorfname1 = "//p[text()='This field cannot be more than 40 characters']";
+    static String errorfname2 = "//p[text()='Please Input a valid First Name']";
+    static String errorlname1 = "//p[text()='This field cannot be more than 40 characters']";
+    static String errorlname2 = "//p[text()='Please Input a valid Last Name']";
+    static String errorage1 = "//p[text()='This field cannot be more than 3 digits']";
+    static String errorage2 = "//p[text()='Please Input a valid Age']";
+    static String erroremail1 = "//p[text()='Please Input a valid Email']";
+    static String erroroccupation1 = "//p[text()='This field cannot be more than 20 characters']";
+    static String erroroccupation2 = "//p[text()='Please Input a valid value']";
+    static String errorincome1 = "//p[text()='Please Input a correct Income']";
+    static String errorincome2 = "//p[text()='This field cannot be more than 18 characters']";
+    static String errorcompany1 = "//p[text()='This field cannot be more than 100 characters']";
+    static String errorcompany2 = "//p[text()='Please input a correct value.']";
+    static String errordestination1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errordestination2 = "//p[text()='Please input a correct value.']";
+    static String errorroles1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errorroles2 = "//p[text()='Please input a correct value.']";
+    static String errormonths1 = "//p[text()='This field cannot be more than 3 characters']";
+    static String errormonths2 = "//p[text()='Please input a correct value.']";
+    static String errrosalary1 = "//p[text()='This field cannot be more than 18 characters']";
+    static String errrosalary2 = "//p[text()='Please input a correct value.']";
+static String  errorUniversity="//p[text()='Please Input a correct value.']";
+static String error40charUniverisy="//p[text()='This field cannot be more than 40 characters']";
+static String  errorCollege="//p[text()='Please Input a correct value.']";
+static String error40charCollege="//p[text()='This field cannot be more than 40 characters']";
+
+static String errorSpecailCharPercentage="//p[text()='Please Input a correct value.']";
+static String error80CharPercentage="//p[text()='This field cannot be more than 7 characters']";
+static String  errorSchool="//p[text()='Please Input a correct value.']";
 
 
 

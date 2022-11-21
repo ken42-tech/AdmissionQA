@@ -1,4 +1,5 @@
 package com.ken42;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,11 +19,12 @@ import com.mongodb.util.Util;
 public class Application {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
+
     @Test(priority = 1)
-	public static void testApp(String url,WebDriver driver,String[] csvCell) throws Exception {
+    public static void testApp(String url, WebDriver driver, String[] csvCell) throws Exception {
 
         try {
-            String Email =csvCell[2];
+            String Email = csvCell[2];
 
             Thread.sleep(3000);
             System.out.println("TC-1: Starting Application Login  test case execution ");
@@ -37,10 +39,10 @@ public class Application {
             log.warning("TC-1: Application login test case FAILED \n");
         }
     }
-    
+
     @Test(priority = 2)
-    public static void ApplyforCourse(String url,WebDriver driver,String[] csvCell){
-        try{
+    public static void ApplyforCourse(String url, WebDriver driver, String[] csvCell) {
+        try {
             System.out.println("TC:2: Starting Apply for Course programe Test Executation ");
             Utils.clickXpath(driver, ActionXpath.Apply, time, "Click on the Apply now Button");
             Utils.smallSleepBetweenClicks(1);
@@ -48,20 +50,21 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.selectPost, time, "Select the appropiraite Department ");
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
-            String Programe=csvCell[52];
-           // Utils.clickXpath(driver, ActionXpath.selectPrograme, time, "Select the appropriate Programe");
-           List<WebElement> ProgramName = driver.findElements(By.xpath("//div[text()='"+Programe+"']"));
-           //li[@role='option']
-           //div[text()='All Programs']
-           //li[@data-value='all']
-   for (int i = 0; i < ProgramName.size(); i++) {
+            String Programe = csvCell[71];
+            // Utils.clickXpath(driver, ActionXpath.selectPrograme, time, "Select the
+            // appropriate Programe");
+            List<WebElement> ProgramName = driver.findElements(By.xpath("//div[text()='" + Programe + "']"));
+            // li[@role='option']
+            // div[text()='All Programs']
+            // li[@data-value='all']
+            for (int i = 0; i < ProgramName.size(); i++) {
 
-       if (ProgramName.get(i).getText().contains(Programe)) {
-        ProgramName.get(i).click();
-           break;
-       }
+                if (ProgramName.get(i).getText().contains(Programe)) {
+                    ProgramName.get(i).click();
+                    break;
+                }
 
-   }
+            }
             Utils.clickXpath(driver, ActionXpath.ApplyNow, time, "Click on apply");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.clickXpath(driver, ActionXpath.Selectmentor, time, "Slect the mentor");
@@ -70,49 +73,66 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.Campus, time, "Select the campus");
             Utils.clickXpath(driver, ActionXpath.SelectCampus, time, "Select the campus");
             Utils.scrollUpOrDown(driver, time);
-            //Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the campus");
-           // Utils.clickXpath(driver, ActionXpath.selectSpecilization, time, "Select the Specilization");
+            // Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the
+            // campus");
+            // Utils.clickXpath(driver, ActionXpath.selectSpecilization, time, "Select the
+            // Specilization");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             log.info("  TC-2: Apply for Course programe test case PASSED \n");
         } catch (Exception e) {
-			log.warning("TC-2: Apply for Course programe test case FAILED \n");
-		}
-    }
-    
-    @Test(priority = 3)
-    public static void BasicDetails(String url,WebDriver driver,String[] csvCell ){
-        try{
-            JavascriptExecutor js3 = (JavascriptExecutor) driver;
-
-            String dob =csvCell[6];
-            String nationality=csvCell[7];
-			String passport=csvCell[8];
-			String street=csvCell[9];
-			String PostalCode=csvCell[10];
-
-            System.out.println("TC:3: Starting BasicDetails Test Executation ");
-            Utils.callSendkeys(driver,ActionXpath.dob, dob, "Set tu date of birth");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
-            List<WebElement> Nationality = driver.findElements(By.xpath("//div[text()='"+nationality+"']"));
-    for (int i = 0; i < Nationality.size(); i++) {
-        if (Nationality.get(i).getText().contains(nationality)) {
-            Nationality.get(i).click();
-            break;
+            log.warning("TC-2: Apply for Course programe test case FAILED \n");
         }
     }
-            
+
+    @Test(priority = 3)
+    public static void BasicDetails(String url, WebDriver driver, String[] csvCell) {
+        try {
+            JavascriptExecutor js3 = (JavascriptExecutor) driver;
+
+            String dob = csvCell[6];
+            String nationality = csvCell[7];
+            String passport = csvCell[8];
+            String street = csvCell[9];
+            String PostalCode = csvCell[10];
+
+            System.out.println("TC:3: Starting BasicDetails Test Executation ");
+            Utils.callSendkeys(driver, ActionXpath.dob, dob, "Set tu date of birth");
+            Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
+            List<WebElement> Nationality = driver.findElements(By.xpath("(//div[text()='" + nationality + "'])"));
+            for (int i = 0; i < Nationality.size(); i++) {
+                if (Nationality.get(i).getText().contains(nationality)) {
+                    Nationality.get(i).click();
+                    break;
+                }
+            }
             Utils.cleartext(driver, ActionXpath.passport);
-            Utils.callSendkeys(driver, ActionXpath.passport,passport, "Enter your Passport");
+
+            validate.char40(driver, ActionXpath.passport, ActionXpath.errorpassport2);
+            Utils.cleartext(driver, ActionXpath.passport);
+
+            validate.char80(driver, ActionXpath.passport, ActionXpath.errorpassport2);
+            Utils.cleartext(driver, ActionXpath.passport);
+
+            validate.specialcharacter(driver, ActionXpath.passport, ActionXpath.errorpassport1);
+            Utils.cleartext(driver, ActionXpath.passport);
+
+            Utils.cleartext(driver, ActionXpath.passport);
+            Utils.callSendkeys(driver, ActionXpath.passport, passport, "Enter your Passport");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
+
             Utils.clickXpath(driver, ActionXpath.Gender, time, "Select the Gender ");
             Utils.clickXpath(driver, ActionXpath.Mstatus, time, "Select your material status");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.selectcountry,time, "Enter your selectcountry");
+            Utils.clickXpath(driver, ActionXpath.selectcountry, time, "Enter your selectcountry");
             java.util.List<WebElement> country = driver
-                    .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < country.size(); i++) {
                 if (country.get(i).getText().startsWith("India")) {
                     country.get(i).click();
@@ -122,31 +142,40 @@ public class Application {
             System.out.println("India printed");
             // Utils.clickXpath(driver,ActionXpath.country, time, "Select your Country");
             Utils.clickXpath(driver, ActionXpath.selectstate, time, "Select the satet");
-             List<WebElement> gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+            List<WebElement> gram = driver
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Karnataka"))
-            {
-             gram.get(i).click();
-             break;
-            }
+                if (gram.get(i).getText().startsWith("Karnataka")) {
+                    gram.get(i).click();
+                    break;
+                }
             }
             System.out.println("India2 printed");
             Utils.scrollUpOrDown(driver, time);
             // Utils.clickXpath(driver, ActionXpath.State, time, "Selct the State");
             Utils.clickXpath(driver, ActionXpath.selectDist, time, "Select the Dist");
             java.util.List<WebElement> gram2 = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram2.get(i).getText().startsWith("Bangalore Rural"))
-            {
-                gram2.get(i).click();
-                break;
-            }
+                if (gram2.get(i).getText().startsWith("Bangalore Rural")) {
+                    gram2.get(i).click();
+                    break;
+                }
             }
             // Utils.clickXpath(driver, ActionXpath.District, time, "Select the Dist");
             Utils.scrollUpOrDown(driver, time);
+            validate.char80(driver, ActionXpath.street, ActionXpath.errorstreet1);
+            Utils.cleartext(driver, ActionXpath.street);
+            validate.specialcharacter(driver, ActionXpath.street, ActionXpath.errorstreet2);
+            Utils.cleartext(driver, ActionXpath.street);
             Utils.callSendkeys(driver, ActionXpath.street, street, "enter your permanent addrrss");
+
+            validate.char80(driver, ActionXpath.PostalCode, ActionXpath.errorzipcode2);
+            Utils.cleartext(driver, ActionXpath.PostalCode);
+            validate.specialcharacter(driver, ActionXpath.PostalCode, ActionXpath.errorzipcode1);
+            Utils.cleartext(driver, ActionXpath.PostalCode);
             Utils.callSendkeys(driver, ActionXpath.PostalCode, PostalCode, "Select your Postal Code");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
@@ -157,34 +186,66 @@ public class Application {
             log.info("  TC-3: Fill the BasicDetails test case PASSED \n");
 
         } catch (Exception e) {
-			log.warning("TC-3: Fill the BasicDetails test case FAILED \n");
-		}
-    } 
-    
-    @Test(priority = 4)
-    public static void FamilyInfo(String url,WebDriver driver,String[] csvCell){
-        try{
-            String firstName=csvCell[11];
-            String lastName=csvCell[12];
-            String Phone=csvCell[13];
-            String Email=csvCell[14];
-            String Age=csvCell[15];
-            String occupation=csvCell[16];
-            String annualIncome=csvCell[17];
+            log.warning("TC-3: Fill the BasicDetails test case FAILED \n");
+        }
+    }
 
+    @Test(priority = 4)
+    public static void FamilyInfo(String url, WebDriver driver, String[] csvCell) {
+        try {
+            String firstName = csvCell[11];
+            String lastName = csvCell[12];
+            String Phone = csvCell[13];
+            String Email = csvCell[14];
+            String Age = csvCell[15];
+            String occupation = csvCell[16];
+            String annualIncome = csvCell[17];
 
             System.out.println("TC:3: Starting FamilyInfo Test Executation ");
             Utils.clickXpath(driver, ActionXpath.selectrelationship, time, "Select the Relationship status option");
             Utils.clickXpath(driver, ActionXpath.relationType, time, "Select the relationhip Type");
+
+            validate.char80(driver, ActionXpath.firstName, ActionXpath.errorfname1);
+            Utils.cleartext(driver, ActionXpath.firstName);
+            validate.specialcharacter(driver, ActionXpath.firstName, ActionXpath.errorfname2);
+            Utils.cleartext(driver, ActionXpath.firstName);
             Utils.callSendkeys(driver, ActionXpath.firstName, firstName, "Enter Fist name");
             Utils.scrollUpOrDown(driver, time);
+            validate.char80(driver, ActionXpath.lastName, ActionXpath.errorlname1);
+            Utils.cleartext(driver, ActionXpath.lastName);
+            validate.specialcharacter(driver, ActionXpath.lastName, ActionXpath.errorlname2);
+            Utils.cleartext(driver, ActionXpath.lastName);
             Utils.callSendkeys(driver, ActionXpath.lastName, lastName, "Enter Last NAme");
             Utils.callSendkeys(driver, ActionXpath.Phone, Phone, "enter the Phone");
             Utils.scrollUpOrDown(driver, time);
+            validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
+            Utils.cleartext(driver, ActionXpath.Email);
             Utils.callSendkeys(driver, ActionXpath.Email, Email, "Enter the Emial");
+
+            validate.numbers(driver, ActionXpath.Age, ActionXpath.errorage1);
+            Utils.cleartext(driver, ActionXpath.Age);
+            validate.specialcharacter(driver, ActionXpath.Age, ActionXpath.errorage1);
+            Utils.cleartext(driver, ActionXpath.Age);
+            validate.char40(driver, ActionXpath.Age, ActionXpath.errorage1);
+            Utils.cleartext(driver, ActionXpath.Age);
+
             Utils.callSendkeys(driver, ActionXpath.Age, Age, "Selct age");
             Utils.scrollUpOrDown(driver, time);
+
+            validate.char40(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
+            Utils.cleartext(driver, ActionXpath.occupation);
+            validate.specialcharacter(driver, ActionXpath.occupation, ActionXpath.erroroccupation2);
+            Utils.cleartext(driver, ActionXpath.occupation);
+            validate.numbers(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
+            Utils.cleartext(driver, ActionXpath.occupation);
             Utils.callSendkeys(driver, ActionXpath.occupation, occupation, "Select the manager");
+
+            validate.char40(driver, ActionXpath.annualIncome, ActionXpath.errorincome2);
+            Utils.cleartext(driver, ActionXpath.annualIncome);
+            validate.specialcharacter(driver, ActionXpath.annualIncome, ActionXpath.errorincome1);
+            Utils.cleartext(driver, ActionXpath.annualIncome);
+            validate.numbers(driver, ActionXpath.annualIncome, ActionXpath.errorincome2);
+            Utils.cleartext(driver, ActionXpath.annualIncome);
             Utils.callSendkeys(driver, ActionXpath.annualIncome, annualIncome, "Selct the Annual income");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.SelectQualification, time, "Select the Qualification");
@@ -194,95 +255,130 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             log.info("  TC-4: Fill the FamilyInfo test case PASSED \n");
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.warning("TC-4: Fill the FamilyInfo test case FAILED \n");
         }
     }
+
     @Test(priority = 5)
-    public static void EmploymentInfo(String url,WebDriver driver,String[] csvCell){
-        try{
+    public static void EmploymentInfo(String url, WebDriver driver, String[] csvCell) {
+        try {
             Utils.bigSleepBetweenClicks(1);
-            String Company=csvCell[18];
-           
-           
-            String Designation=csvCell[23];
-            String Role=csvCell[23];
-            String dateofJoin=csvCell[25];
-            String experince=csvCell[26];
-            String Annual=csvCell[27];
+            String Company = csvCell[18];
+
+            String Designation = csvCell[23];
+            String Role = csvCell[23];
+            String dateofJoin = csvCell[25];
+            String experince = csvCell[26];
+            String Annual = csvCell[27];
             System.out.println("TC:5: Starting EmploymentInfo Test Executation ");
             Utils.clickXpath(driver, ActionXpath.clickyes, time, "clickyes");
             Utils.clickXpath(driver, ActionXpath.SelectjobType, time, "Select the Job type");
             Utils.clickXpath(driver, ActionXpath.jobType, time, "Select the Appropriate job ");
+
+            validate.char80(driver, ActionXpath.company, ActionXpath.errorcompany1);
+            Utils.cleartext(driver, ActionXpath.company);
+            validate.specialcharacter(driver, ActionXpath.company, ActionXpath.errorcompany2);
+            Utils.cleartext(driver, ActionXpath.company);
+
             Utils.callSendkeys(driver, ActionXpath.company, Company, "enter the company name");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
-            String industry=csvCell[19];
+            String industry = csvCell[19];
             Utils.clickXpath(driver, ActionXpath.IndustryType, time, "IndustryType ");
-            List<WebElement> IndustryType = driver.findElements(By.xpath("//div[text()='"+industry+"']"));
-    for (int i = 0; i < IndustryType.size(); i++) {
-        if (IndustryType.get(i).getText().contains(industry)) {
-            IndustryType.get(i).click();
-            break;
-        }
-    }
-           // Utils.callSendkeys(driver, ActionXpath.location, location, "Entet the location");
-           Utils.clickXpath(driver, ActionXpath.Country, time, "Click on the Country");
-           String Country=csvCell[20];
-           List<WebElement> CountryTy = driver.findElements(By.xpath("//div[text()='"+Country+"']"));
-    for (int i = 0; i < CountryTy.size(); i++) {
-        if (CountryTy.get(i).getText().contains(Country)) {
-            CountryTy.get(i).click();
-            break;
-        }
-    }
-    Utils.clickXpath(driver, ActionXpath.state, time, "Selext the State");
-    String state=csvCell[21];
-    List<WebElement> States = driver.findElements(By.xpath("//div[text()='"+state+"']"));
-    for (int i = 0; i < States.size(); i++) {
-        if (States.get(i).getText().contains(state)) {
-            States.get(i).click();
-            break;
-        }
-    }
-Utils.clickXpath(driver, ActionXpath.city, time, "Select the City");
-String city=csvCell[22];
-List<WebElement> Citys = driver.findElements(By.xpath("//div[text()='"+city+"']"));
-for (int i = 0; i < Citys.size(); i++) {
-    if (Citys.get(i).getText().contains(city)) {
-        Citys.get(i).click();
-        break;
-    }
-}
+            List<WebElement> IndustryType = driver.findElements(By.xpath("//div[text()='" + industry + "']"));
+            for (int i = 0; i < IndustryType.size(); i++) {
+                if (IndustryType.get(i).getText().contains(industry)) {
+                    IndustryType.get(i).click();
+                    break;
+                }
+            }
+            // Utils.callSendkeys(driver, ActionXpath.location, location, "Entet the
+            // location");
+            Utils.clickXpath(driver, ActionXpath.Country, time, "Click on the Country");
+            String Country = csvCell[20];
+            List<WebElement> CountryTy = driver.findElements(By.xpath("//div[text()='" + Country + "']"));
+            for (int i = 0; i < CountryTy.size(); i++) {
+                if (CountryTy.get(i).getText().contains(Country)) {
+                    CountryTy.get(i).click();
+                    break;
+                }
+            }
+            Utils.clickXpath(driver, ActionXpath.state, time, "Selext the State");
+            String state = csvCell[21];
+            List<WebElement> States = driver.findElements(By.xpath("//div[text()='" + state + "']"));
+            for (int i = 0; i < States.size(); i++) {
+                if (States.get(i).getText().contains(state)) {
+                    States.get(i).click();
+                    break;
+                }
+            }
+            Utils.clickXpath(driver, ActionXpath.city, time, "Select the City");
+            String city = csvCell[22];
+            List<WebElement> Citys = driver.findElements(By.xpath("//div[text()='" + city + "']"));
+            for (int i = 0; i < Citys.size(); i++) {
+                if (Citys.get(i).getText().contains(city)) {
+                    Citys.get(i).click();
+                    break;
+                }
+            }
+            validate.char80(driver, ActionXpath.designation, ActionXpath.errordestination1);
+            Utils.cleartext(driver, ActionXpath.designation);
+            validate.specialcharacter(driver, ActionXpath.designation, ActionXpath.errordestination2);
+            Utils.cleartext(driver, ActionXpath.designation);
+            validate.numbers(driver, ActionXpath.designation, ActionXpath.errordestination2);
+            Utils.cleartext(driver, ActionXpath.designation);
             Utils.callSendkeys(driver, ActionXpath.designation, Designation, "enter the Designation ");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
+
+            validate.char80(driver, ActionXpath.role, ActionXpath.errorroles1);
+            Utils.cleartext(driver, ActionXpath.role);
+            validate.specialcharacter(driver, ActionXpath.role, ActionXpath.errorroles2);
+            Utils.cleartext(driver, ActionXpath.role);
+            validate.numbers(driver, ActionXpath.role, ActionXpath.errorroles2);
+            Utils.cleartext(driver, ActionXpath.role);
             Utils.callSendkeys(driver, ActionXpath.role, Role, "enter the Role ");
             Utils.callSendkeys(driver, ActionXpath.DateJoin, dateofJoin, "enter the date of joining");
             Utils.clickXpath(driver, ActionXpath.CurrentCompany, time, "CurrentCompany");
             Utils.clickXpath(driver, ActionXpath.selectCurrentCompany, time, "selectCurrentCompany");
             Utils.scrollUpOrDown(driver, time);
+
+            validate.char80(driver, ActionXpath.Experience, ActionXpath.errormonths1);
+            Utils.cleartext(driver, ActionXpath.Experience);
+            validate.specialcharacter(driver, ActionXpath.Experience, ActionXpath.errormonths2);
+            Utils.cleartext(driver, ActionXpath.Experience);
+            validate.numbers(driver, ActionXpath.Experience, ActionXpath.errormonths1);
+            Utils.cleartext(driver, ActionXpath.Experience);
+
             Utils.callSendkeys(driver, ActionXpath.Experience, experince, "enter the Experience");
+
+            validate.char80(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary1);
+            Utils.cleartext(driver, ActionXpath.AnnualSalary);
+            validate.specialcharacter(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary2);
+            Utils.cleartext(driver, ActionXpath.AnnualSalary);
+            validate.numbers(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary2);
+            Utils.cleartext(driver, ActionXpath.AnnualSalary);
             Utils.callSendkeys(driver, ActionXpath.AnnualSalary, Annual, "Enter the annual Salary");
             // Utils.clickXpath(driver, ActionXpath.currencytype, time, "currencytype");
             Utils.clickXpath(driver, ActionXpath.selectcurrencytype, time, "selectcurrencytype");
-            String CurrencyType=csvCell[28]; 
-            List<WebElement> Currency = driver.findElements(By.xpath("//div[text()='"+CurrencyType+"']"));
+            String CurrencyType = csvCell[28];
+            List<WebElement> Currency = driver.findElements(By.xpath("//div[text()='" + CurrencyType + "']"));
             for (int i = 0; i < Currency.size(); i++) {
                 if (Currency.get(i).getText().contains(CurrencyType)) {
                     Currency.get(i).click();
                     break;
                 }
             }
-          
-            
+
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             log.info("  TC-5: Fill the EmploymentInfo test case PASSED \n");
-       
-        }catch (Exception e) {
+
+        } catch (Exception e) {
             log.warning("TC-5: Fill the EmploymentInfo test case FAILED \n");
         }
     }
+
     @Test(priority = 6)
     public static void EducationINFO(String url, WebDriver driver, String[] csvCell) {
         try {
@@ -299,10 +395,46 @@ for (int i = 0; i < Citys.size(); i++) {
 
             // pg
             Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
+            validate.char40(driver, ActionXpath.pguniversity, ActionXpath.error40charUniverisy);
+            // Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity,
+            // "pguniversity");
+            Utils.cleartext(driver, ActionXpath.pguniversity);
+            validate.numbers(driver, ActionXpath.pguniversity, ActionXpath.errorUniversity);
+            Utils.cleartext(driver, ActionXpath.pguniversity);
             Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
+            // Utils.clickXpath(driver, ActionXpath.city, time, "Select the City");
+            List<WebElement> University = driver.findElements(By.xpath("//div[text()='" + pguniversity + "']"));
+            for (int i = 0; i < University.size(); i++) {
+                if (University.get(i).getText().contains(pguniversity)) {
+                    University.get(i).click();
+                    break;
+                }
+            }
             Utils.scrollUpOrDown(driver, time);
+            validate.char40(driver, ActionXpath.pgcollege, ActionXpath.error40charCollege);
+            Utils.cleartext(driver, ActionXpath.pgcollege);
+            validate.numbers(driver, ActionXpath.pgcollege, ActionXpath.errorCollege);
+            Utils.cleartext(driver, ActionXpath.pgcollege);
             Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
+            List<WebElement> College = driver.findElements(By.xpath("//div[text()='" + pgcollege + "']"));
+            for (int i = 0; i < University.size(); i++) {
+                if (College.get(i).getText().contains(pgcollege)) {
+                    College.get(i).click();
+                    break;
+                }
+            }
+            validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.errorSpecailCharPercentage);
+            Utils.cleartext(driver, ActionXpath.pgpercentage);
+            validate.char80(driver, ActionXpath.pgpercentage, ActionXpath.error40charUniverisy);
+            Utils.cleartext(driver, ActionXpath.pgpercentage);
             Utils.callSendkeys(driver, ActionXpath.pgpercentage, pgpercentage, "pgpercentage");
+            List<WebElement> Percentage = driver.findElements(By.xpath("//div[text()='" + pgpercentage + "']"));
+            for (int i = 0; i < Percentage.size(); i++) {
+                if (Percentage.get(i).getText().contains(pgpercentage)) {
+                    Percentage.get(i).click();
+                    break;
+                }
+            }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
             Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
@@ -370,10 +502,44 @@ for (int i = 0; i < Citys.size(); i++) {
             String ugmaxmark2 = csvCell[48];
 
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
+            validate.char40(driver, ActionXpath.uguniversity, ActionXpath.error40charUniverisy);
+            Utils.cleartext(driver, ActionXpath.uguniversity);
+            validate.numbers(driver, ActionXpath.uguniversity, ActionXpath.errorUniversity);
+            Utils.cleartext(driver, ActionXpath.uguniversity);
             Utils.callSendkeys(driver, ActionXpath.uguniversity, uguniversity, "uguniversity");
+            List<WebElement> UgUniveristy = driver.findElements(By.xpath("//div[text()='" + uguniversity + "']"));
+            for (int i = 0; i < UgUniveristy.size(); i++) {
+                if (UgUniveristy.get(i).getText().contains(uguniversity)) {
+                    UgUniveristy.get(i).click();
+                    break;
+                }
+            }
             Utils.scrollUpOrDown(driver, time);
+            validate.char40(driver, ActionXpath.ugcollege, ActionXpath.error40charUniverisy);
+            Utils.cleartext(driver, ActionXpath.ugcollege);
+            validate.numbers(driver, ActionXpath.ugcollege, ActionXpath.errorCollege);
+            Utils.cleartext(driver, ActionXpath.ugcollege);
+
             Utils.callSendkeys(driver, ActionXpath.ugcollege, ugcollege, "ugcollege");
+            List<WebElement> UGCollege = driver.findElements(By.xpath("//div[text()='" + ugcollege + "']"));
+            for (int i = 0; i < UgUniveristy.size(); i++) {
+                if (UGCollege.get(i).getText().contains(ugcollege)) {
+                    UGCollege.get(i).click();
+                    break;
+                }
+            }
+            validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.errorUniversity);
+            Utils.cleartext(driver, ActionXpath.ugpercentage);
+            validate.char80(driver, ActionXpath.ugpercentage, ActionXpath.error80CharPercentage);
+            Utils.cleartext(driver, ActionXpath.ugpercentage);
             Utils.callSendkeys(driver, ActionXpath.ugpercentage, ugpercentage, "ugpercentage");
+            List<WebElement> UGPercentage = driver.findElements(By.xpath("//div[text()='" + ugpercentage + "']"));
+            for (int i = 0; i < UgUniveristy.size(); i++) {
+                if (UGPercentage.get(i).getText().contains(ugpercentage)) {
+                    UGPercentage.get(i).click();
+                    break;
+                }
+            }
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugedtype, time, "ugedtype");
             Utils.clickXpath(driver, ActionXpath.ugselectedtype, time, "ugselectedtype");
@@ -462,9 +628,24 @@ for (int i = 0; i < Citys.size(); i++) {
                 }
             }
             Utils.scrollUpOrDown(driver, time);
+            validate.char80(driver, ActionXpath.hscpercentage, ActionXpath.error80CharPercentage);
+            Utils.cleartext(driver, ActionXpath.hscpercentage);
+            validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.errorSpecailCharPercentage);
+            Utils.cleartext(driver, ActionXpath.hscpercentage);
             Utils.callSendkeys(driver, ActionXpath.hscpercentage, hscpercentage, "hscpercentage");
+            List<WebElement> FinalPercentage = driver.findElements(By.xpath("//div[text()='" + hscpercentage + "']"));
+            for (int i = 0; i < FinalPercentage.size(); i++) {
+                if (FinalPercentage.get(i).getText().contains(ugcollege)) {
+                    FinalPercentage.get(i).click();
+                    break;
+                }
+            }
             Utils.callSendkeys(driver, ActionXpath.hscyear, hscyear, "hscyear");
             Utils.scrollUpOrDown(driver, time);
+            validate.char40(driver, ActionXpath.hscschool, ActionXpath.errorSchool);
+            Utils.cleartext(driver, ActionXpath.hscschool);
+            validate.specialcharacter(driver, ActionXpath.hscschool, ActionXpath.errorSpecailCharPercentage);
+            Utils.cleartext(driver, ActionXpath.hscschool);
             Utils.callSendkeys(driver, ActionXpath.hscschool, hscschool, "hscschool");
             Utils.clickXpath(driver, ActionXpath.hsccountry, time, "hsccountry");
             // Utils.clickXpath(driver, ActionXpath.hscselectcountry, time,
@@ -579,20 +760,22 @@ for (int i = 0; i < Citys.size(); i++) {
             log.warning("TC-6: Fill the Education test case FAILED \n");
         }
     }
+
     @Test(priority = 7)
-    public static void other(String url,WebDriver driver, String[] csvCell){
-        try{
+    public static void other(String url, WebDriver driver, String[] csvCell) {
+        try {
             System.out.println("TC:7: Others Test Executation ");
-            
-           String SportAchievement=csvCell[44];
-           String ProfessionalAchievement=csvCell[45];
-           String CurricularActivities=csvCell[46];
-           String AcademicAchievements=csvCell[47];
-           String Statement=csvCell[48];
-           String planmasterdegree=csvCell[49];
+
+            String SportAchievement = csvCell[44];
+            String ProfessionalAchievement = csvCell[45];
+            String CurricularActivities = csvCell[46];
+            String AcademicAchievements = csvCell[47];
+            String Statement = csvCell[48];
+            String planmasterdegree = csvCell[49];
 
             Utils.callSendkeys(driver, ActionXpath.SportAchievement, SportAchievement, "SportAchievement");
-            Utils.callSendkeys(driver, ActionXpath.ProfessionalAchievement, ProfessionalAchievement, "ProfessionalAchievement");
+            Utils.callSendkeys(driver, ActionXpath.ProfessionalAchievement, ProfessionalAchievement,
+                    "ProfessionalAchievement");
             Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.CurricularActivities, CurricularActivities, "CurricularActivities");
             Utils.callSendkeys(driver, ActionXpath.AcademicAchievements, AcademicAchievements, "AcademicAchievements");
@@ -605,44 +788,47 @@ for (int i = 0; i < Citys.size(); i++) {
             // Utils.callSendkeys(driver, ActionXpath.sharedetails, "NA", "sharedetails");
             Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement");
             Utils.callSendkeys(driver, ActionXpath.planmasterdegree, planmasterdegree, "planmasterdegree");
-            Utils.clickXpath(driver, ActionXpath.sponsoredbycompany, time, "sponsoredbycompany"); 
+            Utils.clickXpath(driver, ActionXpath.sponsoredbycompany, time, "sponsoredbycompany");
             Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.Language, time, "Language"); 
+            Utils.clickXpath(driver, ActionXpath.Language, time, "Language");
             // Utils.clickXpath(driver, ActionXpath.SelectLanguage, time, "SelectLanguage");
             java.util.List<WebElement> gram = driver
-            .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
+                    .findElements(By.xpath(
+                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
             for (int i = 0; i < gram.size(); i++) {
-            if(gram.get(i).getText().startsWith("Kannada"))
-            {
-             gram.get(i).click();
-             break;
+                if (gram.get(i).getText().startsWith("Kannada")) {
+                    gram.get(i).click();
+                    break;
+                }
             }
-            }
-           Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.Proficiency, time, "Proficiency");
             Utils.clickXpath(driver, ActionXpath.SelectProficiency, time, "SelectProficiency");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.evaluation, time, "evaluation");
             Utils.clickXpath(driver, ActionXpath.Selectevaluation, time, "Selectevaluation");
-            Utils.clickXpath(driver, ActionXpath.qualificationenglish, time, "qualificationenglish"); 
-            Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time, "selectlatestqualificationenglish");
+            Utils.clickXpath(driver, ActionXpath.qualificationenglish, time, "qualificationenglish");
+            Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time,
+                    "selectlatestqualificationenglish");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.latestqualificationenglish, time, "latestqualificationenglish");
-            Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time, "selectlatestqualificationenglish");
+            Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time,
+                    "selectlatestqualificationenglish");
             Utils.clickXpath(driver, ActionXpath.EducationConsultant, time, "EducationConsultant");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.hearspjain, time, "hearspjain");
-            Utils.clickXpath(driver, ActionXpath.selecthearspjain, time, "selecthearspjain"); 
+            Utils.clickXpath(driver, ActionXpath.selecthearspjain, time, "selecthearspjain");
             Utils.clickXpath(driver, ActionXpath.refrence, time, "refrence");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             log.info("  TC-7: Fill the Others test case PASSED \n");
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.warning("TC-7: Fill the others test case FAILED \n");
         }
     }
+
     @Test(priority = 8)
-    public static void summaryanddeclaration(String url,WebDriver driver, String[] csvCell){
-        try{
+    public static void summaryanddeclaration(String url, WebDriver driver, String[] csvCell) {
+        try {
             System.out.println("TC:8: summaryanddeclaration Test Executation ");
 
             Utils.clickXpath(driver, ActionXpath.clicksubmit, time, "click on clicksubmit");
@@ -651,39 +837,40 @@ for (int i = 0; i < Citys.size(); i++) {
             Utils.bigSleepBetweenClicks(1);
 
             log.info("  TC-8: Fill the summaryanddeclaration test case PASSED \n");
-        }catch (Exception e) {
-             log.warning("TC-8: Fill the summaryanddeclaration test case FAILED \n");
+        } catch (Exception e) {
+            log.warning("TC-8: Fill the summaryanddeclaration test case FAILED \n");
         }
-        }
-        @Test(priority = 9)
-        public static void SalesforceBackendVerify(String Sfurl,WebDriver driver,String[] csvCell) {
-            try{
-                System.out.println("TC:9: Salesforce backend Verification along with delete  Test Executation ");
-                ((JavascriptExecutor) driver).executeScript("window.open()");
-		         ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
-		        driver.switchTo().window(tab.get(1));
-                 driver.get(Sfurl);
-                String SfEmail=csvCell[50];
-                String SfPassword=csvCell[51];
-                Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
-                Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword,"Enter your password");
-                Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
-                Utils.clickXpath(driver, ActionXpath.ClickApplication, time, "clcik the application Tab");
-                Utils.callSendkeys(driver, ActionXpath.SearchForAppliacant, "Test Student", "Enter the applicatnt name");
-                Utils.clickXpath(driver, ActionXpath.clickTheApplicanetName, time, "clcik on the application name");
-                Utils.clickXpath(driver, ActionXpath.clickApplicatioID, time, "Click on the applicant ID");
-                Utils.clickXpath(driver, ActionXpath.clickApplicationView, time, "click on thr application view");
-                Utils.scrollUpOrDown(driver, time);
-                Utils.scrollUpOrDown(driver, time);
-                Utils.clickXpath(driver, ActionXpath.clickDelete, time, "Delete the applicant ");
-                Utils.clickXpath(driver, ActionXpath.ClickProfileForLogout, time, "clcik the profile  for logout the salesforce");
-                Utils.clickXpath(driver, ActionXpath.ClickLOgout, time, "click logout ");
+    }
 
-                log.info("  TC-8:  the Salesforce backend Verification along with delete test case PASSED \n");
+    @Test(priority = 9)
+    public static void SalesforceBackendVerify(String Sfurl, WebDriver driver, String[] csvCell) {
+        try {
+            System.out.println("TC:9: Salesforce backend Verification along with delete  Test Executation ");
+            ((JavascriptExecutor) driver).executeScript("window.open()");
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tab.get(1));
+            driver.get(Sfurl);
+            String SfEmail = csvCell[50];
+            String SfPassword = csvCell[51];
+            Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
+            Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
+            Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
+            Utils.clickXpath(driver, ActionXpath.ClickApplication, time, "clcik the application Tab");
+            Utils.callSendkeys(driver, ActionXpath.SearchForAppliacant, "Test Student", "Enter the applicatnt name");
+            Utils.clickXpath(driver, ActionXpath.clickTheApplicanetName, time, "clcik on the application name");
+            Utils.clickXpath(driver, ActionXpath.clickApplicatioID, time, "Click on the applicant ID");
+            Utils.clickXpath(driver, ActionXpath.clickApplicationView, time, "click on thr application view");
+            Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
+            Utils.clickXpath(driver, ActionXpath.clickDelete, time, "Delete the applicant ");
+            Utils.clickXpath(driver, ActionXpath.ClickProfileForLogout, time,
+                    "clcik the profile  for logout the salesforce");
+            Utils.clickXpath(driver, ActionXpath.ClickLOgout, time, "click logout ");
 
-            }catch (Exception e) {
-                log.warning("TC-8: the Salesforce backend Verification along with delete test case FAILED \n");
-           }
+            log.info("  TC-8:  the Salesforce backend Verification along with delete test case PASSED \n");
+
+        } catch (Exception e) {
+            log.warning("TC-8: the Salesforce backend Verification along with delete test case FAILED \n");
         }
+    }
 }
-
