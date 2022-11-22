@@ -850,27 +850,108 @@ public class Application {
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
             driver.get(Sfurl);
-            String SfEmail = csvCell[50];
-            String SfPassword = csvCell[51];
+            String SfEmail = csvCell[70];
+            String SfPassword = csvCell[71];
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
-            Utils.clickXpath(driver, ActionXpath.ClickApplication, time, "clcik the application Tab");
-            Utils.callSendkeys(driver, ActionXpath.SearchForAppliacant, "Test Student", "Enter the applicatnt name");
-            Utils.clickXpath(driver, ActionXpath.clickTheApplicanetName, time, "clcik on the application name");
-            Utils.clickXpath(driver, ActionXpath.clickApplicatioID, time, "Click on the applicant ID");
-            Utils.clickXpath(driver, ActionXpath.clickApplicationView, time, "click on thr application view");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.clickDelete, time, "Delete the applicant ");
-            Utils.clickXpath(driver, ActionXpath.ClickProfileForLogout, time,
-                    "clcik the profile  for logout the salesforce");
-            Utils.clickXpath(driver, ActionXpath.ClickLOgout, time, "click logout ");
+            Utils.bigSleepBetweenClicks(1);
+            Utils.clickXpath(driver, ActionXpath.applauncher, time, "click on applauncher");
+            Utils.smallSleepBetweenClicks(2);
+            Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts ");
+            Utils.clickXpath(driver, ActionXpath.clickcontacts, time, "click on clickcontacts");
+            Utils.callSendkeys(driver, ActionXpath.listsearch, "test Student", "Search for student name");
+            Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
+            Utils.clickXpath(driver, ActionXpath.clickappname, time, "click on thr application view");
+            Utils.clickXpath(driver, ActionXpath.clickappview, time, "click on thr application view");
 
-            log.info("  TC-8:  the Salesforce backend Verification along with delete test case PASSED \n");
+            String passport = Utils.getTEXT(driver, ActionXpath.passportcheck);
+            if (csvCell[8].equals(passport)) {
+                System.out.println("Passport Number is same");
+            } else {
+                System.out.println("Passport Number is diffrent");
+            }
+
+            String Nationality = Utils.getTEXT(driver, ActionXpath.Nationalitycheck);
+            if (csvCell[7].equals(Nationality)) {
+                System.out.println("Nationality is same");
+            } else {
+                System.out.println("Nationality is diffrent");
+            }
+
+            String email = Utils.getTEXT(driver, ActionXpath.emailcheck);
+            if (csvCell[14].equals(email)) {
+                System.out.println("email is same");
+            } else {
+                System.out.println("email is diffrent");
+            }
+
+            String dob = Utils.getTEXT(driver, ActionXpath.dobcheck);
+            if (csvCell[6].equals(dob)) {
+                System.out.println("dob is same");
+            } else {
+                System.out.println("dob is diffrent");
+            }
+
+            String city = Utils.getTEXT(driver, ActionXpath.citycheck);
+            if (csvCell[22].equals(city)) {
+                System.out.println("city is same");
+            } else {
+                System.out.println("city is diffrent");
+            }
+
+            String fname = Utils.getTEXT(driver, ActionXpath.fnamecheck);
+            if (csvCell[11].equals(fname)) {
+                System.out.println("fname is same");
+            } else {
+                System.out.println("fname is diffrent");
+            }
+
+            String age = Utils.getTEXT(driver, ActionXpath.agecheck);
+            if (csvCell[15].equals(age)) {
+                System.out.println("age is same");
+            } else {
+                System.out.println("age is diffrent");
+            }
+
+            String income = Utils.getTEXT(driver, ActionXpath.incomecheck);
+            if (csvCell[17].equals(income)) {
+                System.out.println("income is same");
+            } else {
+                System.out.println("income is diffrent");
+            }
+
+            String pgpercentage = Utils.getTEXT(driver, ActionXpath.pgpercentagecheck);
+            if (csvCell[32].equals(pgpercentage)) {
+                System.out.println("pgpercentage is same");
+            } else {
+                System.out.println("pgpercentage is diffrent");
+            }
+
+            String hscpercentage = Utils.getTEXT(driver, ActionXpath.hscpercentagecheck);
+            if (csvCell[50].equals(hscpercentage)) {
+                System.out.println("hscpercentage is same");
+            } else {
+                System.out.println("hscpercentage is diffrent");
+            }
+
+            String sslcpercentage = Utils.getTEXT(driver, ActionXpath.hscpercentagecheck);
+            if (csvCell[57].equals(sslcpercentage)) {
+                System.out.println("sslcpercentage is same");
+            } else {
+                System.out.println("sslcpercentage is diffrent");
+            }
+
+            String extraactivities = Utils.getTEXT(driver, ActionXpath.extraactivitiescheck);
+            if (csvCell[65].equals(extraactivities)) {
+                System.out.println("extraactivities is same");
+            } else {
+                System.out.println("extraactivities is diffrent");
+            }
+            log.info("  TC-9:  the Salesforce backend Verification along with delete test case PASSED \n");
 
         } catch (Exception e) {
-            log.warning("TC-8: the Salesforce backend Verification along with delete test case FAILED \n");
+            log.warning("TC-9: the Salesforce backend Verification along with delete test case FAILED \n");
         }
     }
 }

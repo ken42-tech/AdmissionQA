@@ -188,18 +188,28 @@ static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
  static String backtohome="//*[text()='Homepage']";
 
 //tc -9
-static String SalesforceEmail="//input[@type='email']";
-static String SalesforcePassword="//input[@type='password']";
-static String loginSalesforce="//input[@type='submit']";
-static String ClickApplication="//span[text()='Applications']";
-static String SearchForAppliacant="(//input[@type='search'])[2]";
-static String clickTheApplicanetName="//a[@title='test Student']";
-static String clickonAppliations="//a[@data-label='Applications']";
-static String clickApplicationView="//a[text()='Application View']";
-static String clickApplicatioID="//span[text()='APP-1714']";
-static String clickDelete="(//button[text()='Delete'])[2]";
-static String ClickProfileForLogout="//span[@data-aura-rendered-by='6:519;a']";
-static String ClickLOgout="//a[text()='Log Out']";
+static String SalesforceEmail = "//input[@type='email']";
+    static String SalesforcePassword = "//input[@type='password']";
+    static String loginSalesforce = "//input[@type='submit']";
+    static String applauncher = "/html/body/div[4]/div[1]/section/div[1]/div[1]/one-appnav/div/div/div/div/one-app-launcher-header";
+    static String search = "//*[@placeholder='Search apps and items...']";
+    static String clickcontacts = "(//*[text()='Contacts'])[2]";
+    static String listsearch = "//*[@placeholder='Search this list...']";
+    static String clickstudent = "(//*[text()='test Student'])[1]";
+    static String clickappname = "(//*[text()='Application Name']/../../../../../../../..//*[@class='slds-truncate'])[5]";
+    static String clickappview = "//*[text()='Application View']";
+
+    static String ClickApplication = "//span[text()='Applications']";
+    static String SearchForAppliacant = "(//input[@type='search'])[2]";
+    static String clickTheApplicanetName = "//a[@title='test Student']";
+    static String clickonAppliations = "//a[@data-label='Applications']";
+    static String clickApplicationView = "//a[text()='Application View']";
+    static String clickApplicatioID = "//span[text()='APP-1714']";
+    static String clickDelete = "(//button[text()='Delete'])[2]";
+    static String ClickProfileForLogout = "//span[@data-aura-rendered-by='6:519;a']";
+    static String ClickLOgout = "//a[text()='Log Out']";
+    
+
 //workbench
 static String clickEnvronment="//select[@id='oauth_env']";
 static String selectSandbox="//option[@value='test.salesforce.com']";
@@ -213,6 +223,21 @@ static String getFirstName="//li[text()='firstName: ']";
 static String getMiddlName="//li[text()='middleName: ']";
 static String getLastName="//li[text()='lastName: ']";
 
+ // sf check
+ static String passportcheck = "//*[text()='Passport Number']/..//*[@type='text']";
+ static String Nationalitycheck = "//*[text()='Nationality']/..//*[@type='text']";
+ static String emailcheck = "(//*[text()='Email']/..//*[@type='text'])[1]";
+ static String dobcheck = "//*[text()='Date Of Birth']/..//*[@type='text']";
+
+ static String citycheck = "//*[text()='City/Town']/..//*[@type='text']";
+
+ static String fnamecheck = "(//*[text()='First Name']/..//*[@type='text'])[2]";
+ static String agecheck = "//*[text()='Age']/..//*[@type='text']";
+ static String incomecheck = "//*[text()='Annual Income']/..//*[@type='text']";
+ static String pgpercentagecheck = "(//*[text()='Percentage/CGPA']/..//*[@type='text'])[1]";
+ static String hscpercentagecheck = "(//*[text()='Final CGPA/GPA/Grade/Percentage']/..//*[@type='text'])[1]";
+ static String sslcpercentagecheck = "(//*[text()='Final CGPA/GPA/Grade/Percentage']/..//*[@type='text'])[2]";
+ static String extraactivitiescheck = "//*[text()='Extra Curricular Activities(Social/Political/Personal etc)']/..//*[@type='text']";
 
 //error xpath
     static String errorpassport1 = "//p[text()='Please Input a valid Passport Number']";

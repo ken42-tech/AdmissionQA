@@ -132,9 +132,23 @@ public static void getAndSentOTP(WebDriver driver) throws Exception{
             }
         }
     }
+	
 	@Test
-	public static void validatePassportNumber(WebDriver driver,String Xpath,String[] csvCell){
-		String nationality=csvCell[7];
-
+	public static String getTEXT(WebDriver driver, String xpath) throws Exception {
+		int count = 0;
+		int maxTries = 7;
+		String HtmlText = "";
+		while (true) {
+			try {
+				WebElement p = driver.findElement(By.xpath(xpath));
+				HtmlText = p.getText();
+				return HtmlText;
+			} catch (Exception e) {
+				Utils.smallSleepBetweenClicks(1);
+				if (++count > maxTries) {
+					throw (e);
+				}
+			}
+		}
 	}
 }
