@@ -193,12 +193,12 @@ static String SalesforceEmail = "//input[@type='email']";
     static String loginSalesforce = "//input[@type='submit']";
     static String applauncher = "/html/body/div[4]/div[1]/section/div[1]/div[1]/one-appnav/div/div/div/div/one-app-launcher-header";
     static String search = "//*[@placeholder='Search apps and items...']";
-    static String clickcontacts = "(//*[text()='Contacts'])[2]";
+    static String clickcontacts = "//*[text()='Contacts']";
     static String listsearch = "//*[@placeholder='Search this list...']";
     static String clickstudent = "(//*[text()='test Student'])[1]";
     static String clickappname = "(//*[text()='Application Name']/../../../../../../../..//*[@class='slds-truncate'])[5]";
     static String clickappview = "//*[text()='Application View']";
-
+static String ClickApplicationtab="//a[text()='Applications']";
     static String ClickApplication = "//span[text()='Applications']";
     static String SearchForAppliacant = "(//input[@type='search'])[2]";
     static String clickTheApplicanetName = "//a[@title='test Student']";
@@ -224,7 +224,8 @@ static String getMiddlName="//li[text()='middleName: ']";
 static String getLastName="//li[text()='lastName: ']";
 
  // sf check
- static String passportcheck = "//*[text()='Passport Number']/..//*[@type='text']";
+ static String ClickEdit="(//button[@type='button' and text()='Edit'])[3]";
+ static String passportcheck = "(//lightning-formatted-text[@slot='outputField'])[9]";
  static String Nationalitycheck = "//*[text()='Nationality']/..//*[@type='text']";
  static String emailcheck = "(//*[text()='Email']/..//*[@type='text'])[1]";
  static String dobcheck = "//*[text()='Date Of Birth']/..//*[@type='text']";

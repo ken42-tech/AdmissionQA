@@ -6,9 +6,9 @@ import org.openqa.selenium.WebElement;
 public class validate {
     public static boolean char40(WebDriver driver, String xpath, String errorXpath) throws Exception {
         try {
-            String Char41char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
+            String Char40char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
 
-            Utils.callSendkeys(driver, xpath, Char41char, Char41char);
+            Utils.callSendkeys(driver, xpath, Char40char, Char40char);
             WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
             String checkfirstnamewithnumber = errorMessage.getText();
 
@@ -31,9 +31,9 @@ public class validate {
 
     public static boolean char80(WebDriver driver, String xpath, String errorXpath) throws Exception {
         try {
-            String Char41char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
+            String Char80char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
 
-            Utils.callSendkeys(driver, xpath, Char41char, Char41char);
+            Utils.callSendkeys(driver, xpath, Char80char, Char80char);
             WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
             String checkfirstnamewithnumber = errorMessage.getText();
 
@@ -55,9 +55,9 @@ public class validate {
 
     public static boolean specialcharacter(WebDriver driver, String xpath, String errorXpath) throws Exception {
         try {
-            String Char41char = "(*#$&))";
+            String SpecailChar = "(*#$&))";
 
-            Utils.callSendkeys(driver, xpath, Char41char, Char41char);
+            Utils.callSendkeys(driver, xpath, SpecailChar, SpecailChar);
             WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
             String checkfirstnamewithnumber = errorMessage.getText();
 
@@ -80,9 +80,9 @@ public class validate {
 
     public static boolean numbers(WebDriver driver, String xpath, String errorXpath) throws Exception {
         try {
-            String Char41char = "478623623696489349269234";
+            String number = "478623623696489349269234";
 
-            Utils.callSendkeys(driver, xpath, Char41char, Char41char);
+            Utils.callSendkeys(driver, xpath, number, number);
             WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
             String checkfirstnamewithnumber = errorMessage.getText();
 

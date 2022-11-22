@@ -53,12 +53,14 @@ public class App_portal {
 				count = count + 1;
 				continue;
 			}
+			Anand.co.in
 			String url = csvCell[0];
 			String browser = csvCell[1];
 			String Email = csvCell[2];
 			String password = csvCell[3];
 			String From =csvCell[4];
 			String To =csvCell[5];
+			String sfurl=csvCell[69];
 			
 
 			int from = Integer.parseInt(From);
@@ -84,7 +86,7 @@ public class App_portal {
 					break;
 					case 8: Application.summaryanddeclaration(url, driver, csvCell);
 					break;
-					case 9: Application.SalesforceBackendVerify(url, driver, csvCell);
+					case 9: Application.SalesforceBackendVerify(sfurl, driver, csvCell);
 					break;
 
 
