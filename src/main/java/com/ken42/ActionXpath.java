@@ -22,6 +22,8 @@ public class ActionXpath {
     //static String goappliaction="//p[text()='Go To Your Application']";
     //Tc-3
     static String dob="//input[@name='applicant[dateOfBirth]']";
+    static String Nationaliydrop="(//*[@id='outlined-select-currency'])[1]";
+    static String selectnationality="//div[text()='Indian']";
     static String nationality="//input[@name='applicant[nationality]']";
     static String passport="//input[@name='applicant[passportNumber]']";
     //static String Gender="//input[@value='Male']";
@@ -62,6 +64,9 @@ static String SelectjobType="(//*[@id='outlined-select-currency'])[1]";
 static String jobType="//li[@data-value='Full Time']";
 static String company="//input[@name='workExperiences.0.organisationName']";
 static String IndustryType="(//*[@id='outlined-select-currency'])[2]";
+static String Country="(//*[@id='outlined-select-currency'])[3]";
+static String state="(//*[@id='outlined-select-currency'])[4]";
+static String city="(//*[@id='outlined-select-currency'])[5]";
 static String location="//input[@name='workExperiences.0.location']";
 static String designation="//input[@name='workExperiences.0.designation']";
 static String role="//input[@name='workExperiences.0.roles']";
@@ -69,7 +74,7 @@ static String DateJoin="//input[@name='workExperiences.0.dateOfJoining']";
 static String CurrentCompany="(//*[@id='outlined-select-currency'])[3]";
 static String selectCurrentCompany="(//*[text()='Yes'])[2]";
 static String Experience="//input[@name='workExperiences.0.noOfMonths']";
-static String currencytype="(//*[@id='outlined-select-currency'])[4]";
+static String currencytype="(//*[@id='outlined-select-currency'])[6]";
 static String selectcurrencytype="//li[@data-value='Indian Rupee (INR)']";
 static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
 //Tc-6
@@ -90,6 +95,9 @@ static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
     static String pgselectcity="//*[text()='Bangalore Rural']";
 
     //ug
+    static String EducationType="(//*[@id='outlined-select-currency'])[4]";
+    static String country3="(//*[@id='outlined-select-currency'])[6]";
+
     static String ugyear="//*[@name='educationHistories[1][yearOfPassing]']";
     static String uguniversity="//*[@name='educationHistories[1][institutionName]']";
     static String ugcollege="//*[@name='educationHistories[1][placeOfStudy]']";
@@ -180,18 +188,28 @@ static String AnnualSalary="//input[@name='workExperiences.0.annualSalary']";
  static String backtohome="//*[text()='Homepage']";
 
 //tc -9
-static String SalesforceEmail="//input[@type='email']";
-static String SalesforcePassword="//input[@type='password']";
-static String loginSalesforce="//input[@type='submit']";
-static String ClickApplication="//span[text()='Applications']";
-static String SearchForAppliacant="(//input[@type='search'])[2]";
-static String clickTheApplicanetName="//a[@title='test Student']";
-static String clickonAppliations="//a[@data-label='Applications']";
-static String clickApplicationView="//a[text()='Application View']";
-static String clickApplicatioID="//span[text()='APP-1714']";
-static String clickDelete="(//button[text()='Delete'])[2]";
-static String ClickProfileForLogout="//span[@data-aura-rendered-by='6:519;a']";
-static String ClickLOgout="//a[text()='Log Out']";
+static String SalesforceEmail = "//input[@type='email']";
+    static String SalesforcePassword = "//input[@type='password']";
+    static String loginSalesforce = "//input[@type='submit']";
+    static String applauncher = "/html/body/div[4]/div[1]/section/div[1]/div[1]/one-appnav/div/div/div/div/one-app-launcher-header";
+    static String search = "//*[@placeholder='Search apps and items...']";
+    static String clickcontacts = "(//*[text()='Contacts'])[2]";
+    static String listsearch = "//*[@placeholder='Search this list...']";
+    static String clickstudent = "(//*[text()='test Student'])[1]";
+    static String clickappname = "(//*[text()='Application Name']/../../../../../../../..//*[@class='slds-truncate'])[5]";
+    static String clickappview = "//*[text()='Application View']";
+
+    static String ClickApplication = "//span[text()='Applications']";
+    static String SearchForAppliacant = "(//input[@type='search'])[2]";
+    static String clickTheApplicanetName = "//a[@title='test Student']";
+    static String clickonAppliations = "//a[@data-label='Applications']";
+    static String clickApplicationView = "//a[text()='Application View']";
+    static String clickApplicatioID = "//span[text()='APP-1714']";
+    static String clickDelete = "(//button[text()='Delete'])[2]";
+    static String ClickProfileForLogout = "//span[@data-aura-rendered-by='6:519;a']";
+    static String ClickLOgout = "//a[text()='Log Out']";
+    
+
 //workbench
 static String clickEnvronment="//select[@id='oauth_env']";
 static String selectSandbox="//option[@value='test.salesforce.com']";
@@ -205,7 +223,58 @@ static String getFirstName="//li[text()='firstName: ']";
 static String getMiddlName="//li[text()='middleName: ']";
 static String getLastName="//li[text()='lastName: ']";
 
+ // sf check
+ static String passportcheck = "//*[text()='Passport Number']/..//*[@type='text']";
+ static String Nationalitycheck = "//*[text()='Nationality']/..//*[@type='text']";
+ static String emailcheck = "(//*[text()='Email']/..//*[@type='text'])[1]";
+ static String dobcheck = "//*[text()='Date Of Birth']/..//*[@type='text']";
 
+ static String citycheck = "//*[text()='City/Town']/..//*[@type='text']";
+
+ static String fnamecheck = "(//*[text()='First Name']/..//*[@type='text'])[2]";
+ static String agecheck = "//*[text()='Age']/..//*[@type='text']";
+ static String incomecheck = "//*[text()='Annual Income']/..//*[@type='text']";
+ static String pgpercentagecheck = "(//*[text()='Percentage/CGPA']/..//*[@type='text'])[1]";
+ static String hscpercentagecheck = "(//*[text()='Final CGPA/GPA/Grade/Percentage']/..//*[@type='text'])[1]";
+ static String sslcpercentagecheck = "(//*[text()='Final CGPA/GPA/Grade/Percentage']/..//*[@type='text'])[2]";
+ static String extraactivitiescheck = "//*[text()='Extra Curricular Activities(Social/Political/Personal etc)']/..//*[@type='text']";
+
+//error xpath
+    static String errorpassport1 = "//p[text()='Please Input a valid Passport Number']";
+    static String errorpassport2 = "//p[text()='This field cannot be more than 12 characters']";
+    static String errorstreet1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errorstreet2 = "//p[text()='Please input a correct value']";
+    static String errorzipcode1 = "//p[text()='Please Input a valid Zipcode']";
+    static String errorzipcode2 = "//p[text()='This field cannot be more than 10 characters']";
+    static String errorfname1 = "//p[text()='This field cannot be more than 40 characters']";
+    static String errorfname2 = "//p[text()='Please Input a valid First Name']";
+    static String errorlname1 = "//p[text()='This field cannot be more than 40 characters']";
+    static String errorlname2 = "//p[text()='Please Input a valid Last Name']";
+    static String errorage1 = "//p[text()='This field cannot be more than 3 digits']";
+    static String errorage2 = "//p[text()='Please Input a valid Age']";
+    static String erroremail1 = "//p[text()='Please Input a valid Email']";
+    static String erroroccupation1 = "//p[text()='This field cannot be more than 20 characters']";
+    static String erroroccupation2 = "//p[text()='Please Input a valid value']";
+    static String errorincome1 = "//p[text()='Please Input a correct Income']";
+    static String errorincome2 = "//p[text()='This field cannot be more than 18 characters']";
+    static String errorcompany1 = "//p[text()='This field cannot be more than 100 characters']";
+    static String errorcompany2 = "//p[text()='Please input a correct value.']";
+    static String errordestination1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errordestination2 = "//p[text()='Please input a correct value.']";
+    static String errorroles1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errorroles2 = "//p[text()='Please input a correct value.']";
+    static String errormonths1 = "//p[text()='This field cannot be more than 3 characters']";
+    static String errormonths2 = "//p[text()='Please input a correct value.']";
+    static String errrosalary1 = "//p[text()='This field cannot be more than 18 characters']";
+    static String errrosalary2 = "//p[text()='Please input a correct value.']";
+static String  errorUniversity="//p[text()='Please Input a correct value.']";
+static String error40charUniverisy="//p[text()='This field cannot be more than 40 characters']";
+static String  errorCollege="//p[text()='Please Input a correct value.']";
+static String error40charCollege="//p[text()='This field cannot be more than 40 characters']";
+
+static String errorSpecailCharPercentage="//p[text()='Please Input a correct value.']";
+static String error80CharPercentage="//p[text()='This field cannot be more than 7 characters']";
+static String  errorSchool="//p[text()='Please Input a correct value.']";
 
 
 
