@@ -50,7 +50,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.selectPost, time, "Select the appropiraite Department ");
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
-            String Programe = csvCell[71];
+            String Programe = csvCell[72];
             // Utils.clickXpath(driver, ActionXpath.selectPrograme, time, "Select the
             // appropriate Programe");
             List<WebElement> ProgramName = driver.findElements(By.xpath("//div[text()='" + Programe + "']"));
@@ -70,8 +70,15 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.Selectmentor, time, "Slect the mentor");
             Utils.clickXpath(driver, ActionXpath.selectYes, time, "Slect  yes ");
             Utils.scrollUpOrDown(driver, time);
+            String campus=csvCell[73];
             Utils.clickXpath(driver, ActionXpath.Campus, time, "Select the campus");
-            Utils.clickXpath(driver, ActionXpath.SelectCampus, time, "Select the campus");
+            List<WebElement> CAMPUS = driver.findElements(By.xpath("(//div[text()='" + campus + "'])"));
+            for (int i = 0; i < CAMPUS.size(); i++) {
+                if (CAMPUS.get(i).getText().contains(campus)) {
+                    CAMPUS.get(i).click();
+                    break;
+                }
+            }
             Utils.scrollUpOrDown(driver, time);
             // Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the
             // campus");
@@ -862,10 +869,13 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.clickcontacts, time, "click on clickcontacts");
             Utils.callSendkeys(driver, ActionXpath.listsearch, "test Student", "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
+            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on ttha applcation ");
             Utils.clickXpath(driver, ActionXpath.clickappname, time, "click on thr application view");
             Utils.clickXpath(driver, ActionXpath.clickappview, time, "click on thr application view");
 
+            Utils.clickXpath(driver, ActionXpath.ClickEdit, time, "Click on edit");
             String passport = Utils.getTEXT(driver, ActionXpath.passportcheck);
+            System.out.println("Passport Number is same:"+passport);
             if (csvCell[8].equals(passport)) {
                 System.out.println("Passport Number is same");
             } else {
