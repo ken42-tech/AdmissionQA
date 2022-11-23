@@ -90,18 +90,15 @@ public class Application {
 
             Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
             Utils.selectFromDropDown(ActionXpath.selectxpath, nationality, driver);
-
-            Utils.cleartext(driver, ActionXpath.passport);
-
-            validate.char40(driver, ActionXpath.passport, ActionXpath.errorpassport2);
-            Utils.cleartext(driver, ActionXpath.passport);
-
-            validate.char80(driver, ActionXpath.passport, ActionXpath.errorpassport2);
-            Utils.cleartext(driver, ActionXpath.passport);
-
-            validate.specialcharacter(driver, ActionXpath.passport, ActionXpath.errorpassport1);
-            Utils.cleartext(driver, ActionXpath.passport);
-
+            
+                Utils.cleartext(driver, ActionXpath.passport);
+                validate.char40(driver, ActionXpath.passport, ActionXpath.errorpassport2);
+                Utils.cleartext(driver, ActionXpath.passport);
+                validate.char80(driver, ActionXpath.passport, ActionXpath.errorpassport2);
+                Utils.cleartext(driver, ActionXpath.passport);
+                validate.specialcharacter(driver, ActionXpath.passport, ActionXpath.errorpassport1);
+                Utils.cleartext(driver, ActionXpath.passport);
+            
             Utils.cleartext(driver, ActionXpath.passport);
             Utils.callSendkeys(driver, ActionXpath.passport, passport, "Enter your Passport");
             Utils.scrollUpOrDown(driver, time);
@@ -587,7 +584,7 @@ public class Application {
     }
 
     @Test(priority = 1)
-    public static void Admissionfillform(String url, WebDriver driver, String[] csvCell) throws Exception {
+    public static void Admissionfillform(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
 
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
@@ -611,7 +608,7 @@ public class Application {
     }
 
     @Test(priority = 2)
-    public static void SalesforceBackendVerify(String Sfurl, WebDriver driver, String[] csvCell) {
+    public static void SalesforceBackendVerify(String Sfurl, WebDriver driver, String[] csvCell, Logger log) {
         try {
             System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
             ((JavascriptExecutor) driver).executeScript("window.open()");
