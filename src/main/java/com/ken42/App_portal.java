@@ -56,7 +56,7 @@ public class App_portal extends Thread{
 		String folder = "";
 		folder = getFolderPath();
 		String CSV_PATH = "";
-		CSV_PATH = folder + "\\APplication.csv";
+		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
 		CSVReader csvReader;
 		int count = 0;
 		CSVReader csvReader1;
@@ -101,7 +101,7 @@ public class App_portal extends Thread{
 		String logFileName = "";
 		boolean append = false;
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-		logFileName = String.format(folder + "\\Testresult_%s.HTML", timeStamp);
+		logFileName = String.format("C:\\Users\\Public\\Documents\\Testresult_%s.HTML", timeStamp);
 		FileHandler logFile = new FileHandler(logFileName, append);
 		logFile.setFormatter(new MyHtmlFormatter());
 		log.addHandler(logFile);
