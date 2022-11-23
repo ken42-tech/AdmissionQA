@@ -50,7 +50,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.selectPost, time, "Select the appropiraite Department ");
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
-            String Programe = csvCell[72];
+            String Programe = csvCell[76];
             // Utils.clickXpath(driver, ActionXpath.selectPrograme, time, "Select the
             // appropriate Programe");
             List<WebElement> ProgramName = driver.findElements(By.xpath("//div[text()='" + Programe + "']"));
