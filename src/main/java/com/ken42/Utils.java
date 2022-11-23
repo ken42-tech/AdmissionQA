@@ -1,4 +1,5 @@
 package com.ken42;
+
 import java.util.logging.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -22,24 +23,24 @@ import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Store;
 
-
 public class Utils {
-    static Logger log = Logger.getLogger(Utils.class.getName());
+	static Logger log = Logger.getLogger(Utils.class.getName());
 	static int time = 1000;
-    private static CharSequence result;
-    public static void clickXpath(WebDriver driver,String xpath, int time,String msg) throws Exception {
-		JavascriptExecutor js3 = (JavascriptExecutor) driver; 
-        int count = 0;
+	private static CharSequence result;
+
+	public static void clickXpath(WebDriver driver, String xpath, int time, String msg) throws Exception {
+		JavascriptExecutor js3 = (JavascriptExecutor) driver;
+		int count = 0;
 		int maxTries = 4;
-		while (true){
+		while (true) {
 			try {
 				Thread.sleep(1000);
-				log.info("Click on the:"+msg);
+				log.info("Click on the:" + msg);
 				new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
 				break;
 			} catch (Exception e) {
 				Thread.sleep(500);
-				log.warning("Failed to Click on the :"+msg);
+				log.warning("Failed to Click on the :" + msg);
 				if (++count == maxTries) {
 					Utils.printException(e);
 					throw e;
@@ -47,24 +48,27 @@ public class Utils {
 			}
 		}
 	}
-    static void printException(Exception e) {
-        log.warning("Exception is  "+e);
 
-    }
-    public static void callSendkeys(WebDriver driver,String Xpath, String Value, String string) throws Exception {
+	static void printException(Exception e) {
+		log.warning("Exception is  " + e);
+
+	}
+
+	public static void callSendkeys(WebDriver driver, String Xpath, String Value, String string) throws Exception {
 		int count = 0;
 		int maxTries = 4;
-		while (true){
+		while (true) {
 			try {
-				log.info("Entering value"+Value);
+				log.info("Entering value" + Value);
 				Thread.sleep(1000);
-				new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(By.xpath(Xpath))).sendKeys(Value);
+				new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(By.xpath(Xpath)))
+						.sendKeys(Value);
 				Thread.sleep(500);
-				
+
 				break;
 			} catch (Exception e) {
 				Thread.sleep(250);
-				log.warning("Failed to send value  "+Value);
+				log.warning("Failed to send value  " + Value);
 				if (++count == maxTries) {
 					Utils.printException(e);
 					throw e;
@@ -72,67 +76,72 @@ public class Utils {
 			}
 		}
 	}
-public static void getAndSentOTP(WebDriver driver) throws Exception{
-    String OTP = "";
-    OTP= readOTP.check("imap.gmail.com", "imap", "test2.ken42@gmail.com", "qdbfadralxdxiihz");
-      
-				//Thread.sleep(400);
-				System.out.println("OTP ***** " +OTP);
-                Utils.callSendkeys(driver,ActionXpath.Inputotp, OTP, "OTP");
 
-			
-}
-    @Test
-	public static void bigSleepBetweenClicks(int loop) throws InterruptedException{
+	public static void getAndSentOTP(WebDriver driver) throws Exception {
+		String OTP = "";
+		OTP = readOTP.check("imap.gmail.com", "imap", "test2.ken42@gmail.com", "qdbfadralxdxiihz");
+
+		// Thread.sleep(400);
+		System.out.println("OTP ***** " + OTP);
+		Utils.callSendkeys(driver, ActionXpath.Inputotp, OTP, "OTP");
+
+	}
+
+	@Test
+	public static void bigSleepBetweenClicks(int loop) throws InterruptedException {
 		int total_time = 7000 * loop;
-		System.out.println("Sleeping for "+total_time);
+		System.out.println("Sleeping for " + total_time);
 		Thread.sleep(7000 * loop);
 	}
-    @Test
-	public static void smallSleepBetweenClicks(int loop) throws InterruptedException{
+
+	@Test
+	public static void smallSleepBetweenClicks(int loop) throws InterruptedException {
 		int total_time = 2000 * loop;
-		System.out.println("Sleeping for "+total_time);
+		System.out.println("Sleeping for " + total_time);
 		Thread.sleep(2000 * loop);
 	}
+
 	public static boolean checkWindowsOs() {
 		String OS = "";
-		OS = System.getProperty("os.name"); 
+		OS = System.getProperty("os.name");
 		System.out.println(OS);
 
-		if (OS.contains("Windows")){
+		if (OS.contains("Windows")) {
 			return true;
 		}
 		return false;
 
 	}
+
 	@Test
-    public static void scrollUpOrDown(WebDriver driver, int pixel){
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,10)");
-    }
+	public static void scrollUpOrDown(WebDriver driver, int pixel) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,100)");
+	}
+
 	public static void cleartext(WebDriver driver, String Xpath) throws Exception {
-        int count = 0;
-        int maxTries = 4;
-        while (true) {
-            try {
-                log.info("clear value");
+		int count = 0;
+		int maxTries = 4;
+		while (true) {
+			try {
+				log.info("clear value");
 
-                Thread.sleep(4000);
-                WebElement elee = driver.findElement(By.xpath(Xpath));
-                elee.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
+				Thread.sleep(4000);
+				WebElement elee = driver.findElement(By.xpath(Xpath));
+				elee.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
 
-                break;
-            } catch (Exception e) {
-                Thread.sleep(250);
-                log.warning("Failed to clear value  ");
-                if (++count == maxTries) {
-                    Utils.printException(e);
-                    throw e;
-                }
-            }
-        }
-    }
-	
+				break;
+			} catch (Exception e) {
+				Thread.sleep(250);
+				log.warning("Failed to clear value  ");
+				if (++count == maxTries) {
+					Utils.printException(e);
+					throw e;
+				}
+			}
+		}
+	}
+
 	@Test
 	public static String getTEXT(WebDriver driver, String xpath) throws Exception {
 		int count = 0;
@@ -148,6 +157,16 @@ public static void getAndSentOTP(WebDriver driver) throws Exception{
 				if (++count > maxTries) {
 					throw (e);
 				}
+			}
+		}
+	}
+
+	public static void selectFromDropDown(String listXpath, String choice, WebDriver driver) {
+		java.util.List<WebElement> list = driver.findElements(By.xpath(listXpath));
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getText().startsWith(choice)) {
+				list.get(i).click();
+				break;
 			}
 		}
 	}

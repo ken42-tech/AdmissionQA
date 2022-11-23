@@ -112,7 +112,7 @@ public class validate {
             String invlaidEmail3 = "aa@c";
             String invlaidEmail4 = "@cc.in";
 
-            Utils.callSendkeys(driver, xpath, email1, email2);
+            Utils.callSendkeys(driver, xpath, invlaidEmail1, invlaidEmail2);
             WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
             String checkEmail = errorMessage.getText();
 
