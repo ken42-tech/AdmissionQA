@@ -87,12 +87,7 @@ public class Application {
 
             Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
             Utils.selectFromDropDown(ActionXpath.selectxpath, nationality, driver);
-<<<<<<< HEAD
-            
-=======
-
-            if (validation.equals("TRUE")) {
->>>>>>> 2123bdfaae246fb0512c02d65a9aa93558f04031
+            if (validation.equals("TRUE")){
                 Utils.cleartext(driver, ActionXpath.passport);
                 validate.char40(driver, ActionXpath.passport, ActionXpath.errorpassport2);
                 Utils.cleartext(driver, ActionXpath.passport);
@@ -100,17 +95,13 @@ public class Application {
                 Utils.cleartext(driver, ActionXpath.passport);
                 validate.specialcharacter(driver, ActionXpath.passport, ActionXpath.errorpassport1);
                 Utils.cleartext(driver, ActionXpath.passport);
-<<<<<<< HEAD
             
-=======
             }
->>>>>>> 2123bdfaae246fb0512c02d65a9aa93558f04031
             Utils.cleartext(driver, ActionXpath.passport);
             Utils.callSendkeys(driver, ActionXpath.passport, passport, "Enter your Passport");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
-
             Utils.clickXpath(driver, ActionXpath.Gender, time, "Select the Gender ");
             Utils.clickXpath(driver, ActionXpath.Mstatus, time, "Select your material status");
             Utils.scrollUpOrDown(driver, time);
