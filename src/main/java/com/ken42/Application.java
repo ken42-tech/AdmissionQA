@@ -60,10 +60,6 @@ public class Application {
             String campus = csvCell[77];
             Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
             Utils.scrollUpOrDown(driver, time);
-            // Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the
-            // campus");
-            // Utils.clickXpath(driver, ActionXpath.selectSpecilization, time, "Select the
-            // Specilization");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
         } catch (Exception e) {
             Utils.printException(e);
@@ -74,6 +70,7 @@ public class Application {
     public static void BasicDetails(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
+            String validation = csvCell[78];
 
             String dob = csvCell[6];
             String nationality = csvCell[7];
@@ -90,7 +87,12 @@ public class Application {
 
             Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
             Utils.selectFromDropDown(ActionXpath.selectxpath, nationality, driver);
+<<<<<<< HEAD
             
+=======
+
+            if (validation.equals("TRUE")) {
+>>>>>>> 2123bdfaae246fb0512c02d65a9aa93558f04031
                 Utils.cleartext(driver, ActionXpath.passport);
                 validate.char40(driver, ActionXpath.passport, ActionXpath.errorpassport2);
                 Utils.cleartext(driver, ActionXpath.passport);
@@ -98,7 +100,11 @@ public class Application {
                 Utils.cleartext(driver, ActionXpath.passport);
                 validate.specialcharacter(driver, ActionXpath.passport, ActionXpath.errorpassport1);
                 Utils.cleartext(driver, ActionXpath.passport);
+<<<<<<< HEAD
             
+=======
+            }
+>>>>>>> 2123bdfaae246fb0512c02d65a9aa93558f04031
             Utils.cleartext(driver, ActionXpath.passport);
             Utils.callSendkeys(driver, ActionXpath.passport, passport, "Enter your Passport");
             Utils.scrollUpOrDown(driver, time);
@@ -121,15 +127,18 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, city, driver);
             // Utils.clickXpath(driver, ActionXpath.District, time, "Select the Dist");
             Utils.scrollUpOrDown(driver, time);
-            validate.char80(driver, ActionXpath.street, ActionXpath.errorstreet1);
-            Utils.cleartext(driver, ActionXpath.street);
-            validate.specialcharacter(driver, ActionXpath.street, ActionXpath.errorstreet2);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.street, ActionXpath.errorstreet1);
+                Utils.cleartext(driver, ActionXpath.street);
+                validate.specialcharacter(driver, ActionXpath.street, ActionXpath.errorstreet2);
+            }
             Utils.cleartext(driver, ActionXpath.street);
             Utils.callSendkeys(driver, ActionXpath.street, street, "enter your permanent addrrss");
-
-            validate.char80(driver, ActionXpath.PostalCode, ActionXpath.errorzipcode2);
-            Utils.cleartext(driver, ActionXpath.PostalCode);
-            validate.specialcharacter(driver, ActionXpath.PostalCode, ActionXpath.errorzipcode1);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.PostalCode, ActionXpath.errorzipcode2);
+                Utils.cleartext(driver, ActionXpath.PostalCode);
+                validate.specialcharacter(driver, ActionXpath.PostalCode, ActionXpath.errorzipcode1);
+            }
             Utils.cleartext(driver, ActionXpath.PostalCode);
             Utils.callSendkeys(driver, ActionXpath.PostalCode, PostalCode, "Select your Postal Code");
             Utils.scrollUpOrDown(driver, time);
@@ -154,50 +163,58 @@ public class Application {
             String Age = csvCell[18];
             String occupation = csvCell[19];
             String annualIncome = csvCell[20];
-
+            String validation = csvCell[78];
             Utils.clickXpath(driver, ActionXpath.selectrelationship, time, "Select the Relationship status option");
             Utils.clickXpath(driver, ActionXpath.relationType, time, "Select the relationhip Type");
-
-            validate.char80(driver, ActionXpath.firstName, ActionXpath.errorfname1);
-            Utils.cleartext(driver, ActionXpath.firstName);
-            validate.specialcharacter(driver, ActionXpath.firstName, ActionXpath.errorfname2);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.firstName, ActionXpath.errorfname1);
+                Utils.cleartext(driver, ActionXpath.firstName);
+                validate.specialcharacter(driver, ActionXpath.firstName, ActionXpath.errorfname2);
+            }
             Utils.cleartext(driver, ActionXpath.firstName);
             Utils.callSendkeys(driver, ActionXpath.firstName, firstName, "Enter Fist name");
             Utils.scrollUpOrDown(driver, time);
-            validate.char80(driver, ActionXpath.lastName, ActionXpath.errorlname1);
-            Utils.cleartext(driver, ActionXpath.lastName);
-            validate.specialcharacter(driver, ActionXpath.lastName, ActionXpath.errorlname2);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.lastName, ActionXpath.errorlname1);
+                Utils.cleartext(driver, ActionXpath.lastName);
+                validate.specialcharacter(driver, ActionXpath.lastName, ActionXpath.errorlname2);
+            }
             Utils.cleartext(driver, ActionXpath.lastName);
             Utils.callSendkeys(driver, ActionXpath.lastName, lastName, "Enter Last NAme");
             Utils.callSendkeys(driver, ActionXpath.Phone, Phone, "enter the Phone");
             Utils.scrollUpOrDown(driver, time);
-            validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
+            if (validation.equals("TRUE")) {
+                validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
+            }
             Utils.cleartext(driver, ActionXpath.Email);
             Utils.callSendkeys(driver, ActionXpath.Email, Email, "Enter the Emial");
-
-            validate.numbers(driver, ActionXpath.Age, ActionXpath.errorage1);
-            Utils.cleartext(driver, ActionXpath.Age);
-            validate.specialcharacter(driver, ActionXpath.Age, ActionXpath.errorage1);
-            Utils.cleartext(driver, ActionXpath.Age);
-            validate.char40(driver, ActionXpath.Age, ActionXpath.errorage1);
+            if (validation.equals("TRUE")) {
+                validate.numbers(driver, ActionXpath.Age, ActionXpath.errorage1);
+                Utils.cleartext(driver, ActionXpath.Age);
+                validate.specialcharacter(driver, ActionXpath.Age, ActionXpath.errorage1);
+                Utils.cleartext(driver, ActionXpath.Age);
+                validate.char40(driver, ActionXpath.Age, ActionXpath.errorage1);
+            }
             Utils.cleartext(driver, ActionXpath.Age);
 
             Utils.callSendkeys(driver, ActionXpath.Age, Age, "Selct age");
             Utils.scrollUpOrDown(driver, time);
-
-            validate.char40(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
-            Utils.cleartext(driver, ActionXpath.occupation);
-            validate.specialcharacter(driver, ActionXpath.occupation, ActionXpath.erroroccupation2);
-            Utils.cleartext(driver, ActionXpath.occupation);
-            validate.numbers(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
-            Utils.cleartext(driver, ActionXpath.occupation);
+            if (validation.equals("TRUE")) {
+                validate.char40(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
+                Utils.cleartext(driver, ActionXpath.occupation);
+                validate.specialcharacter(driver, ActionXpath.occupation, ActionXpath.erroroccupation2);
+                Utils.cleartext(driver, ActionXpath.occupation);
+                validate.numbers(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
+                Utils.cleartext(driver, ActionXpath.occupation);
+            }
             Utils.callSendkeys(driver, ActionXpath.occupation, occupation, "Select the manager");
-
-            validate.char40(driver, ActionXpath.annualIncome, ActionXpath.errorincome2);
-            Utils.cleartext(driver, ActionXpath.annualIncome);
-            validate.specialcharacter(driver, ActionXpath.annualIncome, ActionXpath.errorincome1);
-            Utils.cleartext(driver, ActionXpath.annualIncome);
-            validate.numbers(driver, ActionXpath.annualIncome, ActionXpath.errorincome2);
+            if (validation.equals("TRUE")) {
+                validate.char40(driver, ActionXpath.annualIncome, ActionXpath.errorincome2);
+                Utils.cleartext(driver, ActionXpath.annualIncome);
+                validate.specialcharacter(driver, ActionXpath.annualIncome, ActionXpath.errorincome1);
+                Utils.cleartext(driver, ActionXpath.annualIncome);
+                validate.numbers(driver, ActionXpath.annualIncome, ActionXpath.errorincome2);
+            }
             Utils.cleartext(driver, ActionXpath.annualIncome);
             Utils.callSendkeys(driver, ActionXpath.annualIncome, annualIncome, "Selct the Annual income");
             Utils.scrollUpOrDown(driver, time);
@@ -229,16 +246,16 @@ public class Application {
             String experince = csvCell[29];
             String Annual = csvCell[30];
             String CurrencyType = csvCell[31];
-
+            String validation = csvCell[78];
             Utils.clickXpath(driver, ActionXpath.clickyes, time, "clickyes");
             Utils.clickXpath(driver, ActionXpath.SelectjobType, time, "Select the Job type");
             Utils.clickXpath(driver, ActionXpath.jobType, time, "Select the Appropriate job ");
-
-            validate.char80(driver, ActionXpath.company, ActionXpath.errorcompany1);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.company, ActionXpath.errorcompany1);
+                Utils.cleartext(driver, ActionXpath.company);
+                validate.specialcharacter(driver, ActionXpath.company, ActionXpath.errorcompany2);
+            }
             Utils.cleartext(driver, ActionXpath.company);
-            validate.specialcharacter(driver, ActionXpath.company, ActionXpath.errorcompany2);
-            Utils.cleartext(driver, ActionXpath.company);
-
             Utils.callSendkeys(driver, ActionXpath.company, Company, "enter the company name");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
@@ -252,42 +269,46 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.city, time, "Select the City");
 
             Utils.selectFromDropDown(ActionXpath.selectxpath, city, driver);
-            validate.char80(driver, ActionXpath.designation, ActionXpath.errordestination1);
-            Utils.cleartext(driver, ActionXpath.designation);
-            validate.specialcharacter(driver, ActionXpath.designation, ActionXpath.errordestination2);
-            Utils.cleartext(driver, ActionXpath.designation);
-            validate.numbers(driver, ActionXpath.designation, ActionXpath.errordestination2);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.designation, ActionXpath.errordestination1);
+                Utils.cleartext(driver, ActionXpath.designation);
+                validate.specialcharacter(driver, ActionXpath.designation, ActionXpath.errordestination2);
+                Utils.cleartext(driver, ActionXpath.designation);
+                validate.numbers(driver, ActionXpath.designation, ActionXpath.errordestination2);
+            }
             Utils.cleartext(driver, ActionXpath.designation);
             Utils.callSendkeys(driver, ActionXpath.designation, Designation, "enter the Designation ");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
-
-            validate.char80(driver, ActionXpath.role, ActionXpath.errorroles1);
-            Utils.cleartext(driver, ActionXpath.role);
-            validate.specialcharacter(driver, ActionXpath.role, ActionXpath.errorroles2);
-            Utils.cleartext(driver, ActionXpath.role);
-            validate.numbers(driver, ActionXpath.role, ActionXpath.errorroles2);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.role, ActionXpath.errorroles1);
+                Utils.cleartext(driver, ActionXpath.role);
+                validate.specialcharacter(driver, ActionXpath.role, ActionXpath.errorroles2);
+                Utils.cleartext(driver, ActionXpath.role);
+                validate.numbers(driver, ActionXpath.role, ActionXpath.errorroles2);
+            }
             Utils.cleartext(driver, ActionXpath.role);
             Utils.callSendkeys(driver, ActionXpath.role, Role, "enter the Role ");
             Utils.callSendkeys(driver, ActionXpath.DateJoin, dateofJoin, "enter the date of joining");
             Utils.clickXpath(driver, ActionXpath.CurrentCompany, time, "CurrentCompany");
             Utils.clickXpath(driver, ActionXpath.selectCurrentCompany, time, "selectCurrentCompany");
             Utils.scrollUpOrDown(driver, time);
-
-            validate.char80(driver, ActionXpath.Experience, ActionXpath.errormonths1);
-            Utils.cleartext(driver, ActionXpath.Experience);
-            validate.specialcharacter(driver, ActionXpath.Experience, ActionXpath.errormonths2);
-            Utils.cleartext(driver, ActionXpath.Experience);
-            validate.numbers(driver, ActionXpath.Experience, ActionXpath.errormonths1);
-            Utils.cleartext(driver, ActionXpath.Experience);
-
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.Experience, ActionXpath.errormonths1);
+                Utils.cleartext(driver, ActionXpath.Experience);
+                validate.specialcharacter(driver, ActionXpath.Experience, ActionXpath.errormonths2);
+                Utils.cleartext(driver, ActionXpath.Experience);
+                validate.numbers(driver, ActionXpath.Experience, ActionXpath.errormonths1);
+                Utils.cleartext(driver, ActionXpath.Experience);
+            }
             Utils.callSendkeys(driver, ActionXpath.Experience, experince, "enter the Experience");
-
-            validate.char80(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary1);
-            Utils.cleartext(driver, ActionXpath.AnnualSalary);
-            validate.specialcharacter(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary2);
-            Utils.cleartext(driver, ActionXpath.AnnualSalary);
-            validate.numbers(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary2);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary1);
+                Utils.cleartext(driver, ActionXpath.AnnualSalary);
+                validate.specialcharacter(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary2);
+                Utils.cleartext(driver, ActionXpath.AnnualSalary);
+                validate.numbers(driver, ActionXpath.AnnualSalary, ActionXpath.errrosalary2);
+            }
             Utils.cleartext(driver, ActionXpath.AnnualSalary);
             Utils.callSendkeys(driver, ActionXpath.AnnualSalary, Annual, "Enter the annual Salary");
             // Utils.clickXpath(driver, ActionXpath.currencytype, time, "currencytype");
@@ -313,27 +334,32 @@ public class Application {
             String pgcountry = csvCell[37];
             String pgstate = csvCell[38];
             String pgcity = csvCell[39];
+            String validation = csvCell[78];
 
             // pg
             Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
-            validate.char40(driver, ActionXpath.pguniversity, ActionXpath.error40charUniverisy);
-            // Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity,
-            // "pguniversity");
-            Utils.cleartext(driver, ActionXpath.pguniversity);
-            validate.numbers(driver, ActionXpath.pguniversity, ActionXpath.errorUniversity);
+            if (validation.equals("TRUE")) {
+                validate.char40(driver, ActionXpath.pguniversity, ActionXpath.error40charUniverisy);
+                Utils.cleartext(driver, ActionXpath.pguniversity);
+                validate.numbers(driver, ActionXpath.pguniversity, ActionXpath.errorUniversity);
+            }
             Utils.cleartext(driver, ActionXpath.pguniversity);
             Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
             Utils.selectFromDropDown(ActionXpath.selectxpath, pguniversity, driver);
             Utils.scrollUpOrDown(driver, time);
-            validate.char40(driver, ActionXpath.pgcollege, ActionXpath.error40charCollege);
-            Utils.cleartext(driver, ActionXpath.pgcollege);
-            validate.numbers(driver, ActionXpath.pgcollege, ActionXpath.errorCollege);
+            if (validation.equals("TRUE")) {
+                validate.char40(driver, ActionXpath.pgcollege, ActionXpath.error40charCollege);
+                Utils.cleartext(driver, ActionXpath.pgcollege);
+                validate.numbers(driver, ActionXpath.pgcollege, ActionXpath.errorCollege);
+            }
             Utils.cleartext(driver, ActionXpath.pgcollege);
             Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
             Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
-            validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.errorSpecailCharPercentage);
-            Utils.cleartext(driver, ActionXpath.pgpercentage);
-            validate.char80(driver, ActionXpath.pgpercentage, ActionXpath.error40charUniverisy);
+            if (validation.equals("TRUE")) {
+                validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.errorSpecailCharPercentage);
+                Utils.cleartext(driver, ActionXpath.pgpercentage);
+                validate.char80(driver, ActionXpath.pgpercentage, ActionXpath.error40charUniverisy);
+            }
             Utils.cleartext(driver, ActionXpath.pgpercentage);
             Utils.callSendkeys(driver, ActionXpath.pgpercentage, pgpercentage, "pgpercentage");
             Utils.selectFromDropDown(ActionXpath.selectxpath, pgpercentage, driver);
@@ -370,9 +396,11 @@ public class Application {
             String ugmaxmark2 = csvCell[51];
 
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
-            validate.char40(driver, ActionXpath.uguniversity, ActionXpath.error40charUniverisy);
-            Utils.cleartext(driver, ActionXpath.uguniversity);
-            validate.numbers(driver, ActionXpath.uguniversity, ActionXpath.errorUniversity);
+            if (validation.equals("TRUE")) {
+                validate.char40(driver, ActionXpath.uguniversity, ActionXpath.error40charUniverisy);
+                Utils.cleartext(driver, ActionXpath.uguniversity);
+                validate.numbers(driver, ActionXpath.uguniversity, ActionXpath.errorUniversity);
+            }
             Utils.cleartext(driver, ActionXpath.uguniversity);
             Utils.callSendkeys(driver, ActionXpath.uguniversity, uguniversity, "uguniversity");
             List<WebElement> UgUniveristy = driver.findElements(By.xpath("//div[text()='" + uguniversity + "']"));
@@ -383,11 +411,12 @@ public class Application {
                 }
             }
             Utils.scrollUpOrDown(driver, time);
-            validate.char40(driver, ActionXpath.ugcollege, ActionXpath.error40charUniverisy);
+            if (validation.equals("TRUE")) {
+                validate.char40(driver, ActionXpath.ugcollege, ActionXpath.error40charUniverisy);
+                Utils.cleartext(driver, ActionXpath.ugcollege);
+                validate.numbers(driver, ActionXpath.ugcollege, ActionXpath.errorCollege);
+            }
             Utils.cleartext(driver, ActionXpath.ugcollege);
-            validate.numbers(driver, ActionXpath.ugcollege, ActionXpath.errorCollege);
-            Utils.cleartext(driver, ActionXpath.ugcollege);
-
             Utils.callSendkeys(driver, ActionXpath.ugcollege, ugcollege, "ugcollege");
             List<WebElement> UGCollege = driver.findElements(By.xpath("//div[text()='" + ugcollege + "']"));
             for (int i = 0; i < UgUniveristy.size(); i++) {
@@ -397,8 +426,10 @@ public class Application {
                 }
             }
             validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.errorUniversity);
-            Utils.cleartext(driver, ActionXpath.ugpercentage);
-            validate.char80(driver, ActionXpath.ugpercentage, ActionXpath.error80CharPercentage);
+            if (validation.equals("TRUE")) {
+                Utils.cleartext(driver, ActionXpath.ugpercentage);
+                validate.char80(driver, ActionXpath.ugpercentage, ActionXpath.error80CharPercentage);
+            }
             Utils.cleartext(driver, ActionXpath.ugpercentage);
             Utils.callSendkeys(driver, ActionXpath.ugpercentage, ugpercentage, "ugpercentage");
             List<WebElement> UGPercentage = driver.findElements(By.xpath("//div[text()='" + ugpercentage + "']"));
@@ -453,17 +484,21 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
 
             Utils.scrollUpOrDown(driver, time);
-            validate.char80(driver, ActionXpath.hscpercentage, ActionXpath.error80CharPercentage);
-            Utils.cleartext(driver, ActionXpath.hscpercentage);
-            validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.errorSpecailCharPercentage);
+            if (validation.equals("TRUE")) {
+                validate.char80(driver, ActionXpath.hscpercentage, ActionXpath.error80CharPercentage);
+                Utils.cleartext(driver, ActionXpath.hscpercentage);
+                validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.errorSpecailCharPercentage);
+            }
             Utils.cleartext(driver, ActionXpath.hscpercentage);
             Utils.callSendkeys(driver, ActionXpath.hscpercentage, hscpercentage, "hscpercentage");
             Utils.selectFromDropDown(ActionXpath.selectxpath, ugcollege, driver);
             Utils.callSendkeys(driver, ActionXpath.hscyear, hscyear, "hscyear");
             Utils.scrollUpOrDown(driver, time);
-            validate.char40(driver, ActionXpath.hscschool, ActionXpath.errorSchool);
-            Utils.cleartext(driver, ActionXpath.hscschool);
-            validate.specialcharacter(driver, ActionXpath.hscschool, ActionXpath.errorSpecailCharPercentage);
+            if (validation.equals("TRUE")) {
+                validate.char40(driver, ActionXpath.hscschool, ActionXpath.errorSchool);
+                Utils.cleartext(driver, ActionXpath.hscschool);
+                validate.specialcharacter(driver, ActionXpath.hscschool, ActionXpath.errorSpecailCharPercentage);
+            }
             Utils.cleartext(driver, ActionXpath.hscschool);
             Utils.callSendkeys(driver, ActionXpath.hscschool, hscschool, "hscschool");
             Utils.clickXpath(driver, ActionXpath.hsccountry, time, "hsccountry");
