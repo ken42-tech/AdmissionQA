@@ -28,22 +28,20 @@ public class Application {
             String Email = csvCell[2];
 
             Thread.sleep(3000);
-            System.out.println("TC-1: Starting Application Login  test case execution ");
             Utils.callSendkeys(driver, ActionXpath.EnterEmail, Email, "Enter r mail address ");
             Utils.clickXpath(driver, ActionXpath.Verify, time, "verify");
             Utils.bigSleepBetweenClicks(1);
             Utils.getAndSentOTP(driver);
             Utils.clickXpath(driver, ActionXpath.Verifylogin, time, "Verift the Login ");
-            log.info("  TC-1: Application login test case PASSED \n");
 
         } catch (Exception e) {
-            log.warning("TC-1: Application login test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
     }
 
-    public static void ApplyforCourse(String url, WebDriver driver, String[] csvCell) {
+    public static void ApplyforCourse(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
-            System.out.println("TC:2: Starting Apply for Course programe Test Executation ");
             Utils.clickXpath(driver, ActionXpath.Apply, time, "Click on the Apply now Button");
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.ClickDropDepartment, time, "Select the all department Dropdown");
@@ -51,40 +49,29 @@ public class Application {
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
             String Programe = csvCell[76];
-            // Utils.clickXpath(driver, ActionXpath.selectPrograme, time, "Select the
-            // appropriate Programe");
-            List<WebElement> ProgramName = driver.findElements(By.xpath("//div[text()='" + Programe + "']"));
-            // li[@role='option']
-            // div[text()='All Programs']
-            // li[@data-value='all']
-            for (int i = 0; i < ProgramName.size(); i++) {
+            Utils.selectFromDropDown(ActionXpath.selectxpath, Programe, driver);
 
-                if (ProgramName.get(i).getText().contains(Programe)) {
-                    ProgramName.get(i).click();
-                    break;
-                }
-
-            }
             Utils.clickXpath(driver, ActionXpath.ApplyNow, time, "Click on apply");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.clickXpath(driver, ActionXpath.Selectmentor, time, "Slect the mentor");
             Utils.clickXpath(driver, ActionXpath.selectYes, time, "Slect  yes ");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.Campus, time, "Select the campus");
-            Utils.clickXpath(driver, ActionXpath.SelectCampus, time, "Select the campus");
+            String campus = csvCell[77];
+            Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
             Utils.scrollUpOrDown(driver, time);
             // Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the
             // campus");
             // Utils.clickXpath(driver, ActionXpath.selectSpecilization, time, "Select the
             // Specilization");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            log.info("  TC-2: Apply for Course programe test case PASSED \n");
         } catch (Exception e) {
-            log.warning("TC-2: Apply for Course programe test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
     }
 
-    public static void BasicDetails(String url, WebDriver driver, String[] csvCell) {
+    public static void BasicDetails(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
 
@@ -97,7 +84,6 @@ public class Application {
             String street = csvCell[12];
             String PostalCode = csvCell[13];
 
-            System.out.println("TC:3: Starting BasicDetails Test Executation ");
             Utils.callSendkeys(driver, ActionXpath.dob, dob, "Set tu date of birth");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
@@ -155,14 +141,14 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.currentaddress, time, "Click the address");
             Utils.clickXpath(driver, ActionXpath.selectcurrentaddress, time, "Click the address");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            log.info("  TC-3: Fill the BasicDetails test case PASSED \n");
 
         } catch (Exception e) {
-            log.warning("TC-3: Fill the BasicDetails test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
     }
 
-    public static void FamilyInfo(String url, WebDriver driver, String[] csvCell) {
+    public static void FamilyInfo(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
             String firstName = csvCell[14];
             String lastName = csvCell[15];
@@ -172,7 +158,6 @@ public class Application {
             String occupation = csvCell[19];
             String annualIncome = csvCell[20];
 
-            System.out.println("TC:3: Starting FamilyInfo Test Executation ");
             Utils.clickXpath(driver, ActionXpath.selectrelationship, time, "Select the Relationship status option");
             Utils.clickXpath(driver, ActionXpath.relationType, time, "Select the relationhip Type");
 
@@ -224,14 +209,14 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.CurrencyTypeSelect, time, "Select currency");
             Utils.clickXpath(driver, ActionXpath.currencyType, time, "Select the appropriate currency");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            log.info("  TC-4: Fill the FamilyInfo test case PASSED \n");
 
         } catch (Exception e) {
-            log.warning("TC-4: Fill the FamilyInfo test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
     }
 
-    public static void EmploymentInfo(String url, WebDriver driver, String csvCell[]) {
+    public static void EmploymentInfo(String url, WebDriver driver, String csvCell[]) throws Exception {
         try {
             Utils.bigSleepBetweenClicks(1);
             String Company = csvCell[21];
@@ -248,7 +233,6 @@ public class Application {
             String Annual = csvCell[30];
             String CurrencyType = csvCell[31];
 
-            System.out.println("TC:5: Starting EmploymentInfo Test Executation ");
             Utils.clickXpath(driver, ActionXpath.clickyes, time, "clickyes");
             Utils.clickXpath(driver, ActionXpath.SelectjobType, time, "Select the Job type");
             Utils.clickXpath(driver, ActionXpath.jobType, time, "Select the Appropriate job ");
@@ -314,16 +298,15 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, CurrencyType, driver);
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            log.info("  TC-5: Fill the EmploymentInfo test case PASSED \n");
 
         } catch (Exception e) {
-            log.warning("TC-5: Fill the EmploymentInfo test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
     }
 
-    public static void EducationINFO(String url, WebDriver driver, String[] csvCell) {
+    public static void EducationINFO(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
-            System.out.println("TC:6: Starting Education Test Executation ");
             Utils.bigSleepBetweenClicks(1);
             String pgyear = csvCell[32];
             String pguniversity = csvCell[33];
@@ -527,16 +510,14 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, sslccity, driver);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
 
-            log.info("  TC-6: Fill the Education test case PASSED \n");
-
         } catch (Exception e) {
-            log.warning("TC-6: Fill the Education test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
     }
 
-    public static void other(String url, WebDriver driver, String[] csvCell) {
+    public static void other(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
-            System.out.println("TC:7: Others Test Executation ");
 
             String SportAchievement = csvCell[66];
             String ProfessionalAchievement = csvCell[67];
@@ -584,44 +565,55 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.selecthearspjain, time, "selecthearspjain");
             Utils.clickXpath(driver, ActionXpath.refrence, time, "refrence");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            log.info("  TC-7: Fill the Others test case PASSED \n");
         } catch (Exception e) {
-            log.warning("TC-7: Fill the others test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
+
         }
     }
 
-    public static void summaryanddeclaration(String url, WebDriver driver, String[] csvCell) {
+    public static void summaryanddeclaration(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
-            System.out.println("TC:8: summaryanddeclaration Test Executation ");
 
             Utils.clickXpath(driver, ActionXpath.clicksubmit, time, "click on clicksubmit");
             Utils.bigSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.backtohome, time, "click on backtohome");
             Utils.bigSleepBetweenClicks(1);
 
-            log.info("  TC-8: Fill the summaryanddeclaration test case PASSED \n");
         } catch (Exception e) {
-            log.warning("TC-8: Fill the summaryanddeclaration test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
     }
 
     @Test(priority = 1)
     public static void Admissionfillform(String url, WebDriver driver, String[] csvCell) throws Exception {
 
-        login(url, driver, csvCell);
-        ApplyforCourse(url, driver, csvCell);
-        FamilyInfo(url, driver, csvCell);
-        FamilyInfo(url, driver, csvCell);
-        EmploymentInfo(url, driver, csvCell);
-        EducationINFO(url, driver, csvCell);
-        other(url, driver, csvCell);
-        summaryanddeclaration(url, driver, csvCell);
+        try {
+            System.out.println("TC-1: Fill form with validation test started Executation ");
+
+            login(url, driver, csvCell);
+            ApplyforCourse(url, driver, csvCell);
+            FamilyInfo(url, driver, csvCell);
+            FamilyInfo(url, driver, csvCell);
+            EmploymentInfo(url, driver, csvCell);
+            EducationINFO(url, driver, csvCell);
+            other(url, driver, csvCell);
+            summaryanddeclaration(url, driver, csvCell);
+            log.info("TC-1: Fill form with validation test Completed ");
+
+        } catch (Exception e) {
+            log.warning("TC-1: Fill form with validation test Failed");
+            Utils.printException(e);
+            throw (e);
+
+        }
     }
 
     @Test(priority = 2)
     public static void SalesforceBackendVerify(String Sfurl, WebDriver driver, String[] csvCell) {
         try {
-            System.out.println("TC:9: Salesforce backend Verification along with delete  Test Executation ");
+            System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
