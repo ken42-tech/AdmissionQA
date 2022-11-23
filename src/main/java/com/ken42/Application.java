@@ -617,7 +617,6 @@ public class Application {
 
             login(url, driver, csvCell);
             ApplyforCourse(url, driver, csvCell);
-            ApplyforCourse(url, driver, csvCell);
             BasicDetails(url, driver, csvCell);
             FamilyInfo(url, driver, csvCell);
             EmploymentInfo(url, driver, csvCell);
