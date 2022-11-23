@@ -87,7 +87,7 @@ public class Application {
 
             Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
             Utils.selectFromDropDown(ActionXpath.selectxpath, nationality, driver);
-            if (validation.equals("TRUE")){
+            if (validation.equals("TRUE")) {
                 Utils.cleartext(driver, ActionXpath.passport);
                 validate.char40(driver, ActionXpath.passport, ActionXpath.errorpassport2);
                 Utils.cleartext(driver, ActionXpath.passport);
@@ -95,7 +95,7 @@ public class Application {
                 Utils.cleartext(driver, ActionXpath.passport);
                 validate.specialcharacter(driver, ActionXpath.passport, ActionXpath.errorpassport1);
                 Utils.cleartext(driver, ActionXpath.passport);
-            
+
             }
             Utils.cleartext(driver, ActionXpath.passport);
             Utils.callSendkeys(driver, ActionXpath.passport, passport, "Enter your Passport");
@@ -616,8 +616,8 @@ public class Application {
             System.out.println("TC-1: Fill form with validation test started Executation ");
 
             login(url, driver, csvCell);
+            BasicDetails(url, driver, csvCell);
             ApplyforCourse(url, driver, csvCell);
-            FamilyInfo(url, driver, csvCell);
             FamilyInfo(url, driver, csvCell);
             EmploymentInfo(url, driver, csvCell);
             EducationINFO(url, driver, csvCell);

@@ -23,7 +23,7 @@ import com.opencsv.CSVReader;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class App_portal extends Thread{
+public class App_portal extends Thread {
 	private String[] csvLineData;
 	private int count;
 	static int time = 1000;
@@ -51,7 +51,6 @@ public class App_portal extends Thread{
 		this.count = count;
 	}
 
-
 	public static void main(String[] args) throws Exception {
 		String folder = "";
 		folder = getFolderPath();
@@ -71,7 +70,7 @@ public class App_portal extends Thread{
 		Thread[] threads = new Thread[ThreadCount];
 
 		csvReader = new CSVReader(new FileReader(CSV_PATH));
-		
+
 		String[] csvCell;
 		while ((csvCell = csvReader.readNext()) != null) {
 			Thread t = new App_portal(csvCell, count);
@@ -80,11 +79,11 @@ public class App_portal extends Thread{
 			t.start();
 			Utils.smallSleepBetweenClicks(8);
 			count++;
-			
+
 		}
 	}
 
-	public static void testAdmissionPortal(String[] csvCell, int count) throws Exception{
+	public static void testAdmissionPortal(String[] csvCell, int count) throws Exception {
 		String url = csvCell[0];
 		String browser = csvCell[1];
 		String Email = csvCell[2];
@@ -125,8 +124,6 @@ public class App_portal extends Thread{
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);
 		// SendMail.sendEmail(logFileName);
 	}
-			
-	
 
 	@BeforeSuite
 	public static WebDriver initDriver(String Browser, String url) throws Exception {
@@ -172,7 +169,7 @@ public class App_portal extends Thread{
 			}
 
 			System.out.println("##########" + driver);
-			if (driver != null){
+			if (driver != null) {
 				driver.get(url);
 				driver.manage().window().maximize();
 				return driver;
@@ -185,6 +182,7 @@ public class App_portal extends Thread{
 		}
 		return null;
 	}
+
 	public static String getFolderPath() throws Exception {
 		try {
 			String folder = "";
