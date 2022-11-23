@@ -616,8 +616,9 @@ public class Application {
             System.out.println("TC-1: Fill form with validation test started Executation ");
 
             login(url, driver, csvCell);
-            BasicDetails(url, driver, csvCell);
             ApplyforCourse(url, driver, csvCell);
+            ApplyforCourse(url, driver, csvCell);
+            BasicDetails(url, driver, csvCell);
             FamilyInfo(url, driver, csvCell);
             EmploymentInfo(url, driver, csvCell);
             EducationINFO(url, driver, csvCell);
