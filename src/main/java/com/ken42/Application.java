@@ -16,13 +16,14 @@ import org.testng.annotations.Test;
 import com.beust.jcommander.JCommander.ProgramName;
 import com.mongodb.util.Util;
 
+import javafx.scene.layout.Priority;
+
 public class Application {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
+    public static WebDriver driver;
 
-    @Test(priority = 1)
-    public static void testApp(String url, WebDriver driver, String[] csvCell) throws Exception {
-
+    public static void login(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
             String Email = csvCell[2];
 
@@ -40,7 +41,6 @@ public class Application {
         }
     }
 
-    @Test(priority = 2)
     public static void ApplyforCourse(String url, WebDriver driver, String[] csvCell) {
         try {
             System.out.println("TC:2: Starting Apply for Course programe Test Executation ");
@@ -70,15 +70,8 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.Selectmentor, time, "Slect the mentor");
             Utils.clickXpath(driver, ActionXpath.selectYes, time, "Slect  yes ");
             Utils.scrollUpOrDown(driver, time);
-            String campus=csvCell[73];
             Utils.clickXpath(driver, ActionXpath.Campus, time, "Select the campus");
-            List<WebElement> CAMPUS = driver.findElements(By.xpath("(//div[text()='" + campus + "'])"));
-            for (int i = 0; i < CAMPUS.size(); i++) {
-                if (CAMPUS.get(i).getText().contains(campus)) {
-                    CAMPUS.get(i).click();
-                    break;
-                }
-            }
+            Utils.clickXpath(driver, ActionXpath.SelectCampus, time, "Select the campus");
             Utils.scrollUpOrDown(driver, time);
             // Utils.clickXpath(driver, ActionXpath.Specilization, time, "Select the
             // campus");
@@ -91,7 +84,6 @@ public class Application {
         }
     }
 
-    @Test(priority = 3)
     public static void BasicDetails(String url, WebDriver driver, String[] csvCell) {
         try {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
@@ -99,8 +91,11 @@ public class Application {
             String dob = csvCell[6];
             String nationality = csvCell[7];
             String passport = csvCell[8];
-            String street = csvCell[9];
-            String PostalCode = csvCell[10];
+            String country = csvCell[9];
+            String state = csvCell[10];
+            String city = csvCell[11];
+            String street = csvCell[12];
+            String PostalCode = csvCell[13];
 
             System.out.println("TC:3: Starting BasicDetails Test Executation ");
             Utils.callSendkeys(driver, ActionXpath.dob, dob, "Set tu date of birth");
@@ -108,13 +103,8 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
 
             Utils.clickXpath(driver, ActionXpath.Nationaliydrop, time, "open nationality dropdown");
-            List<WebElement> Nationality = driver.findElements(By.xpath("(//div[text()='" + nationality + "'])"));
-            for (int i = 0; i < Nationality.size(); i++) {
-                if (Nationality.get(i).getText().contains(nationality)) {
-                    Nationality.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, nationality, driver);
+
             Utils.cleartext(driver, ActionXpath.passport);
 
             validate.char40(driver, ActionXpath.passport, ActionXpath.errorpassport2);
@@ -137,40 +127,15 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.selectcountry, time, "Enter your selectcountry");
-            java.util.List<WebElement> country = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < country.size(); i++) {
-                if (country.get(i).getText().startsWith("India")) {
-                    country.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, country, driver);
             System.out.println("India printed");
             // Utils.clickXpath(driver,ActionXpath.country, time, "Select your Country");
             Utils.clickXpath(driver, ActionXpath.selectstate, time, "Select the satet");
-            List<WebElement> gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().startsWith("Karnataka")) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, state, driver);
             System.out.println("India2 printed");
             Utils.scrollUpOrDown(driver, time);
-            // Utils.clickXpath(driver, ActionXpath.State, time, "Selct the State");
             Utils.clickXpath(driver, ActionXpath.selectDist, time, "Select the Dist");
-            java.util.List<WebElement> gram2 = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram2.get(i).getText().startsWith("Bangalore Rural")) {
-                    gram2.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, city, driver);
             // Utils.clickXpath(driver, ActionXpath.District, time, "Select the Dist");
             Utils.scrollUpOrDown(driver, time);
             validate.char80(driver, ActionXpath.street, ActionXpath.errorstreet1);
@@ -197,16 +162,15 @@ public class Application {
         }
     }
 
-    @Test(priority = 4)
     public static void FamilyInfo(String url, WebDriver driver, String[] csvCell) {
         try {
-            String firstName = csvCell[11];
-            String lastName = csvCell[12];
-            String Phone = csvCell[13];
-            String Email = csvCell[14];
-            String Age = csvCell[15];
-            String occupation = csvCell[16];
-            String annualIncome = csvCell[17];
+            String firstName = csvCell[14];
+            String lastName = csvCell[15];
+            String Phone = csvCell[16];
+            String Email = csvCell[17];
+            String Age = csvCell[18];
+            String occupation = csvCell[19];
+            String annualIncome = csvCell[20];
 
             System.out.println("TC:3: Starting FamilyInfo Test Executation ");
             Utils.clickXpath(driver, ActionXpath.selectrelationship, time, "Select the Relationship status option");
@@ -267,17 +231,23 @@ public class Application {
         }
     }
 
-    @Test(priority = 5)
-    public static void EmploymentInfo(String url, WebDriver driver, String[] csvCell) {
+    public static void EmploymentInfo(String url, WebDriver driver, String csvCell[]) {
         try {
             Utils.bigSleepBetweenClicks(1);
-            String Company = csvCell[18];
+            String Company = csvCell[21];
+            String industry = csvCell[22];
+            String Country = csvCell[23];
+            String state = csvCell[24];
 
-            String Designation = csvCell[23];
-            String Role = csvCell[23];
-            String dateofJoin = csvCell[25];
-            String experince = csvCell[26];
-            String Annual = csvCell[27];
+            String city = csvCell[25];
+
+            String Designation = csvCell[26];
+            String Role = csvCell[27];
+            String dateofJoin = csvCell[28];
+            String experince = csvCell[29];
+            String Annual = csvCell[30];
+            String CurrencyType = csvCell[31];
+
             System.out.println("TC:5: Starting EmploymentInfo Test Executation ");
             Utils.clickXpath(driver, ActionXpath.clickyes, time, "clickyes");
             Utils.clickXpath(driver, ActionXpath.SelectjobType, time, "Select the Job type");
@@ -291,44 +261,16 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.company, Company, "enter the company name");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
-            String industry = csvCell[19];
             Utils.clickXpath(driver, ActionXpath.IndustryType, time, "IndustryType ");
-            List<WebElement> IndustryType = driver.findElements(By.xpath("//div[text()='" + industry + "']"));
-            for (int i = 0; i < IndustryType.size(); i++) {
-                if (IndustryType.get(i).getText().contains(industry)) {
-                    IndustryType.get(i).click();
-                    break;
-                }
-            }
-            // Utils.callSendkeys(driver, ActionXpath.location, location, "Entet the
-            // location");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, industry, driver);
             Utils.clickXpath(driver, ActionXpath.Country, time, "Click on the Country");
-            String Country = csvCell[20];
-            List<WebElement> CountryTy = driver.findElements(By.xpath("//div[text()='" + Country + "']"));
-            for (int i = 0; i < CountryTy.size(); i++) {
-                if (CountryTy.get(i).getText().contains(Country)) {
-                    CountryTy.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, Country, driver);
             Utils.clickXpath(driver, ActionXpath.state, time, "Selext the State");
-            String state = csvCell[21];
-            List<WebElement> States = driver.findElements(By.xpath("//div[text()='" + state + "']"));
-            for (int i = 0; i < States.size(); i++) {
-                if (States.get(i).getText().contains(state)) {
-                    States.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, state, driver);
+
             Utils.clickXpath(driver, ActionXpath.city, time, "Select the City");
-            String city = csvCell[22];
-            List<WebElement> Citys = driver.findElements(By.xpath("//div[text()='" + city + "']"));
-            for (int i = 0; i < Citys.size(); i++) {
-                if (Citys.get(i).getText().contains(city)) {
-                    Citys.get(i).click();
-                    break;
-                }
-            }
+
+            Utils.selectFromDropDown(ActionXpath.selectxpath, city, driver);
             validate.char80(driver, ActionXpath.designation, ActionXpath.errordestination1);
             Utils.cleartext(driver, ActionXpath.designation);
             validate.specialcharacter(driver, ActionXpath.designation, ActionXpath.errordestination2);
@@ -369,14 +311,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.AnnualSalary, Annual, "Enter the annual Salary");
             // Utils.clickXpath(driver, ActionXpath.currencytype, time, "currencytype");
             Utils.clickXpath(driver, ActionXpath.selectcurrencytype, time, "selectcurrencytype");
-            String CurrencyType = csvCell[28];
-            List<WebElement> Currency = driver.findElements(By.xpath("//div[text()='" + CurrencyType + "']"));
-            for (int i = 0; i < Currency.size(); i++) {
-                if (Currency.get(i).getText().contains(CurrencyType)) {
-                    Currency.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, CurrencyType, driver);
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             log.info("  TC-5: Fill the EmploymentInfo test case PASSED \n");
@@ -386,19 +321,18 @@ public class Application {
         }
     }
 
-    @Test(priority = 6)
     public static void EducationINFO(String url, WebDriver driver, String[] csvCell) {
         try {
             System.out.println("TC:6: Starting Education Test Executation ");
             Utils.bigSleepBetweenClicks(1);
-            String pgyear = csvCell[29];
-            String pguniversity = csvCell[30];
-            String pgcollege = csvCell[31];
-            String pgpercentage = csvCell[32];
-            String pgdegree = csvCell[33];
-            String pgcountry = csvCell[34];
-            String pgstate = csvCell[35];
-            String pgcity = csvCell[36];
+            String pgyear = csvCell[32];
+            String pguniversity = csvCell[33];
+            String pgcollege = csvCell[34];
+            String pgpercentage = csvCell[35];
+            String pgdegree = csvCell[36];
+            String pgcountry = csvCell[37];
+            String pgstate = csvCell[38];
+            String pgcity = csvCell[39];
 
             // pg
             Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
@@ -409,104 +343,51 @@ public class Application {
             validate.numbers(driver, ActionXpath.pguniversity, ActionXpath.errorUniversity);
             Utils.cleartext(driver, ActionXpath.pguniversity);
             Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
-            // Utils.clickXpath(driver, ActionXpath.city, time, "Select the City");
-            List<WebElement> University = driver.findElements(By.xpath("//div[text()='" + pguniversity + "']"));
-            for (int i = 0; i < University.size(); i++) {
-                if (University.get(i).getText().contains(pguniversity)) {
-                    University.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, pguniversity, driver);
             Utils.scrollUpOrDown(driver, time);
             validate.char40(driver, ActionXpath.pgcollege, ActionXpath.error40charCollege);
             Utils.cleartext(driver, ActionXpath.pgcollege);
             validate.numbers(driver, ActionXpath.pgcollege, ActionXpath.errorCollege);
             Utils.cleartext(driver, ActionXpath.pgcollege);
             Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
-            List<WebElement> College = driver.findElements(By.xpath("//div[text()='" + pgcollege + "']"));
-            for (int i = 0; i < University.size(); i++) {
-                if (College.get(i).getText().contains(pgcollege)) {
-                    College.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
             validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.errorSpecailCharPercentage);
             Utils.cleartext(driver, ActionXpath.pgpercentage);
             validate.char80(driver, ActionXpath.pgpercentage, ActionXpath.error40charUniverisy);
             Utils.cleartext(driver, ActionXpath.pgpercentage);
             Utils.callSendkeys(driver, ActionXpath.pgpercentage, pgpercentage, "pgpercentage");
-            List<WebElement> Percentage = driver.findElements(By.xpath("//div[text()='" + pgpercentage + "']"));
-            for (int i = 0; i < Percentage.size(); i++) {
-                if (Percentage.get(i).getText().contains(pgpercentage)) {
-                    Percentage.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, pgpercentage, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
             Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
             Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
             // Utils.clickXpath(driver, ActionXpath.pgselectdegree, time, "pgselectdegree");
-            java.util.List<WebElement> gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(pgdegree)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgcountry, time, "pgcountry");
-            // Utils.clickXpath(driver, ActionXpath.pgselectcountry, time,
-            // "pgselectcountry");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(pgcountry)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.pgcountryselect, pgcountry, driver);
+
             Utils.clickXpath(driver, ActionXpath.pgstate, time, "pgstate");
-            // Utils.clickXpath(driver, ActionXpath.pgselectstate, time, "pgselectstate");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(pgstate)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.pgstateselect, pgstate, driver);
+
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgcity, time, "pgcity");
-            // Utils.clickXpath(driver, ActionXpath.pgselectcity, time, "pgselectcity");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(pgcity)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.pgcityselect, pgcity, driver);
             Utils.scrollUpOrDown(driver, time);
             // ug
 
-            String ugyear = csvCell[37];
-            String uguniversity = csvCell[38];
-            String ugcollege = csvCell[39];
-            String ugpercentage = csvCell[40];
-            String ugdegree = csvCell[41];
-            String ugcountry = csvCell[42];
-            String ugstate = csvCell[43];
-            String ugcity = csvCell[44];
-            String ugmark1 = csvCell[45];
-            String ugmaxmark1 = csvCell[46];
-            String ugmark2 = csvCell[47];
-            String ugmaxmark2 = csvCell[48];
+            String ugyear = csvCell[40];
+            String uguniversity = csvCell[41];
+            String ugcollege = csvCell[42];
+            String ugpercentage = csvCell[43];
+            String ugdegree = csvCell[44];
+            String ugcountry = csvCell[45];
+            String ugstate = csvCell[46];
+            String ugcity = csvCell[47];
+            String ugmark1 = csvCell[48];
+            String ugmaxmark1 = csvCell[49];
+            String ugmark2 = csvCell[50];
+            String ugmaxmark2 = csvCell[51];
 
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
             validate.char40(driver, ActionXpath.uguniversity, ActionXpath.error40charUniverisy);
@@ -551,52 +432,17 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.ugedtype, time, "ugedtype");
             Utils.clickXpath(driver, ActionXpath.ugselectedtype, time, "ugselectedtype");
             Utils.clickXpath(driver, ActionXpath.ugdegree, time, "ugdegree");
-            // Utils.clickXpath(driver, ActionXpath.ugselectdegree, time, "ugselectdegree");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(ugdegree)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, ugdegree, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugcountry, time, "ugcountry");
-            // Utils.clickXpath(driver, ActionXpath.ugselectcountry, time,
-            // "ugselectcountry");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(ugcountry)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, ugcountry, driver);
+
             Utils.clickXpath(driver, ActionXpath.ugstate, time, "ugstate");
-            // Utils.clickXpath(driver, ActionXpath.ugselectstate, time, "ugselectstate");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(ugstate)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, ugstate, driver);
+
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugcity, time, "ugcity");
-            // Utils.clickXpath(driver, ActionXpath.ugselectcity, time, "ugselectcity");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(ugcity)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, ugcity, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ugtype, time, "ugtype");
             Utils.clickXpath(driver, ActionXpath.ugselecttype, time, "ugselecttype");
@@ -614,39 +460,25 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
 
             // 12
-            String hscboard = csvCell[49];
-            String hscpercentage = csvCell[50];
-            String hscyear = csvCell[51];
-            String hscschool = csvCell[52];
-            String hsccountry = csvCell[53];
-            String hscstate = csvCell[54];
-            String hsccity = csvCell[55];
+            String hscboard = csvCell[52];
+            String hscpercentage = csvCell[53];
+            String hscyear = csvCell[54];
+            String hscschool = csvCell[55];
+            String hsccountry = csvCell[56];
+            String hscstate = csvCell[57];
+            String hsccity = csvCell[58];
             Utils.clickXpath(driver, ActionXpath.hscedtype, time, "hscedtype");
             Utils.clickXpath(driver, ActionXpath.hscselectedtype, time, "hscselectedtype");
             Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
-            // Utils.clickXpath(driver, ActionXpath.hscselectboard, time, "hscselectboard");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(hscboard)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
+
             Utils.scrollUpOrDown(driver, time);
             validate.char80(driver, ActionXpath.hscpercentage, ActionXpath.error80CharPercentage);
             Utils.cleartext(driver, ActionXpath.hscpercentage);
             validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.errorSpecailCharPercentage);
             Utils.cleartext(driver, ActionXpath.hscpercentage);
             Utils.callSendkeys(driver, ActionXpath.hscpercentage, hscpercentage, "hscpercentage");
-            List<WebElement> FinalPercentage = driver.findElements(By.xpath("//div[text()='" + hscpercentage + "']"));
-            for (int i = 0; i < FinalPercentage.size(); i++) {
-                if (FinalPercentage.get(i).getText().contains(ugcollege)) {
-                    FinalPercentage.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, ugcollege, driver);
             Utils.callSendkeys(driver, ActionXpath.hscyear, hscyear, "hscyear");
             Utils.scrollUpOrDown(driver, time);
             validate.char40(driver, ActionXpath.hscschool, ActionXpath.errorSchool);
@@ -655,66 +487,29 @@ public class Application {
             Utils.cleartext(driver, ActionXpath.hscschool);
             Utils.callSendkeys(driver, ActionXpath.hscschool, hscschool, "hscschool");
             Utils.clickXpath(driver, ActionXpath.hsccountry, time, "hsccountry");
-            // Utils.clickXpath(driver, ActionXpath.hscselectcountry, time,
-            // "hscselectcountry");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(hsccountry)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, hsccountry, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.hscstate, time, "hscstate");
-            // Utils.clickXpath(driver, ActionXpath.hscselectstate, time, "hscselectstate");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(hscstate)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, hscstate, driver);
+
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.hsccity, time, "hsccity");
-            // Utils.clickXpath(driver, ActionXpath.hscselectcity, time, "ugselectcity");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(hsccity)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, hsccity, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
 
             // 10
-            String sslcboard = csvCell[56];
-            String sslcpercentage = csvCell[57];
-            String sslcyear = csvCell[58];
-            String sslcschool = csvCell[59];
-            String sslccountry = csvCell[60];
-            String sslcstate = csvCell[61];
-            String sslccity = csvCell[62];
+            String sslcboard = csvCell[59];
+            String sslcpercentage = csvCell[60];
+            String sslcyear = csvCell[61];
+            String sslcschool = csvCell[62];
+            String sslccountry = csvCell[63];
+            String sslcstate = csvCell[64];
+            String sslccity = csvCell[65];
             Utils.clickXpath(driver, ActionXpath.sslcedtype, time, "sslcedtype");
             Utils.clickXpath(driver, ActionXpath.sslcselectedtype, time, "sslcselectedtype");
             Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
-            // Utils.clickXpath(driver, ActionXpath.sslcselectboard, time,
-            // "sslcselectboard");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(sslcboard)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslcgrade, time, "sslcgrade");
             Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
@@ -724,41 +519,12 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.sslcschool, sslcschool, "sslcschool");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslccountry, time, "sslccountry");
-            // Utils.clickXpath(driver, ActionXpath.sslcselectcountry, time,
-            // "sslcselectcountry");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(sslccountry)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, sslccountry, driver);
             Utils.clickXpath(driver, ActionXpath.sslcstate, time, "sslcstate");
-            // Utils.clickXpath(driver, ActionXpath.sslcselectstate, time,
-            // "sslcselectstate");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(sslcstate)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, sslcstate, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslccity, time, "sslccity");
-            // Utils.clickXpath(driver, ActionXpath.sslcselectcity, time, "sslcselectcity");
-            gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().contains(sslccity)) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, sslccity, driver);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
 
             log.info("  TC-6: Fill the Education test case PASSED \n");
@@ -768,17 +534,17 @@ public class Application {
         }
     }
 
-    @Test(priority = 7)
     public static void other(String url, WebDriver driver, String[] csvCell) {
         try {
             System.out.println("TC:7: Others Test Executation ");
 
-            String SportAchievement = csvCell[44];
-            String ProfessionalAchievement = csvCell[45];
-            String CurricularActivities = csvCell[46];
-            String AcademicAchievements = csvCell[47];
-            String Statement = csvCell[48];
-            String planmasterdegree = csvCell[49];
+            String SportAchievement = csvCell[66];
+            String ProfessionalAchievement = csvCell[67];
+            String CurricularActivities = csvCell[68];
+            String AcademicAchievements = csvCell[69];
+            String Statement = csvCell[70];
+            String planmasterdegree = csvCell[71];
+            String language = csvCell[72];
 
             Utils.callSendkeys(driver, ActionXpath.SportAchievement, SportAchievement, "SportAchievement");
             Utils.callSendkeys(driver, ActionXpath.ProfessionalAchievement, ProfessionalAchievement,
@@ -798,16 +564,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.sponsoredbycompany, time, "sponsoredbycompany");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.Language, time, "Language");
-            // Utils.clickXpath(driver, ActionXpath.SelectLanguage, time, "SelectLanguage");
-            java.util.List<WebElement> gram = driver
-                    .findElements(By.xpath(
-                            "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div"));
-            for (int i = 0; i < gram.size(); i++) {
-                if (gram.get(i).getText().startsWith("Kannada")) {
-                    gram.get(i).click();
-                    break;
-                }
-            }
+            Utils.selectFromDropDown(ActionXpath.selectxpath, language, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.Proficiency, time, "Proficiency");
             Utils.clickXpath(driver, ActionXpath.SelectProficiency, time, "SelectProficiency");
@@ -833,7 +590,6 @@ public class Application {
         }
     }
 
-    @Test(priority = 8)
     public static void summaryanddeclaration(String url, WebDriver driver, String[] csvCell) {
         try {
             System.out.println("TC:8: summaryanddeclaration Test Executation ");
@@ -849,7 +605,20 @@ public class Application {
         }
     }
 
-    @Test(priority = 9)
+    @Test(priority = 1)
+    public static void Admissionfillform(String url, WebDriver driver, String[] csvCell) throws Exception {
+
+        login(url, driver, csvCell);
+        ApplyforCourse(url, driver, csvCell);
+        FamilyInfo(url, driver, csvCell);
+        FamilyInfo(url, driver, csvCell);
+        EmploymentInfo(url, driver, csvCell);
+        EducationINFO(url, driver, csvCell);
+        other(url, driver, csvCell);
+        summaryanddeclaration(url, driver, csvCell);
+    }
+
+    @Test(priority = 2)
     public static void SalesforceBackendVerify(String Sfurl, WebDriver driver, String[] csvCell) {
         try {
             System.out.println("TC:9: Salesforce backend Verification along with delete  Test Executation ");
@@ -857,8 +626,8 @@ public class Application {
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
             driver.get(Sfurl);
-            String SfEmail = csvCell[70];
-            String SfPassword = csvCell[71];
+            String SfEmail = csvCell[74];
+            String SfPassword = csvCell[75];
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
@@ -874,8 +643,10 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.clickappview, time, "click on thr application view");
 
             Utils.clickXpath(driver, ActionXpath.ClickEdit, time, "Click on edit");
+            Utils.smallSleepBetweenClicks(2);
             String passport = Utils.getTEXT(driver, ActionXpath.passportcheck);
-            System.out.println("Passport Number is same:"+passport);
+            System.out.println("Passport Number is :" + passport);
+
             if (csvCell[8].equals(passport)) {
                 System.out.println("Passport Number is same");
             } else {
@@ -883,6 +654,8 @@ public class Application {
             }
 
             String Nationality = Utils.getTEXT(driver, ActionXpath.Nationalitycheck);
+            System.out.println(Nationality);
+
             if (csvCell[7].equals(Nationality)) {
                 System.out.println("Nationality is same");
             } else {
@@ -890,6 +663,8 @@ public class Application {
             }
 
             String email = Utils.getTEXT(driver, ActionXpath.emailcheck);
+            System.out.println(email);
+
             if (csvCell[14].equals(email)) {
                 System.out.println("email is same");
             } else {
@@ -897,6 +672,8 @@ public class Application {
             }
 
             String dob = Utils.getTEXT(driver, ActionXpath.dobcheck);
+            System.out.println(dob);
+
             if (csvCell[6].equals(dob)) {
                 System.out.println("dob is same");
             } else {
@@ -904,6 +681,8 @@ public class Application {
             }
 
             String city = Utils.getTEXT(driver, ActionXpath.citycheck);
+            System.out.println(city);
+
             if (csvCell[22].equals(city)) {
                 System.out.println("city is same");
             } else {
@@ -911,6 +690,8 @@ public class Application {
             }
 
             String fname = Utils.getTEXT(driver, ActionXpath.fnamecheck);
+            System.out.println(fname);
+
             if (csvCell[11].equals(fname)) {
                 System.out.println("fname is same");
             } else {
@@ -918,6 +699,8 @@ public class Application {
             }
 
             String age = Utils.getTEXT(driver, ActionXpath.agecheck);
+            System.out.println(age);
+
             if (csvCell[15].equals(age)) {
                 System.out.println("age is same");
             } else {
@@ -925,6 +708,8 @@ public class Application {
             }
 
             String income = Utils.getTEXT(driver, ActionXpath.incomecheck);
+            System.out.println(income);
+
             if (csvCell[17].equals(income)) {
                 System.out.println("income is same");
             } else {
@@ -932,6 +717,8 @@ public class Application {
             }
 
             String pgpercentage = Utils.getTEXT(driver, ActionXpath.pgpercentagecheck);
+            System.out.println(pgpercentage);
+
             if (csvCell[32].equals(pgpercentage)) {
                 System.out.println("pgpercentage is same");
             } else {
@@ -939,13 +726,17 @@ public class Application {
             }
 
             String hscpercentage = Utils.getTEXT(driver, ActionXpath.hscpercentagecheck);
+            System.out.println(hscpercentage);
+
             if (csvCell[50].equals(hscpercentage)) {
                 System.out.println("hscpercentage is same");
             } else {
                 System.out.println("hscpercentage is diffrent");
             }
 
-            String sslcpercentage = Utils.getTEXT(driver, ActionXpath.hscpercentagecheck);
+            String sslcpercentage = Utils.getTEXT(driver, ActionXpath.sslcpercentagecheck);
+            System.out.println(sslcpercentage);
+
             if (csvCell[57].equals(sslcpercentage)) {
                 System.out.println("sslcpercentage is same");
             } else {
@@ -953,6 +744,8 @@ public class Application {
             }
 
             String extraactivities = Utils.getTEXT(driver, ActionXpath.extraactivitiescheck);
+            System.out.println(extraactivities);
+
             if (csvCell[65].equals(extraactivities)) {
                 System.out.println("extraactivities is same");
             } else {
