@@ -225,7 +225,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.lastName, lastName, "Enter Last NAme");
             Utils.callSendkeys(driver, ActionXpath.Phone, Phone, "enter the Phone");
             Utils.scrollUpOrDown(driver, time);
-            validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
+            validate.email(driver, ActionXpath.Email, ActionXpath.erroremail1);
             Utils.cleartext(driver, ActionXpath.Email);
             Utils.callSendkeys(driver, ActionXpath.Email, Email, "Enter the Emial");
 
@@ -779,6 +779,9 @@ public class Application {
             String AcademicAchievements = csvCell[47];
             String Statement = csvCell[48];
             String planmasterdegree = csvCell[49];
+
+            validate.char200(driver, ActionXpath.SportAchievement, ActionXpath.errorAchievment);
+            Utils.cleartext(driver, ActionXpath.SportAchievement);
 
             Utils.callSendkeys(driver, ActionXpath.SportAchievement, SportAchievement, "SportAchievement");
             Utils.callSendkeys(driver, ActionXpath.ProfessionalAchievement, ProfessionalAchievement,

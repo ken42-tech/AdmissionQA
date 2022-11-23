@@ -28,7 +28,7 @@ public class App_portal {
     public static Logger log = Logger.getLogger("App_portal");
 
 
-    public static void main(String[] args) throws Exception {
+		public static void main(String[] args) throws Exception {
         String CSV_PATH = "";
         String logFileName = "";
 
