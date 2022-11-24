@@ -16,7 +16,6 @@ import org.testng.annotations.Test;
 import com.beust.jcommander.JCommander.ProgramName;
 import com.mongodb.util.Util;
 
-
 public class Application {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
@@ -24,13 +23,14 @@ public class Application {
 
     public static void login(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
-            String Email = csvCell[2];
+            String email = csvCell[2];
+            String password = csvCell[3];
 
             Thread.sleep(3000);
-            Utils.callSendkeys(driver, ActionXpath.EnterEmail, Email, "Enter r mail address ");
+            Utils.callSendkeys(driver, ActionXpath.EnterEmail, email, "Enter r mail address ");
             Utils.clickXpath(driver, ActionXpath.Verify, time, "verify");
             Utils.bigSleepBetweenClicks(1);
-            Utils.getAndSentOTP(driver);
+            Utils.getAndSentOTP(driver, email, password);
             Utils.clickXpath(driver, ActionXpath.Verifylogin, time, "Verift the Login ");
 
         } catch (Exception e) {
@@ -176,8 +176,9 @@ public class Application {
             if (validation.equals("TRUE")) {
                 validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
             }
+            Email = Utils.genrateRandomEmailid();
             Utils.cleartext(driver, ActionXpath.Email);
-            Utils.callSendkeys(driver, ActionXpath.Email, Email, "Enter the Emial");
+            Utils.callSendkeys(driver, ActionXpath.Email, Email, "Enter the Email");
             if (validation.equals("TRUE")) {
                 validate.numbers(driver, ActionXpath.Age, ActionXpath.errorage1);
                 Utils.cleartext(driver, ActionXpath.Age);
@@ -253,12 +254,15 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, industry, driver);
             Utils.clickXpath(driver, ActionXpath.Country, time, "Click on the Country");
             Utils.selectFromDropDown(ActionXpath.selectxpath, Country, driver);
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.state, time, "Selext the State");
             Utils.selectFromDropDown(ActionXpath.selectxpath, state, driver);
 
             Utils.clickXpath(driver, ActionXpath.city, time, "Select the City");
 
             Utils.selectFromDropDown(ActionXpath.selectxpath, city, driver);
+            Utils.scrollUpOrDown(driver, time);
+
             if (validation.equals("TRUE")) {
                 validate.char80(driver, ActionXpath.designation, ActionXpath.errordestination1);
                 Utils.cleartext(driver, ActionXpath.designation);
@@ -301,8 +305,10 @@ public class Application {
             }
             Utils.cleartext(driver, ActionXpath.AnnualSalary);
             Utils.callSendkeys(driver, ActionXpath.AnnualSalary, Annual, "Enter the annual Salary");
-            // Utils.clickXpath(driver, ActionXpath.currencytype, time, "currencytype");
-            Utils.clickXpath(driver, ActionXpath.selectcurrencytype, time, "selectcurrencytype");
+            Utils.scrollUpOrDown(driver, time);
+            Utils.clickXpath(driver, ActionXpath.currencytype, time, "currencytype");
+            // Utils.clickXpath(driver, ActionXpath.selectcurrencytype, time,
+            // "selectcurrencytype");
             Utils.selectFromDropDown(ActionXpath.selectxpath, CurrencyType, driver);
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
@@ -362,10 +368,9 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgcountry, time, "pgcountry");
             Utils.selectFromDropDown(ActionXpath.pgcountryselect, pgcountry, driver);
-
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgstate, time, "pgstate");
             Utils.selectFromDropDown(ActionXpath.pgstateselect, pgstate, driver);
-
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgcity, time, "pgcity");
             Utils.selectFromDropDown(ActionXpath.pgcityselect, pgcity, driver);
@@ -415,8 +420,8 @@ public class Application {
                     break;
                 }
             }
-            validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.errorUniversity);
             if (validation.equals("TRUE")) {
+                validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.errorUniversity);
                 Utils.cleartext(driver, ActionXpath.ugpercentage);
                 validate.char80(driver, ActionXpath.ugpercentage, ActionXpath.error80CharPercentage);
             }
@@ -472,8 +477,10 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.hscselectedtype, time, "hscselectedtype");
             Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
             Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
-
             Utils.scrollUpOrDown(driver, time);
+            Utils.clickXpath(driver, ActionXpath.gradeType, time, "grade type");
+            Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
+
             if (validation.equals("TRUE")) {
                 validate.char80(driver, ActionXpath.hscpercentage, ActionXpath.error80CharPercentage);
                 Utils.cleartext(driver, ActionXpath.hscpercentage);
@@ -516,6 +523,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
             Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
             Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslcgrade, time, "sslcgrade");
             Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
             Utils.callSendkeys(driver, ActionXpath.sslcpercentage, sslcpercentage, "sslcpercentage");
@@ -527,6 +535,7 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, sslccountry, driver);
             Utils.clickXpath(driver, ActionXpath.sslcstate, time, "sslcstate");
             Utils.selectFromDropDown(ActionXpath.selectxpath, sslcstate, driver);
+            Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.sslccity, time, "sslccity");
             Utils.selectFromDropDown(ActionXpath.selectxpath, sslccity, driver);
@@ -560,6 +569,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.fundeducation, time, "fundeducation");
             Utils.clickXpath(driver, ActionXpath.fundselecteducation, time, "fundselecteducation");
             Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.physicallychallenged, time, "physicallychallenged");
             // Utils.callSendkeys(driver, ActionXpath.sharedetails, "NA", "sharedetails");
             Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement");
@@ -572,19 +582,25 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.Proficiency, time, "Proficiency");
             Utils.clickXpath(driver, ActionXpath.SelectProficiency, time, "SelectProficiency");
             Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.evaluation, time, "evaluation");
-            Utils.clickXpath(driver, ActionXpath.Selectevaluation, time, "Selectevaluation");
-            Utils.clickXpath(driver, ActionXpath.qualificationenglish, time, "qualificationenglish");
-            Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time,
-                    "selectlatestqualificationenglish");
             Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.latestqualificationenglish, time, "latestqualificationenglish");
-            Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time,
-                    "selectlatestqualificationenglish");
+            Utils.scrollUpOrDown(driver, time);
+            // Utils.clickXpath(driver, ActionXpath.evaluation, time, "evaluation");
+            // Utils.clickXpath(driver, ActionXpath.Selectevaluation, time,
+            // "Selectevaluation");
+            // Utils.clickXpath(driver, ActionXpath.qualificationenglish, time,
+            // "qualificationenglish");
+            // Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time,
+            // "selectlatestqualificationenglish");
+            // Utils.scrollUpOrDown(driver, time);
+            // Utils.clickXpath(driver, ActionXpath.latestqualificationenglish, time,
+            // "latestqualificationenglish");
+            // Utils.clickXpath(driver, ActionXpath.selectlatestqualificationenglish, time,
+            // "selectlatestqualificationenglish");
             Utils.clickXpath(driver, ActionXpath.EducationConsultant, time, "EducationConsultant");
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.hearspjain, time, "hearspjain");
             Utils.clickXpath(driver, ActionXpath.selecthearspjain, time, "selecthearspjain");
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.refrence, time, "refrence");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
         } catch (Exception e) {
@@ -622,7 +638,7 @@ public class Application {
             EducationINFO(url, driver, csvCell);
             other(url, driver, csvCell);
             summaryanddeclaration(url, driver, csvCell);
-            log.info("TC-1: Fill form with validation test Completed ");
+            log.info("TC-1: Fill form with validation test Completed and Passed ");
 
         } catch (Exception e) {
             log.warning("TC-1: Fill form with validation test Failed");
@@ -631,7 +647,6 @@ public class Application {
 
         }
     }
-
     @Test(priority = 2)
     public static void SalesforceBackendVerify(String Sfurl, WebDriver driver, String[] csvCell, Logger log) {
         try {
@@ -765,19 +780,39 @@ public class Application {
             } else {
                 System.out.println("extraactivities is diffrent");
             }
+            log.info("  TC-2:  the Salesforce backend Verification along with delete test case PASSED \n");
+
+        } catch (Exception e) {
+            log.warning("TC-2: the Salesforce backend Verification along with delete test case FAILED \n");
+        }
+    }
+    @Test(priority = 3)
+    public static void SalesforceBackendDELETE(String Sfurl, WebDriver driver, Logger log) {
+        try {
+            System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
             Utils.clickXpath(driver, ActionXpath.applauncher, time, "click on applauncher");
             Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts ");
-            Utils.clickXpath(driver, ActionXpath.clickcontacts, time, "click on clickcontacts");
+            Utils.clickXpath(driver, ActionXpath.contacts, time, "click on clickcontacts");
+            Utils.cleartext(driver, ActionXpath.listsearch);
             Utils.callSendkeys(driver, ActionXpath.listsearch, "test Student", "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
             Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
-            Utils.clickXpath(driver, ActionXpath.viewAll, time, "click on view all");
-            Utils.clickXpath(driver, ActionXpath.clickondrop, time, "click on drop down ");
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
+    	((JavascriptExecutor)driver).executeScript("arguments[0].click();", elem);
+            Thread.sleep(2000);
             Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
-            log.info("  TC-9:  the Salesforce backend Verification along with delete test case PASSED \n");
+            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
+            WebElement elem3 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
+            ((JavascriptExecutor)driver).executeScript("arguments[0].click();", elem3);
+                Thread.sleep(2000);
+                Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
+                Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
+            log.info("  TC-3:  the Salesforce backend  delete test case PASSED \n");
 
-        } catch (Exception e) {
-            log.warning("TC-9: the Salesforce backend Verification along with delete test case FAILED \n");
-        }
+        }catch (Exception e) {
+            log.warning("TC-3: the Salesforce backend  delete test case FAILED \n");
     }
+
+}
 }

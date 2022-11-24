@@ -71,10 +71,10 @@ public class ActionXpath {
     static String designation = "//input[@name='workExperiences.0.designation']";
     static String role = "//input[@name='workExperiences.0.roles']";
     static String DateJoin = "//input[@name='workExperiences.0.dateOfJoining']";
-    static String CurrentCompany = "(//*[@id='outlined-select-currency'])[3]";
+    static String CurrentCompany = "(//*[@id='outlined-select-currency'])[6]";
     static String selectCurrentCompany = "(//*[text()='Yes'])[2]";
     static String Experience = "//input[@name='workExperiences.0.noOfMonths']";
-    static String currencytype = "(//*[@id='outlined-select-currency'])[6]";
+    static String currencytype = "(//*[@id='outlined-select-currency'])[7]";
     static String selectcurrencytype = "//li[@data-value='Indian Rupee (INR)']";
     static String AnnualSalary = "//input[@name='workExperiences.0.annualSalary']";
     // Tc-6
@@ -126,32 +126,33 @@ public class ActionXpath {
     static String hscedtype = "(//*[@id='outlined-select-currency'])[14]";
     static String hscselectedtype = "(//*[text()='Full time'])[3]";
     static String hscboard = "(//*[@id='outlined-select-currency'])[15]";
+    static String gradeType="(//*[@id='outlined-select-currency'])[16]";
     static String hscselectboard = "(//*[text()='KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD'])[1]";
     static String hscpercentage = "//*[@name='educationHistories[2][obtainedMarks]']";
     static String hscyear = "//*[@name='educationHistories[2][yearOfPassing]']";
     static String hscschool = "//*[@name='educationHistories[2][placeOfStudy]']";
-    static String hsccountry = "(//*[@id='outlined-select-currency'])[16]";
+    static String hsccountry = "(//*[@id='outlined-select-currency'])[17]";
     static String hscselectcountry = "//*[text()='India']";
-    static String hscstate = "(//*[@id='outlined-select-currency'])[17]";
+    static String hscstate = "(//*[@id='outlined-select-currency'])[18]";
     static String hscselectstate = "//*[text()='Karnataka']";
-    static String hsccity = "(//*[@id='outlined-select-currency'])[18]";
+    static String hsccity = "(//*[@id='outlined-select-currency'])[19]";
     static String hscselectcity = "//*[text()='Bangalore Rural']";
 
     // 10
-    static String sslcedtype = "(//*[@id='outlined-select-currency'])[19]";
+    static String sslcedtype = "(//*[@id='outlined-select-currency'])[20]";
     static String sslcselectedtype = "(//*[text()='Full time'])[4]";
-    static String sslcboard = "(//*[@id='outlined-select-currency'])[20]";
+    static String sslcboard = "(//*[@id='outlined-select-currency'])[21]";
     static String sslcselectboard = "//*[@name='educationHistories[0][yearOfPassing]']";
-    static String sslcgrade = "(//*[@id='outlined-select-currency'])[21]";
+    static String sslcgrade = "(//*[@id='outlined-select-currency'])[22]";
     static String sslcselectgrade = "//*[text()='CGPA']";
     static String sslcpercentage = "//*[@name='educationHistories[3][obtainedMarks]']";
     static String sslcyear = "//*[@name='educationHistories[3][yearOfPassing]']";
     static String sslcschool = "//*[@name='educationHistories[3][placeOfStudy]']";
-    static String sslccountry = "(//*[@id='outlined-select-currency'])[22]";
+    static String sslccountry = "(//*[@id='outlined-select-currency'])[23]";
     static String sslcselectcountry = "//*[text()='India']";
-    static String sslcstate = "(//*[@id='outlined-select-currency'])[23]";
+    static String sslcstate = "(//*[@id='outlined-select-currency'])[24]";
     static String sslcselectstate = "//*[text()='Karnataka']";
-    static String sslccity = "(//*[@id='outlined-select-currency'])[24]";
+    static String sslccity = "(//*[@id='outlined-select-currency'])[25]";
     static String sslcselectcity = "//*[text()='Bangalore Rural']";
     // static String clicknext="//*[text()='Next']";
     // Tc-7
@@ -161,7 +162,7 @@ public class ActionXpath {
     static String AcademicAchievements = "//*[@name='application[exceptionalAcademicAchievements]']";
     static String fundeducation = "(//*[@id='outlined-select-currency'])[1]";
     static String fundselecteducation = "//*[text()='Self-funding + Bank Loan']";
-    static String physicallychallenged = "(//*[text()='No'])[1]";
+    static String physicallychallenged = "(//input[@name='applicant[isDifferentlyAbled]'])[2]";
     static String sharedetails = "//*[@name='specialAbilityDetails']";
     static String Statement = "//*[@name='application[statementOfPurpose]']";
     static String planmasterdegree = "//*[@name='application[mastersPlan]']";
@@ -181,6 +182,7 @@ public class ActionXpath {
     static String hearspjain = "(//*[@id='outlined-select-currency'])[7]";
     static String selecthearspjain = "//*[text()='TV / Radio']";
     static String refrence = "(//*[text()='No'])[8]";
+    static String hscgradeselect = "(//*[text()='Grade'])[1]";
     // static String clicknext="//*[text()='Next']";
 
     // Tc-8
@@ -260,6 +262,7 @@ public class ActionXpath {
 
     // sf check
     static String clickcontacts = "//*[text()='Contacts']";
+    static String contacts="//b[text()='Contacts']";
     static String ClickApplicationtab = "//a[text()='Applications']";
     static String ClickEdit = "(//button[@type='button' and text()='Edit'])[3]";
     static String passportcheck = "(//lightning-formatted-text[@slot='outputField'])[9]";
@@ -288,6 +291,7 @@ public class ActionXpath {
     static String ugcountryselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String selectxpath = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String clickondrop="//a[@role='button'  and @title='Show 2 more actions']";
-    static String delete="//div[text()='Delete']";
+    static String delete="//a[@title='Delete']";
+    static String Delete2="//span[text()='Delete']";
     static String viewAll="//span[text()='View All']";
 }

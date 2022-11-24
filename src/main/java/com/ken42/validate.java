@@ -107,12 +107,18 @@ public class validate {
     public static boolean email(WebDriver driver, String xpath, String errorXpath) throws Exception {
         try {
 
-            String invlaidEmail1 = "a@gg.c";
-            String invlaidEmail2 = "aa.c";
-            String invlaidEmail3 = "aa@c";
-            String invlaidEmail4 = "@cc.in";
-
-            Utils.callSendkeys(driver, xpath, invlaidEmail1, invlaidEmail2);
+            // String invlaidEmail1 = "a@gg.c";
+            // String invlaidEmail2 = "aa.c";
+            // String invlaidEmail3 = "aa@c";
+            //  String invlaidEmail4 = "@cc.in";
+            
+                  String[] Email = {"a@gg.c", "aa.c", "aa@c", "@cc.in"};
+                  for (String invlaidEmails : Email) {
+                    System.out.println(invlaidEmails);
+                  }    
+                
+              
+            Utils.callSendkeys(driver, xpath, Email);
             WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
             String checkEmail = errorMessage.getText();
 
