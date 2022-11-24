@@ -1,11 +1,8 @@
 package com.ken42;
 
 import java.util.logging.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import org.junit.Test;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -13,22 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.Properties;
 
-import javax.mail.Flags;
-import javax.mail.Folder;
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.Store;
 import org.apache.commons.lang3.RandomStringUtils;
 
 public class Utils {
 	static Logger log = Logger.getLogger(Utils.class.getName());
 	static int time = 1000;
-	private static CharSequence result;
-
 	public static void clickXpath(WebDriver driver, String xpath, int time, String msg) throws Exception {
 		JavascriptExecutor js3 = (JavascriptExecutor) driver;
 		int count = 0;

@@ -1,29 +1,10 @@
 package com.ken42;
 
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.concurrent.TimeUnit;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.safari.SafariDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import java.util.logging.*;
-import java.util.logging.FileHandler;
 
-import com.opencsv.CSVReader;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class documentupload {
     public static Logger log = Logger.getLogger("App_portal");
@@ -70,7 +51,7 @@ public class documentupload {
         }
     }
 
-    public static void documentupload(String url, String sfurl, WebDriver driver, String[] csvCell, Logger log)
+    public static void documentUpload(String url, String sfurl, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
             System.out.println("TC-3: Fill form with validation test started Executation ");

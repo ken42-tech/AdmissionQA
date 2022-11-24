@@ -13,9 +13,6 @@ import java.util.logging.Logger;
 
 import org.testng.annotations.Test;
 
-import com.beust.jcommander.JCommander.ProgramName;
-import com.mongodb.util.Util;
-
 public class Application {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
@@ -61,6 +58,7 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+            Utils.smallSleepBetweenClicks(1);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -139,7 +137,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.selectcurrentaddress, time, "Click the address");
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-
+            Utils.smallSleepBetweenClicks(1);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -216,7 +214,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.CurrencyTypeSelect, time, "Select currency");
             Utils.clickXpath(driver, ActionXpath.currencyType, time, "Select the appropriate currency");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-
+            Utils.smallSleepBetweenClicks(1);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -314,7 +312,7 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, CurrencyType, driver);
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-
+            Utils.smallSleepBetweenClicks(1);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -542,7 +540,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.sslccity, time, "sslccity");
             Utils.selectFromDropDown(ActionXpath.selectxpath, sslccity, driver);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-
+            Utils.smallSleepBetweenClicks(1);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);

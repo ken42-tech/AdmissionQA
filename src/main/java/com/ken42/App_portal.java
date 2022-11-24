@@ -1,7 +1,6 @@
 package com.ken42;
 
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
@@ -13,7 +12,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import java.util.logging.*;
 import java.util.logging.FileHandler;
@@ -26,7 +24,6 @@ public class App_portal extends Thread {
 	private String[] csvLineData;
 	private int count;
 	static int time = 1000;
-	private static final Exception Exception = null;
 	public static Logger log = Logger.getLogger("App_portal");
 
 	@Override
@@ -51,8 +48,6 @@ public class App_portal extends Thread {
 	}
 
 	public static void main(String[] args) throws Exception {
-		String folder = "";
-		// folder = getFolderPath();
 		String CSV_PATH = "";
 		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
 		CSVReader csvReader;
@@ -119,7 +114,7 @@ public class App_portal extends Thread {
 					Application.SalesforceBackendVerify(sfurl, driver, csvCell, log);
 					break;
 				case 3:
-					documentupload.documentupload(sfurl, url, driver, csvCell, log);
+					documentupload.documentUpload(sfurl, url, driver, csvCell, log);
 					break;
 				case 4:
 					Application.SalesforceBackendDELETE(sfurl, driver, log);
