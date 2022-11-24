@@ -117,6 +117,9 @@ public class App_portal extends Thread {
 				case 2:
 					Application.SalesforceBackendVerify(sfurl, driver, csvCell, log);
 					break;
+				case 3:
+					documentupload.documentupload(sfurl, driver, csvCell, log);
+					break;
 
 			}
 		}
