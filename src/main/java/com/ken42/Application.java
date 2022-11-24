@@ -118,7 +118,7 @@ public class Application {
             // Utils.clickXpath(driver, ActionXpath.District, time, "Select the Dist");
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.char80(driver, ActionXpath.street, ActionXpath.errorstreet1);
+                validate.char200(driver, ActionXpath.street, ActionXpath.errorstreet1);
                 Utils.cleartext(driver, ActionXpath.street);
                 validate.specialcharacter(driver, ActionXpath.street, ActionXpath.errorstreet2);
             }
@@ -174,7 +174,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.Phone, Phone, "enter the Phone");
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
+                // validate.email(driver, ActionXpath.Email, ActionXpath.erroremail1);
             }
             Email = Utils.genrateRandomEmailid();
             Utils.cleartext(driver, ActionXpath.Email);
