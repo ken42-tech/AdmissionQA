@@ -90,7 +90,8 @@ public class App_portal extends Thread {
 		String From = csvCell[4];
 		String To = csvCell[5];
 		String sfurl = csvCell[73];
-
+		String vali = csvCell[78];
+		System.out.println("**********************************" + vali);
 		int from = Integer.parseInt(From);
 		int to = Integer.parseInt(To);
 		Logger log = Logger.getLogger("App_portal" + count);
@@ -117,6 +118,7 @@ public class App_portal extends Thread {
 				case 2:
 					Application.SalesforceBackendVerify(sfurl, driver, csvCell, log);
 					break;
+<<<<<<< HEAD
 				//case 3:
 					//documentupload.documentupload(sfurl, driver, csvCell, log);
 				//	break;
@@ -124,6 +126,11 @@ public class App_portal extends Thread {
 					Application.SalesforceBackendDELETE(sfurl, driver, log);
 					break;
 
+=======
+				case 3:
+					documentupload.documentupload(sfurl, url, driver, csvCell, log);
+					break;
+>>>>>>> a2531575168a601d76981983f0997d0500b251fe
 			}
 		}
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);

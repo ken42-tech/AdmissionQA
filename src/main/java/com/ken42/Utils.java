@@ -61,7 +61,7 @@ public class Utils {
 		while (true) {
 			try {
 				log.info("Entering value" + Value);
-				Thread.sleep(1000);
+				Thread.sleep(500);
 				new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(By.xpath(Xpath)))
 						.sendKeys(Value);
 				Thread.sleep(500);
@@ -136,7 +136,7 @@ public class Utils {
 			try {
 				log.info("clear value");
 
-				Thread.sleep(4000);
+				Thread.sleep(1000);
 				WebElement elee = driver.findElement(By.xpath(Xpath));
 				elee.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
 

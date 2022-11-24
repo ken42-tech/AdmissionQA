@@ -13,7 +13,7 @@ public class ActionXpath {
     static String ApplyNow = "//button[text()='Apply']";
     static String ClickNext = "//button[text()='Next']";
     static String Selectmentor = "(//*[@id='outlined-select-currency'])[1]";
-    static String selectYes = "//li[@data-value='Yes']";
+    static String selectYes = "//li[@data-value='Yes'] | //li[@data-value='true']";
     static String SelectCampus = "//div[text()='EMBA Combination 1']";
     static String Campus = "(//*[@id='outlined-select-currency'])[2]";
     static String selectSpecilization = "//div[text()='EMBA Marketing']";
@@ -114,7 +114,7 @@ public class ActionXpath {
     static String ugselectcity = "//*[text()='Bangalore Rural']";
     static String ugtype = "(//*[@id='outlined-select-currency'])[11]";
     static String ugselecttype = "//*[text()='Year']";
-    static String ugyear1 = "(//*[@id='outlined-select-currency'])[12]";
+    static String ugyear1 = "(//*[@id='outlined-select-currency'])[12]/../../../..//*[local-name()='svg']";
     static String ugselectyear1 = "//*[text()='Year 1']";
     static String ugmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMarks']";
     static String ugmaxmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMaxMarks']";
@@ -128,6 +128,8 @@ public class ActionXpath {
     static String hscboard = "(//*[@id='outlined-select-currency'])[15]";
     static String gradeType="(//*[@id='outlined-select-currency'])[16]";
     static String hscselectboard = "(//*[text()='KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD'])[1]";
+    static String hscgrade = "(//*[@id='outlined-select-currency'])[16]";
+    static String hscgradeselect = "(//*[text()='Grade'])[1]";
     static String hscpercentage = "//*[@name='educationHistories[2][obtainedMarks]']";
     static String hscyear = "//*[@name='educationHistories[2][yearOfPassing]']";
     static String hscschool = "//*[@name='educationHistories[2][placeOfStudy]']";
@@ -226,7 +228,7 @@ public class ActionXpath {
     // error xpath
     static String errorpassport1 = "//p[text()='Please Input a valid Passport Number']";
     static String errorpassport2 = "//p[text()='This field cannot be more than 12 characters']";
-    static String errorstreet1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errorstreet1 = "//p[text()='This field cannot be more than 200 characters']";
     static String errorstreet2 = "//p[text()='Please input a correct value']";
     static String errorzipcode1 = "//p[text()='Please Input a valid Zipcode']";
     static String errorzipcode2 = "//p[text()='This field cannot be more than 10 characters']";
@@ -237,7 +239,7 @@ public class ActionXpath {
     static String errorage1 = "//p[text()='This field cannot be more than 3 digits']";
     static String errorage2 = "//p[text()='Please Input a valid Age']";
     static String erroremail1 = "//p[text()='Please Input a valid Email']";
-    static String erroroccupation1 = "//p[text()='This field cannot be more than 20 characters']";
+    static String erroroccupation1 = "//p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 20 characters']";
     static String erroroccupation2 = "//p[text()='Please Input a valid value']";
     static String errorincome1 = "//p[text()='Please Input a correct Income']";
     static String errorincome2 = "//p[text()='This field cannot be more than 18 characters']";
@@ -290,8 +292,27 @@ public class ActionXpath {
     static String ugdegreeselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String ugcountryselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String selectxpath = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
+<<<<<<< HEAD
     static String clickondrop="//a[@role='button'  and @title='Show 2 more actions']";
     static String delete="//a[@title='Delete']";
     static String Delete2="//span[text()='Delete']";
     static String viewAll="//span[text()='View All']";
+=======
+    static String clickondrop = "//a[@role='button'  and @title='Show 2 more actions']";
+    static String delete = "//div[text()='Delete']";
+    static String viewAll = "//span[text()='View All']";
+
+    // documents
+    static String clickdocument = "//*[text()='Documents']";
+    static String selectdocumnentdropdown = "//*[@id='panel1a-header']";
+    static String mark10sheetupload = "(//input[@type='file'])[1]";
+    static String mark10view = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[2]";
+    static String mark10download = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[1]";
+    static String degreemarkupload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[3]";
+    static String degreemarkview = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[2]";
+    static String degreemarkdownload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[1]";
+    static String photoupload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[3]";
+    static String photoview = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[2]";
+    static String photodownload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[1]";
+>>>>>>> a2531575168a601d76981983f0997d0500b251fe
 }
