@@ -12,9 +12,11 @@ import javax.mail.internet.MimeMultipart;
 
 public class readOTP {
 	public static boolean textIsHtml = false;
+	public static String email = "";
+	public static String Password = "";
 	private static final class AuthenticatorExtension extends javax.mail.Authenticator {
 		protected PasswordAuthentication getPasswordAuthentication() {
-			return new PasswordAuthentication("test2.ken42@gmail.com", "admin@01");
+			return new PasswordAuthentication(email, Password);
 		}
 	}
 
@@ -32,7 +34,8 @@ public class readOTP {
 		
 		try {
 			String OTP = "";
-
+			email = userName;
+			Password = password;
 			// create properties
 			Properties properties = new Properties();
 			
@@ -47,7 +50,6 @@ public class readOTP {
 			//create the POP3 store object and connect with the pop server
 			Store store = emailSession.getStore("imaps");
 			store.connect("imap.gmail.com", 993, userName, password);
-			// store.connect("imap.gmail.com", 993, "sprutirajtest@gmail.com", "cgdizxcledbpwzxn");
 
 			// create the inbox object and open it
 			Folder inbox = store.getFolder("Inbox");
@@ -131,10 +133,10 @@ public class readOTP {
 	
 	public static void main(String[] args) {
 
-		String host = "imap.gmail.com";
-		String mailStoreType = "imap";
-		String username = "test2.ken42@gmail.com";
-		String password = "qdbfadralxdxiihz";
+		// String host = "imap.gmail.com";
+		// String mailStoreType = "imap";
+		// String username = "test2.ken42@gmail.com";
+		// String password = "qdbfadralxdxiihz";
 
 		 //check(host, mailStoreType, username, password);
 

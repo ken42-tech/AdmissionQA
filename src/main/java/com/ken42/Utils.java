@@ -77,9 +77,9 @@ public class Utils {
 		}
 	}
 
-	public static void getAndSentOTP(WebDriver driver) throws Exception {
+	public static void getAndSentOTP(WebDriver driver, String email, String password) throws Exception {
 		String OTP = "";
-		OTP = readOTP.check("imap.gmail.com", "imap", "test2.ken42@gmail.com", "qdbfadralxdxiihz");
+		OTP = readOTP.check("imap.gmail.com", "imap", email, password);
 
 		// Thread.sleep(400);
 		System.out.println("OTP ***** " + OTP);

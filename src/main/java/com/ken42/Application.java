@@ -23,13 +23,14 @@ public class Application {
 
     public static void login(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
-            String Email = csvCell[2];
+            String email = csvCell[2];
+            String password = csvCell[3];
 
             Thread.sleep(3000);
-            Utils.callSendkeys(driver, ActionXpath.EnterEmail, Email, "Enter r mail address ");
+            Utils.callSendkeys(driver, ActionXpath.EnterEmail, email, "Enter r mail address ");
             Utils.clickXpath(driver, ActionXpath.Verify, time, "verify");
             Utils.bigSleepBetweenClicks(1);
-            Utils.getAndSentOTP(driver);
+            Utils.getAndSentOTP(driver, email, password);
             Utils.clickXpath(driver, ActionXpath.Verifylogin, time, "Verift the Login ");
 
         } catch (Exception e) {
