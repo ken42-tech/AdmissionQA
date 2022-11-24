@@ -118,6 +118,13 @@ public class App_portal extends Thread {
 				case 2:
 					Application.SalesforceBackendVerify(sfurl, driver, csvCell, log);
 					break;
+<<<<<<< HEAD
+=======
+				case 3:
+					documentupload.documentupload(sfurl, driver, csvCell, log);
+					break;
+
+>>>>>>> e5b83071022ebe2c7d63edd8730e84b6149c5a2e
 			}
 		}
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);

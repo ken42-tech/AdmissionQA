@@ -290,7 +290,20 @@ public class ActionXpath {
     static String ugdegreeselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String ugcountryselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String selectxpath = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
-    static String clickondrop="//a[@role='button'  and @title='Show 2 more actions']";
-    static String delete="//div[text()='Delete']";
-    static String viewAll="//span[text()='View All']";
+    static String clickondrop = "//a[@role='button'  and @title='Show 2 more actions']";
+    static String delete = "//div[text()='Delete']";
+    static String viewAll = "//span[text()='View All']";
+
+    // documents
+    static String clickdocument = "//*[text()='Documents']";
+    static String selectdocumnentdropdown = "//*[@id='panel1a-header']";
+    static String mark10sheetupload = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[3]";
+    static String mark10view = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[2]";
+    static String mark10download = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[1]";
+    static String degreemarkupload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[3]";
+    static String degreemarkview = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[2]";
+    static String degreemarkdownload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[1]";
+    static String photoupload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[3]";
+    static String photoview = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[2]";
+    static String photodownload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[1]";
 }
