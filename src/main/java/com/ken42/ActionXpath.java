@@ -114,7 +114,7 @@ public class ActionXpath {
     static String ugselectcity = "//*[text()='Bangalore Rural']";
     static String ugtype = "(//*[@id='outlined-select-currency'])[11]";
     static String ugselecttype = "//*[text()='Year']";
-    static String ugyear1 = "(//*[@id='outlined-select-currency'])[12]";
+    static String ugyear1 = "(//*[@id='outlined-select-currency'])[12]/../../../..//*[local-name()='svg']";
     static String ugselectyear1 = "//*[text()='Year 1']";
     static String ugmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMarks']";
     static String ugmaxmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMaxMarks']";
@@ -226,7 +226,12 @@ public class ActionXpath {
     // error xpath
     static String errorpassport1 = "//p[text()='Please Input a valid Passport Number']";
     static String errorpassport2 = "//p[text()='This field cannot be more than 12 characters']";
+<<<<<<< HEAD
     static String errorstreet1 = "//p[text()='This field cannot be more than 200 characters']";
+=======
+    // static String errorstreet1 = "//p[text()='This field cannot be more than 200 characters']";
+    static String errorstreet1 = " //p[text()='This field cannot be more than 200 characters'] |  //p[text()='This field cannot be more than 80 characters']";
+>>>>>>> 75dccb67fdd1238febb0934b7c8877d6a17998f1
     static String errorstreet2 = "//p[text()='Please input a correct value']";
     static String errorzipcode1 = "//p[text()='Please Input a valid Zipcode']";
     static String errorzipcode2 = "//p[text()='This field cannot be more than 10 characters']";
