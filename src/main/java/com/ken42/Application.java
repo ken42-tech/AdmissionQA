@@ -649,6 +649,7 @@ public class Application {
 
         }
     }
+
     @Test(priority = 2)
     public static void SalesforceBackendVerify(String Sfurl, WebDriver driver, String[] csvCell, Logger log) {
         try {
@@ -788,7 +789,8 @@ public class Application {
             log.warning("TC-2: the Salesforce backend Verification along with delete test case FAILED \n");
         }
     }
-    @Test(priority = 3)
+
+    @Test(priority = 4)
     public static void SalesforceBackendDELETE(String Sfurl, WebDriver driver, Logger log) {
         try {
             System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
@@ -800,21 +802,23 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
             Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
             WebDriverWait wait = new WebDriverWait(driver, 20);
-            WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
-    	((JavascriptExecutor)driver).executeScript("arguments[0].click();", elem);
+            WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
             Thread.sleep(2000);
             Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
             Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
-            WebElement elem3 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
-            ((JavascriptExecutor)driver).executeScript("arguments[0].click();", elem3);
-                Thread.sleep(2000);
-                Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
-                Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
+            WebElement elem3 = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem3);
+            Thread.sleep(2000);
+            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
+            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
             log.info("  TC-3:  the Salesforce backend  delete test case PASSED \n");
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             log.warning("TC-3: the Salesforce backend  delete test case FAILED \n");
-    }
+        }
 
-}
+    }
 }
