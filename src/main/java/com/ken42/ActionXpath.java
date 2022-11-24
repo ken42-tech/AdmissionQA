@@ -289,4 +289,7 @@ public class ActionXpath {
     static String ugdegreeselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String ugcountryselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String selectxpath = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
+    static String clickondrop="//a[@role='button'  and @title='Show 2 more actions']";
+    static String delete="//div[text()='Delete']";
+    static String viewAll="//span[text()='View All']";
 }

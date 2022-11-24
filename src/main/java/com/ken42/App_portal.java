@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
-import org.omg.CORBA.portable.InputStream;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -53,7 +52,7 @@ public class App_portal extends Thread {
 
 	public static void main(String[] args) throws Exception {
 		String folder = "";
-		folder = getFolderPath();
+		// folder = getFolderPath();
 		String CSV_PATH = "";
 		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
 		CSVReader csvReader;
@@ -96,7 +95,7 @@ public class App_portal extends Thread {
 		int to = Integer.parseInt(To);
 		Logger log = Logger.getLogger("App_portal" + count);
 		String folder = "";
-		folder = getFolderPath();
+		// folder = getFolderPath();
 		String logFileName = "";
 		boolean append = false;
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -183,22 +182,24 @@ public class App_portal extends Thread {
 		return null;
 	}
 
-	public static String getFolderPath() throws Exception {
-		try {
-			String folder = "";
-			InputStream folderPath = (InputStream) App_portal.class.getResourceAsStream("folder.csv");
-			CSVReader csvFolderPath = new CSVReader(new InputStreamReader(folderPath, "UTF-8"));
-			String[] csvCell_folder;
-			while ((csvCell_folder = csvFolderPath.readNext()) != null) {
-				folder = csvCell_folder[0];
-			}
-			System.out.println(folder);
-			return folder;
-		} catch (Exception e) {
-			Utils.printException(e);
-		}
-		return null;
-	}
+	// public static String getFolderPath() throws Exception {
+	// try {
+	// String folder = "";
+	// InputStream folderPath = (InputStream)
+	// App_portal.class.getResourceAsStream("folder.csv");
+	// CSVReader csvFolderPath = new CSVReader(new InputStreamReader(folderPath,
+	// "UTF-8"));
+	// String[] csvCell_folder;
+	// while ((csvCell_folder = csvFolderPath.readNext()) != null) {
+	// folder = csvCell_folder[0];
+	// }
+	// System.out.println(folder);
+	// return folder;
+	// } catch (Exception e) {
+	// Utils.printException(e);
+	// }
+	// return null;
+	// }
 
 	@AfterMethod
 	public static void quitDriver(String Url, WebDriver driver) throws Exception {

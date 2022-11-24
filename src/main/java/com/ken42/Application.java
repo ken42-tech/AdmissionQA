@@ -16,8 +16,6 @@ import org.testng.annotations.Test;
 import com.beust.jcommander.JCommander.ProgramName;
 import com.mongodb.util.Util;
 
-import javafx.scene.layout.Priority;
-
 public class Application {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
