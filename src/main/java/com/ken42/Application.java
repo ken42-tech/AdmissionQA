@@ -479,11 +479,6 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.hscselectedtype, time, "hscselectedtype");
             Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
             Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
-<<<<<<< HEAD
-=======
-            Utils.clickXpath(driver, ActionXpath.hscgrade, time, "hscgrade");
-            Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
->>>>>>> a2531575168a601d76981983f0997d0500b251fe
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.gradeType, time, "grade type");
             Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
@@ -788,7 +783,6 @@ public class Application {
                 System.out.println("extraactivities is diffrent");
             }
             log.info("  TC-2:  the Salesforce backend Verification along with delete test case PASSED \n");
-<<<<<<< HEAD
 
         } catch (Exception e) {
             log.warning("TC-2: the Salesforce backend Verification along with delete test case FAILED \n");
@@ -820,12 +814,6 @@ public class Application {
 
         }catch (Exception e) {
             log.warning("TC-3: the Salesforce backend  delete test case FAILED \n");
-=======
-
-        } catch (Exception e) {
-            log.warning("TC-2: the Salesforce backend Verification along with delete test case FAILED \n");
-        }
->>>>>>> a2531575168a601d76981983f0997d0500b251fe
     }
 
 }

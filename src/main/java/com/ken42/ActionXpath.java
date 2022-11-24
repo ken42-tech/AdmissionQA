@@ -184,7 +184,7 @@ public class ActionXpath {
     static String hearspjain = "(//*[@id='outlined-select-currency'])[7]";
     static String selecthearspjain = "//*[text()='TV / Radio']";
     static String refrence = "(//*[text()='No'])[8]";
-    static String hscgradeselect = "(//*[text()='Grade'])[1]";
+    //static String hscgradeselect = "(//*[text()='Grade'])[1]";
     // static String clicknext="//*[text()='Next']";
 
     // Tc-8
@@ -292,27 +292,8 @@ public class ActionXpath {
     static String ugdegreeselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String ugcountryselect = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String selectxpath = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
-<<<<<<< HEAD
     static String clickondrop="//a[@role='button'  and @title='Show 2 more actions']";
     static String delete="//a[@title='Delete']";
     static String Delete2="//span[text()='Delete']";
     static String viewAll="//span[text()='View All']";
-=======
-    static String clickondrop = "//a[@role='button'  and @title='Show 2 more actions']";
-    static String delete = "//div[text()='Delete']";
-    static String viewAll = "//span[text()='View All']";
-
-    // documents
-    static String clickdocument = "//*[text()='Documents']";
-    static String selectdocumnentdropdown = "//*[@id='panel1a-header']";
-    static String mark10sheetupload = "(//input[@type='file'])[1]";
-    static String mark10view = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[2]";
-    static String mark10download = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[1]";
-    static String degreemarkupload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[3]";
-    static String degreemarkview = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[2]";
-    static String degreemarkdownload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[1]";
-    static String photoupload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[3]";
-    static String photoview = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[2]";
-    static String photodownload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[1]";
->>>>>>> a2531575168a601d76981983f0997d0500b251fe
 }
