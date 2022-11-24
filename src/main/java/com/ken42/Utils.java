@@ -22,6 +22,7 @@ import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.Session;
 import javax.mail.Store;
+import org.apache.commons.lang3.RandomStringUtils;
 
 public class Utils {
 	static Logger log = Logger.getLogger(Utils.class.getName());
@@ -85,6 +86,15 @@ public class Utils {
 		System.out.println("OTP ***** " + OTP);
 		Utils.callSendkeys(driver, ActionXpath.Inputotp, OTP, "OTP");
 
+	}
+
+	public static String genrateRandomEmailid(){
+		String emailAddress = "";
+		String randomText = "abcdefghijklmnopqrstuvwxyz";
+		String temp = RandomStringUtils.random(5, randomText);
+		String domain = RandomStringUtils.random(3, randomText);
+		emailAddress = temp+"@yay"+"."+domain;
+		return emailAddress;
 	}
 
 	@Test

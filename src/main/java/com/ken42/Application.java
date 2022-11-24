@@ -176,8 +176,9 @@ public class Application {
             if (validation.equals("TRUE")) {
                 validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
             }
+            Email = Utils.genrateRandomEmailid();
             Utils.cleartext(driver, ActionXpath.Email);
-            Utils.callSendkeys(driver, ActionXpath.Email, Email, "Enter the Emial");
+            Utils.callSendkeys(driver, ActionXpath.Email, Email, "Enter the Email");
             if (validation.equals("TRUE")) {
                 validate.numbers(driver, ActionXpath.Age, ActionXpath.errorage1);
                 Utils.cleartext(driver, ActionXpath.Age);
