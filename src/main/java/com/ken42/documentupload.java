@@ -70,7 +70,8 @@ public class documentupload {
         }
     }
 
-    public static void documentupload(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
+    public static void documentupload(String url, String sfurl, WebDriver driver, String[] csvCell, Logger log)
+            throws Exception {
         try {
             System.out.println("TC-3: Fill form with validation test started Executation ");
 

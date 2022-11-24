@@ -176,11 +176,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.Phone, Phone, "enter the Phone");
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-<<<<<<< HEAD
                 validate.email(driver, ActionXpath.Email, ActionXpath.erroremail1);
-=======
-                // validate.email(driver, ActionXpath.Email, ActionXpath.erroremail1);
->>>>>>> 75dccb67fdd1238febb0934b7c8877d6a17998f1
             }
             Email = Utils.genrateRandomEmailid();
             Utils.cleartext(driver, ActionXpath.Email);
