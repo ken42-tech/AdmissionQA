@@ -46,6 +46,7 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.ClickDropDepartment, time, "Select the all department Dropdown");
             Utils.clickXpath(driver, ActionXpath.selectPost, time, "Select the appropiraite Department ");
             Utils.smallSleepBetweenClicks(1);
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
             String Programe = csvCell[76];
             Utils.selectFromDropDown(ActionXpath.selectxpath, Programe, driver);
@@ -118,7 +119,7 @@ public class Application {
             // Utils.clickXpath(driver, ActionXpath.District, time, "Select the Dist");
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.char80(driver, ActionXpath.street, ActionXpath.errorstreet1);
+                validate.char200(driver, ActionXpath.street, ActionXpath.errorstreet1);
                 Utils.cleartext(driver, ActionXpath.street);
                 validate.specialcharacter(driver, ActionXpath.street, ActionXpath.errorstreet2);
             }
@@ -136,6 +137,7 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.currentaddress, time, "Click the address");
             Utils.clickXpath(driver, ActionXpath.selectcurrentaddress, time, "Click the address");
+
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
 
         } catch (Exception e) {
@@ -174,7 +176,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.Phone, Phone, "enter the Phone");
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.specialcharacter(driver, ActionXpath.Email, ActionXpath.erroremail1);
+                validate.email(driver, ActionXpath.Email, ActionXpath.erroremail1);
             }
             Email = Utils.genrateRandomEmailid();
             Utils.cleartext(driver, ActionXpath.Email);
@@ -191,7 +193,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.Age, Age, "Selct age");
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.char40(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
+                validate.char80(driver, ActionXpath.occupation, ActionXpath.erroroccupation1);
                 Utils.cleartext(driver, ActionXpath.occupation);
                 validate.specialcharacter(driver, ActionXpath.occupation, ActionXpath.erroroccupation2);
                 Utils.cleartext(driver, ActionXpath.occupation);

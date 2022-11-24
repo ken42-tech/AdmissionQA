@@ -13,7 +13,7 @@ public class ActionXpath {
     static String ApplyNow = "//button[text()='Apply']";
     static String ClickNext = "//button[text()='Next']";
     static String Selectmentor = "(//*[@id='outlined-select-currency'])[1]";
-    static String selectYes = "//li[@data-value='Yes']";
+    static String selectYes = "//li[@data-value='Yes'] | //li[@data-value='true']";
     static String SelectCampus = "//div[text()='EMBA Combination 1']";
     static String Campus = "(//*[@id='outlined-select-currency'])[2]";
     static String selectSpecilization = "//div[text()='EMBA Marketing']";
@@ -226,7 +226,7 @@ public class ActionXpath {
     // error xpath
     static String errorpassport1 = "//p[text()='Please Input a valid Passport Number']";
     static String errorpassport2 = "//p[text()='This field cannot be more than 12 characters']";
-    static String errorstreet1 = "//p[text()='This field cannot be more than 80 characters']";
+    static String errorstreet1 = "//p[text()='This field cannot be more than 200 characters']";
     static String errorstreet2 = "//p[text()='Please input a correct value']";
     static String errorzipcode1 = "//p[text()='Please Input a valid Zipcode']";
     static String errorzipcode2 = "//p[text()='This field cannot be more than 10 characters']";
@@ -237,7 +237,7 @@ public class ActionXpath {
     static String errorage1 = "//p[text()='This field cannot be more than 3 digits']";
     static String errorage2 = "//p[text()='Please Input a valid Age']";
     static String erroremail1 = "//p[text()='Please Input a valid Email']";
-    static String erroroccupation1 = "//p[text()='This field cannot be more than 20 characters']";
+    static String erroroccupation1 = "//p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 20 characters']";
     static String erroroccupation2 = "//p[text()='Please Input a valid value']";
     static String errorincome1 = "//p[text()='Please Input a correct Income']";
     static String errorincome2 = "//p[text()='This field cannot be more than 18 characters']";
@@ -296,7 +296,7 @@ public class ActionXpath {
     // documents
     static String clickdocument = "//*[text()='Documents']";
     static String selectdocumnentdropdown = "//*[@id='panel1a-header']";
-    static String mark10sheetupload = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[3]";
+    static String mark10sheetupload = "(//input[@type='file'])[1]";
     static String mark10view = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[2]";
     static String mark10download = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[1]";
     static String degreemarkupload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[3]";
