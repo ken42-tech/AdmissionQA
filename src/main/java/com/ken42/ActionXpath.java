@@ -258,7 +258,7 @@ public class ActionXpath {
     static String errormonths2 = "//p[text()='Please input a correct value.'] | //p[text()='This field cannot be more than 3 characters']";
     static String errrosalary1 = "//p[text()='This field cannot be more than 15 characters']";
     static String errrosalary2 = "//p[text()='Please input a correct value'] | //p[text()='This field cannot be more than 3 characters'] | //p[text()='This field cannot be more than 15 characters']";
-    static String errorUniversity = "//p[text()='Please Input a correct value.']";
+    static String errorUniversity = "//p[text()='Please Input a correct value.'] | //p[text()='This field cannot be more than 5 characters']";
     static String error40charUniverisy = "//p[text()='This field cannot be more than 40 characters'] | //p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 5 characters']";
     static String errorCollege = "//p[text()='Please Input a correct value.']";
     static String error40charCollege = "//p[text()='This field cannot be more than 40 characters'] | //p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 5 characters']";
