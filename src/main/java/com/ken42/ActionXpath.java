@@ -118,7 +118,7 @@ public class ActionXpath {
     static String ugselectcity = "//*[text()='Bangalore Rural']";
     static String ugtype = "(//*[@id='outlined-select-currency'])[13]";
     static String ugselecttype = "//*[text()='Year']";
-    static String ugyear1 = "(//*[@id='outlined-select-currency'])[14]/../../../..//*[local-name()='svg']";
+    static String ugyear1 = "(//*[@id='outlined-select-currency'])[14]";
     static String ugselectyear1 = "//*[text()='Year 1']";
     static String ugmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMarks']";
     static String ugmaxmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMaxMarks']";
