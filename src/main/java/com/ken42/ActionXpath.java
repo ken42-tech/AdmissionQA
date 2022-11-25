@@ -263,9 +263,9 @@ public class ActionXpath {
     static String errorCollege = "//p[text()='Please Input a correct value.']";
     static String error40charCollege = "//p[text()='This field cannot be more than 40 characters'] | //p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 5 characters']";
 
-    static String errorSpecailCharPercentage = "//p[text()='Please Input a correct value.'] | //p[text()='This field cannot be more than 5 characters'] ";
+    static String errorSpecailCharPercentage = "//p[text()='Please Input a correct value'] | //p[text()='This field cannot be more than 5 characters'] ";
     static String error80CharPercentage = "//p[text()='This field cannot be more than 7 characters'] | //p[text()='This field cannot be more than 5 characters']";
-    static String errorSchool = "//p[text()='Please Input a correct value.'] | //p[text()='This field cannot be more than 80 characters']";
+    static String errorSchool = "//p[text()='Please input a correct value'] | //p[text()='This field cannot be more than 80 characters']";
 
     // sf check
     static String clickcontacts = "//*[text()='Contacts']";
@@ -313,4 +313,42 @@ public class ActionXpath {
     static String photoupload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[3]";
     static String photoview = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[2]";
     static String photodownload = "(//*[text()='Passport Size Photo']/../..//*[local-name()='svg'])[1]";
+
+    // error
+    static String passporterror = "//*[text()='Passport Number']/../../../..//P";
+    static String addresserror = "(//*[text()='Permanent Address']/../../../..//P)[3]";
+    static String pincodeerror = "//*[text()='PIN / PO BOX/ ZIP']/../../../..//P";
+    static String fnameerror = "//*[text()='First Name']/../../../..//P";
+    static String lnameerror = "//*[text()='Last Name']/../../../..//P";
+    static String emailerror = "//*[text()='Email']/../../../..//P";
+    static String ageerror = "//*[text()='Age']/../../../..//P";
+    static String occupationerror = "//*[text()='Occupation']/../../../..//P";
+    static String incomeerror = "//*[text()='Annual Income']/../../../..//P";
+    static String companyerror = "//*[text()='Company']/../../../..//P";
+    static String desitanationerror = "//*[text()='Designation']/../../../..//P";
+    static String roleserror = "//*[text()='Roles/ KRA']/../../../..//P";
+    static String monthserror = "//*[text()='Experience in Months']/../../../..//P";
+    static String annualerror = "//*[text()='Annual Salary']/../../../..//P";
+    static String pguniversityerror = "//*[text()='University']/../../../..//P";
+    static String pgcollegeerror = "//*[text()='College']/../../../..//P";
+    static String pgpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+
+    static String uguniversityerror = "//*[text()='University']/../../../..//P";
+    static String ugcollegeerror = "//*[text()='College']/../../../..//P";
+    static String ugpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String ugmark1error = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String ugmarktotalmark1error = "//*[text()='Maximum CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String ugmark2error = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String ugmarktotalmark2error = "//*[text()='Maximum CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String hscpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String hscschoolerror = "//*[text()='School Name']/../../../..//P";
+    static String sslcpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String sslcschoolerror = "//*[text()='School Name']/../../../..//P";
+    static String sportsaccivemeterror = "//*[text()='Sport Achievement']/../../../..//P";
+    static String professsionalerror = "//*[text()='Professional Achievement']/../../../..//P";
+    static String Extracurricularerror = "//*[text()='Extra Curricular Activities (social, political, personal etc)']/../../../..//P";
+    static String Exceptionalerror = "//*[text()='Exceptional Academic Achievements']/../../../..//P";
+    static String statementerror = "//*[text()='Statement of purpose (Max 2000)']/../../../..//P";
+    static String masterdegreeerror = "//*[text()='What do you plan to do after finishing a master’s degree at S P Jain?']/../../../..//P";
+
 }

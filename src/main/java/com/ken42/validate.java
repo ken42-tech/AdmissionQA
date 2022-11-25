@@ -16,7 +16,7 @@ public class validate {
             System.out.println(checkfirstnamewithnumber);
             if (!checkfirstnamewithnumber.contains("This field cannot be more than 40 characters")) {
                 log.warning("40 Characters validation test failed");
-            } 
+            }
             Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
@@ -35,7 +35,7 @@ public class validate {
 
             if (checkfirstnamewithnumber.contains("This field cannot be more than 40 characters")) {
                 log.warning("Validation of 80 character failed");
-            } 
+            }
             Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
@@ -44,13 +44,14 @@ public class validate {
 
     }
 
-    public static void specialcharacter(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
+    public static void specialcharacter(WebDriver driver, String xpath, String errorXpath, Logger log)
+            throws Exception {
         try {
             String SpecailChar = "(*#$&))";
 
             Utils.callSendkeys(driver, xpath, SpecailChar, SpecailChar);
             String checkfirstnamewithnumber = Utils.getTEXT(driver, errorXpath);
-            
+
             if (!checkfirstnamewithnumber.contains("Please Input a valid value")) {
                 log.warning("Special character validation failed");
             }
@@ -70,7 +71,7 @@ public class validate {
 
             if (!checkfirstnamewithnumber.contains("Please Input a valid value")) {
                 log.warning("Validation failed for Alpha only feild");
-            } 
+            }
             Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
@@ -89,9 +90,9 @@ public class validate {
                 String checkEmail = Utils.getTEXT(driver, errorXpath);
                 if (!checkEmail.contains("Please Input a valid Email")) {
                     log.warning("TC-1: Email validation FAILED");
-                } 
+                }
                 Utils.cleartext(driver, xpath);
-            }catch (Exception e){
+            } catch (Exception e) {
                 Utils.printException(e);
                 throw e;
             }
@@ -104,10 +105,10 @@ public class validate {
 
             Utils.callSendkeys(driver, xpath, Char200char, Char200char);
             String checkfirstnamewithnumber = Utils.getTEXT(driver, errorXpath);
-            
+
             if (!checkfirstnamewithnumber.contains("This field cannot be more than 200 characters")) {
                 log.warning("200 character validation test failed ");
-            } 
+            }
             Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
