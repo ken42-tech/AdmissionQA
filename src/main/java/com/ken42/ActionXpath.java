@@ -87,11 +87,13 @@ public class ActionXpath {
     static String pgselectedttype = "//*[text()='Full time']";
     static String pgdegree = "(//*[@id='outlined-select-currency'])[2]";
     static String pgselectdegree = "//*[text()='Bachelor of Fine Arts (BFA)']";
-    static String pgcountry = "(//*[@id='outlined-select-currency'])[3]";
+    static String pgevaluation = "(//*[@id='outlined-select-currency'])[3]";
+    static String pgevaluationselect = "//*[text()='Percentage']";
+    static String pgcountry = "(//*[@id='outlined-select-currency'])[4]";
     static String pgselectcountry = "//*[text()='India']";
-    static String pgstate = "(//*[@id='outlined-select-currency'])[4]";
+    static String pgstate = "(//*[@id='outlined-select-currency'])[5]";
     static String pgselectstate = "//*[text()='Karnataka']";
-    static String pgcity = "(//*[@id='outlined-select-currency'])[5]";
+    static String pgcity = "(//*[@id='outlined-select-currency'])[6]";
     static String pgselectcity = "//*[text()='Bangalore Rural']";
 
     // ug
@@ -102,59 +104,61 @@ public class ActionXpath {
     static String uguniversity = "//*[@name='educationHistories[1][institutionName]']";
     static String ugcollege = "//*[@name='educationHistories[1][placeOfStudy]']";
     static String ugpercentage = "//*[@name='educationHistories[1][obtainedMarks]']";
-    static String ugedtype = "(//*[@id='outlined-select-currency'])[6]";
+    static String ugedtype = "(//*[@id='outlined-select-currency'])[7]";
     static String ugselectedtype = "(//*[text()='Full time'])[2]";
-    static String ugdegree = "(//*[@id='outlined-select-currency'])[7]";
+    static String ugdegree = "(//*[@id='outlined-select-currency'])[8]";
     static String ugselectdegree = "//*[text()='Bachelor of Management Science (BMS)']";
-    static String ugcountry = "(//*[@id='outlined-select-currency'])[8]";
+    static String ugevaluation = "(//*[@id='outlined-select-currency'])[9]";
+    static String ugevaluationselect = "//*[text()='Points']";
+    static String ugcountry = "(//*[@id='outlined-select-currency'])[10]";
     static String ugselectcountry = "//*[text()='India']";
-    static String ugstate = "(//*[@id='outlined-select-currency'])[9]";
+    static String ugstate = "(//*[@id='outlined-select-currency'])[11]";
     static String ugselectstate = "//*[text()='Karnataka']";
-    static String ugcity = "(//*[@id='outlined-select-currency'])[10]";
+    static String ugcity = "(//*[@id='outlined-select-currency'])[12]";
     static String ugselectcity = "//*[text()='Bangalore Rural']";
-    static String ugtype = "(//*[@id='outlined-select-currency'])[11]";
+    static String ugtype = "(//*[@id='outlined-select-currency'])[13]";
     static String ugselecttype = "//*[text()='Year']";
-    static String ugyear1 = "(//*[@id='outlined-select-currency'])[12]/../../../..//*[local-name()='svg']";
+    static String ugyear1 = "(//*[@id='outlined-select-currency'])[14]/../../../..//*[local-name()='svg']";
     static String ugselectyear1 = "//*[text()='Year 1']";
     static String ugmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMarks']";
     static String ugmaxmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMaxMarks']";
-    static String ugyear2 = "(//*[@id='outlined-select-currency'])[13]";
+    static String ugyear2 = "(//*[@id='outlined-select-currency'])[15]";
     static String ugselectyear2 = "//*[text()='Year 2']";
     static String ugmark2 = "//*[@name='educationHistories[1][yearwiseMarks].1.yearMarks']";
     static String ugmaxmark2 = "//*[@name='educationHistories[1][yearwiseMarks].1.yearMaxMarks']";
     // 12
-    static String hscedtype = "(//*[@id='outlined-select-currency'])[14]";
+    static String hscedtype = "(//*[@id='outlined-select-currency'])[16]";
     static String hscselectedtype = "(//*[text()='Full time'])[3]";
-    static String hscboard = "(//*[@id='outlined-select-currency'])[15]";
-    static String gradeType = "(//*[@id='outlined-select-currency'])[16]";
+    static String hscboard = "(//*[@id='outlined-select-currency'])[17]";
+    static String gradeType = "(//*[@id='outlined-select-currency'])[18]";
     static String hscselectboard = "(//*[text()='KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD'])[1]";
-    static String hscgrade = "(//*[@id='outlined-select-currency'])[16]";
+    static String hscgrade = "(//*[@id='outlined-select-currency'])[18]";
     static String hscgradeselect = "(//*[text()='Grade'])[1]";
     static String hscpercentage = "//*[@name='educationHistories[2][obtainedMarks]']";
     static String hscyear = "//*[@name='educationHistories[2][yearOfPassing]']";
     static String hscschool = "//*[@name='educationHistories[2][placeOfStudy]']";
-    static String hsccountry = "(//*[@id='outlined-select-currency'])[17]";
+    static String hsccountry = "(//*[@id='outlined-select-currency'])[19]";
     static String hscselectcountry = "//*[text()='India']";
-    static String hscstate = "(//*[@id='outlined-select-currency'])[18]";
+    static String hscstate = "(//*[@id='outlined-select-currency'])[20]";
     static String hscselectstate = "//*[text()='Karnataka']";
-    static String hsccity = "(//*[@id='outlined-select-currency'])[19]";
+    static String hsccity = "(//*[@id='outlined-select-currency'])[21]";
     static String hscselectcity = "//*[text()='Bangalore Rural']";
 
     // 10
-    static String sslcedtype = "(//*[@id='outlined-select-currency'])[20]";
+    static String sslcedtype = "(//*[@id='outlined-select-currency'])[22]";
     static String sslcselectedtype = "(//*[text()='Full time'])[4]";
-    static String sslcboard = "(//*[@id='outlined-select-currency'])[21]";
+    static String sslcboard = "(//*[@id='outlined-select-currency'])[23]";
     static String sslcselectboard = "//*[@name='educationHistories[0][yearOfPassing]']";
-    static String sslcgrade = "(//*[@id='outlined-select-currency'])[22]";
+    static String sslcgrade = "(//*[@id='outlined-select-currency'])[24]";
     static String sslcselectgrade = "//*[text()='CGPA']";
     static String sslcpercentage = "//*[@name='educationHistories[3][obtainedMarks]']";
     static String sslcyear = "//*[@name='educationHistories[3][yearOfPassing]']";
     static String sslcschool = "//*[@name='educationHistories[3][placeOfStudy]']";
-    static String sslccountry = "(//*[@id='outlined-select-currency'])[23]";
+    static String sslccountry = "(//*[@id='outlined-select-currency'])[25]";
     static String sslcselectcountry = "//*[text()='India']";
-    static String sslcstate = "(//*[@id='outlined-select-currency'])[24]";
+    static String sslcstate = "(//*[@id='outlined-select-currency'])[26]";
     static String sslcselectstate = "//*[text()='Karnataka']";
-    static String sslccity = "(//*[@id='outlined-select-currency'])[25]";
+    static String sslccity = "(//*[@id='outlined-select-currency'])[27]";
     static String sslcselectcity = "//*[text()='Bangalore Rural']";
     // static String clicknext="//*[text()='Next']";
     // Tc-7
@@ -239,10 +243,11 @@ public class ActionXpath {
     static String errorage1 = "//p[text()='This field cannot be more than 3 digits']";
     static String errorage2 = "//p[text()='Please Input a valid Age']";
     static String erroremail1 = "//p[text()='Please Input a valid Email']";
-    static String erroroccupation1 = "//p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 20 characters']";
+    static String erroroccupation1 = "//p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 20 characters'] | //p[text()='Please Input a valid value']";
+
     static String erroroccupation2 = "//p[text()='Please Input a valid value']";
     static String errorincome1 = "//p[text()='Please Input a correct Income']";
-    static String errorincome2 = "//p[text()='This field cannot be more than 18 characters']";
+    static String errorincome2 = "//p[text()='This field cannot be more than 15 characters']";
     static String errorcompany1 = "//p[text()='This field cannot be more than 100 characters']";
     static String errorcompany2 = "//p[text()='Please input a correct value.']";
     static String errordestination1 = "//p[text()='This field cannot be more than 80 characters']";
@@ -250,16 +255,16 @@ public class ActionXpath {
     static String errorroles1 = "//p[text()='This field cannot be more than 80 characters']";
     static String errorroles2 = "//p[text()='Please input a correct value.']";
     static String errormonths1 = "//p[text()='This field cannot be more than 3 characters']";
-    static String errormonths2 = "//p[text()='Please input a correct value.']";
-    static String errrosalary1 = "//p[text()='This field cannot be more than 18 characters']";
-    static String errrosalary2 = "//p[text()='Please input a correct value.']";
+    static String errormonths2 = "//p[text()='Please input a correct value.'] | //p[text()='This field cannot be more than 3 characters']";
+    static String errrosalary1 = "//p[text()='This field cannot be more than 15 characters']";
+    static String errrosalary2 = "//p[text()='Please input a correct value'] | //p[text()='This field cannot be more than 3 characters'] | //p[text()='This field cannot be more than 15 characters']";
     static String errorUniversity = "//p[text()='Please Input a correct value.']";
-    static String error40charUniverisy = "//p[text()='This field cannot be more than 40 characters']";
+    static String error40charUniverisy = "//p[text()='This field cannot be more than 40 characters'] | //p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 5 characters']";
     static String errorCollege = "//p[text()='Please Input a correct value.']";
-    static String error40charCollege = "//p[text()='This field cannot be more than 40 characters']";
+    static String error40charCollege = "//p[text()='This field cannot be more than 40 characters'] | //p[text()='This field cannot be more than 80 characters'] | //p[text()='This field cannot be more than 5 characters']";
 
-    static String errorSpecailCharPercentage = "//p[text()='Please Input a correct value.']";
-    static String error80CharPercentage = "//p[text()='This field cannot be more than 7 characters']";
+    static String errorSpecailCharPercentage = "//p[text()='Please Input a correct value.'] | //p[text()='This field cannot be more than 5 characters'] ";
+    static String error80CharPercentage = "//p[text()='This field cannot be more than 7 characters'] | //p[text()='This field cannot be more than 5 characters']";
     static String errorSchool = "//p[text()='Please Input a correct value.']";
 
     // sf check

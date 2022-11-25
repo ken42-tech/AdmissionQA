@@ -345,7 +345,7 @@ public class Application {
             // pg
             Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
             if (validation.equals("TRUE")) {
-                validate.char40(driver, ActionXpath.pguniversity, ActionXpath.error40charUniverisy, log);
+                validate.char80(driver, ActionXpath.pguniversity, ActionXpath.error40charUniverisy, log);
                 Utils.cleartext(driver, ActionXpath.pguniversity);
                 validate.numbers(driver, ActionXpath.pguniversity, ActionXpath.errorUniversity, log);
             }
@@ -354,15 +354,22 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, pguniversity, driver);
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.char40(driver, ActionXpath.pgcollege, ActionXpath.error40charCollege, log);
+                validate.char80(driver, ActionXpath.pgcollege, ActionXpath.error40charCollege, log);
                 Utils.cleartext(driver, ActionXpath.pgcollege);
                 validate.numbers(driver, ActionXpath.pgcollege, ActionXpath.errorCollege, log);
             }
             Utils.cleartext(driver, ActionXpath.pgcollege);
             Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
+            // Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
+            Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
+            Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
+            Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
+            Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
+            Utils.clickXpath(driver, ActionXpath.pgevaluation, time, "pgevaluation");
+            Utils.clickXpath(driver, ActionXpath.pgevaluationselect, time, "pgevaluationselect");
             if (validation.equals("TRUE")) {
-                validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.errorSpecailCharPercentage, log);
+                validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.errorSpecailCharPercentage,
+                        log);
                 Utils.cleartext(driver, ActionXpath.pgpercentage);
                 validate.char80(driver, ActionXpath.pgpercentage, ActionXpath.error40charUniverisy, log);
             }
@@ -370,11 +377,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.pgpercentage, pgpercentage, "pgpercentage");
             Utils.selectFromDropDown(ActionXpath.selectxpath, pgpercentage, driver);
             Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
-            Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
-            Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
-            // Utils.clickXpath(driver, ActionXpath.pgselectdegree, time, "pgselectdegree");
-            Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
+
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgcountry, time, "pgcountry");
             Utils.selectFromDropDown(ActionXpath.pgcountryselect, pgcountry, driver);
@@ -402,7 +405,7 @@ public class Application {
 
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
             if (validation.equals("TRUE")) {
-                validate.char40(driver, ActionXpath.uguniversity, ActionXpath.error40charUniverisy, log);
+                validate.char80(driver, ActionXpath.uguniversity, ActionXpath.error40charUniverisy, log);
                 Utils.cleartext(driver, ActionXpath.uguniversity);
                 validate.numbers(driver, ActionXpath.uguniversity, ActionXpath.errorUniversity, log);
             }
@@ -417,7 +420,7 @@ public class Application {
             }
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.char40(driver, ActionXpath.ugcollege, ActionXpath.error40charUniverisy, log);
+                validate.char80(driver, ActionXpath.ugcollege, ActionXpath.error40charUniverisy, log);
                 Utils.cleartext(driver, ActionXpath.ugcollege);
                 validate.numbers(driver, ActionXpath.ugcollege, ActionXpath.errorCollege, log);
             }
@@ -430,6 +433,8 @@ public class Application {
                     break;
                 }
             }
+            Utils.clickXpath(driver, ActionXpath.ugevaluation, time, "ugevaluation");
+            Utils.clickXpath(driver, ActionXpath.ugevaluationselect, time, "ugevaluationselect");
             if (validation.equals("TRUE")) {
                 validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.errorUniversity, log);
                 Utils.cleartext(driver, ActionXpath.ugpercentage);
@@ -494,7 +499,8 @@ public class Application {
             if (validation.equals("TRUE")) {
                 validate.char80(driver, ActionXpath.hscpercentage, ActionXpath.error80CharPercentage, log);
                 Utils.cleartext(driver, ActionXpath.hscpercentage);
-                validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.errorSpecailCharPercentage, log);
+                validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.errorSpecailCharPercentage,
+                        log);
             }
             Utils.cleartext(driver, ActionXpath.hscpercentage);
             Utils.callSendkeys(driver, ActionXpath.hscpercentage, hscpercentage, "hscpercentage");
@@ -623,7 +629,8 @@ public class Application {
         }
     }
 
-    public static void summaryanddeclaration(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
+    public static void summaryanddeclaration(String url, WebDriver driver, String[] csvCell, Logger log)
+            throws Exception {
         try {
 
             Utils.clickXpath(driver, ActionXpath.clicksubmit, time, "click on clicksubmit");
@@ -643,11 +650,12 @@ public class Application {
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
 
-            login(url, driver, csvCell, log);
-            ApplyforCourse(url, driver, csvCell, log);
-            BasicDetails(url, driver, csvCell, log);
-            FamilyInfo(url, driver, csvCell, log);
-            EmploymentInfo(url, driver, csvCell, log);
+            Thread.sleep(15000);
+            // login(url, driver, csvCell, log);
+            // ApplyforCourse(url, driver, csvCell, log);
+            // BasicDetails(url, driver, csvCell, log);
+            // FamilyInfo(url, driver, csvCell, log);
+            // EmploymentInfo(url, driver, csvCell, log);
             EducationINFO(url, driver, csvCell, log);
             other(url, driver, csvCell, log);
             summaryanddeclaration(url, driver, csvCell, log);
