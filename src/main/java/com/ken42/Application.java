@@ -59,14 +59,15 @@ public class Application {
             String campus = csvCell[77];
             Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
             Utils.scrollUpOrDown(driver, time);
-
             String Specilization = csvCell[79];
-            Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
-            List<WebElement> Speci = driver.findElements(By.xpath("//div[text()='" + Specilization + "']"));
-            for (int i = 0; i < Speci.size(); i++) {
-                if (Speci.get(i).getText().contains(Specilization)) {
-                    Speci.get(i).click();
-                    break;
+            if (csvCell[79].equals("BBA Entrepreneurship")) {
+                Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
+                List<WebElement> Speci = driver.findElements(By.xpath("//div[text()='" + Specilization + "']"));
+                for (int i = 0; i < Speci.size(); i++) {
+                    if (Speci.get(i).getText().contains(Specilization)) {
+                        Speci.get(i).click();
+                        break;
+                    }
                 }
             }
 
