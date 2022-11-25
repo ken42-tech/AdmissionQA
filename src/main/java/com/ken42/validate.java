@@ -17,7 +17,7 @@ public class validate {
             if (!checkfirstnamewithnumber.contains("This field cannot be more than 40 characters")) {
                 log.warning("40 Characters validation test failed");
             } 
-
+            Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -36,6 +36,7 @@ public class validate {
             if (checkfirstnamewithnumber.contains("This field cannot be more than 40 characters")) {
                 log.warning("Validation of 80 character failed");
             } 
+            Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -53,7 +54,7 @@ public class validate {
             if (!checkfirstnamewithnumber.contains("Please Input a valid value")) {
                 log.warning("Special character validation failed");
             }
-
+            Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -70,6 +71,7 @@ public class validate {
             if (!checkfirstnamewithnumber.contains("Please Input a valid value")) {
                 log.warning("Validation failed for Alpha only feild");
             } 
+            Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
@@ -88,6 +90,7 @@ public class validate {
                 if (!checkEmail.contains("Please Input a valid Email")) {
                     log.warning("TC-1: Email validation FAILED");
                 } 
+                Utils.cleartext(driver, xpath);
             }catch (Exception e){
                 Utils.printException(e);
                 throw e;
@@ -105,6 +108,7 @@ public class validate {
             if (!checkfirstnamewithnumber.contains("This field cannot be more than 200 characters")) {
                 log.warning("200 character validation test failed ");
             } 
+            Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
