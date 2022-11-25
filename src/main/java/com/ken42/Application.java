@@ -59,6 +59,17 @@ public class Application {
             String campus = csvCell[77];
             Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
             Utils.scrollUpOrDown(driver, time);
+
+            String Specilization = csvCell[79];
+            Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
+            List<WebElement> Speci = driver.findElements(By.xpath("//div[text()='" + Specilization + "']"));
+            for (int i = 0; i < Speci.size(); i++) {
+                if (Speci.get(i).getText().contains(Specilization)) {
+                    Speci.get(i).click();
+                    break;
+                }
+            }
+
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
             log.info("TC-1: Course deatil screen PASSED");
@@ -650,12 +661,12 @@ public class Application {
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
 
-            Thread.sleep(15000);
-            // login(url, driver, csvCell, log);
-            // ApplyforCourse(url, driver, csvCell, log);
-            // BasicDetails(url, driver, csvCell, log);
-            // FamilyInfo(url, driver, csvCell, log);
-            // EmploymentInfo(url, driver, csvCell, log);
+            // Thread.sleep(15000);
+            login(url, driver, csvCell, log);
+            ApplyforCourse(url, driver, csvCell, log);
+            BasicDetails(url, driver, csvCell, log);
+            FamilyInfo(url, driver, csvCell, log);
+            EmploymentInfo(url, driver, csvCell, log);
             EducationINFO(url, driver, csvCell, log);
             other(url, driver, csvCell, log);
             summaryanddeclaration(url, driver, csvCell, log);

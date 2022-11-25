@@ -265,7 +265,7 @@ public class ActionXpath {
 
     static String errorSpecailCharPercentage = "//p[text()='Please Input a correct value.'] | //p[text()='This field cannot be more than 5 characters'] ";
     static String error80CharPercentage = "//p[text()='This field cannot be more than 7 characters'] | //p[text()='This field cannot be more than 5 characters']";
-    static String errorSchool = "//p[text()='Please Input a correct value.']";
+    static String errorSchool = "//p[text()='Please Input a correct value.'] | //p[text()='This field cannot be more than 80 characters']";
 
     // sf check
     static String clickcontacts = "//*[text()='Contacts']";
