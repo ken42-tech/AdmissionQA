@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.util.logging.Logger;
 import org.apache.commons.lang3.RandomStringUtils;
 public class validate {
+
     public static void testForCharLength(WebDriver driver, String xpath, String errorXpath, Logger log, int length) throws Exception {
         String randomText = "abcdefghijklmnopqrstuvwxyz123456789";
         int maxAllowedLength = length -1;
@@ -23,47 +24,26 @@ public class validate {
         }
     }
 
-    public static void char40(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
-        try {
-            String Char40char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
-
-            Utils.callSendkeys(driver, xpath, Char40char, Char40char);
-            String fortyCharErrorMessage = Utils.getTEXT(driver, errorXpath);
-            System.out.println("%%%%%%%%%%%"+fortyCharErrorMessage);
-            if (!fortyCharErrorMessage.contains("This field cannot be more than 40 characters")) {
-                log.warning("40 Characters validation test failed");
-            }
-            Utils.cleartext(driver, xpath);
-        } catch (Exception e) {
-            Utils.printException(e);
-            throw (e);
+    public static void testForNumberLength(WebDriver driver, String xpath, String errorXpath, Logger log, int length) throws Exception {
+        String randomText = "123456789";
+        int maxAllowedLength = length -1;
+		String testCharLength = RandomStringUtils.random(length, randomText);
+        Utils.callSendkeys(driver, xpath, testCharLength, "Sending a string of length "+length);
+        String testCharLengthErrorMessage = Utils.getTEXT(driver, errorXpath);
+        System.out.println("%%%%%%%%%%%"+testCharLengthErrorMessage);
+        String expectedErrorMessage = "This field cannot be more than "+maxAllowedLength+" digits";
+        System.out.println("@@@@@@@@@@@"+expectedErrorMessage);
+        if(testCharLengthErrorMessage.equals(expectedErrorMessage)){
+            log.info("Number Length validation test PASSED for length "+maxAllowedLength +xpath);
+        }else {
+            log.warning("Number Length validation test FAILED for length "+maxAllowedLength +xpath);
         }
-
-    }
-
-    public static void char80(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
-        try {
-            String Char80char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
-
-            Utils.callSendkeys(driver, xpath, Char80char, Char80char);
-            WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
-            String eightyCharErrorMesage = errorMessage.getText();
-            System.out.println("%%%%%%%%%%%"+eightyCharErrorMesage);
-            if (eightyCharErrorMesage.contains("This field cannot be more than 40 characters")) {
-                log.warning("Validation of 80 character failed");
-            }
-            Utils.cleartext(driver, xpath);
-        } catch (Exception e) {
-            Utils.printException(e);
-            throw (e);
-        }
-
     }
 
     public static void specialcharacter(WebDriver driver, String xpath, String errorXpath, Logger log)
             throws Exception {
         try {
-            String SpecailChar = "(*#$&))";
+            String SpecailChar = "(*#$&$))";
 
             Utils.callSendkeys(driver, xpath, SpecailChar, SpecailChar);
             String specialCharErrorMessage = Utils.getTEXT(driver, errorXpath);
@@ -71,24 +51,25 @@ public class validate {
             if (specialCharErrorMessage.contains("Please Input a valid")) {
                 log.info("Special character validation PASSED"+xpath);
             }else {
-                log.info("Special character validation FAILED"+xpath);
+                log.warning("Special character validation FAILED"+xpath);
             }
             Utils.cleartext(driver, xpath);
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);
         }
-
     }
 
-    public static void numbers(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
+    public static void testAlphaOnly(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
         try {
-            String number = "478623623696489349269234";
+            String number = "478623623";
             Utils.callSendkeys(driver, xpath, number, number);
-            String checkfirstnamewithnumber = Utils.getTEXT(driver, errorXpath);
-            System.out.println("%%%%%%%%%%%"+checkfirstnamewithnumber);
-            if (!checkfirstnamewithnumber.contains("Please Input a valid value")) {
-                log.warning("Validation failed for Alpha only feild");
+            String testAplhaErrorMessage = Utils.getTEXT(driver, errorXpath);
+            System.out.println("%%%%%%%%%%%"+testAplhaErrorMessage);
+            if (testAplhaErrorMessage.contains("Please Input a valid")) {
+                log.info("Validation for Alpha only feild PASSED"+xpath);
+            }else {
+                log.warning("Validation for Alpha only feild FAILED"+xpath);
             }
             Utils.cleartext(driver, xpath);
         } catch (Exception e) {
@@ -106,8 +87,10 @@ public class validate {
                 Utils.cleartext(driver, xpath);
                 String emailErrorMessage = Utils.getTEXT(driver, errorXpath);
                 System.out.println("%%%%%%%%"+emailErrorMessage);
-                if (!emailErrorMessage.contains("Please Input a valid Email")) {
-                    log.warning("TC-1: Email validation FAILED");
+                if (emailErrorMessage.contains("Please Input a valid Email")) {
+                    log.info("Email validation PASSED for string"+Email[i] +xpath);
+                }else{
+                    log.warning("Email validation FAILED"+Email[i] +xpath);
                 }
                 Utils.cleartext(driver, xpath);
             } catch (Exception e) {
@@ -117,21 +100,14 @@ public class validate {
         }
     }
 
-    public static void char200(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
-        try {
-            String Char200char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
-
-            Utils.callSendkeys(driver, xpath, Char200char, Char200char);
-            String twoHundredCharErrorMessage = Utils.getTEXT(driver, errorXpath);
-            System.out.println("%%%%%%%%%"+twoHundredCharErrorMessage);
-            if (!twoHundredCharErrorMessage.contains("This field cannot be more than 200 characters")) {
-                log.warning("200 character validation test failed ");
-            }
-            Utils.cleartext(driver, xpath);
-        } catch (Exception e) {
-            Utils.printException(e);
-            throw (e);
+    public static void testForMandatoryField(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
+        Utils.cleartext(driver, xpath);
+        String madatoryErrorMessage = Utils.getTEXT(driver, errorXpath);
+        if(madatoryErrorMessage.contains("This field is required")){
+            log.info("This feild is manadtory test PASSED"+xpath);
+        }else{
+            log.info("This feild is manadtory test FAILED"+xpath);
         }
-
     }
+
 }
