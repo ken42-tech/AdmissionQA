@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Pattern;
 
 import org.testng.annotations.Test;
 
@@ -920,23 +921,37 @@ public class Application {
             Utils.cleartext(driver, ActionXpath.listsearch);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
-            // Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the
-            // appliation tab");
+
+            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
             WebDriverWait wait = new WebDriverWait(driver, 20);
             WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
+                    By.xpath("(//span[text()='View All'])[1]")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
             Thread.sleep(2000);
-            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
-            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
-            WebElement elem3 = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem3);
-            Thread.sleep(2000);
-            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
-            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
+
+            String count = null;
+            String row = null;
+            count = Utils.getTEXT(driver, ActionXpath.deletecount);
+            Pattern pt = Pattern.compile("-?\\d+");
+            java.util.regex.Matcher m = pt.matcher(count);
+            while (m.find()) {
+                row = m.group();
+            }
+
+            int count1 = Integer.parseInt(row);
+            System.out.println(count1);
+
+            for (int i = 0; i < count1; i++) {
+                Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown ");
+                Utils.smallSleepBetweenClicks(1);
+                Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
+                Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet");
+                Utils.smallSleepBetweenClicks(1);
+
+            }
+
             log.info("  TC-3:  the Salesforce backend  delete test case PASSED \n");
-            driver.switchTo().window(tab.get(0));
+
         } catch (Exception e) {
             log.warning("TC-3: the Salesforce backend  delete test case FAILED \n");
         }
