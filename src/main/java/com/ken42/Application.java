@@ -665,11 +665,11 @@ public class Application {
 
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
-            ApplyforCourse(url, driver, csvCell, log);
-            BasicDetails(url, driver, csvCell, log);
-            FamilyInfo(url, driver, csvCell, log);
-            EmploymentInfo(url, driver, csvCell, log);
-            EducationINFO(url, driver, csvCell, log);
+            // ApplyforCourse(url, driver, csvCell, log);
+            // BasicDetails(url, driver, csvCell, log);
+            // FamilyInfo(url, driver, csvCell, log);
+            // EmploymentInfo(url, driver, csvCell, log);
+            // EducationINFO(url, driver, csvCell, log);
             other(url, driver, csvCell, log);
             summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Fill form with validation test Completed and Passed ");

@@ -168,7 +168,10 @@ public class ActionXpath {
     static String AcademicAchievements = "//*[@name='application[exceptionalAcademicAchievements]']";
     static String fundeducation = "(//*[@id='outlined-select-currency'])[1]";
     static String fundselecteducation = "//*[text()='Self-funding + Bank Loan']";
-    static String physicallychallenged = "(//input[@name='applicant[isDifferentlyAbled]'])[2]";
+    // static String physicallychallenged =
+    // "(//input[@name='applicant[isDifferentlyAbled]'])[2]";
+    static String physicallychallenged = "(//*[text()='No'])[1]";
+
     static String sharedetails = "//*[@name='specialAbilityDetails']";
     static String Statement = "//*[@name='application[statementOfPurpose]']";
     static String planmasterdegree = "//*[@name='application[mastersPlan]']";
@@ -186,7 +189,7 @@ public class ActionXpath {
     static String appliedtoSPJain = "(//*[text()='No'])[6]";
     static String EducationConsultant = "(//*[text()='No'])[7]";
     static String hearspjain = "(//*[@id='outlined-select-currency'])[7]";
-    static String selecthearspjain = "//*[text()='TV / Radio']";
+    static String selecthearspjain = "//*[text()='Social Media']";
     static String refrence = "(//*[text()='No'])[8]";
     // static String hscgradeselect = "(//*[text()='Grade'])[1]";
     // static String clicknext="//*[text()='Next']";
