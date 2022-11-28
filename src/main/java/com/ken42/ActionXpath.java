@@ -354,4 +354,8 @@ public class ActionXpath {
     static String statementerror = "//*[text()='Statement of purpose (Max 2000)']/../../../..//P";
     static String masterdegreeerror = "//*[text()='What do you plan to do after finishing a master’s degree at S P Jain?']/../../../..//P";
 
+    // static String deletesf =
+    // "/html/body/div[4]/div[1]/section/div[1]/div[2]/div[2]/div[1]/div/div/div/div[4]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div//table/tbody/tr";
+    static String deletecount = "(//*[@class='countSortedByFilteredBy'])[2]";
+    static String deletesf = "(//*[text()='2022']/../../..//*[local-name()='svg'])[1]/../../..";
 }

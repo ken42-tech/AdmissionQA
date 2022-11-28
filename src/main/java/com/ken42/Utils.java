@@ -16,7 +16,8 @@ import org.apache.commons.lang3.RandomStringUtils;
 public class Utils {
 	static Logger log = Logger.getLogger(Utils.class.getName());
 	static int time = 1000;
-	public static void clickXpath(WebDriver driver, String xpath, int time, String msg) throws Exception {
+
+	public static String clickXpath(WebDriver driver, String xpath, int time, String msg) throws Exception {
 		JavascriptExecutor js3 = (JavascriptExecutor) driver;
 		int count = 0;
 		int maxTries = 4;
@@ -35,6 +36,8 @@ public class Utils {
 				}
 			}
 		}
+		return msg;
+
 	}
 
 	static void printException(Exception e) {
@@ -75,12 +78,12 @@ public class Utils {
 
 	}
 
-	public static String genrateRandomEmailid(){
+	public static String genrateRandomEmailid() {
 		String emailAddress = "";
 		String randomText = "abcdefghijklmnopqrstuvwxyz";
 		String temp = RandomStringUtils.random(5, randomText);
 		String domain = RandomStringUtils.random(3, randomText);
-		emailAddress = temp+"@yay"+"."+domain;
+		emailAddress = temp + "@yay" + "." + domain;
 		return emailAddress;
 	}
 
