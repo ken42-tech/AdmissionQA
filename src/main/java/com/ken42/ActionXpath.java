@@ -328,7 +328,7 @@ public class ActionXpath {
     static String occupationerror = "//*[text()='Occupation']/../../../..//P";
     static String incomeerror = "//*[text()='Annual Income']/../../../..//P";
     static String companyerror = "//*[text()='Company']/../../../..//P";
-    static String desitanationerror = "//*[text()='Designation']/../../../..//P";
+    static String designationerror = "//*[text()='Designation']/../../../..//P";
     static String roleserror = "//*[text()='Roles/ KRA']/../../../..//P";
     static String monthserror = "//*[text()='Experience in Months']/../../../..//P";
     static String annualerror = "//*[text()='Annual Salary']/../../../..//P";

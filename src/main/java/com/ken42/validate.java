@@ -9,7 +9,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 public class validate {
 
     public static void testForCharLength(WebDriver driver, String xpath, String errorXpath, Logger log, int length) throws Exception {
-        String randomText = "abcdefghijklmnopqrstuvwxyz123456789";
+        String randomText = "abcdefghijklmnopqrstuvwxyz";
         int maxAllowedLength = length -1;
 		String testCharLength = RandomStringUtils.random(length, randomText);
         Utils.callSendkeys(driver, xpath, testCharLength, "Sending a string of length "+length);
