@@ -836,6 +836,7 @@ public class Application {
             driver.get(Sfurl);
             String SfEmail = csvCell[74];
             String SfPassword = csvCell[75];
+            String studentname = csvCell[79];
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
@@ -844,9 +845,10 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts ");
             Utils.clickXpath(driver, ActionXpath.contacts, time, "click on clickcontacts");
             Utils.cleartext(driver, ActionXpath.listsearch);
-            Utils.callSendkeys(driver, ActionXpath.listsearch, "test Student", "Search for student name");
+            Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
-            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
+            // Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the
+            // appliation tab");
             WebDriverWait wait = new WebDriverWait(driver, 20);
             WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
