@@ -608,7 +608,7 @@ public class Application {
 
     public static void other(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-
+            String validation = csvCell[78];
             String SportAchievement = csvCell[66];
             String ProfessionalAchievement = csvCell[67];
             String CurricularActivities = csvCell[68];
@@ -617,21 +617,61 @@ public class Application {
             String planmasterdegree = csvCell[71];
             String language = csvCell[72];
 
+            if (validation.equals("TRUE")) {
+                validate.testForCharLength(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log, 201);
+                Utils.cleartext(driver, ActionXpath.SportAchievement);
+                validate.testForMandatoryField(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log);
+                validate.specialcharacter(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log);
+                Utils.cleartext(driver, ActionXpath.SportAchievement);
+            }
             Utils.callSendkeys(driver, ActionXpath.SportAchievement, SportAchievement, "SportAchievement");
+
+            if (validation.equals("TRUE")) {
+                validate.testForCharLength(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror, log, 201);
+                Utils.cleartext(driver, ActionXpath.SportAchievement);
+                validate.testForMandatoryField(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror, log);
+                validate.specialcharacter(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror, log);
+                Utils.cleartext(driver, ActionXpath.ProfessionalAchievement);
+            }
             Utils.callSendkeys(driver, ActionXpath.ProfessionalAchievement, ProfessionalAchievement,
                     "ProfessionalAchievement");
+
+            if (validation.equals("TRUE")) {
+                validate.testForCharLength(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror, log, 201);
+                Utils.cleartext(driver, ActionXpath.SportAchievement);
+                validate.testForMandatoryField(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror, log);
+                validate.specialcharacter(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror, log);
+                Utils.cleartext(driver, ActionXpath.CurricularActivities);
+            }      
             Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.CurricularActivities, CurricularActivities, "CurricularActivities");
+
+            if (validation.equals("TRUE")) {
+                validate.testForCharLength(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror, log, 201);
+                Utils.cleartext(driver, ActionXpath.SportAchievement);
+                validate.testForMandatoryField(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror, log);
+                validate.specialcharacter(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror, log);
+                Utils.cleartext(driver, ActionXpath.AcademicAchievements);
+            }      
             Utils.callSendkeys(driver, ActionXpath.AcademicAchievements, AcademicAchievements, "AcademicAchievements");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
+
             Utils.clickXpath(driver, ActionXpath.fundeducation, time, "fundeducation");
             Utils.clickXpath(driver, ActionXpath.fundselecteducation, time, "fundselecteducation");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.physicallychallenged, time, "physicallychallenged");
-            // Utils.callSendkeys(driver, ActionXpath.sharedetails, "NA", "sharedetails");
-            Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement");
+
+            if (validation.equals("TRUE")) {
+                validate.testForCharLength(driver, ActionXpath.Statement, ActionXpath.statementerror, log, 2001);
+                Utils.cleartext(driver, ActionXpath.SportAchievement);
+                validate.testForMandatoryField(driver, ActionXpath.Statement, ActionXpath.statementerror, log);
+                validate.specialcharacter(driver, ActionXpath.Statement, ActionXpath.statementerror, log);
+                Utils.cleartext(driver, ActionXpath.Statement);
+            }  
+            Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement of purpose");
+
             Utils.callSendkeys(driver, ActionXpath.planmasterdegree, planmasterdegree, "planmasterdegree");
             Utils.clickXpath(driver, ActionXpath.sponsoredbycompany, time, "sponsoredbycompany");
             Utils.scrollUpOrDown(driver, time);
