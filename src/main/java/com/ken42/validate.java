@@ -9,17 +9,20 @@ import org.apache.commons.lang3.RandomStringUtils;
 public class validate {
     public static void testForCharLength(WebDriver driver, String xpath, String errorXpath, Logger log, int length) throws Exception {
         String randomText = "abcdefghijklmnopqrstuvwxyz123456789";
+        int maxAllowedLength = length -1;
 		String testCharLength = RandomStringUtils.random(length, randomText);
         Utils.callSendkeys(driver, xpath, testCharLength, "Sending a string of length "+length);
         String testCharLengthErrorMessage = Utils.getTEXT(driver, errorXpath);
         System.out.println("%%%%%%%%%%%"+testCharLengthErrorMessage);
-        String expectedErrorMessage = "This field cannot be more than "+length +" characters";
-        if(testCharLengthErrorMessage.contains(expectedErrorMessage)){
-            log.info("Char Length validation test PASSED for length "+length +xpath);
+        String expectedErrorMessage = "This field cannot be more than "+maxAllowedLength+" characters";
+        System.out.println("@@@@@@@@@@@"+expectedErrorMessage);
+        if(testCharLengthErrorMessage.equals(expectedErrorMessage)){
+            log.info("Char Length validation test PASSED for length "+maxAllowedLength +xpath);
         }else {
-            log.warning("Char Length validation test FAILED for length "+length +xpath);
+            log.warning("Char Length validation test FAILED for length "+maxAllowedLength +xpath);
         }
     }
+
     public static void char40(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
         try {
             String Char40char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
@@ -65,8 +68,10 @@ public class validate {
             Utils.callSendkeys(driver, xpath, SpecailChar, SpecailChar);
             String specialCharErrorMessage = Utils.getTEXT(driver, errorXpath);
             System.out.println("%%%%%%%%%%%"+specialCharErrorMessage);
-            if (!specialCharErrorMessage.contains("Please Input a valid value")) {
-                log.warning("Special character validation failed");
+            if (specialCharErrorMessage.contains("Please Input a valid")) {
+                log.info("Special character validation PASSED"+xpath);
+            }else {
+                log.info("Special character validation FAILED"+xpath);
             }
             Utils.cleartext(driver, xpath);
         } catch (Exception e) {

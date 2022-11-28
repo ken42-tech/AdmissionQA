@@ -95,7 +95,7 @@ public class Application {
             String city = csvCell[11];
             String street = csvCell[12];
             String PostalCode = csvCell[13];
-
+            
             Utils.callSendkeys(driver, ActionXpath.dob, dob, "Set tu date of birth");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
@@ -104,9 +104,7 @@ public class Application {
             Utils.selectFromDropDown(ActionXpath.selectxpath, nationality, driver);
             if (validation.equals("TRUE")) {
                 Utils.cleartext(driver, ActionXpath.passport);
-                validate.char40(driver, ActionXpath.passport, ActionXpath.passporterror, log);
-                Utils.cleartext(driver, ActionXpath.passport);
-                validate.char80(driver, ActionXpath.passport, ActionXpath.passporterror, log);
+                validate.testForCharLength(driver, ActionXpath.passport, ActionXpath.passporterror, log, 13);
                 Utils.cleartext(driver, ActionXpath.passport);
                 validate.specialcharacter(driver, ActionXpath.passport, ActionXpath.passporterror, log);
                 Utils.cleartext(driver, ActionXpath.passport);
@@ -134,14 +132,14 @@ public class Application {
             // Utils.clickXpath(driver, ActionXpath.District, time, "Select the Dist");
             Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
-                validate.char200(driver, ActionXpath.street, ActionXpath.addresserror, log);
+                validate.testForCharLength(driver, ActionXpath.street, ActionXpath.addresserror, log, 201);
                 Utils.cleartext(driver, ActionXpath.street);
                 validate.specialcharacter(driver, ActionXpath.street, ActionXpath.addresserror, log);
             }
             Utils.cleartext(driver, ActionXpath.street);
             Utils.callSendkeys(driver, ActionXpath.street, street, "enter your permanent addrrss");
             if (validation.equals("TRUE")) {
-                validate.char80(driver, ActionXpath.PostalCode, ActionXpath.pincodeerror, log);
+                validate.testForCharLength(driver, ActionXpath.PostalCode, ActionXpath.pincodeerror, log, 11);
                 Utils.cleartext(driver, ActionXpath.PostalCode);
                 validate.specialcharacter(driver, ActionXpath.PostalCode, ActionXpath.pincodeerror, log);
             }
