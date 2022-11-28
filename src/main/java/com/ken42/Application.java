@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 
 import org.testng.annotations.Test;
 
@@ -97,7 +96,7 @@ public class Application {
             String city = csvCell[11];
             String street = csvCell[12];
             String PostalCode = csvCell[13];
-
+            
             Utils.callSendkeys(driver, ActionXpath.dob, dob, "Set date of birth");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
@@ -199,7 +198,7 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
 
             if (validation.equals("TRUE")) {
-                validate.email(driver, ActionXpath.Email, ActionXpath.erroremail1, log);
+                validate.email(driver, ActionXpath.Email, ActionXpath.emailerror, log);
             }
             Email = Utils.genrateRandomEmailid();
             Utils.cleartext(driver, ActionXpath.Email);
@@ -450,7 +449,7 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
 
             if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log, 81);
+                validate.testForCharLength(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log,81);
                 Utils.cleartext(driver, ActionXpath.ugcollege);
                 validate.testAlphaOnly(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log);
                 validate.testForMandatoryField(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log);
@@ -614,51 +613,41 @@ public class Application {
             String language = csvCell[72];
 
             if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log,
-                        201);
+                validate.testForCharLength(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log, 201);
                 Utils.cleartext(driver, ActionXpath.SportAchievement);
-                validate.testForMandatoryField(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror,
-                        log);
+                validate.testForMandatoryField(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log);
                 validate.specialcharacter(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log);
                 Utils.cleartext(driver, ActionXpath.SportAchievement);
             }
             Utils.callSendkeys(driver, ActionXpath.SportAchievement, SportAchievement, "SportAchievement");
 
             if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror,
-                        log, 201);
+                validate.testForCharLength(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror, log, 201);
                 Utils.cleartext(driver, ActionXpath.SportAchievement);
-                validate.testForMandatoryField(driver, ActionXpath.ProfessionalAchievement,
-                        ActionXpath.professsionalerror, log);
-                validate.specialcharacter(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror,
-                        log);
+                validate.testForMandatoryField(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror, log);
+                validate.specialcharacter(driver, ActionXpath.ProfessionalAchievement, ActionXpath.professsionalerror, log);
                 Utils.cleartext(driver, ActionXpath.ProfessionalAchievement);
             }
             Utils.callSendkeys(driver, ActionXpath.ProfessionalAchievement, ProfessionalAchievement,
                     "ProfessionalAchievement");
 
             if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror,
-                        log, 201);
+                validate.testForCharLength(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror, log, 201);
                 Utils.cleartext(driver, ActionXpath.SportAchievement);
-                validate.testForMandatoryField(driver, ActionXpath.CurricularActivities,
-                        ActionXpath.Extracurricularerror, log);
-                validate.specialcharacter(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror,
-                        log);
+                validate.testForMandatoryField(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror, log);
+                validate.specialcharacter(driver, ActionXpath.CurricularActivities, ActionXpath.Extracurricularerror, log);
                 Utils.cleartext(driver, ActionXpath.CurricularActivities);
-            }
+            }      
             Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.CurricularActivities, CurricularActivities, "CurricularActivities");
 
             if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror, log,
-                        201);
+                validate.testForCharLength(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror, log, 201);
                 Utils.cleartext(driver, ActionXpath.SportAchievement);
-                validate.testForMandatoryField(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror,
-                        log);
+                validate.testForMandatoryField(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror, log);
                 validate.specialcharacter(driver, ActionXpath.AcademicAchievements, ActionXpath.Exceptionalerror, log);
                 Utils.cleartext(driver, ActionXpath.AcademicAchievements);
-            }
+            }      
             Utils.callSendkeys(driver, ActionXpath.AcademicAchievements, AcademicAchievements, "AcademicAchievements");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
@@ -675,7 +664,7 @@ public class Application {
                 validate.testForMandatoryField(driver, ActionXpath.Statement, ActionXpath.statementerror, log);
                 validate.specialcharacter(driver, ActionXpath.Statement, ActionXpath.statementerror, log);
                 Utils.cleartext(driver, ActionXpath.Statement);
-            }
+            }  
             Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement of purpose");
 
             Utils.callSendkeys(driver, ActionXpath.planmasterdegree, planmasterdegree, "planmasterdegree");
@@ -739,15 +728,15 @@ public class Application {
             String Sfurl = csvCell[73];
 
             // Thread.sleep(15000);
-            // login(url, driver, csvCell, log);
-            SalesforceBackendDELETE(driver, log, csvCell);
-            // ApplyforCourse(url, driver, csvCell, log);
-            // BasicDetails(url, driver, csvCell, log);
-            // FamilyInfo(url, driver, csvCell, log);
-            // EmploymentInfo(url, driver, csvCell, log);
-            // EducationINFO(url, driver, csvCell, log);
-            // other(url, driver, csvCell, log);
-            // summaryanddeclaration(url, driver, csvCell, log);
+            login(url, driver, csvCell, log);
+            // SalesforceBackendDELETE(driver, log, csvCell);
+            ApplyforCourse(url, driver, csvCell, log);
+            BasicDetails(url, driver, csvCell, log);
+            FamilyInfo(url, driver, csvCell, log);
+            EmploymentInfo(url, driver, csvCell, log);
+            EducationINFO(url, driver, csvCell, log);
+            other(url, driver, csvCell, log);
+            summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Fill form with validation test Completed and Passed ");
 
         } catch (Exception e) {
@@ -921,35 +910,21 @@ public class Application {
             Utils.cleartext(driver, ActionXpath.listsearch);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
-
-            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
+            // Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the
+            // appliation tab");
             WebDriverWait wait = new WebDriverWait(driver, 20);
             WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("(//span[text()='View All'])[1]")));
+                    By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
             Thread.sleep(2000);
-
-            String count = null;
-            String row = null;
-            count = Utils.getTEXT(driver, ActionXpath.deletecount);
-            Pattern pt = Pattern.compile("-?\\d+");
-            java.util.regex.Matcher m = pt.matcher(count);
-            while (m.find()) {
-                row = m.group();
-            }
-
-            int count1 = Integer.parseInt(row);
-            System.out.println(count1);
-
-            for (int i = 0; i < count1; i++) {
-                Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown ");
-                Utils.smallSleepBetweenClicks(1);
-                Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
-                Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet");
-                Utils.smallSleepBetweenClicks(1);
-
-            }
-
+            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
+            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
+            WebElement elem3 = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem3);
+            Thread.sleep(2000);
+            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
+            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete the applciatnet");
             log.info("  TC-3:  the Salesforce backend  delete test case PASSED \n");
 
         } catch (Exception e) {
