@@ -117,7 +117,7 @@ public class App_portal extends Thread {
 					documentupload.documentUpload(sfurl, url, driver, csvCell, log);
 					break;
 				case 4:
-					Application.SalesforceBackendDELETE(sfurl, driver, log, csvCell);
+					Application.SalesforceBackendDELETE(driver, log, csvCell);
 					break;
 
 			}

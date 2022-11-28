@@ -666,7 +666,7 @@ public class Application {
 
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
-            SalesforceBackendDELETE(Sfurl, driver, log, csvCell);
+            SalesforceBackendDELETE(driver, log, csvCell);
             ApplyforCourse(url, driver, csvCell, log);
             BasicDetails(url, driver, csvCell, log);
             FamilyInfo(url, driver, csvCell, log);
@@ -825,13 +825,14 @@ public class Application {
     }
 
     @Test(priority = 4)
-    public static void SalesforceBackendDELETE(String Sfurl, WebDriver driver, Logger log, String[] csvCell) {
+    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell) {
         try {
             System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
 
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
+            String Sfurl = csvCell[73];
             driver.get(Sfurl);
             String SfEmail = csvCell[74];
             String SfPassword = csvCell[75];
