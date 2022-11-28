@@ -12,9 +12,9 @@ public class validate {
             String Char40char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
 
             Utils.callSendkeys(driver, xpath, Char40char, Char40char);
-            String checkfirstnamewithnumber = Utils.getTEXT(driver, errorXpath);
-            System.out.println(checkfirstnamewithnumber);
-            if (!checkfirstnamewithnumber.contains("This field cannot be more than 40 characters")) {
+            String fortyCharErrorMessage = Utils.getTEXT(driver, errorXpath);
+            System.out.println("%%%%%%%%%%%"+fortyCharErrorMessage);
+            if (!fortyCharErrorMessage.contains("This field cannot be more than 40 characters")) {
                 log.warning("40 Characters validation test failed");
             }
             Utils.cleartext(driver, xpath);
@@ -31,9 +31,9 @@ public class validate {
 
             Utils.callSendkeys(driver, xpath, Char80char, Char80char);
             WebElement errorMessage = driver.findElement(By.xpath(errorXpath));
-            String checkfirstnamewithnumber = errorMessage.getText();
-
-            if (checkfirstnamewithnumber.contains("This field cannot be more than 40 characters")) {
+            String eightyCharErrorMesage = errorMessage.getText();
+            System.out.println("%%%%%%%%%%%"+eightyCharErrorMesage);
+            if (eightyCharErrorMesage.contains("This field cannot be more than 40 characters")) {
                 log.warning("Validation of 80 character failed");
             }
             Utils.cleartext(driver, xpath);
@@ -50,9 +50,9 @@ public class validate {
             String SpecailChar = "(*#$&))";
 
             Utils.callSendkeys(driver, xpath, SpecailChar, SpecailChar);
-            String checkfirstnamewithnumber = Utils.getTEXT(driver, errorXpath);
-
-            if (!checkfirstnamewithnumber.contains("Please Input a valid value")) {
+            String specialCharErrorMessage = Utils.getTEXT(driver, errorXpath);
+            System.out.println("%%%%%%%%%%%"+specialCharErrorMessage);
+            if (!specialCharErrorMessage.contains("Please Input a valid value")) {
                 log.warning("Special character validation failed");
             }
             Utils.cleartext(driver, xpath);
@@ -68,7 +68,7 @@ public class validate {
             String number = "478623623696489349269234";
             Utils.callSendkeys(driver, xpath, number, number);
             String checkfirstnamewithnumber = Utils.getTEXT(driver, errorXpath);
-
+            System.out.println("%%%%%%%%%%%"+checkfirstnamewithnumber);
             if (!checkfirstnamewithnumber.contains("Please Input a valid value")) {
                 log.warning("Validation failed for Alpha only feild");
             }
@@ -86,9 +86,9 @@ public class validate {
             try {
                 Utils.callSendkeys(driver, xpath, Email[i], "Sending an invalid Email ID");
                 Utils.cleartext(driver, xpath);
-                System.out.println(i);
-                String checkEmail = Utils.getTEXT(driver, errorXpath);
-                if (!checkEmail.contains("Please Input a valid Email")) {
+                String emailErrorMessage = Utils.getTEXT(driver, errorXpath);
+                System.out.println("%%%%%%%%"+emailErrorMessage);
+                if (!emailErrorMessage.contains("Please Input a valid Email")) {
                     log.warning("TC-1: Email validation FAILED");
                 }
                 Utils.cleartext(driver, xpath);
@@ -104,9 +104,9 @@ public class validate {
             String Char200char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsaddasddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";
 
             Utils.callSendkeys(driver, xpath, Char200char, Char200char);
-            String checkfirstnamewithnumber = Utils.getTEXT(driver, errorXpath);
-
-            if (!checkfirstnamewithnumber.contains("This field cannot be more than 200 characters")) {
+            String twoHundredCharErrorMessage = Utils.getTEXT(driver, errorXpath);
+            System.out.println("%%%%%%%%%"+twoHundredCharErrorMessage);
+            if (!twoHundredCharErrorMessage.contains("This field cannot be more than 200 characters")) {
                 log.warning("200 character validation test failed ");
             }
             Utils.cleartext(driver, xpath);
