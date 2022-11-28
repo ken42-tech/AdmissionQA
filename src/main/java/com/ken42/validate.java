@@ -5,8 +5,21 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.logging.Logger;
-
+import org.apache.commons.lang3.RandomStringUtils;
 public class validate {
+    public static void testForCharLength(WebDriver driver, String xpath, String errorXpath, Logger log, int length) throws Exception {
+        String randomText = "abcdefghijklmnopqrstuvwxyz123456789";
+		String testCharLength = RandomStringUtils.random(length, randomText);
+        Utils.callSendkeys(driver, xpath, testCharLength, "Sending a string of length "+length);
+        String testCharLengthErrorMessage = Utils.getTEXT(driver, errorXpath);
+        System.out.println("%%%%%%%%%%%"+testCharLengthErrorMessage);
+        String expectedErrorMessage = "This field cannot be more than "+length +" characters";
+        if(testCharLengthErrorMessage.contains(expectedErrorMessage)){
+            log.info("Char Length validation test PASSED for length "+length +xpath);
+        }else {
+            log.warning("Char Length validation test FAILED for length "+length +xpath);
+        }
+    }
     public static void char40(WebDriver driver, String xpath, String errorXpath, Logger log) throws Exception {
         try {
             String Char40char = "sddadsadadsadadadadadadadaddadasdadadadaddsdadsddadsadda";

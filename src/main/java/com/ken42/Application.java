@@ -666,7 +666,7 @@ public class Application {
 
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
-            SalesforceBackendDELETE(driver, log, csvCell);
+            // SalesforceBackendDELETE(driver, log, csvCell);
             ApplyforCourse(url, driver, csvCell, log);
             BasicDetails(url, driver, csvCell, log);
             FamilyInfo(url, driver, csvCell, log);
