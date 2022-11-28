@@ -48,7 +48,7 @@ public class validate {
             Utils.callSendkeys(driver, xpath, SpecailChar, SpecailChar);
             String specialCharErrorMessage = Utils.getTEXT(driver, errorXpath);
             System.out.println("%%%%%%%%%%%"+specialCharErrorMessage);
-            if (specialCharErrorMessage.contains("Please Input a valid")) {
+            if (specialCharErrorMessage.contains("Please")) {
                 log.info("Special character validation PASSED"+xpath);
             }else {
                 log.warning("Special character validation FAILED"+xpath);

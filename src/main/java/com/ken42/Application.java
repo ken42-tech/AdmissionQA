@@ -177,14 +177,13 @@ public class Application {
             String validation = csvCell[78];
             Utils.clickXpath(driver, ActionXpath.selectrelationship, time, "Select the Relationship status option");
             Utils.clickXpath(driver, ActionXpath.relationType, time, "Select the relationhip Type");
+
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.firstName, ActionXpath.fnameerror, log, 41);
                 Utils.cleartext(driver, ActionXpath.firstName);
                 validate.specialcharacter(driver, ActionXpath.firstName, ActionXpath.fnameerror, log);
-                Utils.cleartext(driver, ActionXpath.firstName);
                 validate.testForMandatoryField(driver, ActionXpath.lastName, ActionXpath.lnameerror, log);
             }
-            Utils.cleartext(driver, ActionXpath.firstName);
             Utils.callSendkeys(driver, ActionXpath.firstName, firstName, "Enter Fist name");
             Utils.scrollUpOrDown(driver, time);
 
@@ -192,10 +191,8 @@ public class Application {
                 validate.testForCharLength(driver, ActionXpath.lastName, ActionXpath.lnameerror, log, 41);
                 Utils.cleartext(driver, ActionXpath.lastName);
                 validate.specialcharacter(driver, ActionXpath.lastName, ActionXpath.lnameerror, log);
-                Utils.cleartext(driver, ActionXpath.lastName);
                 validate.testForMandatoryField(driver, ActionXpath.lastName, ActionXpath.lnameerror, log);
             }
-            Utils.cleartext(driver, ActionXpath.lastName);
             Utils.callSendkeys(driver, ActionXpath.lastName, lastName, "Enter Last NAme");
             Utils.callSendkeys(driver, ActionXpath.Phone, Phone, "enter the Phone");
             Utils.scrollUpOrDown(driver, time);
@@ -223,7 +220,6 @@ public class Application {
                 validate.specialcharacter(driver, ActionXpath.occupation, ActionXpath.occupationerror, log);
                 Utils.cleartext(driver, ActionXpath.occupation);
                 validate.testAlphaOnly(driver, ActionXpath.occupation, ActionXpath.occupationerror, log);
-                Utils.cleartext(driver, ActionXpath.occupation);
                 validate.testForMandatoryField(driver, ActionXpath.occupation, ActionXpath.occupationerror, log);
             }
             Utils.callSendkeys(driver, ActionXpath.occupation, occupation, "Enter Occupation");
@@ -235,7 +231,6 @@ public class Application {
                 Utils.cleartext(driver, ActionXpath.annualIncome);
                 validate.testAlphaOnly(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log);
             }
-            Utils.cleartext(driver, ActionXpath.annualIncome);
             Utils.callSendkeys(driver, ActionXpath.annualIncome, annualIncome, "Selct the Annual income");
 
             Utils.scrollUpOrDown(driver, time);
