@@ -199,7 +199,7 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
 
             if (validation.equals("TRUE")) {
-                validate.email(driver, ActionXpath.Email, ActionXpath.erroremail1, log);
+                validate.email(driver, ActionXpath.Email, ActionXpath.emailerror, log);
             }
             Email = Utils.genrateRandomEmailid();
             Utils.cleartext(driver, ActionXpath.Email);
@@ -739,15 +739,15 @@ public class Application {
             String Sfurl = csvCell[73];
 
             // Thread.sleep(15000);
-            // login(url, driver, csvCell, log);
+            login(url, driver, csvCell, log);
             SalesforceBackendDELETE(driver, log, csvCell);
-            // ApplyforCourse(url, driver, csvCell, log);
-            // BasicDetails(url, driver, csvCell, log);
-            // FamilyInfo(url, driver, csvCell, log);
-            // EmploymentInfo(url, driver, csvCell, log);
-            // EducationINFO(url, driver, csvCell, log);
-            // other(url, driver, csvCell, log);
-            // summaryanddeclaration(url, driver, csvCell, log);
+            ApplyforCourse(url, driver, csvCell, log);
+            BasicDetails(url, driver, csvCell, log);
+            FamilyInfo(url, driver, csvCell, log);
+            EmploymentInfo(url, driver, csvCell, log);
+            EducationINFO(url, driver, csvCell, log);
+            other(url, driver, csvCell, log);
+            summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Fill form with validation test Completed and Passed ");
 
         } catch (Exception e) {
@@ -951,7 +951,7 @@ public class Application {
             }
 
             log.info("  TC-3:  the Salesforce backend  delete test case PASSED \n");
-
+            driver.switchTo().window(tab.get(0));
         } catch (Exception e) {
             log.warning("TC-3: the Salesforce backend  delete test case FAILED \n");
         }
