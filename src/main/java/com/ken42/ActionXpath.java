@@ -131,7 +131,7 @@ public class ActionXpath {
     static String ugtype = "(//*[text()='Type']/../../../..//*[local-name()='svg'])[1]/../..";
     static String ugselecttype = "//*[text()='Year']";
     // static String ugyear1 = "(//*[@id='outlined-select-currency'])[13]";
-    static String ugyear1 = "(//*[text()='Select Year']/../../../..//*[local-name()='svg'])[2]/../..";
+    static String ugyear1 = "(//*[text()='Select Year']/../../../..//*[local-name()='svg'])[1]/../..";
     static String ugselectyear1 = "//*[text()='Year 1']";
     static String ugmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMarks']";
     static String ugmaxmark1 = "//*[@name='educationHistories[1][yearwiseMarks].0.yearMaxMarks']";
@@ -145,7 +145,7 @@ public class ActionXpath {
     static String hscedtype = "(//*[text()='Education Type']/../../../..//*[local-name()='svg'])[3]/../..";
     static String hscselectedtype = "(//*[text()='Full time'])[3]";
     // static String hscboard = "(//*[@id='outlined-select-currency'])[17]";
-    static String hscboard = "(//*[text()='Board']/../../../..//*[local-name()='svg'])[3]/../..";
+    static String hscboard = "(//*[text()='Board']/../../../..//*[local-name()='svg'])[1]/../..";
     // static String gradeType = "(//*[@id='outlined-select-currency'])[18]";
     static String gradeType = "(//*[text()='Evaluation Type']/../../../..//*[local-name()='svg'])[3]/../..";
     static String hscselectboard = "(//*[text()='KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD'])[1]";
@@ -169,7 +169,7 @@ public class ActionXpath {
     static String sslcedtype = "(//*[text()='Education Type']/../../../..//*[local-name()='svg'])[4]/../..";
     static String sslcselectedtype = "(//*[text()='Full time'])[4]";
     // static String sslcboard = "(//*[@id='outlined-select-currency'])[23]";
-    static String sslcboard = "(//*[text()='Board']/../../../..//*[local-name()='svg'])[4]/../..";
+    static String sslcboard = "(//*[text()='Board']/../../../..//*[local-name()='svg'])[2]/../..";
     static String sslcselectboard = "//*[@name='educationHistories[0][yearOfPassing]']";
     static String sslcgrade = "(//*[text()='Evaluation Type']/../../../..//*[local-name()='svg'])[4]/../..";
     // static String sslcgrade = "(//*[@id='outlined-select-currency'])[24]";
@@ -383,7 +383,7 @@ public class ActionXpath {
     // static String deletesf =
     // "/html/body/div[4]/div[1]/section/div[1]/div[2]/div[2]/div[1]/div/div/div/div[4]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div//table/tbody/tr";
     static String deletecount = "(//*[@class='countSortedByFilteredBy'])[2]";
-    static String deletesf = "(//*[text()='2022']/../../..//*[local-name()='svg'])[1]/../../..";
+    static String deletesf = "(//*[. and contains(text(), '202')])[4]/../../..//*[local-name()='svg']/../../..";
 
     static String admissionportal = "//input[@name='id']";
     static String submitbutton = "//button[@type='submit']";

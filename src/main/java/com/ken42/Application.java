@@ -504,6 +504,7 @@ public class Application {
                     break;
                 }
             }
+            Utils.scrollUpOrDown(driver, time);
 
             Utils.clickXpath(driver, ActionXpath.ugcountry, time, "ugcountry");
             Utils.selectFromDropDown(ActionXpath.selectxpath, ugcountry, driver);
@@ -940,7 +941,8 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
 
-            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
+            // Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the
+            // appliation tab");
             WebDriverWait wait = new WebDriverWait(driver, 20);
             WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("(//span[text()='View All'])[1]")));
