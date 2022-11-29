@@ -28,7 +28,7 @@ public class Application {
             Thread.sleep(3000);
             Utils.callSendkeys(driver, ActionXpath.EnterEmail, email, "Enter r mail address ");
             Utils.clickXpath(driver, ActionXpath.Verify, time, "verify");
-            Utils.bigSleepBetweenClicks(1);
+            Utils.bigSleepBetweenClicks(2);
             Utils.getAndSentOTP(driver, email, password);
             Utils.clickXpath(driver, ActionXpath.Verifylogin, time, "Verify Login ");
             log.info("TC-1: Login was succesful");
@@ -59,34 +59,30 @@ public class Application {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
 
-            Utils.clickXpath(driver, ActionXpath.campus, time, "Select the campus");
-            String campus = csvCell[77];
-            Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
-            Utils.scrollUpOrDown(driver, time);
-
-            // if (csvCell[77].equals("BBA Entrepreneurship") || csvCell[77].equals("EMBA
-            // Combination 1")) {
-            // String Specilization = csvCell[80];
-            // Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
-            // List<WebElement> Speci = driver.findElements(By.xpath("//div[text()='" +
-            // Specilization + "']"));
-            // for (int i = 0; i < Speci.size(); i++) {
-            // if (Speci.get(i).getText().contains(Specilization)) {
-            // Speci.get(i).click();
-            // break;
-            // }
-            // }
-            // }
-            String Specilization = csvCell[80];
-            Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
-            List<WebElement> Speci = driver
-                    .findElements(By.xpath("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']//li"));
-            for (int i = 0; i < Speci.size(); i++) {
-                if (Speci.get(i).getText().contains(Specilization)) {
-                    Speci.get(i).click();
-                    break;
+            if (csvCell[76].equals("Global MBA") || csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                System.out.println("No campus selection for Global MBA");
+            }else {
+                Utils.clickXpath(driver, ActionXpath.campus, time, "Select the campus");
+                String campus = csvCell[77];
+                Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
+                Utils.scrollUpOrDown(driver, time);
+            }
+            
+            if (csvCell[76].equals("Bachelor of Business Communication")) {
+                System.out.println("No Specialization for BBC");
+            } else {
+                String Specilization = csvCell[80];
+                Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
+                List<WebElement> Speci = driver
+                        .findElements(By.xpath("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']//li"));
+                for (int i = 0; i < Speci.size(); i++) {
+                    if (Speci.get(i).getText().contains(Specilization)) {
+                        Speci.get(i).click();
+                        break;
+                    }
                 }
             }
+            
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
