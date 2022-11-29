@@ -69,6 +69,8 @@ public class Application {
             }
             
             if (csvCell[76].equals("Bachelor of Business Communication")) {
+                System.out.println("No Specialization for BBC");
+            } else {
                 String Specilization = csvCell[80];
                 Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
                 List<WebElement> Speci = driver
