@@ -405,6 +405,7 @@ public class Application {
             // Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
             Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
             Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
+            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
             Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
             Utils.clickXpath(driver, ActionXpath.pgevaluation, time, "pgevaluation");
@@ -445,7 +446,7 @@ public class Application {
             String ugmaxmark2 = csvCell[51];
 
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
-            
+
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log, 81);
                 Utils.cleartext(driver, ActionXpath.uguniversity);
@@ -535,6 +536,9 @@ public class Application {
             String hsccountry = csvCell[56];
             String hscstate = csvCell[57];
             String hsccity = csvCell[58];
+            Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
+
             Utils.clickXpath(driver, ActionXpath.hscedtype, time, "hscedtype");
             Utils.clickXpath(driver, ActionXpath.hscselectedtype, time, "hscselectedtype");
             Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
