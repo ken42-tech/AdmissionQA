@@ -230,7 +230,6 @@ public class Application {
                 Utils.cleartext(driver, ActionXpath.annualIncome);
                 validate.specialcharacter(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log);
                 Utils.cleartext(driver, ActionXpath.annualIncome);
-                validate.testAlphaOnly(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log);
             }
             Utils.callSendkeys(driver, ActionXpath.annualIncome, annualIncome, "Selct the Annual income");
 
@@ -432,6 +431,7 @@ public class Application {
             String ugmaxmark2 = csvCell[51];
 
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
+            
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log, 81);
                 Utils.cleartext(driver, ActionXpath.uguniversity);

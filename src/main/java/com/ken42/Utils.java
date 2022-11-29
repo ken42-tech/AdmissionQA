@@ -89,9 +89,9 @@ public class Utils {
 
 	@Test
 	public static void bigSleepBetweenClicks(int loop) throws InterruptedException {
-		int total_time = 7000 * loop;
+		int total_time = 4000 * loop;
 		System.out.println("Sleeping for " + total_time);
-		Thread.sleep(7000 * loop);
+		Thread.sleep(4000 * loop);
 	}
 
 	@Test
