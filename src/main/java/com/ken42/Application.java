@@ -57,20 +57,34 @@ public class Application {
             Utils.clickXpath(driver, ActionXpath.Selectmentor, time, "Slect the mentor");
             Utils.clickXpath(driver, ActionXpath.selectYes, time, "Slect  yes ");
             Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.Campus, time, "Select the campus");
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.clickXpath(driver, ActionXpath.campus, time, "Select the campus");
             String campus = csvCell[77];
             Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
             Utils.scrollUpOrDown(driver, time);
 
-            if (csvCell[78].equals("BBA Entrepreneurship")) {
-                String Specilization = csvCell[78];
-                Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
-                List<WebElement> Speci = driver.findElements(By.xpath("//div[text()='" + Specilization + "']"));
-                for (int i = 0; i < Speci.size(); i++) {
-                    if (Speci.get(i).getText().contains(Specilization)) {
-                        Speci.get(i).click();
-                        break;
-                    }
+            // if (csvCell[77].equals("BBA Entrepreneurship") || csvCell[77].equals("EMBA
+            // Combination 1")) {
+            // String Specilization = csvCell[80];
+            // Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
+            // List<WebElement> Speci = driver.findElements(By.xpath("//div[text()='" +
+            // Specilization + "']"));
+            // for (int i = 0; i < Speci.size(); i++) {
+            // if (Speci.get(i).getText().contains(Specilization)) {
+            // Speci.get(i).click();
+            // break;
+            // }
+            // }
+            // }
+            String Specilization = csvCell[80];
+            Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
+            List<WebElement> Speci = driver
+                    .findElements(By.xpath("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']//li"));
+            for (int i = 0; i < Speci.size(); i++) {
+                if (Speci.get(i).getText().contains(Specilization)) {
+                    Speci.get(i).click();
+                    break;
                 }
             }
 
@@ -230,7 +244,6 @@ public class Application {
                 Utils.cleartext(driver, ActionXpath.annualIncome);
                 validate.specialcharacter(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log);
                 Utils.cleartext(driver, ActionXpath.annualIncome);
-                validate.testAlphaOnly(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log);
             }
             Utils.callSendkeys(driver, ActionXpath.annualIncome, annualIncome, "Selct the Annual income");
 
@@ -940,15 +953,19 @@ public class Application {
 
             int count1 = Integer.parseInt(row);
             System.out.println(count1);
+            String count2 = "0";
 
             for (int i = 0; i < count1; i++) {
+                // if (row.equals(count2)) {
                 Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown ");
                 Utils.smallSleepBetweenClicks(1);
                 Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
                 Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet");
                 Utils.smallSleepBetweenClicks(1);
-
             }
+
+            // }
+            driver.switchTo().window(tab.get(0));
 
             log.info("  TC-3:  the Salesforce backend  delete test case PASSED \n");
 

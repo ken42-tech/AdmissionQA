@@ -4,8 +4,6 @@ import java.util.logging.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-
-
 public class documentupload {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
@@ -41,7 +39,7 @@ public class documentupload {
             //
             Thread.sleep(4000);
 
-            driver.findElement(By.xpath("//*[text()='Std 10th Mark sheet']/../..//input[@type='file']"));
+            driver.findElement(By.xpath("(//*[text()='Std 10th Mark sheet']/../..//input[@type='file'])[1]"));
             Thread.sleep(4000);
 
             Utils.clickXpath(driver, ActionXpath.mark10view, time, "mark10view");

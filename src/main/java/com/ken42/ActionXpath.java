@@ -14,10 +14,12 @@ public class ActionXpath {
     static String ClickNext = "//button[text()='Next']";
     static String Selectmentor = "(//*[@id='outlined-select-currency'])[1]";
     static String selectYes = "//li[@data-value='Yes'] | //li[@data-value='true']";
-    static String SelectCampus = "//div[text()='EMBA Combination 1']";
-    static String Campus = "(//*[@id='outlined-select-currency'])[2]";
-    static String selectSpecilization = "//div[text()='EMBA Marketing']";
-    static String Specilization = "(//*[@id='outlined-select-currency'])[3]";
+    // static String SelectCampus = "//div[text()='EMBA Combination 1']";
+    // static String Campus = "(//*[@id='outlined-select-currency'])[2]";
+    static String campus = "//*[text()='Campus Format']/../../../..//*[local-name()='svg']/../..";
+    // static String selectSpecilization = "//div[text()='EMBA Marketing']";
+    // static String Specilization = "(//*[@id='outlined-select-currency'])[3]";
+    static String Specilization = "//*[text()='Specialization']/../../../..//*[local-name()='svg']/../..";
 
     // static String goappliaction="//p[text()='Go To Your Application']";
     // Tc-3
@@ -358,4 +360,55 @@ public class ActionXpath {
     // "/html/body/div[4]/div[1]/section/div[1]/div[2]/div[2]/div[1]/div/div/div/div[4]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div//table/tbody/tr";
     static String deletecount = "(//*[@class='countSortedByFilteredBy'])[2]";
     static String deletesf = "(//*[text()='2022']/../../..//*[local-name()='svg'])[1]/../../..";
+
+    static String admissionportal = "//input[@name='id']";
+    static String submitbutton = "//button[@type='submit']";
+    static String fees = "//span[.='Fee Payments']";
+    static String pay = "//button[@label='Pay Now']";
+    static String paynow = "//button[@data-testid='button']";
+    static String next = "//span[.='Next']";
+    static String trusty = "//h3[.='trustly test']/../../../..//button";
+    static String email = "//input[@id='sender_email']";
+    static String fname = "//input[@id='sender_first_name']";
+
+    static String familyname = "//input[@id='sender_last_name']";
+
+    static String address1 = "//input[@id='sender_address1']";
+
+    static String city1 = "//input[@id='sender_city']";
+
+    static String phno = "//input[@id='sender_phone']";
+
+    static String terms = "//input[@id='terms-conditions']";
+
+    static String dob1 = "//input[@id='student_date_of_birth']";
+
+    static String pay2btn = "//span[.='Pay']";
+    static String divhsbcuk = "(//div[@class='sc-gXfVKN iaWjVc'])[2]";
+    static String continuex = "//span[text()='Continue']";
+    static String loginid = "//input[@name='loginid']";
+    static String otpcapture = "//h3[@class='sc-dlnjwi dRMjYq']";
+
+    static String password = "//input[@type='password']";
+
+    static String continuebutton = "//button[@data-testid='continue-button']";
+
+    static String returnhome = "//button[@data-testid='returnCallToActionButton']";
+
+    // static String EnterEmail = "//input[@name='id' or @placeholder='Please enter
+    // your Email Id']";
+    // static String Verify = "//button[text()='Verify']";
+    // static String Verifylogin = "//button[text()='Verify & Log In']";
+    // static String Inputotp = "//input[@aria-label='Please enter verification
+    // code. Digit 1']";
+
+    //// ....................................salesforce
+    //// backend......................................................////
+
+    static String salesusername = "//input[@id='username']";
+
+    static String salespassword = "//input[@type='password']";
+
+    static String saleslogin = "//input[@id='Login']";
+
 }
