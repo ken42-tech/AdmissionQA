@@ -445,6 +445,7 @@ public class Application {
             String ugmaxmark2 = csvCell[51];
 
             Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
+            
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log, 81);
                 Utils.cleartext(driver, ActionXpath.uguniversity);
