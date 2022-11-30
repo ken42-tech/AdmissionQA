@@ -46,8 +46,8 @@ public class Application {
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.ClickDropDepartment, time, "Select the all department Dropdown");
             Utils.clickXpath(driver, ActionXpath.selectPost, time, "Select the appropiraite Department ");
-            Utils.smallSleepBetweenClicks(1);
-            Utils.scrollUpOrDown(driver, time);
+            Utils.smallSleepBetweenClicks(2);
+            // Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
             String Programe = csvCell[76];
             Utils.selectFromDropDown(ActionXpath.selectxpath, Programe, driver);
@@ -61,20 +61,21 @@ public class Application {
 
             if (csvCell[76].equals("Global MBA") || csvCell[76].equals("Masters of Global Business Management VS-1")) {
                 System.out.println("No campus selection for Global MBA");
-            }else {
+            } else {
                 Utils.clickXpath(driver, ActionXpath.campus, time, "Select the campus");
                 String campus = csvCell[77];
                 Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
                 Utils.scrollUpOrDown(driver, time);
             }
-            
+
             if (csvCell[76].equals("Bachelor of Business Communication")) {
                 System.out.println("No Specialization for BBC");
             } else {
                 String Specilization = csvCell[80];
                 Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
                 List<WebElement> Speci = driver
-                        .findElements(By.xpath("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']//li"));
+                        .findElements(
+                                By.xpath("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']//li"));
                 for (int i = 0; i < Speci.size(); i++) {
                     if (Speci.get(i).getText().contains(Specilization)) {
                         Speci.get(i).click();
@@ -82,7 +83,6 @@ public class Application {
                     }
                 }
             }
-            
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
@@ -193,7 +193,7 @@ public class Application {
                 validate.testForCharLength(driver, ActionXpath.firstName, ActionXpath.fnameerror, log, 41);
                 Utils.cleartext(driver, ActionXpath.firstName);
                 validate.specialcharacter(driver, ActionXpath.firstName, ActionXpath.fnameerror, log);
-                validate.testForMandatoryField(driver, ActionXpath.lastName, ActionXpath.lnameerror, log);
+                validate.testForMandatoryField(driver, ActionXpath.firstName, ActionXpath.fnameerror, log);
             }
             Utils.callSendkeys(driver, ActionXpath.firstName, firstName, "Enter Fist name");
             Utils.scrollUpOrDown(driver, time);
@@ -956,18 +956,32 @@ public class Application {
 
             int count1 = Integer.parseInt(row);
             System.out.println(count1);
-            String count2 = "0";
+            // String count2 = "0";
 
             for (int i = 0; i < count1; i++) {
-                // if (row.equals(count2)) {
-                Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown ");
-                Utils.smallSleepBetweenClicks(1);
-                Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant");
-                Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet");
-                Utils.smallSleepBetweenClicks(1);
-            }
+                String delete = Utils.getTEXT(driver, ActionXpath.delete2023);
+                String delete1 = Utils.getTEXT(driver, ActionXpath.delete2022);
+                System.out.println(delete1);
+                System.out.println(delete);
+                if (delete.equals("2023")) {
+                    System.out.println("deleting 2023");
+                    Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown 2023");
+                    Utils.smallSleepBetweenClicks(1);
+                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant2023");
+                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet2023");
+                    Utils.smallSleepBetweenClicks(1);
+                    continue;
+                }
+                if (delete1.equals("2022")) {
+                    System.out.println("deleting 2022");
+                    Utils.clickXpath(driver, ActionXpath.deletesf1, time, "click on dropdown 2022");
+                    Utils.smallSleepBetweenClicks(1);
+                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant2022");
+                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet2022");
+                    Utils.smallSleepBetweenClicks(1);
+                }
 
-            // }
+            }
             driver.switchTo().window(tab.get(0));
 
             log.info("  TC-3:  the Salesforce backend  delete test case PASSED \n");

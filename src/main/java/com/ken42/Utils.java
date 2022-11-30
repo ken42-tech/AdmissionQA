@@ -18,14 +18,17 @@ public class Utils {
 	static int time = 1000;
 
 	public static String clickXpath(WebDriver driver, String xpath, int time, String msg) throws Exception {
-		JavascriptExecutor js3 = (JavascriptExecutor) driver;
+		JavascriptExecutor je = (JavascriptExecutor) driver;
 		int count = 0;
 		int maxTries = 4;
 		while (true) {
 			try {
 				Thread.sleep(1000);
 				log.info("Click on the:" + msg);
-				new WebDriverWait(driver, 10).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
+				// WebElement element = driver.findElement(By.xpath(xpath));
+				// je.executeScript("arguments[0].scrollIntoView(true);", element);
+				// element.click();
+				new WebDriverWait(driver, 0).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
 				break;
 			} catch (Exception e) {
 				Thread.sleep(500);
@@ -116,7 +119,7 @@ public class Utils {
 	@Test
 	public static void scrollUpOrDown(WebDriver driver, int pixel) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,100)");
+		js.executeScript("window.scrollBy(0,150)");
 	}
 
 	public static void cleartext(WebDriver driver, String Xpath) throws Exception {

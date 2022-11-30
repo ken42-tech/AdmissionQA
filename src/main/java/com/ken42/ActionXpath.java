@@ -148,6 +148,7 @@ public class ActionXpath {
     static String hscboard = "(//*[text()='Board']/../../../..//*[local-name()='svg'])[1]/../..";
     // static String gradeType = "(//*[@id='outlined-select-currency'])[18]";
     static String gradeType = "(//*[text()='Evaluation Type']/../../../..//*[local-name()='svg'])[3]/../..";
+
     static String hscselectboard = "(//*[text()='KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD'])[1]";
     static String hscgrade = "(//*[@id='outlined-select-currency'])[18]";
     static String hscgradeselect = "(//*[text()='Grade'])[1]";
@@ -383,7 +384,11 @@ public class ActionXpath {
     // static String deletesf =
     // "/html/body/div[4]/div[1]/section/div[1]/div[2]/div[2]/div[1]/div/div/div/div[4]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div//table/tbody/tr";
     static String deletecount = "(//*[@class='countSortedByFilteredBy'])[2]";
-    static String deletesf = "(//*[. and contains(text(), '202')])[4]/../../..//*[local-name()='svg']/../../..";
+    static String deletesf = "(//*[text()='2023']/../../..//*[local-name()='svg']/../../..)[1]";
+    static String delete2022 = "(//*[text()='2022'])[4]";
+    static String delete2023 = "(//*[text()='2023'])[1]";
+
+    static String deletesf1 = "(//*[text()='2022']/../../..//*[local-name()='svg']/../../..)[1]";
 
     static String admissionportal = "//input[@name='id']";
     static String submitbutton = "//button[@type='submit']";
@@ -434,5 +439,12 @@ public class ActionXpath {
     static String salespassword = "//input[@type='password']";
 
     static String saleslogin = "//input[@id='Login']";
+
+    // static String gradeType = "(//[text()='Evaluation
+    // Type']/../../../..//[local-name()='svg'])[3]/../..";
+    static String gradeType1 = "(//div[@id='outlined-select-currency'])[16]";
+    // static String sslcgrade = "(//[text()='Evaluation
+    // Type']/../../../..//[local-name()='svg'])[4]/../..";
+    static String sslcgrade1 = "(//div[@aria-labelledby='outlined-select-currency'])[22]";
 
 }
