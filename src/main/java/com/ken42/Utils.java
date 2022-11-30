@@ -119,7 +119,7 @@ public class Utils {
 	@Test
 	public static void scrollUpOrDown(WebDriver driver, int pixel) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,150)");
+		js.executeScript("window.scrollBy(0,125)");
 	}
 
 	public static void cleartext(WebDriver driver, String Xpath) throws Exception {
