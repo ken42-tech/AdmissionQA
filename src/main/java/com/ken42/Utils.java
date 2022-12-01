@@ -28,7 +28,8 @@ public class Utils {
 				// WebElement element = driver.findElement(By.xpath(xpath));
 				// je.executeScript("arguments[0].scrollIntoView(true);", element);
 				// element.click();
-				new WebDriverWait(driver, 0).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath))).click();
+				new WebDriverWait(driver, 20, 500).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)))
+						.click();
 				break;
 			} catch (Exception e) {
 				Thread.sleep(500);
