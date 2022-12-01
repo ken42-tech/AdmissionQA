@@ -3,6 +3,7 @@ package com.ken42;
 import org.apache.commons.lang3.Validate;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -42,16 +43,12 @@ public class Application {
 
     public static void ApplyforCourse(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            Utils.clickXpath(driver, ActionXpath.Apply, time, "Click on the Apply now Button");
-            Utils.smallSleepBetweenClicks(1);
-            Utils.clickXpath(driver, ActionXpath.ClickDropDepartment, time, "Select the all department Dropdown");
-            Utils.clickXpath(driver, ActionXpath.selectPost, time, "Select the appropiraite Department ");
-            Utils.smallSleepBetweenClicks(2);
-            // Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.ClickPorogrameDrop, time, "Select the Progarme Drop down");
             String Programe = csvCell[76];
-            Utils.selectFromDropDown(ActionXpath.selectxpath, Programe, driver);
 
+            Utils.callSendkeys(driver, ActionXpath.searchthecourse, Programe, "Enter program");
+            WebElement textbox = driver.findElement(By.xpath("//input[@placeholder='Search...']"));
+            textbox.sendKeys(Keys.ENTER);
+            Utils.smallSleepBetweenClicks(3);
             Utils.clickXpath(driver, ActionXpath.ApplyNow, time, "Click on apply");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.clickXpath(driver, ActionXpath.Selectmentor, time, "Slect the mentor");
@@ -309,7 +306,6 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.designation, Designation, "enter the Designation ");
 
             Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.role, ActionXpath.roleserror, log, 81);
                 Utils.cleartext(driver, ActionXpath.role);
@@ -338,7 +334,7 @@ public class Application {
             Utils.callSendkeys(driver, ActionXpath.Experience, experince, "enter the Experience");
 
             if (validation.equals("TRUE")) {
-                validate.testForNumberLength(driver, ActionXpath.AnnualSalary, ActionXpath.annualerror, log, 16);
+                validate.testForNumberLength(driver, ActionXpath.AnnualSalary, ActionXpath.annualerror, log, 19);
                 Utils.cleartext(driver, ActionXpath.AnnualSalary);
                 validate.specialcharacter(driver, ActionXpath.AnnualSalary, ActionXpath.annualerror, log);
                 Utils.cleartext(driver, ActionXpath.AnnualSalary);
@@ -363,253 +359,387 @@ public class Application {
 
     public static void EducationINFO(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            Utils.bigSleepBetweenClicks(1);
-            String pgyear = csvCell[32];
-            String pguniversity = csvCell[33];
-            String pgcollege = csvCell[34];
-            String pgpercentage = csvCell[35];
-            String pgdegree = csvCell[36];
-            String pgcountry = csvCell[37];
-            String pgstate = csvCell[38];
-            String pgcity = csvCell[39];
-            String validation = csvCell[78];
+            if (csvCell[76].equals("Bachelor of Business Communication")) {
+                System.out.println("No ug and pg");
+                // 12
+                String hscboard = csvCell[52];
+                String hscpercentage = csvCell[53];
+                String hscyear = csvCell[54];
+                String hscschool = csvCell[55];
+                String hsccountry = csvCell[56];
+                String hscstate = csvCell[57];
+                String hsccity = csvCell[58];
+                String ugcollege = csvCell[42];
 
-            // pg
-            Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
-            if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror, log, 81);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+
+                Utils.clickXpath(driver, ActionXpath.hscedtype_1, time, "hscedtype");
+                Utils.clickXpath(driver, ActionXpath.hscselectedtype_1, time, "hscselectedtype");
+                Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
+                Utils.scrollUpOrDown(driver, time);
+                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                    Utils.clickXpath(driver, ActionXpath.hscgradeType, time, "hscgrade type");
+                    Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
+                } else {
+                    Utils.clickXpath(driver, ActionXpath.gradeType_1, time, "grade type");
+                    Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
+                }
+                // if (validation.equals("TRUE")) {
+                // validate.testForNumberLength(driver, ActionXpath.hscpercentage,
+                // ActionXpath.hscpercentageerror, log,
+                // 6);
+                // Utils.cleartext(driver, ActionXpath.hscpercentage);
+                // validate.specialcharacter(driver, ActionXpath.hscpercentage,
+                // ActionXpath.hscpercentageerror, log);
+                // validate.testForMandatoryField(driver, ActionXpath.hscpercentage,
+                // ActionXpath.hscpercentageerror,
+                // log);
+                // }
+                Utils.cleartext(driver, ActionXpath.hscpercentage_1);
+                Utils.callSendkeys(driver, ActionXpath.hscpercentage_1, hscpercentage, "hscpercentage");
+
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugcollege, driver);
+                Utils.callSendkeys(driver, ActionXpath.hscyear_1, hscyear, "hscyear");
+                Utils.scrollUpOrDown(driver, time);
+
+                // if (validation.equals("TRUE")) {
+                // validate.testForCharLength(driver, ActionXpath.hscschool,
+                // ActionXpath.hscschoolerror, log, 81);
+                // Utils.cleartext(driver, ActionXpath.hscschool);
+                // validate.specialcharacter(driver, ActionXpath.hscschool,
+                // ActionXpath.hscschoolerror, log);
+                // validate.testForMandatoryField(driver, ActionXpath.hscschool,
+                // ActionXpath.hscschoolerror, log);
+                // }
+                Utils.cleartext(driver, ActionXpath.hscschool_1);
+                Utils.callSendkeys(driver, ActionXpath.hscschool_1, hscschool, "hscschool");
+
+                Utils.clickXpath(driver, ActionXpath.hsccountry_1, time, "hsccountry");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hsccountry, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.hscstate_1, time, "hscstate");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hscstate, driver);
+
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.hsccity_1, time, "hsccity");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hsccity, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+
+                // 10
+                String sslcboard = csvCell[59];
+                String sslcpercentage = csvCell[60];
+                String sslcyear = csvCell[61];
+                String sslcschool = csvCell[62];
+                String sslccountry = csvCell[63];
+                String sslcstate = csvCell[64];
+                String sslccity = csvCell[65];
+                Utils.clickXpath(driver, ActionXpath.sslcedtype_1, time, "sslcedtype");
+                Utils.clickXpath(driver, ActionXpath.sslcselectedtype_1, time, "sslcselectedtype");
+                Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                    Utils.clickXpath(driver, ActionXpath.sslcgradeType, time, "sslcgrade");
+                    Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
+                } else {
+                    Utils.clickXpath(driver, ActionXpath.sslcgrade_1, time, "sslcgrade");
+                    Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
+                }
+                Utils.callSendkeys(driver, ActionXpath.sslcpercentage_1, sslcpercentage, "sslcpercentage");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.callSendkeys(driver, ActionXpath.sslcyear_1, sslcyear, "sslcyear");
+                Utils.callSendkeys(driver, ActionXpath.sslcschool_1, sslcschool, "sslcschool");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.sslccountry_1, time, "sslccountry");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslccountry, driver);
+                Utils.clickXpath(driver, ActionXpath.sslcstate_1, time, "sslcstate");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslcstate, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.sslccity_1, time, "sslccity");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslccity, driver);
+                Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+                Utils.smallSleepBetweenClicks(1);
+                log.info("TC-1: Populating Education details PASSED");
+
+            } else {
+                Utils.bigSleepBetweenClicks(1);
+                String pgyear = csvCell[32];
+                String pguniversity = csvCell[33];
+                String pgcollege = csvCell[34];
+                String pgpercentage = csvCell[35];
+                String pgdegree = csvCell[36];
+                String pgcountry = csvCell[37];
+                String pgstate = csvCell[38];
+                String pgcity = csvCell[39];
+                String validation = csvCell[78];
+
+                // pg
+                Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
+                if (validation.equals("TRUE")) {
+                    validate.testForCharLength(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror, log,
+                            81);
+                    Utils.cleartext(driver, ActionXpath.pguniversity);
+                    validate.testAlphaOnly(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror, log);
+                    Utils.cleartext(driver, ActionXpath.pguniversity);
+                    validate.testForMandatoryField(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror,
+                            log);
+                }
                 Utils.cleartext(driver, ActionXpath.pguniversity);
-                validate.testAlphaOnly(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror, log);
-                Utils.cleartext(driver, ActionXpath.pguniversity);
-                validate.testForMandatoryField(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror, log);
-            }
-            Utils.cleartext(driver, ActionXpath.pguniversity);
-            Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, pguniversity, driver);
+                Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, pguniversity, driver);
 
-            Utils.scrollUpOrDown(driver, time);
-            if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log, 81);
+                Utils.scrollUpOrDown(driver, time);
+                if (validation.equals("TRUE")) {
+                    validate.testForCharLength(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log, 81);
+                    Utils.cleartext(driver, ActionXpath.pgcollege);
+                    validate.testAlphaOnly(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
+                    Utils.cleartext(driver, ActionXpath.pgcollege);
+                    validate.testForMandatoryField(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
+                }
                 Utils.cleartext(driver, ActionXpath.pgcollege);
-                validate.testAlphaOnly(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
-                Utils.cleartext(driver, ActionXpath.pgcollege);
-                validate.testForMandatoryField(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
-            }
-            Utils.cleartext(driver, ActionXpath.pgcollege);
-            Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
+                Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
 
-            // Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
-            Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
-            Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
-            Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
-            Utils.clickXpath(driver, ActionXpath.pgevaluation, time, "pgevaluation");
-            Utils.clickXpath(driver, ActionXpath.pgevaluationselect, time, "pgevaluationselect");
-            if (validation.equals("TRUE")) {
-                validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.pgpercentageerror,
-                        log);
+                // Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
+                Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
+                Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
+                Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
+                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                    System.out.println("No evaluation for Masters of Global Business Management VS-1");
+                } else {
+                    Utils.clickXpath(driver, ActionXpath.pgevaluation, time, "pgevaluation");
+                    Utils.clickXpath(driver, ActionXpath.pgevaluationselect, time, "pgevaluationselect");
+                }
+                if (validation.equals("TRUE")) {
+                    validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.pgpercentageerror,
+                            log);
+                    Utils.cleartext(driver, ActionXpath.pgpercentage);
+                    validate.testForNumberLength(driver, ActionXpath.pgpercentage, ActionXpath.pgpercentageerror, log,
+                            6);
+                }
                 Utils.cleartext(driver, ActionXpath.pgpercentage);
-                validate.testForNumberLength(driver, ActionXpath.pgpercentage, ActionXpath.pgpercentageerror, log, 6);
-            }
-            Utils.cleartext(driver, ActionXpath.pgpercentage);
-            Utils.callSendkeys(driver, ActionXpath.pgpercentage, pgpercentage, "pgpercentage");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, pgpercentage, driver);
-            Utils.scrollUpOrDown(driver, time);
+                Utils.callSendkeys(driver, ActionXpath.pgpercentage, pgpercentage, "pgpercentage");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, pgpercentage, driver);
+                Utils.scrollUpOrDown(driver, time);
 
-            Utils.clickXpath(driver, ActionXpath.pgcountry, time, "pgcountry");
-            Utils.selectFromDropDown(ActionXpath.pgcountryselect, pgcountry, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.pgstate, time, "pgstate");
-            Utils.selectFromDropDown(ActionXpath.pgstateselect, pgstate, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.pgcity, time, "pgcity");
-            Utils.selectFromDropDown(ActionXpath.pgcityselect, pgcity, driver);
-            Utils.scrollUpOrDown(driver, time);
-            // ug
+                Utils.clickXpath(driver, ActionXpath.pgcountry, time, "pgcountry");
+                Utils.selectFromDropDown(ActionXpath.pgcountryselect, pgcountry, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.pgstate, time, "pgstate");
+                Utils.selectFromDropDown(ActionXpath.pgstateselect, pgstate, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.pgcity, time, "pgcity");
+                Utils.selectFromDropDown(ActionXpath.pgcityselect, pgcity, driver);
+                Utils.scrollUpOrDown(driver, time);
+                // ug
 
-            String ugyear = csvCell[40];
-            String uguniversity = csvCell[41];
-            String ugcollege = csvCell[42];
-            String ugpercentage = csvCell[43];
-            String ugdegree = csvCell[44];
-            String ugcountry = csvCell[45];
-            String ugstate = csvCell[46];
-            String ugcity = csvCell[47];
-            String ugmark1 = csvCell[48];
-            String ugmaxmark1 = csvCell[49];
-            String ugmark2 = csvCell[50];
-            String ugmaxmark2 = csvCell[51];
+                String ugyear = csvCell[40];
+                String uguniversity = csvCell[41];
+                String ugcollege = csvCell[42];
+                String ugpercentage = csvCell[43];
+                String ugdegree = csvCell[44];
+                String ugcountry = csvCell[45];
+                String ugstate = csvCell[46];
+                String ugcity = csvCell[47];
+                String ugmark1 = csvCell[48];
+                String ugmaxmark1 = csvCell[49];
+                String ugmark2 = csvCell[50];
+                String ugmaxmark2 = csvCell[51];
 
-            Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
+                Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
 
-            if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log, 81);
+                if (validation.equals("TRUE")) {
+                    validate.testForCharLength(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log,
+                            81);
+                    Utils.cleartext(driver, ActionXpath.uguniversity);
+                    validate.testAlphaOnly(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log);
+                    validate.testForMandatoryField(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror,
+                            log);
+                }
                 Utils.cleartext(driver, ActionXpath.uguniversity);
-                validate.testAlphaOnly(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log);
-                validate.testForMandatoryField(driver, ActionXpath.uguniversity, ActionXpath.uguniversityerror, log);
-            }
-            Utils.cleartext(driver, ActionXpath.uguniversity);
-            Utils.callSendkeys(driver, ActionXpath.uguniversity, uguniversity, "uguniversity");
-            List<WebElement> UgUniveristy = driver.findElements(By.xpath("//div[text()='" + uguniversity + "']"));
-            for (int i = 0; i < UgUniveristy.size(); i++) {
-                if (UgUniveristy.get(i).getText().contains(uguniversity)) {
-                    UgUniveristy.get(i).click();
-                    break;
+                Utils.callSendkeys(driver, ActionXpath.uguniversity, uguniversity, "uguniversity");
+                List<WebElement> UgUniveristy = driver.findElements(By.xpath("//div[text()='" + uguniversity + "']"));
+                for (int i = 0; i < UgUniveristy.size(); i++) {
+                    if (UgUniveristy.get(i).getText().contains(uguniversity)) {
+                        UgUniveristy.get(i).click();
+                        break;
+                    }
                 }
-            }
-            Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
 
-            if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log, 81);
+                if (validation.equals("TRUE")) {
+                    validate.testForCharLength(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log, 81);
+                    Utils.cleartext(driver, ActionXpath.ugcollege);
+                    validate.testAlphaOnly(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log);
+                    validate.testForMandatoryField(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log);
+                }
                 Utils.cleartext(driver, ActionXpath.ugcollege);
-                validate.testAlphaOnly(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log);
-                validate.testForMandatoryField(driver, ActionXpath.ugcollege, ActionXpath.ugcollegeerror, log);
-            }
-            Utils.cleartext(driver, ActionXpath.ugcollege);
-            Utils.callSendkeys(driver, ActionXpath.ugcollege, ugcollege, "ugcollege");
-            List<WebElement> UGCollege = driver.findElements(By.xpath("//div[text()='" + ugcollege + "']"));
-            for (int i = 0; i < UgUniveristy.size(); i++) {
-                if (UGCollege.get(i).getText().contains(ugcollege)) {
-                    UGCollege.get(i).click();
-                    break;
+                Utils.callSendkeys(driver, ActionXpath.ugcollege, ugcollege, "ugcollege");
+                List<WebElement> UGCollege = driver.findElements(By.xpath("//div[text()='" + ugcollege + "']"));
+                for (int i = 0; i < UgUniveristy.size(); i++) {
+                    if (UGCollege.get(i).getText().contains(ugcollege)) {
+                        UGCollege.get(i).click();
+                        break;
+                    }
                 }
-            }
-            Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
 
-            Utils.clickXpath(driver, ActionXpath.ugedtype, time, "ugedtype");
-            Utils.clickXpath(driver, ActionXpath.ugselectedtype, time, "ugselectedtype");
-            Utils.clickXpath(driver, ActionXpath.ugdegree, time, "ugdegree");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, ugdegree, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.ugevaluation, time, "ugevaluation");
-            Utils.clickXpath(driver, ActionXpath.ugevaluationselect, time, "ugevaluationselect");
-
-            if (validation.equals("TRUE")) {
-                validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror, log);
+                Utils.clickXpath(driver, ActionXpath.ugedtype, time, "ugedtype");
+                Utils.clickXpath(driver, ActionXpath.ugselectedtype, time, "ugselectedtype");
+                Utils.clickXpath(driver, ActionXpath.ugdegree, time, "ugdegree");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugdegree, driver);
+                Utils.scrollUpOrDown(driver, time);
+                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                    System.out.println("No evaluation for Masters of Global Business Management VS-1");
+                } else {
+                    Utils.clickXpath(driver, ActionXpath.ugevaluation, time, "ugevaluation");
+                    Utils.clickXpath(driver, ActionXpath.ugevaluationselect, time, "ugevaluationselect");
+                }
+                if (validation.equals("TRUE")) {
+                    validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror, log);
+                    Utils.cleartext(driver, ActionXpath.ugpercentage);
+                    validate.testForNumberLength(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror, log,
+                            6);
+                    validate.testForMandatoryField(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror,
+                            log);
+                }
                 Utils.cleartext(driver, ActionXpath.ugpercentage);
-                validate.testForNumberLength(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror, log, 6);
-                validate.testForMandatoryField(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror, log);
-            }
-            Utils.cleartext(driver, ActionXpath.ugpercentage);
-            Utils.callSendkeys(driver, ActionXpath.ugpercentage, ugpercentage, "ugpercentage");
-            List<WebElement> UGPercentage = driver.findElements(By.xpath("//div[text()='" + ugpercentage + "']"));
-            for (int i = 0; i < UgUniveristy.size(); i++) {
-                if (UGPercentage.get(i).getText().contains(ugpercentage)) {
-                    UGPercentage.get(i).click();
-                    break;
+                Utils.callSendkeys(driver, ActionXpath.ugpercentage, ugpercentage, "ugpercentage");
+                List<WebElement> UGPercentage = driver.findElements(By.xpath("//div[text()='" + ugpercentage + "']"));
+                for (int i = 0; i < UgUniveristy.size(); i++) {
+                    if (UGPercentage.get(i).getText().contains(ugpercentage)) {
+                        UGPercentage.get(i).click();
+                        break;
+                    }
                 }
-            }
-            Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
 
-            Utils.clickXpath(driver, ActionXpath.ugcountry, time, "ugcountry");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, ugcountry, driver);
-            Utils.clickXpath(driver, ActionXpath.ugstate, time, "ugstate");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, ugstate, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.ugcity, time, "ugcity");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, ugcity, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.ugtype, time, "ugtype");
-            Utils.clickXpath(driver, ActionXpath.ugselecttype, time, "ugselecttype");
-            Utils.clickXpath(driver, ActionXpath.ugyear1, time, "ugyear1");
-            Utils.clickXpath(driver, ActionXpath.ugselectyear1, time, "ugselectyear1");
-            Utils.callSendkeys(driver, ActionXpath.ugmark1, ugmark1, "ugmark1");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.callSendkeys(driver, ActionXpath.ugmaxmark1, ugmaxmark1, "ugmaxmark1");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.ugyear2, time, "ugyear2");
-            Utils.clickXpath(driver, ActionXpath.ugselectyear2, time, "ugselectyear2");
-            Utils.callSendkeys(driver, ActionXpath.ugmark2, ugmark2, "ugmark2");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.callSendkeys(driver, ActionXpath.ugmaxmark2, ugmaxmark2, "ugmaxmark2");
-            Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.ugcountry, time, "ugcountry");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugcountry, driver);
+                Utils.clickXpath(driver, ActionXpath.ugstate, time, "ugstate");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugstate, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.ugcity, time, "ugcity");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugcity, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.ugtype, time, "ugtype");
+                Utils.clickXpath(driver, ActionXpath.ugselecttype, time, "ugselecttype");
+                Utils.clickXpath(driver, ActionXpath.ugyear1, time, "ugyear1");
+                Utils.clickXpath(driver, ActionXpath.ugselectyear1, time, "ugselectyear1");
+                Utils.callSendkeys(driver, ActionXpath.ugmark1, ugmark1, "ugmark1");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.callSendkeys(driver, ActionXpath.ugmaxmark1, ugmaxmark1, "ugmaxmark1");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.ugyear2, time, "ugyear2");
+                Utils.clickXpath(driver, ActionXpath.ugselectyear2, time, "ugselectyear2");
+                Utils.callSendkeys(driver, ActionXpath.ugmark2, ugmark2, "ugmark2");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.callSendkeys(driver, ActionXpath.ugmaxmark2, ugmaxmark2, "ugmaxmark2");
+                Utils.scrollUpOrDown(driver, time);
 
-            // 12
-            String hscboard = csvCell[52];
-            String hscpercentage = csvCell[53];
-            String hscyear = csvCell[54];
-            String hscschool = csvCell[55];
-            String hsccountry = csvCell[56];
-            String hscstate = csvCell[57];
-            String hsccity = csvCell[58];
-            Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
+                // 12
+                String hscboard = csvCell[52];
+                String hscpercentage = csvCell[53];
+                String hscyear = csvCell[54];
+                String hscschool = csvCell[55];
+                String hsccountry = csvCell[56];
+                String hscstate = csvCell[57];
+                String hsccity = csvCell[58];
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
 
-            Utils.clickXpath(driver, ActionXpath.hscedtype, time, "hscedtype");
-            Utils.clickXpath(driver, ActionXpath.hscselectedtype, time, "hscselectedtype");
-            Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.gradeType, time, "grade type");
-            Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
-
-            if (validation.equals("TRUE")) {
-                validate.testForNumberLength(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror, log, 6);
+                Utils.clickXpath(driver, ActionXpath.hscedtype, time, "hscedtype");
+                Utils.clickXpath(driver, ActionXpath.hscselectedtype, time, "hscselectedtype");
+                Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
+                Utils.scrollUpOrDown(driver, time);
+                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                    Utils.clickXpath(driver, ActionXpath.hscgradeType, time, "hscgrade type");
+                    Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
+                } else {
+                    Utils.clickXpath(driver, ActionXpath.gradeType, time, "grade type");
+                    Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
+                }
+                if (validation.equals("TRUE")) {
+                    validate.testForNumberLength(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror, log,
+                            6);
+                    Utils.cleartext(driver, ActionXpath.hscpercentage);
+                    validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror, log);
+                    validate.testForMandatoryField(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror,
+                            log);
+                }
                 Utils.cleartext(driver, ActionXpath.hscpercentage);
-                validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror, log);
-                validate.testForMandatoryField(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror, log);
-            }
-            Utils.cleartext(driver, ActionXpath.hscpercentage);
-            Utils.callSendkeys(driver, ActionXpath.hscpercentage, hscpercentage, "hscpercentage");
+                Utils.callSendkeys(driver, ActionXpath.hscpercentage, hscpercentage, "hscpercentage");
 
-            Utils.selectFromDropDown(ActionXpath.selectxpath, ugcollege, driver);
-            Utils.callSendkeys(driver, ActionXpath.hscyear, hscyear, "hscyear");
-            Utils.scrollUpOrDown(driver, time);
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugcollege, driver);
+                Utils.callSendkeys(driver, ActionXpath.hscyear, hscyear, "hscyear");
+                Utils.scrollUpOrDown(driver, time);
 
-            if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.hscschool, ActionXpath.hscschoolerror, log, 81);
+                if (validation.equals("TRUE")) {
+                    validate.testForCharLength(driver, ActionXpath.hscschool, ActionXpath.hscschoolerror, log, 81);
+                    Utils.cleartext(driver, ActionXpath.hscschool);
+                    validate.specialcharacter(driver, ActionXpath.hscschool, ActionXpath.hscschoolerror, log);
+                    validate.testForMandatoryField(driver, ActionXpath.hscschool, ActionXpath.hscschoolerror, log);
+                }
                 Utils.cleartext(driver, ActionXpath.hscschool);
-                validate.specialcharacter(driver, ActionXpath.hscschool, ActionXpath.hscschoolerror, log);
-                validate.testForMandatoryField(driver, ActionXpath.hscschool, ActionXpath.hscschoolerror, log);
+                Utils.callSendkeys(driver, ActionXpath.hscschool, hscschool, "hscschool");
+
+                Utils.clickXpath(driver, ActionXpath.hsccountry, time, "hsccountry");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hsccountry, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.hscstate, time, "hscstate");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hscstate, driver);
+
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.hsccity, time, "hsccity");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, hsccity, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+
+                // 10
+                String sslcboard = csvCell[59];
+                String sslcpercentage = csvCell[60];
+                String sslcyear = csvCell[61];
+                String sslcschool = csvCell[62];
+                String sslccountry = csvCell[63];
+                String sslcstate = csvCell[64];
+                String sslccity = csvCell[65];
+                Utils.clickXpath(driver, ActionXpath.sslcedtype, time, "sslcedtype");
+                Utils.clickXpath(driver, ActionXpath.sslcselectedtype, time, "sslcselectedtype");
+                Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                    Utils.clickXpath(driver, ActionXpath.sslcgradeType, time, "sslcgrade");
+                    Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
+                } else {
+                    Utils.clickXpath(driver, ActionXpath.sslcgrade, time, "sslcgrade");
+                    Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
+                }
+                Utils.callSendkeys(driver, ActionXpath.sslcpercentage, sslcpercentage, "sslcpercentage");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.callSendkeys(driver, ActionXpath.sslcyear, sslcyear, "sslcyear");
+                Utils.callSendkeys(driver, ActionXpath.sslcschool, sslcschool, "sslcschool");
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.sslccountry, time, "sslccountry");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslccountry, driver);
+                Utils.clickXpath(driver, ActionXpath.sslcstate, time, "sslcstate");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslcstate, driver);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.clickXpath(driver, ActionXpath.sslccity, time, "sslccity");
+                Utils.selectFromDropDown(ActionXpath.selectxpath, sslccity, driver);
+                Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+                Utils.smallSleepBetweenClicks(1);
+                log.info("TC-1: Populating Education details PASSED");
             }
-            Utils.cleartext(driver, ActionXpath.hscschool);
-            Utils.callSendkeys(driver, ActionXpath.hscschool, hscschool, "hscschool");
-
-            Utils.clickXpath(driver, ActionXpath.hsccountry, time, "hsccountry");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, hsccountry, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.hscstate, time, "hscstate");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, hscstate, driver);
-
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.hsccity, time, "hsccity");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, hsccity, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
-
-            // 10
-            String sslcboard = csvCell[59];
-            String sslcpercentage = csvCell[60];
-            String sslcyear = csvCell[61];
-            String sslcschool = csvCell[62];
-            String sslccountry = csvCell[63];
-            String sslcstate = csvCell[64];
-            String sslccity = csvCell[65];
-            Utils.clickXpath(driver, ActionXpath.sslcedtype, time, "sslcedtype");
-            Utils.clickXpath(driver, ActionXpath.sslcselectedtype, time, "sslcselectedtype");
-            Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.sslcgrade, time, "sslcgrade");
-            Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
-            Utils.callSendkeys(driver, ActionXpath.sslcpercentage, sslcpercentage, "sslcpercentage");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.callSendkeys(driver, ActionXpath.sslcyear, sslcyear, "sslcyear");
-            Utils.callSendkeys(driver, ActionXpath.sslcschool, sslcschool, "sslcschool");
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.sslccountry, time, "sslccountry");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, sslccountry, driver);
-            Utils.clickXpath(driver, ActionXpath.sslcstate, time, "sslcstate");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, sslcstate, driver);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
-            Utils.clickXpath(driver, ActionXpath.sslccity, time, "sslccity");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, sslccity, driver);
-            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            Utils.smallSleepBetweenClicks(1);
-            log.info("TC-1: Populating Education details PASSED");
         } catch (Exception e) {
             Utils.printException(e);
             log.warning("TC-1: Populating Education details FAILED");
@@ -729,11 +859,11 @@ public class Application {
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
             // SalesforceBackendDELETE(driver, log, csvCell);
-            // ApplyforCourse(url, driver, csvCell, log);
-            // BasicDetails(url, driver, csvCell, log);
-            // FamilyInfo(url, driver, csvCell, log);
-            // EmploymentInfo(url, driver, csvCell, log);
-            // EducationINFO(url, driver, csvCell, log);
+            ApplyforCourse(url, driver, csvCell, log);
+            BasicDetails(url, driver, csvCell, log);
+            FamilyInfo(url, driver, csvCell, log);
+            EmploymentInfo(url, driver, csvCell, log);
+            EducationINFO(url, driver, csvCell, log);
             other(url, driver, csvCell, log);
             summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Fill form with validation test Completed and Passed ");

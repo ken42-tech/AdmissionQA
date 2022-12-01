@@ -5,6 +5,8 @@ public class ActionXpath {
     static String Verify = "//button[text()='Verify']";
     static String Verifylogin = "//button[text()='Verify & Log In']";
     static String Inputotp = "//input[@aria-label='Please enter verification code. Digit 1']";
+    static String searchthecourse = "//input[@placeholder='Search...']";
+
     static String Apply = "(//button[text()='Apply Now'])[2]";
     static String ClickDropDepartment = "//html/body/div/div/div/div/main/div[1]/div[3]/div[1]/div/div/div/div[1]/div/div/div/div";
     static String selectPost = "(//div[text()='All Departments'])[2]";
@@ -143,49 +145,87 @@ public class ActionXpath {
     // 12
     // static String hscedtype = "(//*[@id='outlined-select-currency'])[15]";
     static String hscedtype = "(//*[text()='Education Type']/../../../..//*[local-name()='svg'])[3]/../..";
+    static String hscedtype_1 = "(//*[text()='Education Type']/../../../..//*[local-name()='svg'])[1]/../..";
     static String hscselectedtype = "(//*[text()='Full time'])[3]";
+    static String hscselectedtype_1 = "(//*[text()='Full time'])[1]";
+
     // static String hscboard = "(//*[@id='outlined-select-currency'])[17]";
     static String hscboard = "(//*[text()='Board']/../../../..//*[local-name()='svg'])[1]/../..";
     // static String gradeType = "(//*[@id='outlined-select-currency'])[18]";
     static String gradeType = "(//*[text()='Evaluation Type']/../../../..//*[local-name()='svg'])[3]/../..";
+    static String gradeType_1 = "(//*[text()='Evaluation Type']/../../../..//*[local-name()='svg'])[1]/../..";
+
+    static String hscgradeType = "(//*[text()='Grade Type']/../../../..//*[local-name()='svg'])[1]/../..";
 
     static String hscselectboard = "(//*[text()='KARNATAKA SECONDARY EDUCATION, EXAMINATION BOARD'])[1]";
     static String hscgrade = "(//*[@id='outlined-select-currency'])[18]";
     static String hscgradeselect = "(//*[text()='Grade'])[1]";
     static String hscpercentage = "//*[@name='educationHistories[2][obtainedMarks]']";
+    static String hscpercentage_1 = "//*[@name='educationHistories[0][obtainedMarks]']";
+
     static String hscyear = "//*[@name='educationHistories[2][yearOfPassing]']";
+    static String hscyear_1 = "//*[@name='educationHistories[0][yearOfPassing]']";
+
     static String hscschool = "//*[@name='educationHistories[2][placeOfStudy]']";
+    static String hscschool_1 = "//*[@name='educationHistories[0][placeOfStudy]']";
+
     // static String hsccountry = "(//*[@id='outlined-select-currency'])[19]";
     static String hsccountry = "(//*[text()='Country']/../../../..//*[local-name()='svg'])[3]/../..";
+    static String hsccountry_1 = "(//*[text()='Country']/../../../..//*[local-name()='svg'])[1]/../..";
+
     static String hscselectcountry = "//*[text()='India']";
     // static String hscstate = "(//*[@id='outlined-select-currency'])[20]";
     static String hscstate = "(//*[text()='State']/../../../..//*[local-name()='svg'])[3]/../..";
+    static String hscstate_1 = "(//*[text()='State']/../../../..//*[local-name()='svg'])[1]/../..";
+
     static String hscselectstate = "//*[text()='Karnataka']";
     // static String hsccity = "(//*[@id='outlined-select-currency'])[21]";
     static String hsccity = "(//*[text()='City']/../../../..//*[local-name()='svg'])[3]/../..";
+    static String hsccity_1 = "(//*[text()='City']/../../../..//*[local-name()='svg'])[1]/../..";
+
     static String hscselectcity = "//*[text()='Bangalore Rural']";
 
     // 10
     // static String sslcedtype = "(//*[@id='outlined-select-currency'])[22]";
     static String sslcedtype = "(//*[text()='Education Type']/../../../..//*[local-name()='svg'])[4]/../..";
+    static String sslcedtype_1 = "(//*[text()='Education Type']/../../../..//*[local-name()='svg'])[2]/../..";
+
     static String sslcselectedtype = "(//*[text()='Full time'])[4]";
+    static String sslcselectedtype_1 = "(//*[text()='Full time'])[2]";
+
     // static String sslcboard = "(//*[@id='outlined-select-currency'])[23]";
     static String sslcboard = "(//*[text()='Board']/../../../..//*[local-name()='svg'])[2]/../..";
     static String sslcselectboard = "//*[@name='educationHistories[0][yearOfPassing]']";
     static String sslcgrade = "(//*[text()='Evaluation Type']/../../../..//*[local-name()='svg'])[4]/../..";
+    static String sslcgrade_1 = "(//*[text()='Evaluation Type']/../../../..//*[local-name()='svg'])[2]/../..";
+
     // static String sslcgrade = "(//*[@id='outlined-select-currency'])[24]";
+    static String sslcgradeType = "(//*[text()='Grade Type']/../../../..//*[local-name()='svg'])[2]/../..";
+
     static String sslcselectgrade = "//*[text()='CGPA']";
     static String sslcpercentage = "//*[@name='educationHistories[3][obtainedMarks]']";
+    static String sslcpercentage_1 = "//*[@name='educationHistories[1][obtainedMarks]']";
+
     static String sslcyear = "//*[@name='educationHistories[3][yearOfPassing]']";
+    static String sslcyear_1 = "//*[@name='educationHistories[1][yearOfPassing]']";
+
     static String sslcschool = "//*[@name='educationHistories[3][placeOfStudy]']";
+    static String sslcschool_1 = "//*[@name='educationHistories[1][placeOfStudy]']";
+
     // static String sslccountry = "(//*[@id='outlined-select-currency'])[25]";
     static String sslccountry = "(//*[text()='Country']/../../../..//*[local-name()='svg'])[4]/../..";
+    static String sslccountry_1 = "(//*[text()='Country']/../../../..//*[local-name()='svg'])[2]/../..";
+
     static String sslcselectcountry = "//*[text()='India']";
     // static String sslcstate = "(//*[@id='outlined-select-currency'])[26]";
     static String sslcstate = "(//*[text()='State']/../../../..//*[local-name()='svg'])[4]/../..";
+    static String sslcstate_1 = "(//*[text()='State']/../../../..//*[local-name()='svg'])[2]/../..";
+
     static String sslcselectstate = "//*[text()='Karnataka']";
     // static String sslccity = "(//*[@id='outlined-select-currency'])[27]";
     static String sslccity = "(//*[text()='City']/../../../..//*[local-name()='svg'])[4]/../..";
+    static String sslccity_1 = "(//*[text()='City']/../../../..//*[local-name()='svg'])[2]/../..";
+
     static String sslcselectcity = "//*[text()='Bangalore Rural']";
     // static String clicknext="//*[text()='Next']";
     // Tc-7
