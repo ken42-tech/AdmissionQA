@@ -371,10 +371,7 @@ public class Application {
                 String hsccity = csvCell[58];
                 String ugcollege = csvCell[42];
 
-                Utils.scrollUpOrDown(driver, time);
-                Utils.scrollUpOrDown(driver, time);
-                Utils.scrollUpOrDown(driver, time);
-                Utils.scrollUpOrDown(driver, time);
+                // Utils.scrollUpOrDown(driver, time);
 
                 Utils.clickXpath(driver, ActionXpath.hscedtype_1, time, "hscedtype");
                 Utils.clickXpath(driver, ActionXpath.hscselectedtype_1, time, "hscselectedtype");
@@ -859,15 +856,15 @@ public class Application {
             String Sfurl = csvCell[73];
 
             // Thread.sleep(15000);
-            login(url, driver, csvCell, log);
-            // SalesforceBackendDELETE(driver, log, csvCell);
-            ApplyforCourse(url, driver, csvCell, log);
-            BasicDetails(url, driver, csvCell, log);
-            FamilyInfo(url, driver, csvCell, log);
-            EmploymentInfo(url, driver, csvCell, log);
-            EducationINFO(url, driver, csvCell, log);
-            other(url, driver, csvCell, log);
-            summaryanddeclaration(url, driver, csvCell, log);
+            // login(url, driver, csvCell, log);
+            SalesforceBackendDELETE(driver, log, csvCell);
+            // ApplyforCourse(url, driver, csvCell, log);
+            // BasicDetails(url, driver, csvCell, log);
+            // FamilyInfo(url, driver, csvCell, log);
+            // EmploymentInfo(url, driver, csvCell, log);
+            // EducationINFO(url, driver, csvCell, log);
+            // other(url, driver, csvCell, log);
+            // summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Fill form with validation test Completed and Passed ");
 
         } catch (Exception e) {
@@ -1019,7 +1016,7 @@ public class Application {
     }
 
     @Test(priority = 4)
-    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell) {
+    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell) throws Exception {
         try {
             System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
 
@@ -1058,34 +1055,32 @@ public class Application {
             while (m.find()) {
                 row = m.group();
             }
-
             int count1 = Integer.parseInt(row);
             System.out.println(count1);
-            // String count2 = "0";
-
+            String delete = csvCell[76];
             for (int i = 0; i < count1; i++) {
-                String delete = Utils.getTEXT(driver, ActionXpath.delete2023);
-                String delete1 = Utils.getTEXT(driver, ActionXpath.delete2022);
-                System.out.println(delete1);
-                System.out.println(delete);
-                if (delete.equals("2023")) {
-                    System.out.println("deleting 2023");
-                    Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown 2023");
-                    Utils.smallSleepBetweenClicks(1);
-                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant2023");
-                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet2023");
-                    Utils.smallSleepBetweenClicks(1);
-                    continue;
-                }
-                if (delete1.equals("2022")) {
-                    System.out.println("deleting 2022");
-                    Utils.clickXpath(driver, ActionXpath.deletesf1, time, "click on dropdown 2022");
-                    Utils.smallSleepBetweenClicks(1);
-                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the applicant2022");
-                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet2022");
-                    Utils.smallSleepBetweenClicks(1);
-                }
 
+                // if (delete.equals("Masters of Global Business Management VS-1")) {
+                // System.out.println("deleting 2023");
+                // Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown
+                // 2023");
+                // Utils.smallSleepBetweenClicks(1);
+                // Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the
+                // applicant2023");
+                // Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete
+                // theapplciatnet2023");
+                // Utils.smallSleepBetweenClicks(1);
+                // } else {
+                // System.out.println("deleting 2022");
+                // Utils.clickXpath(driver, ActionXpath.deletesf1, time, "click on dropdown
+                // 2022");
+                // Utils.smallSleepBetweenClicks(1);
+                // Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the
+                // applicant2022");
+                // Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete
+                // theapplciatnet2022");
+                // Utils.smallSleepBetweenClicks(1);
+                // }
             }
             driver.switchTo().window(tab.get(0));
 
@@ -1093,6 +1088,8 @@ public class Application {
 
         } catch (Exception e) {
             log.warning("TC-3: the Salesforce backend  delete test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
 
     }
