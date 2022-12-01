@@ -373,6 +373,8 @@ public class Application {
 
                 Utils.scrollUpOrDown(driver, time);
                 Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
+                Utils.scrollUpOrDown(driver, time);
 
                 Utils.clickXpath(driver, ActionXpath.hscedtype_1, time, "hscedtype");
                 Utils.clickXpath(driver, ActionXpath.hscselectedtype_1, time, "hscselectedtype");

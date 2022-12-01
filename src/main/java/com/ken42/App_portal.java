@@ -71,7 +71,7 @@ public class App_portal extends Thread {
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
 			t.start();
-			Utils.bigSleepBetweenClicks(15);
+			Utils.bigSleepBetweenClicks(10);
 			count++;
 
 		}
