@@ -497,4 +497,109 @@ public class ActionXpath {
     static String application = "(//a[.='Applications'])[2]";
     static String window = "(//div[@class='slds-truncate'])[3]";
     static String dobfe = "//input[@id='student_date_of_birth']";
+
+    //// .........................bmjalnagar basic details
+    //// xpath.................................................////
+
+    static String childfirstName = "//input[@name='applicant[firstName]']";
+    static String childMiddleName = "//input[@name='applicant[middleName]']";
+    static String childlastName = "//input[@name='applicant[lastName]']";
+
+    static String placeofbirth = "//input[@name='applicant[birthPlace]']";
+    static String mothertongue = "//input[@name='applicant[motherTongue]']";
+    static String numberOfSiblingsInSchool = "//input[@name='applicant[numberOfSiblingsInSchool]']";
+    static String childaadharNumber = "//input[@name='applicant[aadharNumber]']";
+    static String satsNumber = "//input[@name='applicant[satsNumber]']";
+
+    static String clickonbloodgroup = "(//div[@id='outlined-select-currency'])[1]";
+    static String Selectbloodgroup = "//li[@data-value='B+']";
+
+    static String clickonTransport = "(//div[@id='outlined-select-currency'])[2]";
+    static String selecttransport = "//li[@data-value='Yes']";
+
+    static String clickonTrip = "(//div[@id='outlined-select-currency'])[3]";
+    static String selecttrip = "//li[@data-value='One Way']";
+    static String pickuppoint = "//input[@name='applicant[pickupPoint]']";
+
+    static String clickonnationality = "(//div[@id='outlined-select-currency'])[4]";
+    static String selectnationality1 = "//li[@data-value='Indian']";
+
+    static String clickonreligion = "(//div[@id='outlined-select-currency'])[5]";
+    static String selectreligion = "//li[@data-value='Buddhist']";
+
+    static String clickoncategory = "(//div[@id='outlined-select-currency'])[6]";
+    static String selectcategory = "//li[@data-value='OBC']";
+
+    static String childcaste = "//input[@name='applicant[caste]']";
+    static String childsubcaste = "//input[@name='applicant[subcaste]']";
+
+    static String clickonsubmit = "//button[@type='submit']";
+
+    /// ........................family details
+    /// bmjalnagara..................................////
+
+    static String parentclickonrelationship = "(//*[@id='outlined-select-currency'])[1]";
+    static String parentsselectrelationship = "//li[@data-value='Father']";
+    static String parentfirstName = "//input[@name='Relationship.0.Relationship[firstName]']";
+    static String parentlastName = "//input[@name='Relationship.0.Relationship[lastName]']";
+    static String Parentmiddlename = "//input[@name='Relationship.0.Relationship[middleName]']";
+
+    static String familyphone = "//input[@placeholder='Enter Number']";
+
+    static String familyemail = "//input[@name='Relationship.0.Relationship[email]']";
+    static String familyaadhara = "//input[@id='mui-17']";
+
+    static String clickonQualification = "(//*[@id='outlined-select-currency'])[2]";
+    static String Selecteducation = "//li[@data-value='Under Graduate']";
+
+    static String clickonoccuption = "(//*[@id='outlined-select-currency'])[3]";
+    static String Selectoccuption = "//li[@data-value='Salaried']";
+
+    static String annualincome = "//input[@name='Relationship.0.Relationship[annualIncome]']";
+
+    /////////////// ......................course details xpath
+    /////////////// jalnagara............................////////
+
+    static String clickoncoursecountry = "(//*[@id='outlined-select-currency'])[1]";
+    static String selectcoursecountry = "//li[@data-value='India']";
+
+    static String clickoncoursestate = "(//*[@id='outlined-select-currency'])[2]";
+    static String selectcoursestate = "//li[@data-value='Manipur']";
+
+    static String clickoncoursecity = "(//*[@id='outlined-select-currency'])[3]";
+    static String selectcoursecity = "//li[@data-value='Kakching']";
+
+    static String coursepincode = "//input[@name='addresses[0][mailingPostalCode]']";
+
+    static String clickoncourseaddress = "(//*[@id='outlined-select-currency'])[4]";
+    static String selectcourseaddress = "//li[@data-value='true']";
+
+    //// ..........................education
+    //// jalnangar..................................////
+
+    static String clickoneducationclass = "(//*[@id='outlined-select-currency'])[1]";
+    static String selectclass = "//li[@data-value='UKG']";
+
+    static String eduschool = "//input[@name='applicant[previousSchool]']";
+
+    static String clickonmedium = "(//*[@id='outlined-select-currency'])[2]";
+    static String selectmedium = "//li[@data-value='Kannada']";
+
+    static String clickonflanguage = "(//*[@id='outlined-select-currency'])[3]";
+    static String selectflanguage = "//li[@data-value='Sanskrit']";
+
+    static String clickonslanguage = "(//*[@id='outlined-select-currency'])[4]";
+    static String selectslanguage = "//li[@data-value='English']";
+
+    static String clickonsTlanguage = "(//*[@id='outlined-select-currency'])[5]";
+    static String selectTlanguage = "//li[@data-value='Telugu']";
+
+    //// .............................document upload xpath
+    //// bmpjalnagara...............................////
+
+    static String passportupload = "(//input[@type='file'])[1]";
+    static String stdupload = "(//input[@type='file'])[2]";
+
+    //// ................................summary and
+    //// declaration......................................./////
 }

@@ -37,8 +37,11 @@ public class documentupload {
             Utils.clickXpath(driver, ActionXpath.clickdocument, time, "clickdocument");
             Utils.smallSleepBetweenClicks(1);
             System.out.println(subject);
-            driver.findElement(By.xpath("(//*[. and contains(text(), '" + subject + "')])"))
+
+            driver.findElement(
+                    By.xpath("(//*[. and contains(text(),'" + subject + "')]/../../..//*[local-name()='svg'])[1]"))
                     .sendKeys("clickdocument");
+
             // Utils.clickXpath(driver, ActionXpath.selectdocumnentdropdown, time,
             // "selectdocumnentdropdown");
 
