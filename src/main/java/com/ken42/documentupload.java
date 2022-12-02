@@ -3,6 +3,7 @@ package com.ken42;
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class documentupload {
     public static Logger log = Logger.getLogger("App_portal");
@@ -30,19 +31,28 @@ public class documentupload {
     public static void documents(String url, WebDriver driver, String[] csvCell) throws Exception {
         try {
 
+            String subject = csvCell[76];
             String mark10sheetupload = "C:\\Users\\Public\\Documents\\demo.pdf";
 
             Utils.clickXpath(driver, ActionXpath.clickdocument, time, "clickdocument");
             Utils.smallSleepBetweenClicks(1);
-            Utils.clickXpath(driver, ActionXpath.selectdocumnentdropdown, time, "selectdocumnentdropdown");
-            // Utils.callSendkeys(driver, ActionXpath.mark10sheetupload, mark10sheetupload,
-            //
+            System.out.println(subject);
+            driver.findElement(By.xpath("(//*[. and contains(text(), '" + subject + "')])"))
+                    .sendKeys("clickdocument");
+            // Utils.clickXpath(driver, ActionXpath.selectdocumnentdropdown, time,
+            // "selectdocumnentdropdown");
+
             Thread.sleep(4000);
 
-            driver.findElement(By.xpath("(//*[text()='Std 10th Mark sheet']/../..//input[@type='file'])[1]"));
+            driver.findElement(By.xpath("(//*[text()='Std 10th Mark sheet']/../..//input[@type='file'])[1]"))
+                    .sendKeys(mark10sheetupload);
             Thread.sleep(4000);
 
             Utils.clickXpath(driver, ActionXpath.mark10view, time, "mark10view");
+            Actions qq = new Actions(driver);
+            qq.moveByOffset(40, 40).click().perform();
+            Utils.clickXpath(driver, ActionXpath.mark10download, time, "mark10download");
+
         } catch (Exception e) {
             Utils.printException(e);
             throw (e);

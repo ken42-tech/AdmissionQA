@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 
 import org.testng.annotations.Test;
 
-public class Application {
+public class spjain {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
     public static WebDriver driver;

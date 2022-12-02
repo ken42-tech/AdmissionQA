@@ -490,5 +490,11 @@ public class ActionXpath {
     static String sslcgrade1 = "(//div[@aria-labelledby='outlined-select-currency'])[22]";
 
     static String deletesf_1 = "(//*[. and contains(text(), '202')])[3]";
+    static String clickondots = "//div[@class='slds-icon-waffle']";
+    static String spadmin = "//p[.='SP Jain Admissions']";
+    static String offer = "//span[@title='Offer letter accepted']";
 
+    static String application = "(//a[.='Applications'])[2]";
+    static String window = "(//div[@class='slds-truncate'])[3]";
+    static String dobfe = "//input[@id='student_date_of_birth']";
 }

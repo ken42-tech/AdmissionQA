@@ -108,16 +108,16 @@ public class App_portal extends Thread {
 		for (int i = from; i <= to; i++) {
 			switch (i) {
 				case 1:
-					Application.Admissionfillform(url, driver, csvCell, log);
+					spjain.Admissionfillform(url, driver, csvCell, log);
 					break;
 				case 2:
-					Application.SalesforceBackendVerify(sfurl, driver, csvCell, log);
+					spjain.fess_spjain(sfurl, timeStamp, driver, csvCell, log);
 					break;
 				case 3:
 					documentupload.documentUpload(sfurl, url, driver, csvCell, log);
 					break;
 				case 4:
-					Application.SalesforceBackendDELETE(driver, log, csvCell);
+					spjain.SalesforceBackendDELETE(driver, log, csvCell);
 					break;
 
 			}
