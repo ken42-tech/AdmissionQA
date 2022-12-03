@@ -32,8 +32,13 @@ public class App_portal extends Thread {
 		String threadname = Thread.currentThread().getName();
 		System.out.println(threadname);
 		try {
-			Thread.sleep(1000);
-			testAdmissionPortal(this.csvLineData, this.count);
+			if(threadname.equals("T1")){
+				System.out.println("Skipping Thread1 to read first line as header");
+			}else {
+				Thread.sleep(1000);
+				testAdmissionPortal(this.csvLineData, this.count);
+			}
+			
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (java.lang.Exception e) {
@@ -71,9 +76,12 @@ public class App_portal extends Thread {
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
 			t.start();
-			Utils.bigSleepBetweenClicks(10);
+			if (count == 0) {
+				Utils.smallSleepBetweenClicks(1);
+			} else {
+				Utils.bigSleepBetweenClicks(2);
+			}
 			count++;
-
 		}
 	}
 
