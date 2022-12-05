@@ -857,7 +857,7 @@ public class spjain {
 
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
-            // SalesforceBackendDELETE(driver, log, csvCell);
+            SalesforceBackendDELETE(driver, log, csvCell);
             // ApplyforCourse(url, driver, csvCell, log);
             // BasicDetails(url, driver, csvCell, log);
             // FamilyInfo(url, driver, csvCell, log);
@@ -1047,6 +1047,10 @@ public class spjain {
             String SfEmail = csvCell[74];
             String SfPassword = csvCell[75];
             String studentname = csvCell[79];
+            String count = null;
+            String row = null;
+            System.out.println(SfEmail);
+
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
@@ -1066,8 +1070,6 @@ public class spjain {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
             Thread.sleep(2000);
 
-            String count = null;
-            String row = null;
             count = Utils.getTEXT(driver, ActionXpath.deletecount);
             Pattern pt = Pattern.compile("-?\\d+");
             java.util.regex.Matcher m = pt.matcher(count);
@@ -1075,37 +1077,43 @@ public class spjain {
                 row = m.group();
             }
             int count1 = Integer.parseInt(row);
+
             System.out.println(count1);
             String delete = csvCell[76];
             for (int i = 0; i < count1; i++) {
+                String xp1 = "(//*[text()='2022']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
+                String xp2 = "(//*[text()='2023']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
 
-                // if (delete.equals("Masters of Global Business Management VS-1")) {
-                // System.out.println("deleting 2023");
-                // Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown
-                // 2023");
-                // Utils.smallSleepBetweenClicks(1);
-                // Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the
-                // applicant2023");
-                // Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete
-                // theapplciatnet2023");
-                // Utils.smallSleepBetweenClicks(1);
-                // } else {
-                // System.out.println("deleting 2022");
-                // Utils.clickXpath(driver, ActionXpath.deletesf1, time, "click on dropdown
-                // 2022");
-                // Utils.smallSleepBetweenClicks(1);
-                // Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the
-                // applicant2022");
-                // Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete
-                // theapplciatnet2022");
-                // Utils.smallSleepBetweenClicks(1);
-                // }
+                Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
+                if (isPresent) {
+                    WebElement el = driver.findElement(By.xpath(xp1));
+                    System.out.println("XP is there click it     " + el);
+                    el.click();
+                    Utils.smallSleepBetweenClicks(1);
+                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation 2022");
+                    Utils.smallSleepBetweenClicks(2);
+                    continue;
+                } else {
+                    Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
+                    if (isPresent1) {
+                        WebElement el2 = driver.findElement(By.xpath(xp2));
+                        System.out.println("XP1 is there click it" + el2);
+                        el2.click();
+                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
+                        Utils.smallSleepBetweenClicks(2);
+                        continue;
+                    }
+                }
             }
             driver.switchTo().window(tab.get(0));
 
             log.info("  TC-4:  the Salesforce backend  delete test case PASSED \n");
 
-        } catch (Exception e) {
+        }
+
+        catch (Exception e) {
             log.warning("TC-4: the Salesforce backend  delete test case FAILED \n");
             Utils.printException(e);
             throw (e);
