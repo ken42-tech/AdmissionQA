@@ -32,13 +32,13 @@ public class App_portal extends Thread {
 		String threadname = Thread.currentThread().getName();
 		System.out.println(threadname);
 		try {
-			if(threadname.equals("T1")){
+			if (threadname.equals("T1")) {
 				System.out.println("Skipping Thread1 to read first line as header");
-			}else {
+			} else {
 				Thread.sleep(1000);
 				testAdmissionPortal(this.csvLineData, this.count);
 			}
-			
+
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		} catch (java.lang.Exception e) {
