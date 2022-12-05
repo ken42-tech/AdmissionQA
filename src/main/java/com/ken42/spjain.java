@@ -1035,6 +1035,7 @@ public class spjain {
     }
 
     @Test(priority = 4)
+
     public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell) throws Exception {
         try {
             System.out.println("TC-4: Salesforce backend Verification along with delete  Test Executation ");
@@ -1062,7 +1063,8 @@ public class spjain {
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
 
-            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
+            // Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the
+            // appliation tab");
             WebDriverWait wait = new WebDriverWait(driver, 20);
             WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("(//span[text()='View All'])[1]")));
@@ -1083,27 +1085,28 @@ public class spjain {
                 String xp1 = "(//*[text()='2022']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
                 String xp2 = "(//*[text()='2023']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
 
-                // if (delete.equals("Masters of Global Business Management VS-1")) {
-                // System.out.println("deleting 2023");
-                // Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown
-                // 2023");
-                // Utils.smallSleepBetweenClicks(1);
-                // Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the
-                // applicant2023");
-                // Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete
-                // theapplciatnet2023");
-                // Utils.smallSleepBetweenClicks(1);
-                // } else {
-                // System.out.println("deleting 2022");
-                // Utils.clickXpath(driver, ActionXpath.deletesf1, time, "click on dropdown
-                // 2022");
-                // Utils.smallSleepBetweenClicks(1);
-                // Utils.clickXpath(driver, ActionXpath.delete, time, "Delete the
-                // applicant2022");
-                // Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete
-                // theapplciatnet2022");
-                // Utils.smallSleepBetweenClicks(1);
-                // }
+                Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
+                if (isPresent) {
+                    WebElement el = driver.findElement(By.xpath(xp1));
+                    System.out.println("XP is there click it     " + el);
+                    el.click();
+                    Utils.smallSleepBetweenClicks(1);
+                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation 2022");
+                    Utils.smallSleepBetweenClicks(2);
+                    continue;
+                } else {
+                    Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
+                    if (isPresent1) {
+                        WebElement el2 = driver.findElement(By.xpath(xp2));
+                        System.out.println("XP1 is there click it" + el2);
+                        el2.click();
+                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
+                        Utils.smallSleepBetweenClicks(2);
+                        continue;
+                    }
+                }
             }
             driver.switchTo().window(tab.get(0));
 

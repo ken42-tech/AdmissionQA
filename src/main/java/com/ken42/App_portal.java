@@ -36,7 +36,7 @@ public class App_portal extends Thread {
 			if (threadname.equals("T1")) {
 				System.out.println("Skipping Thread1 to read first line as header");
 				testDeleteAllApplications(this.csvLineData, this.count);
-			}else {
+			} else {
 				Thread.sleep(1000);
 				testAdmissionPortal(this.csvLineData, this.count);
 			}
@@ -195,32 +195,13 @@ public class App_portal extends Thread {
 		return null;
 	}
 
-	public static void  testDeleteAllApplications(String[] csvCell, int count) throws Exception{
+	public static void testDeleteAllApplications(String[] csvCell, int count) throws Exception {
 		int len = students.length;
-		for (int i =0; i < len; i++){
+		for (int i = 0; i < len; i++) {
 			System.out.println(students[i]);
 		}
 
 	}
-
-	// public static String getFolderPath() throws Exception {
-	// try {
-	// String folder = "";
-	// InputStream folderPath = (InputStream)
-	// App_portal.class.getResourceAsStream("folder.csv");
-	// CSVReader csvFolderPath = new CSVReader(new InputStreamReader(folderPath,
-	// "UTF-8"));
-	// String[] csvCell_folder;
-	// while ((csvCell_folder = csvFolderPath.readNext()) != null) {
-	// folder = csvCell_folder[0];
-	// }
-	// System.out.println(folder);
-	// return folder;
-	// } catch (Exception e) {
-	// Utils.printException(e);
-	// }
-	// return null;
-	// }
 
 	@AfterMethod
 	public static void quitDriver(String Url, WebDriver driver) throws Exception {
