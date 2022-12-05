@@ -46,11 +46,11 @@ public class fess {
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
-            String Sfurl = csvCell[73];
+            String Sfurl = csvCell[9];
 
             driver.get(Sfurl);
-            String SfEmail = csvCell[74];
-            String SfPassword = csvCell[75];
+            String SfEmail = csvCell[10];
+            String SfPassword = csvCell[11];
 
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
@@ -68,18 +68,22 @@ public class fess {
 
             System.out.println("click on Application");
             Thread.sleep(5000);
+            String Applicant = csvCell[12];
+            Utils.callSendkeys(driver, ActionXpath.listsearch, Applicant, "Search for student name");
+            Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
 
-            List<WebElement> clickapplicant = driver.findElements(By.xpath("//table//tbody//td[3]//a"));
-            String Applicant = csvCell[88];
-            for (int i = 0; i < clickapplicant.size(); i++) {
+            // List<WebElement> clickapplicant =
+            // driver.findElements(By.xpath("//table//tbody//td[3]//a"));
 
-                if (clickapplicant.get(i).getText().contains(Applicant)) {
-                    clickapplicant.get(i).click();
+            // for (int i = 0; i < clickapplicant.size(); i++) {
 
-                    break;
-                }
+            // if (clickapplicant.get(i).getText().contains(Applicant)) {
+            // clickapplicant.get(i).click();
 
-            }
+            // break;
+            // }
+
+            // }
             Thread.sleep(3000);
 
             Utils.clickXpath(driver, ActionXpath.application, time, "click on application ");
@@ -91,6 +95,7 @@ public class fess {
                     .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
             Thread.sleep(4000);
+            driver.switchTo().window(tab.get(0));
 
             // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
 
@@ -112,13 +117,13 @@ public class fess {
             driver.switchTo().window(tab.get(0));
             login(url, driver, csvCell, log);
 
-            String email = csvCell[81];
-            String fname = csvCell[82];
-            String sname = csvCell[83];
-            String addressofpayer = csvCell[84];
-            String cityofpayer = csvCell[85];
-            String pnumber = csvCell[86];
-            String dateofbirth = csvCell[87];
+            String email = csvCell[83];
+            String fname = csvCell[84];
+            String sname = csvCell[85];
+            String addressofpayer = csvCell[86];
+            String cityofpayer = csvCell[87];
+            String pnumber = csvCell[88];
+            String dateofbirth = csvCell[89];
 
             Utils.clickXpath(driver, ActionXpath.fees, time, "click on fees Payment ");
 

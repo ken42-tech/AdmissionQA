@@ -66,6 +66,7 @@ public class App_portal extends Thread {
 
 		String[] csvCell1;
 		while ((csvCell1 = csvReader1.readNext()) != null) {
+			// students[ThreadCount] = csvCell1[12];
 			ThreadCount++;
 		}
 		System.out.println("Number of threads to start  " + ThreadCount);
@@ -99,8 +100,8 @@ public class App_portal extends Thread {
 		String password = csvCell[3];
 		String From = csvCell[4];
 		String To = csvCell[5];
-		String sfurl = csvCell[73];
-		String vali = csvCell[78];
+		String sfurl = csvCell[9];
+		String vali = csvCell[6];
 		System.out.println("**********************************" + vali);
 		int from = Integer.parseInt(From);
 		int to = Integer.parseInt(To);
