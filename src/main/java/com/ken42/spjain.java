@@ -856,7 +856,7 @@ public class spjain {
             String Sfurl = csvCell[73];
 
             // Thread.sleep(15000);
-            login(url, driver, csvCell, log);
+            // login(url, driver, csvCell, log);
             // SalesforceBackendDELETE(driver, log, csvCell);
             // ApplyforCourse(url, driver, csvCell, log);
             // BasicDetails(url, driver, csvCell, log);
@@ -1032,6 +1032,12 @@ public class spjain {
         } catch (Exception e) {
             log.warning("TC-3: the Salesforce backend Verification along with delete test case FAILED \n");
         }
+    }
+
+    public static void SalesforceBackendDELETE1(WebDriver driver, Logger log, String[] csvCell) throws Exception {
+        System.out.println("In delete");
+        System.out.println("Slleping for 2 sec");
+        Thread.sleep(2000);
     }
 
     @Test(priority = 4)

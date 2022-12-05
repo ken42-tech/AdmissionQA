@@ -25,7 +25,8 @@ public class App_portal extends Thread {
 	private int count;
 	static int time = 1000;
 	public static Logger log = Logger.getLogger("App_portal");
-	public static String[] students;
+	public static String[] students = new String[5];
+	public static int ThreadCount = 0;
 
 	@Override
 	public void run() {
@@ -60,12 +61,11 @@ public class App_portal extends Thread {
 		CSVReader csvReader;
 		int count = 0;
 		CSVReader csvReader1;
-		int ThreadCount = 0;
+		// int ThreadCount = 0;
 		csvReader1 = new CSVReader(new FileReader(CSV_PATH));
 
 		String[] csvCell1;
 		while ((csvCell1 = csvReader1.readNext()) != null) {
-			students[ThreadCount] = csvCell1[79];
 			ThreadCount++;
 		}
 		System.out.println("Number of threads to start  " + ThreadCount);
@@ -79,11 +79,14 @@ public class App_portal extends Thread {
 			Thread t = new App_portal(csvCell, count);
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
-			t.start();
 			if (count == 0) {
+				System.out.println("Before Thread 1");
 				Utils.smallSleepBetweenClicks(1);
+				t.start();
+				t.join();
 			} else {
-				Utils.bigSleepBetweenClicks(2);
+				Utils.bigSleepBetweenClicks(0);
+				t.start();
 			}
 			count++;
 		}
@@ -102,8 +105,8 @@ public class App_portal extends Thread {
 		int from = Integer.parseInt(From);
 		int to = Integer.parseInt(To);
 		Logger log = Logger.getLogger("App_portal" + count);
+
 		String folder = "";
-		// folder = getFolderPath();
 		String logFileName = "";
 		boolean append = false;
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
@@ -135,6 +138,7 @@ public class App_portal extends Thread {
 		}
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);
 		// SendMail.sendEmail(logFileName);
+		driver.quit();
 	}
 
 	@BeforeSuite
@@ -196,11 +200,14 @@ public class App_portal extends Thread {
 	}
 
 	public static void testDeleteAllApplications(String[] csvCell, int count) throws Exception {
-		int len = students.length;
-		for (int i = 0; i < len; i++) {
-			System.out.println(students[i]);
+		WebDriver driver = null;
+		String browser = csvCell[1];
+		String sfurl = csvCell[8];
+		driver = initDriver(browser, sfurl);
+		for (int i = 0; i < ThreadCount; i++) {
+			spjain.SalesforceBackendDELETE1(driver, log, csvCell);
 		}
-
+		System.out.println("In testDeleteAllApplications");
 	}
 
 	@AfterMethod
