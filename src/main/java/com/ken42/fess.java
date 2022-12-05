@@ -68,18 +68,22 @@ public class fess {
 
             System.out.println("click on Application");
             Thread.sleep(5000);
-
-            List<WebElement> clickapplicant = driver.findElements(By.xpath("//table//tbody//td[3]//a"));
             String Applicant = csvCell[12];
-            for (int i = 0; i < clickapplicant.size(); i++) {
+            Utils.callSendkeys(driver, ActionXpath.listsearch, Applicant, "Search for student name");
+            Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
 
-                if (clickapplicant.get(i).getText().contains(Applicant)) {
-                    clickapplicant.get(i).click();
+            // List<WebElement> clickapplicant =
+            // driver.findElements(By.xpath("//table//tbody//td[3]//a"));
 
-                    break;
-                }
+            // for (int i = 0; i < clickapplicant.size(); i++) {
 
-            }
+            // if (clickapplicant.get(i).getText().contains(Applicant)) {
+            // clickapplicant.get(i).click();
+
+            // break;
+            // }
+
+            // }
             Thread.sleep(3000);
 
             Utils.clickXpath(driver, ActionXpath.application, time, "click on application ");
@@ -91,6 +95,7 @@ public class fess {
                     .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
             Thread.sleep(4000);
+            driver.switchTo().window(tab.get(0));
 
             // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
 

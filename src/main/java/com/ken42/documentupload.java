@@ -2,8 +2,12 @@ package com.ken42;
 
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class documentupload {
     public static Logger log = Logger.getLogger("App_portal");
@@ -18,7 +22,7 @@ public class documentupload {
             Thread.sleep(3000);
             Utils.callSendkeys(driver, ActionXpath.EnterEmail, Email, "Enter r mail address ");
             Utils.clickXpath(driver, ActionXpath.Verify, time, "verify");
-            Utils.bigSleepBetweenClicks(1);
+            Utils.smallSleepBetweenClicks(1);
             Utils.getAndSentOTP(driver, Email, Password);
             Utils.clickXpath(driver, ActionXpath.Verifylogin, time, "Verift the Login ");
         } catch (Exception e) {
@@ -37,24 +41,30 @@ public class documentupload {
             Utils.clickXpath(driver, ActionXpath.clickdocument, time, "clickdocument");
             Utils.smallSleepBetweenClicks(1);
             System.out.println(subject);
+            Utils.smallSleepBetweenClicks(2);
+            // Actions act=new Actions(driver);
 
-            driver.findElement(
-                    By.xpath("(//*[. and contains(text(),'" + subject + "')]/../../..//*[local-name()='svg'])[1]"))
-                    .sendKeys("clickdocument");
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("(//*[. and contains(text(),'" + subject + "')]/../../..//*[local-name()='svg'])[1]/..")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
+            Thread.sleep(2000);
 
             // Utils.clickXpath(driver, ActionXpath.selectdocumnentdropdown, time,
             // "selectdocumnentdropdown");
 
             Thread.sleep(4000);
+            WebDriverWait wait1 = new WebDriverWait(driver, 20);
+            WebElement elem1 = wait1.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("(//*[text()='Std 10th Mark sheet']/../..//input[@type='file'])[1]")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem1);
+            Thread.sleep(2000);
 
-            driver.findElement(By.xpath("(//*[text()='Std 10th Mark sheet']/../..//input[@type='file'])[1]"))
-                    .sendKeys(mark10sheetupload);
-            Thread.sleep(4000);
+            Utils.clickXpath(driver, ActionXpath.mark10download, time, "mark10download");
 
             Utils.clickXpath(driver, ActionXpath.mark10view, time, "mark10view");
             Actions qq = new Actions(driver);
             qq.moveByOffset(40, 40).click().perform();
-            Utils.clickXpath(driver, ActionXpath.mark10download, time, "mark10download");
 
         } catch (Exception e) {
             Utils.printException(e);
@@ -67,7 +77,8 @@ public class documentupload {
         try {
             System.out.println("TC-3: Fill form with validation test started Executation ");
 
-            login(url, driver, csvCell);
+            // login(url, driver, csvCell);
+            // fess.sf_login(sfurl, driver, csvCell, log);
             documents(url, driver, csvCell);
 
             log.info("TC-3: Fill form with validation test Completed and Passed ");

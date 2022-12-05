@@ -490,7 +490,7 @@ public class spjain {
                 Utils.scrollUpOrDown(driver, time);
                 Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
                 Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
-                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[13].equals("Masters of Global Business Management VS-1")) {
                     System.out.println("No evaluation for Masters of Global Business Management VS-1");
                 } else {
                     Utils.clickXpath(driver, ActionXpath.pgevaluation, time, "pgevaluation");
@@ -575,7 +575,7 @@ public class spjain {
                 Utils.clickXpath(driver, ActionXpath.ugdegree, time, "ugdegree");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, ugdegree, driver);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[13].equals("Masters of Global Business Management VS-1")) {
                     System.out.println("No evaluation for Masters of Global Business Management VS-1");
                 } else {
                     Utils.clickXpath(driver, ActionXpath.ugevaluation, time, "ugevaluation");
@@ -839,10 +839,10 @@ public class spjain {
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
             // SalesforceBackendDELETE(driver, log, csvCell);
-            ApplyforCourse(url, driver, csvCell, log);
-            BasicDetails(url, driver, csvCell, log);
-            FamilyInfo(url, driver, csvCell, log);
-            EmploymentInfo(url, driver, csvCell, log);
+            // ApplyforCourse(url, driver, csvCell, log);
+            // BasicDetails(url, driver, csvCell, log);
+            // FamilyInfo(url, driver, csvCell, log);
+            // EmploymentInfo(url, driver, csvCell, log);
             EducationINFO(url, driver, csvCell, log);
             other(url, driver, csvCell, log);
             summaryanddeclaration(url, driver, csvCell, log);
@@ -1027,8 +1027,8 @@ public class spjain {
             String Sfurl = csvCell[9];
             driver.get(Sfurl);
             String SfEmail = csvCell[10];
-            String SfPassword = csvCell[8];
-            String studentname = csvCell[79];
+            String SfPassword = csvCell[11];
+            String studentname = csvCell[12];
             String count = null;
             String row = null;
             System.out.println(SfEmail);
