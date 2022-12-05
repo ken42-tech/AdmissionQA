@@ -35,12 +35,8 @@ public class App_portal extends Thread {
 		try {
 			if (threadname.equals("T1")) {
 				System.out.println("Skipping Thread1 to read first line as header");
-<<<<<<< HEAD
 				testDeleteAllApplications(this.csvLineData, this.count);
 			}else {
-=======
-			} else {
->>>>>>> c6bc7c454c4c6155cdb3073467853405ceb19219
 				Thread.sleep(1000);
 				testAdmissionPortal(this.csvLineData, this.count);
 			}
