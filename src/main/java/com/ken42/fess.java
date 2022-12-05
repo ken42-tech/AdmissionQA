@@ -46,11 +46,11 @@ public class fess {
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
-            String Sfurl = csvCell[73];
+            String Sfurl = csvCell[9];
 
             driver.get(Sfurl);
-            String SfEmail = csvCell[74];
-            String SfPassword = csvCell[75];
+            String SfEmail = csvCell[10];
+            String SfPassword = csvCell[11];
 
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
@@ -70,7 +70,7 @@ public class fess {
             Thread.sleep(5000);
 
             List<WebElement> clickapplicant = driver.findElements(By.xpath("//table//tbody//td[3]//a"));
-            String Applicant = csvCell[88];
+            String Applicant = csvCell[12];
             for (int i = 0; i < clickapplicant.size(); i++) {
 
                 if (clickapplicant.get(i).getText().contains(Applicant)) {
@@ -112,13 +112,13 @@ public class fess {
             driver.switchTo().window(tab.get(0));
             login(url, driver, csvCell, log);
 
-            String email = csvCell[81];
-            String fname = csvCell[82];
-            String sname = csvCell[83];
-            String addressofpayer = csvCell[84];
-            String cityofpayer = csvCell[85];
-            String pnumber = csvCell[86];
-            String dateofbirth = csvCell[87];
+            String email = csvCell[83];
+            String fname = csvCell[84];
+            String sname = csvCell[85];
+            String addressofpayer = csvCell[86];
+            String cityofpayer = csvCell[87];
+            String pnumber = csvCell[88];
+            String dateofbirth = csvCell[89];
 
             Utils.clickXpath(driver, ActionXpath.fees, time, "click on fees Payment ");
 

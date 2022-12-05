@@ -43,7 +43,7 @@ public class spjain {
 
     public static void ApplyforCourse(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            String Programe = csvCell[76];
+            String Programe = csvCell[13];
 
             Utils.callSendkeys(driver, ActionXpath.searchthecourse, Programe, "Enter program");
             WebElement textbox = driver.findElement(By.xpath("//input[@placeholder='Search...']"));
@@ -56,19 +56,19 @@ public class spjain {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
 
-            if (csvCell[76].equals("Global MBA") || csvCell[76].equals("Masters of Global Business Management VS-1")) {
+            if (csvCell[13].equals("Global MBA") || csvCell[13].equals("Masters of Global Business Management VS-1")) {
                 System.out.println("No campus selection for Global MBA");
             } else {
                 Utils.clickXpath(driver, ActionXpath.campus, time, "Select the campus");
-                String campus = csvCell[77];
+                String campus = csvCell[14];
                 Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
                 Utils.scrollUpOrDown(driver, time);
             }
 
-            if (csvCell[76].equals("Bachelor of Business Communication")) {
+            if (csvCell[13].equals("Bachelor of Business Communication")) {
                 System.out.println("No Specialization for BBC");
             } else {
-                String Specilization = csvCell[80];
+                String Specilization = csvCell[15];
                 Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
                 List<WebElement> Speci = driver
                         .findElements(
@@ -94,16 +94,16 @@ public class spjain {
     public static void BasicDetails(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
-            String validation = csvCell[78];
+            String validation = csvCell[6];
 
-            String dob = csvCell[6];
-            String nationality = csvCell[7];
-            String passport = csvCell[8];
-            String country = csvCell[9];
-            String state = csvCell[10];
-            String city = csvCell[11];
-            String street = csvCell[12];
-            String PostalCode = csvCell[13];
+            String dob = csvCell[16];
+            String nationality = csvCell[17];
+            String passport = csvCell[18];
+            String country = csvCell[19];
+            String state = csvCell[20];
+            String city = csvCell[21];
+            String street = csvCell[22];
+            String PostalCode = csvCell[23];
 
             Utils.callSendkeys(driver, ActionXpath.dob, dob, "Set date of birth");
             Utils.scrollUpOrDown(driver, time);
@@ -175,14 +175,14 @@ public class spjain {
 
     public static void FamilyInfo(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            String firstName = csvCell[14];
-            String lastName = csvCell[15];
-            String Phone = csvCell[16];
-            String Email = csvCell[17];
-            String Age = csvCell[18];
-            String occupation = csvCell[19];
-            String annualIncome = csvCell[20];
-            String validation = csvCell[78];
+            String firstName = csvCell[24];
+            String lastName = csvCell[25];
+            String Phone = csvCell[26];
+            String Email = csvCell[27];
+            String Age = csvCell[28];
+            String occupation = csvCell[29];
+            String annualIncome = csvCell[30];
+            String validation = csvCell[6];
             Utils.clickXpath(driver, ActionXpath.selectrelationship, time, "Select the Relationship status option");
             Utils.clickXpath(driver, ActionXpath.relationType, time, "Select the relationhip Type");
 
@@ -258,18 +258,18 @@ public class spjain {
     public static void EmploymentInfo(String url, WebDriver driver, String csvCell[], Logger log) throws Exception {
         try {
             Utils.bigSleepBetweenClicks(1);
-            String Company = csvCell[21];
-            String industry = csvCell[22];
-            String Country = csvCell[23];
-            String state = csvCell[24];
-            String city = csvCell[25];
-            String Designation = csvCell[26];
-            String Role = csvCell[27];
-            String dateofJoin = csvCell[28];
-            String experince = csvCell[29];
-            String Annual = csvCell[30];
-            String CurrencyType = csvCell[31];
-            String validation = csvCell[78];
+            String Company = csvCell[31];
+            String industry = csvCell[32];
+            String Country = csvCell[33];
+            String state = csvCell[34];
+            String city = csvCell[35];
+            String Designation = csvCell[36];
+            String Role = csvCell[37];
+            String dateofJoin = csvCell[38];
+            String experince = csvCell[39];
+            String Annual = csvCell[40];
+            String CurrencyType = csvCell[41];
+            String validation = csvCell[6];
             Utils.clickXpath(driver, ActionXpath.clickyes, time, "clickyes");
             Utils.clickXpath(driver, ActionXpath.SelectjobType, time, "Select the Job type");
             Utils.clickXpath(driver, ActionXpath.jobType, time, "Select the Appropriate job ");
@@ -359,17 +359,17 @@ public class spjain {
 
     public static void EducationINFO(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            if (csvCell[76].equals("Bachelor of Business Communication")) {
+            if (csvCell[14].equals("Bachelor of Business Communication")) {
                 System.out.println("No ug and pg");
                 // 12
-                String hscboard = csvCell[52];
-                String hscpercentage = csvCell[53];
-                String hscyear = csvCell[54];
-                String hscschool = csvCell[55];
-                String hsccountry = csvCell[56];
-                String hscstate = csvCell[57];
-                String hsccity = csvCell[58];
-                String ugcollege = csvCell[42];
+                String hscboard = csvCell[62];
+                String hscpercentage = csvCell[63];
+                String hscyear = csvCell[64];
+                String hscschool = csvCell[65];
+                String hsccountry = csvCell[66];
+                String hscstate = csvCell[67];
+                String hsccity = csvCell[68];
+                String ugcollege = csvCell[52];
 
                 // Utils.scrollUpOrDown(driver, time);
 
@@ -378,24 +378,14 @@ public class spjain {
                 Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.hscgradeType, time, "hscgrade type");
                     Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
                 } else {
                     Utils.clickXpath(driver, ActionXpath.gradeType_1, time, "grade type");
                     Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
                 }
-                // if (validation.equals("TRUE")) {
-                // validate.testForNumberLength(driver, ActionXpath.hscpercentage,
-                // ActionXpath.hscpercentageerror, log,
-                // 6);
-                // Utils.cleartext(driver, ActionXpath.hscpercentage);
-                // validate.specialcharacter(driver, ActionXpath.hscpercentage,
-                // ActionXpath.hscpercentageerror, log);
-                // validate.testForMandatoryField(driver, ActionXpath.hscpercentage,
-                // ActionXpath.hscpercentageerror,
-                // log);
-                // }
+
                 Utils.cleartext(driver, ActionXpath.hscpercentage_1);
                 Utils.callSendkeys(driver, ActionXpath.hscpercentage_1, hscpercentage, "hscpercentage");
 
@@ -403,15 +393,6 @@ public class spjain {
                 Utils.callSendkeys(driver, ActionXpath.hscyear_1, hscyear, "hscyear");
                 Utils.scrollUpOrDown(driver, time);
 
-                // if (validation.equals("TRUE")) {
-                // validate.testForCharLength(driver, ActionXpath.hscschool,
-                // ActionXpath.hscschoolerror, log, 81);
-                // Utils.cleartext(driver, ActionXpath.hscschool);
-                // validate.specialcharacter(driver, ActionXpath.hscschool,
-                // ActionXpath.hscschoolerror, log);
-                // validate.testForMandatoryField(driver, ActionXpath.hscschool,
-                // ActionXpath.hscschoolerror, log);
-                // }
                 Utils.cleartext(driver, ActionXpath.hscschool_1);
                 Utils.callSendkeys(driver, ActionXpath.hscschool_1, hscschool, "hscschool");
 
@@ -428,20 +409,20 @@ public class spjain {
                 Utils.scrollUpOrDown(driver, time);
 
                 // 10
-                String sslcboard = csvCell[59];
-                String sslcpercentage = csvCell[60];
-                String sslcyear = csvCell[61];
-                String sslcschool = csvCell[62];
-                String sslccountry = csvCell[63];
-                String sslcstate = csvCell[64];
-                String sslccity = csvCell[65];
+                String sslcboard = csvCell[69];
+                String sslcpercentage = csvCell[70];
+                String sslcyear = csvCell[71];
+                String sslcschool = csvCell[72];
+                String sslccountry = csvCell[73];
+                String sslcstate = csvCell[74];
+                String sslccity = csvCell[75];
                 Utils.clickXpath(driver, ActionXpath.sslcedtype_1, time, "sslcedtype");
                 Utils.clickXpath(driver, ActionXpath.sslcselectedtype_1, time, "sslcselectedtype");
                 Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
                 Utils.scrollUpOrDown(driver, time);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.sslcgradeType, time, "sslcgrade");
                     Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
                 } else {
@@ -467,15 +448,15 @@ public class spjain {
 
             } else {
                 Utils.bigSleepBetweenClicks(1);
-                String pgyear = csvCell[32];
-                String pguniversity = csvCell[33];
-                String pgcollege = csvCell[34];
-                String pgpercentage = csvCell[35];
-                String pgdegree = csvCell[36];
-                String pgcountry = csvCell[37];
-                String pgstate = csvCell[38];
-                String pgcity = csvCell[39];
-                String validation = csvCell[78];
+                String pgyear = csvCell[42];
+                String pguniversity = csvCell[43];
+                String pgcollege = csvCell[44];
+                String pgpercentage = csvCell[45];
+                String pgdegree = csvCell[46];
+                String pgcountry = csvCell[47];
+                String pgstate = csvCell[48];
+                String pgcity = csvCell[49];
+                String validation = csvCell[6];
 
                 // pg
                 Utils.callSendkeys(driver, ActionXpath.pgyear, pgyear, "pgyear");
@@ -509,7 +490,7 @@ public class spjain {
                 Utils.scrollUpOrDown(driver, time);
                 Utils.clickXpath(driver, ActionXpath.pgdegree, time, "pgdegree");
                 Utils.selectFromDropDown(ActionXpath.pgdegreeselect, pgdegree, driver);
-                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
                     System.out.println("No evaluation for Masters of Global Business Management VS-1");
                 } else {
                     Utils.clickXpath(driver, ActionXpath.pgevaluation, time, "pgevaluation");
@@ -538,18 +519,18 @@ public class spjain {
                 Utils.scrollUpOrDown(driver, time);
                 // ug
 
-                String ugyear = csvCell[40];
-                String uguniversity = csvCell[41];
-                String ugcollege = csvCell[42];
-                String ugpercentage = csvCell[43];
-                String ugdegree = csvCell[44];
-                String ugcountry = csvCell[45];
-                String ugstate = csvCell[46];
-                String ugcity = csvCell[47];
-                String ugmark1 = csvCell[48];
-                String ugmaxmark1 = csvCell[49];
-                String ugmark2 = csvCell[50];
-                String ugmaxmark2 = csvCell[51];
+                String ugyear = csvCell[50];
+                String uguniversity = csvCell[51];
+                String ugcollege = csvCell[52];
+                String ugpercentage = csvCell[53];
+                String ugdegree = csvCell[54];
+                String ugcountry = csvCell[55];
+                String ugstate = csvCell[56];
+                String ugcity = csvCell[57];
+                String ugmark1 = csvCell[58];
+                String ugmaxmark1 = csvCell[59];
+                String ugmark2 = csvCell[60];
+                String ugmaxmark2 = csvCell[61];
 
                 Utils.callSendkeys(driver, ActionXpath.ugyear, ugyear, "ugyear");
 
@@ -594,7 +575,7 @@ public class spjain {
                 Utils.clickXpath(driver, ActionXpath.ugdegree, time, "ugdegree");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, ugdegree, driver);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
                     System.out.println("No evaluation for Masters of Global Business Management VS-1");
                 } else {
                     Utils.clickXpath(driver, ActionXpath.ugevaluation, time, "ugevaluation");
@@ -643,13 +624,13 @@ public class spjain {
                 Utils.scrollUpOrDown(driver, time);
 
                 // 12
-                String hscboard = csvCell[52];
-                String hscpercentage = csvCell[53];
-                String hscyear = csvCell[54];
-                String hscschool = csvCell[55];
-                String hsccountry = csvCell[56];
-                String hscstate = csvCell[57];
-                String hsccity = csvCell[58];
+                String hscboard = csvCell[62];
+                String hscpercentage = csvCell[63];
+                String hscyear = csvCell[64];
+                String hscschool = csvCell[65];
+                String hsccountry = csvCell[66];
+                String hscstate = csvCell[67];
+                String hsccity = csvCell[68];
                 Utils.scrollUpOrDown(driver, time);
                 Utils.scrollUpOrDown(driver, time);
 
@@ -658,7 +639,7 @@ public class spjain {
                 Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.hscgradeType, time, "hscgrade type");
                     Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
                 } else {
@@ -702,20 +683,20 @@ public class spjain {
                 Utils.scrollUpOrDown(driver, time);
 
                 // 10
-                String sslcboard = csvCell[59];
-                String sslcpercentage = csvCell[60];
-                String sslcyear = csvCell[61];
-                String sslcschool = csvCell[62];
-                String sslccountry = csvCell[63];
-                String sslcstate = csvCell[64];
-                String sslccity = csvCell[65];
+                String sslcboard = csvCell[69];
+                String sslcpercentage = csvCell[70];
+                String sslcyear = csvCell[71];
+                String sslcschool = csvCell[72];
+                String sslccountry = csvCell[73];
+                String sslcstate = csvCell[74];
+                String sslccity = csvCell[75];
                 Utils.clickXpath(driver, ActionXpath.sslcedtype, time, "sslcedtype");
                 Utils.clickXpath(driver, ActionXpath.sslcselectedtype, time, "sslcselectedtype");
                 Utils.clickXpath(driver, ActionXpath.sslcboard, time, "sslcboard");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
                 Utils.scrollUpOrDown(driver, time);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[76].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.sslcgradeType, time, "sslcgrade");
                     Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
                 } else {
@@ -748,14 +729,14 @@ public class spjain {
 
     public static void other(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            String validation = csvCell[78];
-            String SportAchievement = csvCell[66];
-            String ProfessionalAchievement = csvCell[67];
-            String CurricularActivities = csvCell[68];
-            String AcademicAchievements = csvCell[69];
-            String Statement = csvCell[70];
-            String planmasterdegree = csvCell[71];
-            String language = csvCell[72];
+            String validation = csvCell[6];
+            String SportAchievement = csvCell[76];
+            String ProfessionalAchievement = csvCell[77];
+            String CurricularActivities = csvCell[78];
+            String AcademicAchievements = csvCell[79];
+            String Statement = csvCell[80];
+            String planmasterdegree = csvCell[81];
+            String language = csvCell[82];
 
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.SportAchievement, ActionXpath.sportsaccivemeterror, log,
@@ -853,7 +834,7 @@ public class spjain {
 
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
-            String Sfurl = csvCell[73];
+            String Sfurl = csvCell[9];
 
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
@@ -902,8 +883,8 @@ public class spjain {
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
             driver.get(Sfurl);
-            String SfEmail = csvCell[74];
-            String SfPassword = csvCell[75];
+            String SfEmail = csvCell[10];
+            String SfPassword = csvCell[8];
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
@@ -1043,10 +1024,10 @@ public class spjain {
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
-            String Sfurl = csvCell[73];
+            String Sfurl = csvCell[9];
             driver.get(Sfurl);
-            String SfEmail = csvCell[74];
-            String SfPassword = csvCell[75];
+            String SfEmail = csvCell[10];
+            String SfPassword = csvCell[8];
             String studentname = csvCell[79];
             String count = null;
             String row = null;
@@ -1080,7 +1061,7 @@ public class spjain {
             int count1 = Integer.parseInt(row);
 
             System.out.println(count1);
-            String delete = csvCell[76];
+            String delete = csvCell[14];
             for (int i = 0; i < count1; i++) {
                 String xp1 = "(//*[text()='2022']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
                 String xp2 = "(//*[text()='2023']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
