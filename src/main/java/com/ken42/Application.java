@@ -856,15 +856,15 @@ public class Application {
             String Sfurl = csvCell[73];
 
             // Thread.sleep(15000);
-            login(url, driver, csvCell, log);
-            // SalesforceBackendDELETE(driver, log, csvCell);
+            // login(url, driver, csvCell, log);
+            SalesforceBackendDELETE(driver, log, csvCell);
             // ApplyforCourse(url, driver, csvCell, log);
             // BasicDetails(url, driver, csvCell, log);
             // FamilyInfo(url, driver, csvCell, log);
             // EmploymentInfo(url, driver, csvCell, log);
             // EducationINFO(url, driver, csvCell, log);
-            other(url, driver, csvCell, log);
-            summaryanddeclaration(url, driver, csvCell, log);
+            // other(url, driver, csvCell, log);
+            // summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Fill form with validation test Completed and Passed ");
 
         } catch (Exception e) {
@@ -1078,7 +1078,6 @@ public class Application {
             System.out.println(count1);
             String delete = csvCell[76];
             for (int i = 0; i < count1; i++) {
-
                 // if (delete.equals("Masters of Global Business Management VS-1")) {
                 // System.out.println("deleting 2023");
                 // Utils.clickXpath(driver, ActionXpath.deletesf, time, "click on dropdown

@@ -25,6 +25,7 @@ public class App_portal extends Thread {
 	private int count;
 	static int time = 1000;
 	public static Logger log = Logger.getLogger("App_portal");
+	public static String[] students;
 
 	@Override
 	public void run() {
@@ -34,6 +35,7 @@ public class App_portal extends Thread {
 		try {
 			if(threadname.equals("T1")){
 				System.out.println("Skipping Thread1 to read first line as header");
+				testDeleteAllApplications(this.csvLineData, this.count);
 			}else {
 				Thread.sleep(1000);
 				testAdmissionPortal(this.csvLineData, this.count);
@@ -60,8 +62,10 @@ public class App_portal extends Thread {
 		CSVReader csvReader1;
 		int ThreadCount = 0;
 		csvReader1 = new CSVReader(new FileReader(CSV_PATH));
+
 		String[] csvCell1;
 		while ((csvCell1 = csvReader1.readNext()) != null) {
+			students[ThreadCount] = csvCell1[79];
 			ThreadCount++;
 		}
 		System.out.println("Number of threads to start  " + ThreadCount);
@@ -127,7 +131,6 @@ public class App_portal extends Thread {
 				case 4:
 					spjain.SalesforceBackendDELETE(driver, log, csvCell);
 					break;
-
 			}
 		}
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);
@@ -190,6 +193,14 @@ public class App_portal extends Thread {
 			System.exit(01);
 		}
 		return null;
+	}
+
+	public static void  testDeleteAllApplications(String[] csvCell, int count) throws Exception{
+		int len = students.length;
+		for (int i =0; i < len; i++){
+			System.out.println(students[i]);
+		}
+
 	}
 
 	// public static String getFolderPath() throws Exception {

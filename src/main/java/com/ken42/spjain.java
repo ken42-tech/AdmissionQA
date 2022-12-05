@@ -856,15 +856,15 @@ public class spjain {
             String Sfurl = csvCell[73];
 
             // Thread.sleep(15000);
-            login(url, driver, csvCell, log);
+            // login(url, driver, csvCell, log);
             // SalesforceBackendDELETE(driver, log, csvCell);
             // ApplyforCourse(url, driver, csvCell, log);
             // BasicDetails(url, driver, csvCell, log);
             // FamilyInfo(url, driver, csvCell, log);
             // EmploymentInfo(url, driver, csvCell, log);
             // EducationINFO(url, driver, csvCell, log);
-            other(url, driver, csvCell, log);
-            summaryanddeclaration(url, driver, csvCell, log);
+            // other(url, driver, csvCell, log);
+            // summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Fill form with validation test Completed and Passed ");
 
         } catch (Exception e) {
@@ -1058,8 +1058,7 @@ public class spjain {
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
 
-            // Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the
-            // appliation tab");
+            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
             WebDriverWait wait = new WebDriverWait(driver, 20);
             WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("(//span[text()='View All'])[1]")));
@@ -1078,6 +1077,34 @@ public class spjain {
             System.out.println(count1);
             String delete = csvCell[76];
             for (int i = 0; i < count1; i++) {
+
+                String xp1 = "(//*[text()='2022']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
+                String xp2 = "(//*[text()='2023']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
+                // String xp1 = "(//*[text()='2022']/../../../../../../../..//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']/..)[1]";
+                // String xp2 = "(//*[text()='2023']/../../../../../../../..//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small']/..)[1]";
+                Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
+                if (isPresent) {
+                    WebElement el = driver.findElement(By.xpath(xp1));
+                    System.out.println("XP is there click it     "+el);
+                    el.click();
+                    Utils.smallSleepBetweenClicks(1);
+                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation 2022");
+                    Utils.smallSleepBetweenClicks(2);
+                    continue;
+                } else {
+                    Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
+                    if (isPresent1){
+                        WebElement el2 = driver.findElement(By.xpath(xp2));
+                        System.out.println("XP1 is there click it"+el2);
+                        el2.click();
+                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
+                        Utils.smallSleepBetweenClicks(2);
+                        continue;
+                    }
+                }
+                
 
                 // if (delete.equals("Masters of Global Business Management VS-1")) {
                 // System.out.println("deleting 2023");
