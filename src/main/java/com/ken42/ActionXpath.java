@@ -555,7 +555,7 @@ public class ActionXpath {
     static String clickonoccuption = "(//*[@id='outlined-select-currency'])[3]";
     static String Selectoccuption = "//li[@data-value='Salaried']";
 
-    static String annualincome = "//input[@name='Relationship.0.Relationship[annualIncome]']";
+    static String familyannualincome = "//input[@name='Relationship.0.Relationship[annualIncome]']";
 
     /////////////// ......................course details xpath
     /////////////// jalnagara............................////////
