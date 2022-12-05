@@ -203,7 +203,7 @@ public class App_portal extends Thread {
 	public static void testDeleteAllApplications(String[] csvCell, int count) throws Exception {
 		WebDriver driver = null;
 		String browser = csvCell[1];
-		String sfurl = csvCell[8];
+		String sfurl = csvCell[9];
 		driver = initDriver(browser, sfurl);
 		for (int i = 0; i < ThreadCount; i++) {
 			spjain.SalesforceBackendDELETE1(driver, log, csvCell);
