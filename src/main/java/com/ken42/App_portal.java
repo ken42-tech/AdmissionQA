@@ -65,7 +65,7 @@ public class App_portal extends Thread {
 
 		String[] csvCell1;
 		while ((csvCell1 = csvReader1.readNext()) != null) {
-			students[ThreadCount] = csvCell1[79];
+			// students[ThreadCount] = csvCell1[12];
 			ThreadCount++;
 		}
 		System.out.println("Number of threads to start  " + ThreadCount);
