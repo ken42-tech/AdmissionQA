@@ -371,6 +371,7 @@ public class ActionXpath {
     static String delete = "//a[@title='Delete']";
     static String Delete2 = "//span[text()='Delete']";
     static String viewAll = "//span[text()='View All']";
+    static String sfviewall = "(//span[text()='View All'])[1]";
     // documents
     static String clickdocument = "//*[text()='Documents']";
     static String selectdocumnentdropdown = "//*[@id='panel1a-header']";
