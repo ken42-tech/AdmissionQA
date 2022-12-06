@@ -27,7 +27,7 @@ public class App_portal extends Thread {
 	public static Logger log = Logger.getLogger("App_portal");
 	public static String[] students = new String[5];
 	public static int ThreadCount = 0;
-
+	
 	@Override
 	public void run() {
 		System.out.println("Thread- Started" + Thread.currentThread().getName());
@@ -106,6 +106,7 @@ public class App_portal extends Thread {
 		int from = Integer.parseInt(From);
 		int to = Integer.parseInt(To);
 		Logger log = Logger.getLogger("App_portal" + count);
+		int portal =0;
 
 		String folder = "";
 		String logFileName = "";
@@ -116,6 +117,12 @@ public class App_portal extends Thread {
 		logFile.setFormatter(new MyHtmlFormatter());
 		log.addHandler(logFile);
 		WebDriver driver = null;
+		if (url.contains("sp-jain")){
+			portal = 1;
+		} else if (url.contains("SBMP")) {
+			portal = 2;
+		}
+		
 
 		driver = initDriver(browser, url);
 		log.info("**********************Testing for  Portal  " + url);
@@ -124,7 +131,14 @@ public class App_portal extends Thread {
 		for (int i = from; i <= to; i++) {
 			switch (i) {
 				case 1:
-					spjain.Admissionfillform(url, driver, csvCell, log);
+					switch(portal) {
+						case 1:
+							spjain.Admissionfillform(url, driver, csvCell, log);
+						break;
+						case 2:
+							SBM.SbmpAdmissionfillform(url, driver, csvCell, log);
+						break;
+					}
 					break;
 				case 2:
 					spjain.fess_spjain(sfurl, timeStamp, driver, csvCell, log);
