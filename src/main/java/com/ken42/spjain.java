@@ -838,7 +838,6 @@ public class spjain {
 
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
-            SalesforceBackendDELETE(driver, log, csvCell);
             ApplyforCourse(url, driver, csvCell, log);
             BasicDetails(url, driver, csvCell, log);
             FamilyInfo(url, driver, csvCell, log);
@@ -1015,11 +1014,12 @@ public class spjain {
         }
     }
 
-    public static void SalesforceBackendDELETE1(WebDriver driver, Logger log, String[] csvCell) throws Exception {
-        System.out.println("In delete");
-        System.out.println("Slleping for 2 sec");
-        Thread.sleep(2000);
-    }
+    // public static void SalesforceBackendDELETE1(WebDriver driver, Logger log,
+    // String[] csvCell) throws Exception {
+    // System.out.println("In delete");
+    // System.out.println("Slleping for 2 sec");
+    // Thread.sleep(2000);
+    // }
 
     @Test(priority = 4)
 
