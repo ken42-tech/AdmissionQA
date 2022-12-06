@@ -136,7 +136,7 @@ public class App_portal extends Thread {
 							spjain.Admissionfillform(url, driver, csvCell, log);
 						break;
 						case 2:
-							SBM.SbmpAdmissionfillform(url, driver, csvCell, log);
+							sbmp.SbmpAdmissionfillform(url, driver, csvCell, log);
 						break;
 					}
 					break;
@@ -147,7 +147,15 @@ public class App_portal extends Thread {
 					documentupload.documentUpload(sfurl, url, driver, csvCell, log);
 					break;
 				case 4:
-					spjain.SalesforceBackendDELETE(driver, log, csvCell);
+					switch (portal){
+						case 1:
+							spjain.SalesforceBackendDELETE(driver, log, csvCell);
+							break;
+						case 2:
+							break;
+					}
+
+					
 					break;
 				case 5:
 					sbmp.SbmpAdmissionfillform(url, driver, csvCell, log);
