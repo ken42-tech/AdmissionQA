@@ -27,7 +27,7 @@ public class App_portal extends Thread {
 	public static Logger log = Logger.getLogger("App_portal");
 	public static String[] students = new String[5];
 	public static int ThreadCount = 0;
-	
+
 	@Override
 	public void run() {
 		System.out.println("Thread- Started" + Thread.currentThread().getName());
@@ -36,7 +36,7 @@ public class App_portal extends Thread {
 		try {
 			if (threadname.equals("T1")) {
 				System.out.println("Skipping Thread1 to read first line as header");
-			} else if (threadname.equals("T2")){
+			} else if (threadname.equals("T2")) {
 				testDeleteAllApplications(this.csvLineData, this.count);
 				Thread.sleep(1000);
 			} else {
@@ -110,7 +110,7 @@ public class App_portal extends Thread {
 		int from = Integer.parseInt(From);
 		int to = Integer.parseInt(To);
 		Logger log = Logger.getLogger("App_portal" + count);
-		int portal =0;
+		int portal = 0;
 
 		String folder = "";
 		String logFileName = "";
@@ -121,12 +121,11 @@ public class App_portal extends Thread {
 		logFile.setFormatter(new MyHtmlFormatter());
 		log.addHandler(logFile);
 		WebDriver driver = null;
-		if (url.contains("sp-jain")){
+		if (url.contains("sp-jain")) {
 			portal = 1;
 		} else if (url.contains("SBMP")) {
 			portal = 2;
 		}
-		
 
 		driver = initDriver(browser, url);
 		log.info("**********************Testing for  Portal  " + url);
@@ -135,13 +134,13 @@ public class App_portal extends Thread {
 		for (int i = from; i <= to; i++) {
 			switch (i) {
 				case 1:
-					switch(portal) {
+					switch (portal) {
 						case 1:
 							spjain.Admissionfillform(url, driver, csvCell, log);
-						break;
+							break;
 						case 2:
 							sbmp.SbmpAdmissionfillform(url, driver, csvCell, log);
-						break;
+							break;
 					}
 					break;
 				case 2:
@@ -151,7 +150,7 @@ public class App_portal extends Thread {
 					documentupload.documentUpload(sfurl, url, driver, csvCell, log);
 					break;
 				case 4:
-					switch (portal){
+					switch (portal) {
 						case 1:
 							spjain.SalesforceBackendDELETE(driver, log, csvCell);
 							break;
@@ -232,8 +231,8 @@ public class App_portal extends Thread {
 		String browser = csvCell[1];
 		String sfurl = csvCell[9];
 		driver = initDriver(browser, sfurl);
-		System.out.println("browser is "+browser);
-		System.out.println("SF url is "+sfurl);
+		System.out.println("browser is " + browser);
+		System.out.println("SF url is " + sfurl);
 		for (int i = 0; i < ThreadCount; i++) {
 			spjain.SalesforceBackendDELETE(driver, log, csvCell);
 		}
