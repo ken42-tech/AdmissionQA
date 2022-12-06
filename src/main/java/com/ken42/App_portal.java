@@ -234,7 +234,10 @@ public class App_portal extends Thread {
 		System.out.println("browser is " + browser);
 		System.out.println("SF url is " + sfurl);
 		for (int i = 0; i < ThreadCount; i++) {
-			spjain.SalesforceBackendDELETE(driver, log, csvCell);
+			if (Multiple.equals("1")) {
+				spjain.SalesforceBackendDELETE(driver, log, csvCell);
+			}
+			continue;
 		}
 		System.out.println("In testDeleteAllApplications");
 	}
