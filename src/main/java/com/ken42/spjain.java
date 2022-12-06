@@ -513,7 +513,6 @@ public class spjain {
                 Utils.scrollUpOrDown(driver, time);
                 Utils.clickXpath(driver, ActionXpath.pgstate, time, "pgstate");
                 Utils.selectFromDropDown(ActionXpath.pgstateselect, pgstate, driver);
-                Utils.scrollUpOrDown(driver, time);
                 Utils.clickXpath(driver, ActionXpath.pgcity, time, "pgcity");
                 Utils.selectFromDropDown(ActionXpath.pgcityselect, pgcity, driver);
                 Utils.scrollUpOrDown(driver, time);
@@ -568,7 +567,6 @@ public class spjain {
                         break;
                     }
                 }
-                Utils.scrollUpOrDown(driver, time);
 
                 Utils.clickXpath(driver, ActionXpath.ugedtype, time, "ugedtype");
                 Utils.clickXpath(driver, ActionXpath.ugselectedtype, time, "ugselectedtype");
@@ -1050,8 +1048,8 @@ public class spjain {
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
 
-            // Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the
-            // appliation tab");
+            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
+            Utils.smallSleepBetweenClicks(1);
 
             String view = "(//span[text()='View All'])[1]";
             Boolean isPresent2 = driver.findElements(By.xpath(view)).size() > 0;
