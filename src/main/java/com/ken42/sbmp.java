@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 
 import org.testng.annotations.Test;
 
-public class SBM {
+public class sbmp {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
     public static WebDriver driver;
@@ -43,9 +43,9 @@ public class SBM {
 
     public static void sbmpApplyforCourse(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            String Program = csvCell[6];
+            String Programe = csvCell[13];
             Utils.smallSleepBetweenClicks(3);
-            Utils.callSendkeys(driver, ActionXpath.searchthecourse, Program, "Enter program");
+            Utils.callSendkeys(driver, ActionXpath.searchthecourse, Programe, "Enter program");
             WebElement textbox = driver.findElement(By.xpath("//input[@placeholder='Search...']"));
             textbox.sendKeys(Keys.ENTER);
             Utils.smallSleepBetweenClicks(3);
@@ -64,16 +64,12 @@ public class SBM {
     public static void sbmpBasicDetails(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
-            String validation = csvCell[27];
-            String middlename = csvCell[8];
+            String validation = csvCell[6];
+            String middlename = csvCell[91];
 
-            String aadharnumber = csvCell[10];
+            String aadharnumber = csvCell[93];
 
-            String trip = csvCell[12];
-
-            String transport = csvCell[11];
-
-            Thread.sleep(3000);
+            Utils.smallSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.childMiddleName, middlename, "enter childMiddleName");
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
@@ -82,11 +78,11 @@ public class SBM {
 
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.clickonTransport, time, " clickonTransport");
-            Utils.selectFromDropDown(ActionXpath.selecttransport, transport, driver);
-
-            Utils.clickXpath(driver, ActionXpath.clickonTrip, time, " clickonTrip");
-            Utils.selectFromDropDown(ActionXpath.selecttrip, trip, driver);
+            Utils.clickXpath(driver, ActionXpath.selecttransport, time, " selecttransport");
             Utils.scrollUpOrDown(driver, time);
+            Utils.clickXpath(driver, ActionXpath.clickonTrip, time, " clickonTrip");
+            Utils.clickXpath(driver, ActionXpath.selecttrip, time, " selecttrip");
+
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
@@ -102,21 +98,23 @@ public class SBM {
 
     public static void sbmpFamilyInfo(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            String parentfirstName = csvCell[13];
-            String parentmiddleName = csvCell[14];
-            String parentlastName = csvCell[15];
-            String parentphone = csvCell[16];
-            String email = csvCell[17];
-            String aadharnumber = csvCell[10];
+            String parentfirstName = csvCell[94];
+            String parentmiddleName = csvCell[95];
+            String parentlastName = csvCell[96];
+            String parentphone = csvCell[97];
+            String email = csvCell[98];
+            String aadharnumber = csvCell[93];
 
-            String annualIncome = csvCell[18];
+            String annualIncome = csvCell[99];
             String validation = csvCell[27];
+            Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.parentclickonrelationship, time, "parentclickonrelationship");
-            Utils.clickXpath(driver, ActionXpath.parentsselectrelationship, time, "parentsselectrelationship");
 
+            Utils.clickXpath(driver, ActionXpath.parentsselectrelationship, time, "parentsselectrelationship");
+            Utils.smallSleepBetweenClicks(1);
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.parentfirstName, ActionXpath.fnameerror, log, 41);
-                Utils.cleartext(driver, ActionXpath.firstName);
+                Utils.cleartext(driver, ActionXpath.parentfirstName);
                 validate.specialcharacter(driver, ActionXpath.parentfirstName, ActionXpath.fnameerror, log);
                 validate.testForMandatoryField(driver, ActionXpath.parentfirstName, ActionXpath.fnameerror, log);
             }
@@ -133,9 +131,8 @@ public class SBM {
                 validate.testForMandatoryField(driver, ActionXpath.parentlastName, ActionXpath.lnameerror, log);
             }
             Utils.callSendkeys(driver, ActionXpath.parentlastName, parentlastName, "Enter Last NAme");
-
-            Utils.callSendkeys(driver, ActionXpath.familyphone, parentphone, "enter the parentphone");
             Utils.scrollUpOrDown(driver, time);
+            Utils.callSendkeys(driver, ActionXpath.familyphone, parentphone, "enter the parentphone");
 
             if (validation.equals("TRUE")) {
                 validate.email(driver, ActionXpath.familyemail, ActionXpath.emailerror, log);
@@ -153,7 +150,7 @@ public class SBM {
 
             Utils.clickXpath(driver, ActionXpath.clickonoccuption, time, "clickonoccuption");
             Utils.clickXpath(driver, ActionXpath.Selectoccuption, time, "Selectoccuption");
-
+            Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
                 validate.testForNumberLength(driver, ActionXpath.familyannualincome, ActionXpath.incomeerror, log, 16);
                 Utils.cleartext(driver, ActionXpath.familyannualincome);
@@ -175,19 +172,19 @@ public class SBM {
     public static void sbmp_permanentaddress_Info(String url, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
-            String coursecountry = csvCell[19];
-            String coursestate = csvCell[20];
-            String coursecity = csvCell[21];
-            String perpincode = csvCell[22];
+            String coursecountry = csvCell[100];
+            String coursestate = csvCell[101];
+            String coursecity = csvCell[102];
+            String perpincode = csvCell[103];
 
             Utils.clickXpath(driver, ActionXpath.clickoncoursecountry, time, " clickoncoursecountry");
-            Utils.selectFromDropDown(ActionXpath.selectcoursecountry, coursecountry, driver);
+            Utils.selectFromDropDown(ActionXpath.selectxpath, coursecountry, driver);
 
             Utils.clickXpath(driver, ActionXpath.clickoncoursestate, time, " clickoncoursestate");
-            Utils.selectFromDropDown(ActionXpath.selectcoursestate, coursestate, driver);
+            Utils.selectFromDropDown(ActionXpath.selectxpath, coursestate, driver);
 
             Utils.clickXpath(driver, ActionXpath.clickoncoursecity, time, " clickoncoursecity");
-            Utils.selectFromDropDown(ActionXpath.selectcoursecity, coursecity, driver);
+            Utils.selectFromDropDown(ActionXpath.selectxpath, coursecity, driver);
 
             Utils.scrollUpOrDown(driver, time);
 
@@ -221,6 +218,14 @@ public class SBM {
             driver.findElement(By.xpath("(//input[@type='file'])[2]"))
                     .sendKeys("C:\\Users\\Public\\Documents\\std12.jpg");
 
+            Thread.sleep(4000);
+            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,2000)");
+            Thread.sleep(4000);
+            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+            Thread.sleep(4000);
+            Utils.clickXpath(driver, ActionXpath.clickonsubmit, time, "clickonsubmit");
             log.info("TC-1: Populating Others section PASSED");
         } catch (Exception e) {
             Utils.printException(e);
@@ -229,42 +234,23 @@ public class SBM {
         }
     }
 
-    //
-    // public static void summaryanddeclaration(String url, WebDriver driver,
-    // String[] csvCell, Logger log)
-    // throws Exception {
-    // try {
-    //
-    // Utils.clickXpath(driver, ActionXpath.clicksubmit, time, "click on
-    // clicksubmit");
-    // Utils.bigSleepBetweenClicks(1);
-    // Utils.clickXpath(driver, ActionXpath.backtohome, time, "click on
-    // backtohome");
-    // Utils.bigSleepBetweenClicks(1);
-    //
-    // } catch (Exception e) {
-    // Utils.printException(e);
-    // throw (e);
-    // }
-    // }
-    //
     @Test(priority = 1)
     public static void SbmpAdmissionfillform(String url, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
 
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
-            String Sfurl = csvCell[73];
+            String Sfurl = csvCell[9];
 
             // Thread.sleep(15000);
             login(url, driver, csvCell, log);
 
             sbmpApplyforCourse(Sfurl, driver, csvCell, log);
             sbmpBasicDetails(url, driver, csvCell, log);
+            sbmpFamilyInfo(Sfurl, driver, csvCell, log);
             sbmp_permanentaddress_Info(Sfurl, driver, csvCell, log);
             sbmp_document_upload(Sfurl, driver, csvCell, log);
 
-            // summaryanddeclaration(url, driver, csvCell, log);
             log.info("TC-1: Sbmp Fill form with validation test Completed and Passed ");
 
         } catch (Exception e) {
