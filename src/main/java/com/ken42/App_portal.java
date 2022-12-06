@@ -38,7 +38,7 @@ public class App_portal extends Thread {
 				System.out.println("In T1 calling SF delete function");
 				testDeleteAllApplications();
 			} else {
-				// testAdmissionPortal(this.csvLineData, this.count);
+				testAdmissionPortal(this.csvLineData, this.count);
 			}
 
 		} catch (InterruptedException e) {
@@ -233,20 +233,20 @@ public class App_portal extends Thread {
 			String browser = csvCell[1];
 			String sfurl = csvCell[9];
 			String Multiple = csvCell[7];
-			if (count1 == 0){
+			if (count1 == 0) {
 				System.out.println("Skipping header row");
 				count1++;
 				continue;
 			}
-			if (Multiple.equals("1")){
+			if (Multiple.equals("1")) {
 				driver = initDriver(browser, sfurl);
 				spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				quitDriver(sfurl, driver);
 				count1++;
 			}
-			
+
 		}
-		
+
 	}
 
 	@AfterMethod

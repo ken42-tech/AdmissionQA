@@ -70,15 +70,7 @@ public class spjain {
             } else {
                 String Specilization = csvCell[15];
                 Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
-                List<WebElement> Speci = driver
-                        .findElements(
-                                By.xpath("//ul[@class='MuiList-root MuiList-padding MuiMenu-list css-r8u8y9']//li"));
-                for (int i = 0; i < Speci.size(); i++) {
-                    if (Speci.get(i).getText().contains(Specilization)) {
-                        Speci.get(i).click();
-                        break;
-                    }
-                }
+                Utils.selectFromDropDown(ActionXpath.selectxpath, Specilization, driver);
             }
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
@@ -484,7 +476,6 @@ public class spjain {
                 Utils.cleartext(driver, ActionXpath.pgcollege);
                 Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
 
-                // Utils.selectFromDropDown(ActionXpath.selectxpath, pgcollege, driver);
                 Utils.clickXpath(driver, ActionXpath.pgedttype, time, "pgedttype");
                 Utils.clickXpath(driver, ActionXpath.pgselectedttype, time, "pgselectedttype");
                 Utils.scrollUpOrDown(driver, time);
@@ -543,13 +534,8 @@ public class spjain {
                 }
                 Utils.cleartext(driver, ActionXpath.uguniversity);
                 Utils.callSendkeys(driver, ActionXpath.uguniversity, uguniversity, "uguniversity");
-                List<WebElement> UgUniveristy = driver.findElements(By.xpath("//div[text()='" + uguniversity + "']"));
-                for (int i = 0; i < UgUniveristy.size(); i++) {
-                    if (UgUniveristy.get(i).getText().contains(uguniversity)) {
-                        UgUniveristy.get(i).click();
-                        break;
-                    }
-                }
+                Utils.selectFromDropDown(ActionXpath.selectxpath, uguniversity, driver);
+
                 Utils.scrollUpOrDown(driver, time);
 
                 if (validation.equals("TRUE")) {
@@ -560,14 +546,7 @@ public class spjain {
                 }
                 Utils.cleartext(driver, ActionXpath.ugcollege);
                 Utils.callSendkeys(driver, ActionXpath.ugcollege, ugcollege, "ugcollege");
-                List<WebElement> UGCollege = driver.findElements(By.xpath("//div[text()='" + ugcollege + "']"));
-                for (int i = 0; i < UgUniveristy.size(); i++) {
-                    if (UGCollege.get(i).getText().contains(ugcollege)) {
-                        UGCollege.get(i).click();
-                        break;
-                    }
-                }
-
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugcollege, driver);
                 Utils.clickXpath(driver, ActionXpath.ugedtype, time, "ugedtype");
                 Utils.clickXpath(driver, ActionXpath.ugselectedtype, time, "ugselectedtype");
                 Utils.clickXpath(driver, ActionXpath.ugdegree, time, "ugdegree");
@@ -589,13 +568,7 @@ public class spjain {
                 }
                 Utils.cleartext(driver, ActionXpath.ugpercentage);
                 Utils.callSendkeys(driver, ActionXpath.ugpercentage, ugpercentage, "ugpercentage");
-                List<WebElement> UGPercentage = driver.findElements(By.xpath("//div[text()='" + ugpercentage + "']"));
-                for (int i = 0; i < UgUniveristy.size(); i++) {
-                    if (UGPercentage.get(i).getText().contains(ugpercentage)) {
-                        UGPercentage.get(i).click();
-                        break;
-                    }
-                }
+                Utils.selectFromDropDown(ActionXpath.selectxpath, ugpercentage, driver);
                 Utils.scrollUpOrDown(driver, time);
 
                 Utils.clickXpath(driver, ActionXpath.ugcountry, time, "ugcountry");
@@ -776,13 +749,6 @@ public class spjain {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.physicallychallenged, time, "physicallychallenged");
-
-            // if (validation.equals("TRUE")) {
-            // validate.testForCharLength(driver, ActionXpath.Statement,
-            // ActionXpath.statementerror, log, 2001);
-            // Utils.cleartext(driver, ActionXpath.Statement);
-
-            // }
             Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement of purpose");
 
             Utils.callSendkeys(driver, ActionXpath.planmasterdegree, planmasterdegree, "planmasterdegree");
@@ -1012,22 +978,16 @@ public class spjain {
         }
     }
 
-    // public static void SalesforceBackendDELETE1(WebDriver driver, Logger log,
-    // String[] csvCell) throws Exception {
-    // System.out.println("In delete");
-    // System.out.println("Slleping for 2 sec");
-    // Thread.sleep(2000);
-    // }
-
     @Test(priority = 4)
 
-    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell, String Tname) throws Exception {
+    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell, String Tname)
+            throws Exception {
         try {
             System.out.println("TC-4: Salesforce backend Verification along with delete  Test Executation ");
 
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
-            if(!Tname.equals("T1")){
+            if (!Tname.equals("T1")) {
                 driver.switchTo().window(tab.get(1));
             }
             String Sfurl = csvCell[9];
@@ -1049,10 +1009,16 @@ public class spjain {
             Utils.cleartext(driver, ActionXpath.listsearch);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
-
-            Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
             Utils.smallSleepBetweenClicks(1);
+            String Applicationtab = "//a[text()='Applications']";
+            Boolean isPresent3 = driver.findElements(By.xpath(Applicationtab)).size() > 0;
+            if (isPresent3) {
+                Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
+                Utils.smallSleepBetweenClicks(1);
+            } else {
+                System.out.println("Application tab is not there");
 
+            }
             String view = "(//span[text()='View All'])[1]";
             Boolean isPresent2 = driver.findElements(By.xpath(view)).size() > 0;
 
