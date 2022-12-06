@@ -1021,13 +1021,15 @@ public class spjain {
 
     @Test(priority = 4)
 
-    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell) throws Exception {
+    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell, String Tname) throws Exception {
         try {
             System.out.println("TC-4: Salesforce backend Verification along with delete  Test Executation ");
 
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(tab.get(1));
+            if(!Tname.equals("T1")){
+                driver.switchTo().window(tab.get(1));
+            }
             String Sfurl = csvCell[9];
             driver.get(Sfurl);
             String SfEmail = csvCell[10];

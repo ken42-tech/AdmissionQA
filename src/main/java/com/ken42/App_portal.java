@@ -146,7 +146,7 @@ public class App_portal extends Thread {
 				case 4:
 					switch (portal) {
 						case 1:
-							spjain.SalesforceBackendDELETE(driver, log, csvCell);
+							spjain.SalesforceBackendDELETE(driver, log, csvCell, "Launch Tab");
 							break;
 						case 2:
 							break;
@@ -221,6 +221,7 @@ public class App_portal extends Thread {
 	}
 
 	public static void testDeleteAllApplications() throws Exception {
+		String Tname = "T1";
 		WebDriver driver = null;
 		String CSV_PATH = "";
 		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
@@ -239,7 +240,7 @@ public class App_portal extends Thread {
 			}
 			if (Multiple.equals("1")){
 				driver = initDriver(browser, sfurl);
-				spjain.SalesforceBackendDELETE(driver, log, csvCell);
+				spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				quitDriver(sfurl, driver);
 				count1++;
 			}
