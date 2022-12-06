@@ -36,10 +36,12 @@ public class App_portal extends Thread {
 		try {
 			if (threadname.equals("T1")) {
 				System.out.println("Skipping Thread1 to read first line as header");
+			} else if (threadname.equals("T2")){
 				testDeleteAllApplications(this.csvLineData, this.count);
-			} else {
 				Thread.sleep(1000);
+			} else {
 				testAdmissionPortal(this.csvLineData, this.count);
+
 			}
 
 		} catch (InterruptedException e) {
@@ -66,7 +68,6 @@ public class App_portal extends Thread {
 
 		String[] csvCell1;
 		while ((csvCell1 = csvReader1.readNext()) != null) {
-			// students[ThreadCount] = csvCell1[12];
 			ThreadCount++;
 		}
 		System.out.println("Number of threads to start  " + ThreadCount);
@@ -81,12 +82,16 @@ public class App_portal extends Thread {
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
 			if (count == 0) {
-				System.out.println("Before Thread 1");
+				Utils.smallSleepBetweenClicks(1);
+				count++;
+				continue;
+			}
+			if (count == 1) {
 				Utils.smallSleepBetweenClicks(1);
 				t.start();
 				t.join();
 			} else {
-				Utils.bigSleepBetweenClicks(12);
+				Utils.bigSleepBetweenClicks(5);
 				t.start();
 			}
 			count++;
@@ -102,7 +107,6 @@ public class App_portal extends Thread {
 		String To = csvCell[5];
 		String sfurl = csvCell[9];
 		String vali = csvCell[6];
-		System.out.println("**********************************" + vali);
 		int from = Integer.parseInt(From);
 		int to = Integer.parseInt(To);
 		Logger log = Logger.getLogger("App_portal" + count);
@@ -154,8 +158,6 @@ public class App_portal extends Thread {
 						case 2:
 							break;
 					}
-
-					
 					break;
 				case 5:
 					sbmp.SbmpAdmissionfillform(url, driver, csvCell, log);
@@ -230,6 +232,8 @@ public class App_portal extends Thread {
 		String browser = csvCell[1];
 		String sfurl = csvCell[9];
 		driver = initDriver(browser, sfurl);
+		System.out.println("browser is "+browser);
+		System.out.println("SF url is "+sfurl);
 		for (int i = 0; i < ThreadCount; i++) {
 			spjain.SalesforceBackendDELETE(driver, log, csvCell);
 		}
