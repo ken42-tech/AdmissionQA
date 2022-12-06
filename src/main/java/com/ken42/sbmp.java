@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -235,8 +236,7 @@ public class sbmp {
     }
 
     @Test(priority = 1)
-    public static void SbmpAdmissionfillform(String url, WebDriver driver, String[] csvCell, Logger log)
-            throws Exception {
+    public static void Admissionfillform(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
 
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
@@ -257,6 +257,72 @@ public class sbmp {
             log.warning("TC-1: Sbmp Fill form with validation test Failed");
             Utils.printException(e);
             throw (e);
+
+        }
+    }
+
+    @Test(priority = 2)
+
+    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell) throws Exception {
+        try {
+            System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
+
+            // ((JavascriptExecutor) driver).executeScript("window.open()");
+            // ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            // driver.switchTo().window(tab.get(1));
+            String Sfurl = csvCell[9];
+            driver.get(Sfurl);
+            String SfEmail = csvCell[10];
+            String SfPassword = csvCell[11];
+            String studentname = csvCell[12];
+
+            // System.out.println(SfEmail);
+            Thread.sleep(4000);
+            Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
+            Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
+            Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
+            Utils.bigSleepBetweenClicks(1);
+            Utils.clickXpath(driver, ActionXpath.clickondots, time, "click on clickondots");
+
+            Utils.clickXpath(driver, ActionXpath.sbmpdot, time, "click on sbmpdot");
+
+            Thread.sleep(3000);
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            WebElement e = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Applications']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e);
+
+            System.out.println("click on Application");
+            Thread.sleep(5000);
+
+            List<WebElement> clickapplicant = driver.findElements(By.xpath("//table//tbody//td[3]//a"));
+            String Applicant = csvCell[12];
+            for (int i = 0; i < clickapplicant.size(); i++) {
+
+                if (clickapplicant.get(i).getText().contains(Applicant)) {
+                    clickapplicant.get(i).click();
+
+                    break;
+                }
+
+            }
+
+            // WebDriverWait wait = new WebDriverWait(driver, 20);
+            WebElement e1 = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//button[@class='slds-button slds-button_icon-border-filled']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e1);
+
+            Actions act = new Actions(driver);
+            WebElement aa = driver.findElement(By.xpath("//a[@name='Delete']"));
+            act.moveToElement(aa).click().build().perform();
+            WebElement e11 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[.='Delete'])[2]")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e11);
+
+            log.info("  TC-2:  the Salesforce backend  delete test case PASSED \n");
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+            log.warning("TC:-2 the Salesforce backend  delete test case Failed\n");
 
         }
     }

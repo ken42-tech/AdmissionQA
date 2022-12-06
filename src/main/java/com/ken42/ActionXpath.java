@@ -600,6 +600,7 @@ public class ActionXpath {
 
     static String passportupload = "(//input[@type='file'])[1]";
     static String stdupload = "(//input[@type='file'])[2]";
+    static String sbmpdot = "//p[.='Admissions Jalnagar']";
 
     //// ................................summary and
     //// declaration......................................./////

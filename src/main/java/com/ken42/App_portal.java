@@ -139,7 +139,7 @@ public class App_portal extends Thread {
 							spjain.Admissionfillform(url, driver, csvCell, log);
 							break;
 						case 2:
-							sbmp.SbmpAdmissionfillform(url, driver, csvCell, log);
+							sbmp.Admissionfillform(url, driver, csvCell, log);
 							break;
 					}
 					break;
@@ -159,7 +159,7 @@ public class App_portal extends Thread {
 					}
 					break;
 				case 5:
-					sbmp.SbmpAdmissionfillform(url, driver, csvCell, log);
+					sbmp.Admissionfillform(url, driver, csvCell, log);
 					break;
 			}
 		}
@@ -233,6 +233,7 @@ public class App_portal extends Thread {
 		driver = initDriver(browser, sfurl);
 		System.out.println("browser is " + browser);
 		System.out.println("SF url is " + sfurl);
+		String Multiple = csvCell[7];
 		for (int i = 0; i < ThreadCount; i++) {
 			if (Multiple.equals("1")) {
 				spjain.SalesforceBackendDELETE(driver, log, csvCell);
