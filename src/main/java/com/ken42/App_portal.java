@@ -35,13 +35,10 @@ public class App_portal extends Thread {
 		System.out.println(threadname);
 		try {
 			if (threadname.equals("T1")) {
-				System.out.println("Skipping Thread1 to read first line as header");
-			} else if (threadname.equals("T2")){
-				testDeleteAllApplications(this.csvLineData, this.count);
-				Thread.sleep(1000);
+				System.out.println("In T1 calling SF delete function");
+				testDeleteAllApplications();
 			} else {
-				testAdmissionPortal(this.csvLineData, this.count);
-
+				// testAdmissionPortal(this.csvLineData, this.count);
 			}
 
 		} catch (InterruptedException e) {
@@ -84,14 +81,11 @@ public class App_portal extends Thread {
 			if (count == 0) {
 				Utils.smallSleepBetweenClicks(1);
 				count++;
-				continue;
-			}
-			if (count == 1) {
-				Utils.smallSleepBetweenClicks(1);
 				t.start();
 				t.join();
+				continue;
 			} else {
-				Utils.bigSleepBetweenClicks(5);
+				Utils.bigSleepBetweenClicks(1);
 				t.start();
 			}
 			count++;
@@ -227,21 +221,32 @@ public class App_portal extends Thread {
 		return null;
 	}
 
-	public static void testDeleteAllApplications(String[] csvCell, int count) throws Exception {
+	public static void testDeleteAllApplications() throws Exception {
 		WebDriver driver = null;
-		String browser = csvCell[1];
-		String sfurl = csvCell[9];
-		driver = initDriver(browser, sfurl);
-		System.out.println("browser is "+browser);
-		System.out.println("SF url is "+sfurl);
-		String Multiple = csvCell[7];
-		for (int i = 0; i < ThreadCount; i++) {
-			if (Multiple.equals("1")){
-				spjain.SalesforceBackendDELETE(driver, log, csvCell);
+		String CSV_PATH = "";
+		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
+		CSVReader csvReader2;
+		csvReader2 = new CSVReader(new FileReader(CSV_PATH));
+		int count1 = 0;
+		String[] csvCell;
+		while ((csvCell = csvReader2.readNext()) != null) {
+			String browser = csvCell[1];
+			String sfurl = csvCell[9];
+			String Multiple = csvCell[7];
+			if (count1 == 0){
+				System.out.println("Skipping header row");
+				count1++;
+				continue;
 			}
-			continue;
+			if (Multiple.equals("1")){
+				driver = initDriver(browser, sfurl);
+				spjain.SalesforceBackendDELETE(driver, log, csvCell);
+				quitDriver(sfurl, driver);
+				count1++;
+			}
+			
 		}
-		System.out.println("In testDeleteAllApplications");
+		
 	}
 
 	@AfterMethod
