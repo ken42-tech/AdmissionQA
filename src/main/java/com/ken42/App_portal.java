@@ -189,11 +189,11 @@ public class App_portal extends Thread {
 			if ("chrome".equals(Browser)) {
 				System.setProperty("webdriver.chrome.driver", ChromeDriver);
 				ChromeOptions op = new ChromeOptions();
-				// if (headless) {
-				// op.addArguments("--headless", "--window-size=1920,1080");
-				// } else {
-				// op.addArguments("--disable-notifications");
-				// }
+				if (headless) {
+					op.addArguments("--headless", "--window-size=1920,1080");
+				} else {
+					op.addArguments("--disable-notifications");
+				}
 				op.addArguments("--disable-notifications");
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver(op);
