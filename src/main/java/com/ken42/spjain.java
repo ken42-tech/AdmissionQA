@@ -6,6 +6,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -351,7 +352,7 @@ public class spjain {
 
     public static void EducationINFO(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            if (csvCell[14].equals("Bachelor of Business Communication")) {
+            if (csvCell[13].equals("Bachelor of Business Communication")) {
                 System.out.println("No ug and pg");
                 // 12
                 String hscboard = csvCell[62];
@@ -1007,6 +1008,10 @@ public class spjain {
             Utils.clickXpath(driver, ActionXpath.contacts, time, "click on clickcontacts");
             Utils.cleartext(driver, ActionXpath.listsearch);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
+            Utils.bigSleepBetweenClicks(1);
+
+            Actions qq = new Actions(driver);
+            qq.moveByOffset(40, 40).click().perform();
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
             Utils.bigSleepBetweenClicks(1);
             String Applicationtab = "//a[text()='Applications']";
