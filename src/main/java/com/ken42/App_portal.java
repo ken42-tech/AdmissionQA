@@ -79,13 +79,13 @@ public class App_portal extends Thread {
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
 			if (count == 0) {
-				Utils.smallSleepBetweenClicks(1);
+				Utils.bigSleepBetweenClicks(2);
 				count++;
 				t.start();
 				t.join();
 				continue;
 			} else {
-				Utils.bigSleepBetweenClicks(1);
+				Utils.bigSleepBetweenClicks(2);
 				t.start();
 			}
 			count++;

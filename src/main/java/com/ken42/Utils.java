@@ -20,19 +20,16 @@ public class Utils {
 	public static String clickXpath(WebDriver driver, String xpath, int time, String msg) throws Exception {
 		JavascriptExecutor je = (JavascriptExecutor) driver;
 		int count = 0;
-		int maxTries = 4;
+		int maxTries = 7;
 		while (true) {
 			try {
-				Thread.sleep(1000);
+				Thread.sleep(250);
 				log.info("Click on the:" + msg);
-				// WebElement element = driver.findElement(By.xpath(xpath));
-				// je.executeScript("arguments[0].scrollIntoView(true);", element);
-				// element.click();
 				new WebDriverWait(driver, 20, 500).until(ExpectedConditions.elementToBeClickable(By.xpath(xpath)))
 						.click();
 				break;
 			} catch (Exception e) {
-				Thread.sleep(500);
+				Thread.sleep(3000);
 				log.warning("Failed to Click on the :" + msg);
 				if (++count == maxTries) {
 					Utils.printException(e);
@@ -55,10 +52,10 @@ public class Utils {
 		while (true) {
 			try {
 				log.info("Entering value" + Value);
-				Thread.sleep(500);
+				Thread.sleep(250);
 				new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(By.xpath(Xpath)))
 						.sendKeys(Value);
-				Thread.sleep(500);
+				Thread.sleep(250);
 
 				break;
 			} catch (Exception e) {
@@ -130,7 +127,7 @@ public class Utils {
 			try {
 				log.info("clear value");
 
-				Thread.sleep(1000);
+				Thread.sleep(250);
 				WebElement elee = driver.findElement(By.xpath(Xpath));
 				elee.sendKeys(Keys.CONTROL, "a", Keys.DELETE);
 

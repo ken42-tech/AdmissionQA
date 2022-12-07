@@ -747,7 +747,6 @@ public class spjain {
             Utils.clickXpath(driver, ActionXpath.fundeducation, time, "fundeducation");
             Utils.clickXpath(driver, ActionXpath.fundselecteducation, time, "fundselecteducation");
             Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.physicallychallenged, time, "physicallychallenged");
             Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement of purpose");
 
@@ -985,10 +984,10 @@ public class spjain {
         try {
             System.out.println("TC-4: Salesforce backend Verification along with delete  Test Executation ");
 
-            ((JavascriptExecutor) driver).executeScript("window.open()");
+            // ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             if (!Tname.equals("T1")) {
-                driver.switchTo().window(tab.get(1));
+                // driver.switchTo().window(tab.get(1));
             }
             String Sfurl = csvCell[9];
             driver.get(Sfurl);
@@ -1009,7 +1008,7 @@ public class spjain {
             Utils.cleartext(driver, ActionXpath.listsearch);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
-            Utils.smallSleepBetweenClicks(1);
+            Utils.bigSleepBetweenClicks(1);
             String Applicationtab = "//a[text()='Applications']";
             Boolean isPresent3 = driver.findElements(By.xpath(Applicationtab)).size() > 0;
             if (isPresent3) {
@@ -1019,6 +1018,8 @@ public class spjain {
                 System.out.println("Application tab is not there");
 
             }
+            Utils.bigSleepBetweenClicks(2);
+
             String view = "(//span[text()='View All'])[1]";
             Boolean isPresent2 = driver.findElements(By.xpath(view)).size() > 0;
 
@@ -1037,7 +1038,7 @@ public class spjain {
                 int count1 = Integer.parseInt(row);
 
                 System.out.println(count1);
-                String delete = csvCell[14];
+
                 for (int i = 0; i < count1; i++) {
                     String xp1 = "(//*[text()='2022']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
                     String xp2 = "(//*[text()='2023']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
@@ -1058,7 +1059,7 @@ public class spjain {
                             WebElement el2 = driver.findElement(By.xpath(xp2));
                             System.out.println("XP1 is there click it" + el2);
                             el2.click();
-                            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2023");
                             Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
                             Utils.smallSleepBetweenClicks(2);
                             continue;
