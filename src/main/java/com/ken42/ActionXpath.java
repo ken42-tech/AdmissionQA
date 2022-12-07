@@ -552,7 +552,8 @@ public class ActionXpath {
 
     static String clickonQualification = "(//*[@id='outlined-select-currency'])[2]";
     static String Selecteducation = "//li[@data-value='Under Graduate']";
-
+    static String mnameerror = "//*[text()='Middle Name']/../../../..//P";
+    static String childdob = "//input [@name='applicant[dateOfBirth]']";
     static String clickonoccuption = "(//*[@id='outlined-select-currency'])[3]";
     static String Selectoccuption = "//li[@data-value='Salaried']";
 

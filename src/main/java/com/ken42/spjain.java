@@ -422,7 +422,7 @@ public class spjain {
                 Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
                 Utils.scrollUpOrDown(driver, time);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[13].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.sslcgradeType, time, "sslcgrade");
                     Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
                 } else {
@@ -618,7 +618,7 @@ public class spjain {
                 Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[13].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.hscgradeType, time, "hscgrade type");
                     Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
                 } else {
@@ -675,7 +675,7 @@ public class spjain {
                 Utils.selectFromDropDown(ActionXpath.selectxpath, sslcboard, driver);
                 Utils.scrollUpOrDown(driver, time);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[13].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.sslcgradeType, time, "sslcgrade");
                     Utils.clickXpath(driver, ActionXpath.sslcselectgrade, time, "sslcselectgrade");
                 } else {
@@ -766,6 +766,8 @@ public class spjain {
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.Proficiency, time, "Proficiency");
             Utils.clickXpath(driver, ActionXpath.SelectProficiency, time, "SelectProficiency");
+            Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);

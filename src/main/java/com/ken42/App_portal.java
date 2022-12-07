@@ -152,7 +152,7 @@ public class App_portal extends Thread {
 							spjain.SalesforceBackendDELETE(driver, log, csvCell, "Launch Tab");
 							break;
 						case 2:
-							sbmp.SalesforceBackendDELETE(driver, log, csvCell);
+							sbmp.SalesforceBackendDELETE(driver, log, csvCell, logFileName);
 							break;
 					}
 					break;

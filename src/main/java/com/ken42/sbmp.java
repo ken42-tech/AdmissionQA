@@ -67,15 +67,107 @@ public class sbmp {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
             String validation = csvCell[6];
             String middlename = csvCell[91];
-
+            String childfname = csvCell[90];
+            String childlname = csvCell[92];
             String aadharnumber = csvCell[93];
+            String dob = csvCell[16];
+            String placeofbirth = csvCell[104];
+            String mothertong = csvCell[105];
+            String nosib = csvCell[106];
 
+            String satsno = csvCell[107];
+            String pickuppoint = csvCell[109];
+            String caste = csvCell[112];
+            String subcaste = csvCell[113];
+            String religion = csvCell[110];
+            String category = csvCell[111];
+            String bloodgroup = csvCell[108];
             Utils.smallSleepBetweenClicks(1);
+
+            if (validation.equals("TRUE")) {
+                Utils.cleartext(driver, ActionXpath.childfirstName);
+                validate.testForCharLength(driver, ActionXpath.childfirstName, ActionXpath.fnameerror, log, 13);
+                Utils.cleartext(driver, ActionXpath.childfirstName);
+                validate.specialcharacter(driver, ActionXpath.childfirstName, ActionXpath.fnameerror, log);
+                Utils.cleartext(driver, ActionXpath.childfirstName);
+
+            }
+
+            Utils.cleartext(driver, ActionXpath.childfirstName);
+            Utils.callSendkeys(driver, ActionXpath.childfirstName, childfname, "enter childfirstName");
+            // Utils.scrollUpOrDown(driver, time);
+
+            if (validation.equals("TRUE")) {
+                Utils.cleartext(driver, ActionXpath.childMiddleName);
+                validate.testForCharLength(driver, ActionXpath.childMiddleName, ActionXpath.mnameerror, log, 13);
+                Utils.cleartext(driver, ActionXpath.childMiddleName);
+                validate.specialcharacter(driver, ActionXpath.childMiddleName, ActionXpath.mnameerror, log);
+                Utils.cleartext(driver, ActionXpath.childMiddleName);
+
+            }
+
             Utils.callSendkeys(driver, ActionXpath.childMiddleName, middlename, "enter childMiddleName");
             Utils.scrollUpOrDown(driver, time);
+
+            if (validation.equals("TRUE")) {
+                Utils.cleartext(driver, ActionXpath.childlastName);
+                validate.testForCharLength(driver, ActionXpath.childlastName, ActionXpath.lnameerror, log, 13);
+                Utils.cleartext(driver, ActionXpath.childlastName);
+                validate.specialcharacter(driver, ActionXpath.childlastName, ActionXpath.lnameerror, log);
+                Utils.cleartext(driver, ActionXpath.childlastName);
+
+            }
+
+            Utils.cleartext(driver, ActionXpath.childlastName);
+            Utils.callSendkeys(driver, ActionXpath.childlastName, childlname, "enter childlastName");
+
             Utils.scrollUpOrDown(driver, time);
+            Utils.cleartext(driver, ActionXpath.childdob);
+            Utils.callSendkeys(driver, ActionXpath.childdob, dob, "enter childdob");
+
+            Utils.scrollUpOrDown(driver, time);
+            Utils.cleartext(driver, ActionXpath.placeofbirth);
+            Utils.callSendkeys(driver, ActionXpath.placeofbirth, placeofbirth, "enter placeofbirth");
+
+            Utils.scrollUpOrDown(driver, time);
+            Utils.cleartext(driver, ActionXpath.mothertongue);
+            Utils.callSendkeys(driver, ActionXpath.mothertongue, mothertong, "enter mothertongue");
+
+            if (validation.equals("TRUE")) {
+                Utils.cleartext(driver, ActionXpath.numberOfSiblingsInSchool);
+                validate.testForCharLength(driver, ActionXpath.numberOfSiblingsInSchool, ActionXpath.passporterror, log,
+                        13);
+                Utils.cleartext(driver, ActionXpath.numberOfSiblingsInSchool);
+                validate.specialcharacter(driver, ActionXpath.numberOfSiblingsInSchool, ActionXpath.passporterror, log);
+                Utils.cleartext(driver, ActionXpath.numberOfSiblingsInSchool);
+
+            }
+
+            Utils.scrollUpOrDown(driver, time);
+            Utils.cleartext(driver, ActionXpath.numberOfSiblingsInSchool);
+            Utils.callSendkeys(driver, ActionXpath.numberOfSiblingsInSchool, nosib, "numberOfSiblingsInSchool");
+
+            if (validation.equals("TRUE")) {
+                Utils.cleartext(driver, ActionXpath.childaadharNumber);
+                validate.testForCharLength(driver, ActionXpath.childaadharNumber, ActionXpath.passporterror, log, 13);
+                Utils.cleartext(driver, ActionXpath.childaadharNumber);
+                validate.specialcharacter(driver, ActionXpath.childaadharNumber, ActionXpath.passporterror, log);
+                Utils.cleartext(driver, ActionXpath.childaadharNumber);
+
+            }
+
+            // Utils.scrollUpOrDown(driver, time);
+            Utils.cleartext(driver, ActionXpath.childaadharNumber);
+
             Utils.callSendkeys(driver, ActionXpath.childaadharNumber, aadharnumber, "enter childaadharNumber");
             Utils.scrollUpOrDown(driver, time);
+
+            Utils.scrollUpOrDown(driver, time);
+            Utils.callSendkeys(driver, ActionXpath.satsNumber, satsno, "enter satsNumber");
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.clickXpath(driver, ActionXpath.clickonbloodgroup, time, "clickonbloodgroup");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, bloodgroup, driver);
 
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.clickonTransport, time, " clickonTransport");
@@ -84,7 +176,31 @@ public class sbmp {
             Utils.clickXpath(driver, ActionXpath.clickonTrip, time, " clickonTrip");
             Utils.clickXpath(driver, ActionXpath.selecttrip, time, " selecttrip");
 
+            Utils.cleartext(driver, ActionXpath.pickuppoint);
+
+            Utils.callSendkeys(driver, ActionXpath.pickuppoint, pickuppoint, "enter pickuppoint");
+
             Utils.scrollUpOrDown(driver, time);
+            Utils.clickXpath(driver, ActionXpath.clickonnationality, time, " clickonnationality");
+            Utils.clickXpath(driver, ActionXpath.selectnationality1, time, " selectnationality1");
+
+            Utils.clickXpath(driver, ActionXpath.clickonreligion, time, "clickonreligion");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, religion, driver);
+
+            Utils.clickXpath(driver, ActionXpath.clickoncategory, time, "clickoncategory");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, category, driver);
+
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.cleartext(driver, ActionXpath.childcaste);
+
+            Utils.callSendkeys(driver, ActionXpath.childcaste, caste, "enter childcaste");
+
+            Utils.cleartext(driver, ActionXpath.childsubcaste);
+
+            Utils.callSendkeys(driver, ActionXpath.childsubcaste, subcaste, "enter childsubcaste");
+
+            // Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
 
@@ -188,7 +304,7 @@ public class sbmp {
             Utils.selectFromDropDown(ActionXpath.selectxpath, coursecity, driver);
 
             Utils.scrollUpOrDown(driver, time);
-
+            Utils.cleartext(driver, ActionXpath.coursepincode);
             Utils.callSendkeys(driver, ActionXpath.coursepincode, perpincode, "Enter coursepincode");
 
             Utils.scrollUpOrDown(driver, time);
@@ -197,10 +313,55 @@ public class sbmp {
             Utils.clickXpath(driver, ActionXpath.selectcourseaddress, time, "selectcourseaddress");
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            Thread.sleep(4000);
-            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
             log.info("TC-1:Sbmp Populating address info PASSED");
+        } catch (Exception e) {
+            Utils.printException(e);
+            log.warning("TC-1: Sbmp Populating address info FAILED");
+            throw (e);
+        }
+    }
+
+    public static void sbmp_Education_details(String url, WebDriver driver, String[] csvCell, Logger log)
+            throws Exception {
+        try {
+
+            String school = csvCell[115];
+            String mediuminst = csvCell[116];
+            String flang = csvCell[117];
+            String slang = csvCell[118];
+            String tlang = csvCell[119];
+            Utils.clickXpath(driver, ActionXpath.clickoneducationclass, time, "clickonclass");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, school, driver);
+
+            Utils.cleartext(driver, ActionXpath.eduschool);
+            Utils.callSendkeys(driver, ActionXpath.eduschool, school, "eduschool");
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.cleartext(driver, ActionXpath.clickonmedium);
+            Utils.clickXpath(driver, ActionXpath.clickonmedium, time, "click on medium");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, mediuminst, driver);
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.cleartext(driver, ActionXpath.clickonflanguage);
+            Utils.clickXpath(driver, ActionXpath.clickonflanguage, time, "clickonflanguage");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, flang, driver);
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.cleartext(driver, ActionXpath.clickonslanguage);
+            Utils.clickXpath(driver, ActionXpath.clickonslanguage, time, "clickonslanguage");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, slang, driver);
+            Utils.scrollUpOrDown(driver, time);
+
+            Utils.cleartext(driver, ActionXpath.clickonsTlanguage);
+            Utils.clickXpath(driver, ActionXpath.clickonsTlanguage, time, "clickonsTlanguage");
+            Utils.selectFromDropDown(ActionXpath.selectxpath, tlang, driver);
+            Utils.scrollUpOrDown(driver, time);
+            Thread.sleep(4000);
+            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+            Thread.sleep(4000);
+
+            log.info("TC-1: Sbmp Populating address info Passed");
         } catch (Exception e) {
             Utils.printException(e);
             log.warning("TC-1: Sbmp Populating address info FAILED");
@@ -219,8 +380,9 @@ public class sbmp {
             driver.findElement(By.xpath("(//input[@type='file'])[2]"))
                     .sendKeys("C:\\Users\\Public\\Documents\\std12.jpg");
 
-            Thread.sleep(4000);
+            // Thread.sleep(4000);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
+
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0,2000)");
             Thread.sleep(4000);
@@ -263,25 +425,30 @@ public class sbmp {
 
     @Test(priority = 2)
 
-    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell) throws Exception {
+    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell, String Tname)
+            throws Exception {
         try {
             System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
 
             // ((JavascriptExecutor) driver).executeScript("window.open()");
-            // ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
-            // driver.switchTo().window(tab.get(1));
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            if (!Tname.equals("T1")) {
+                // driver.switchTo().window(tab.get(1));
+            }
             String Sfurl = csvCell[9];
             driver.get(Sfurl);
             String SfEmail = csvCell[10];
             String SfPassword = csvCell[11];
-            String studentname = csvCell[12];
+            // String studentname = csvCell[12];
+            String count = null;
+            String row = null;
+            System.out.println(SfEmail);
 
-            // System.out.println(SfEmail);
-            Thread.sleep(4000);
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
             Utils.bigSleepBetweenClicks(1);
+
             Utils.clickXpath(driver, ActionXpath.clickondots, time, "click on clickondots");
 
             Utils.clickXpath(driver, ActionXpath.sbmpdot, time, "click on sbmpdot");
@@ -294,37 +461,68 @@ public class sbmp {
             System.out.println("click on Application");
             Thread.sleep(5000);
 
-            List<WebElement> clickapplicant = driver.findElements(By.xpath("//table//tbody//td[3]//a"));
-            String Applicant = csvCell[12];
-            for (int i = 0; i < clickapplicant.size(); i++) {
-
-                if (clickapplicant.get(i).getText().contains(Applicant)) {
-                    clickapplicant.get(i).click();
-
-                    break;
+            String view = "(//span[text()='View All'])[1]";
+            Boolean isPresent2 = driver.findElements(By.xpath(view)).size() > 0;
+            //
+            if (isPresent2) {
+                // WebDriverWait wait = new WebDriverWait(driver, 20);
+                WebElement elem = wait
+                        .until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[text()='View All'])[1]")));
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
+                Thread.sleep(2000);
+                count = Utils.getTEXT(driver, ActionXpath.deletecount);
+                Pattern pt = Pattern.compile("-?\\d+");
+                java.util.regex.Matcher m = pt.matcher(count);
+                while (m.find()) {
+                    row = m.group();
                 }
+                int count1 = Integer.parseInt(row);
 
+                System.out.println(count1);
+                String delete = csvCell[14];
+                for (int i = 0; i < count1; i++) {
+                    String xp1 = "(//*[.='sachin student']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+                    String xp2 = "(//*[text()='aa student test']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+
+                    Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
+                    if (isPresent) {
+                        WebElement el = driver.findElement(By.xpath(xp1));
+                        System.out.println("XP is there click it     " + el);
+                        el.click();
+                        Utils.smallSleepBetweenClicks(1);
+                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation 2022");
+                        Utils.smallSleepBetweenClicks(2);
+                        continue;
+                    } else {
+                        Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
+                        if (isPresent1) {
+                            WebElement el2 = driver.findElement(By.xpath(xp2));
+                            System.out.println("XP1 is there click it" + el2);
+                            el2.click();
+                            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
+                            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
+                            Utils.smallSleepBetweenClicks(2);
+                            continue;
+                        }
+                    }
+                }
             }
 
-            // WebDriverWait wait = new WebDriverWait(driver, 20);
-            WebElement e1 = wait.until(ExpectedConditions
-                    .elementToBeClickable(By.xpath("//button[@class='slds-button slds-button_icon-border-filled']")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e1);
-
-            Actions act = new Actions(driver);
-            WebElement aa = driver.findElement(By.xpath("//a[@name='Delete']"));
-            act.moveToElement(aa).click().build().perform();
-            WebElement e11 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[.='Delete'])[2]")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e11);
+            else {
+                System.out.println("There is nothing to Delete");
+            }
+            driver.switchTo().window(tab.get(0));
 
             log.info("  TC-2:  the Salesforce backend  delete test case PASSED \n");
+
         }
 
         catch (Exception e) {
-            e.printStackTrace();
-            log.warning("TC:-2 the Salesforce backend  delete test case Failed\n");
-
+            log.warning("TC-2: the Salesforce backend  delete test case FAILED \n");
+            Utils.printException(e);
+            throw (e);
         }
-    }
 
+    }
 }
