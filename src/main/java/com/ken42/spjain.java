@@ -33,10 +33,14 @@ public class spjain {
             Utils.bigSleepBetweenClicks(2);
             Utils.getAndSentOTP(driver, email, password);
             Utils.clickXpath(driver, ActionXpath.Verifylogin, time, "Verify Login ");
+            String apply = csvCell[13];
+            log.info("Applied course:" + apply);
             log.info("TC-1: Login was succesful");
 
         } catch (Exception e) {
             Utils.printException(e);
+            String apply = csvCell[13];
+            log.info("Applied course:" + apply);
             log.warning("TC-1: Login failed");
             throw (e);
         }
@@ -57,7 +61,8 @@ public class spjain {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
 
-            if (csvCell[13].equals("Global MBA") || csvCell[13].equals("Masters of Global Business Management VS-1")) {
+            if (csvCell[13].equals("Global MBA") || csvCell[13].equals("Masters of Global Business Management VS-1")
+                    || csvCell[13].equals("Doctor of Business Administration")) {
                 System.out.println("No campus selection for Global MBA");
             } else {
                 Utils.clickXpath(driver, ActionXpath.campus, time, "Select the campus");
@@ -77,7 +82,9 @@ public class spjain {
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
             log.info("TC-1: Course deatil screen PASSED");
-        } catch (Exception e) {
+        } catch (
+
+        Exception e) {
             Utils.printException(e);
             log.info("TC-1: Course details screen FAILED");
             throw (e);
@@ -371,7 +378,7 @@ public class spjain {
                 Utils.clickXpath(driver, ActionXpath.hscboard, time, "hscboard");
                 Utils.selectFromDropDown(ActionXpath.selectxpath, hscboard, driver);
                 Utils.scrollUpOrDown(driver, time);
-                if (csvCell[14].equals("Masters of Global Business Management VS-1")) {
+                if (csvCell[13].equals("Masters of Global Business Management VS-1")) {
                     Utils.clickXpath(driver, ActionXpath.hscgradeType, time, "hscgrade type");
                     Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
                 } else {
@@ -1009,10 +1016,12 @@ public class spjain {
             Utils.cleartext(driver, ActionXpath.listsearch);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
             Utils.bigSleepBetweenClicks(1);
-
             Actions qq = new Actions(driver);
             qq.moveByOffset(40, 40).click().perform();
-            Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
+            WebDriverWait wait21 = new WebDriverWait(driver, 20);
+            WebElement elem21 = wait21.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("(//*[text()='" + studentname + "'])[1]")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem21);
             Utils.bigSleepBetweenClicks(1);
             String Applicationtab = "//a[text()='Applications']";
             Boolean isPresent3 = driver.findElements(By.xpath(Applicationtab)).size() > 0;
