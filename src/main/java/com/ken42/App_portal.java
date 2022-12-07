@@ -27,7 +27,7 @@ public class App_portal extends Thread {
 	public static Logger log = Logger.getLogger("App_portal");
 	public static String[] students = new String[5];
 	public static int ThreadCount = 0;
-	static Boolean headless;
+	public static Boolean headless;
 
 	@Override
 	public void run() {
@@ -39,7 +39,7 @@ public class App_portal extends Thread {
 				System.out.println("In T1 calling SF delete function");
 				testDeleteAllApplications();
 			} else {
-				testAdmissionPortal(this.csvLineData, this.count);
+				// testAdmissionPortal(this.csvLineData, this.count);
 			}
 
 		} catch (InterruptedException e) {
@@ -80,13 +80,13 @@ public class App_portal extends Thread {
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
 			if (count == 0) {
-				Utils.bigSleepBetweenClicks(2);
+				Utils.bigSleepBetweenClicks(0);
 				count++;
 				t.start();
 				t.join();
 				continue;
 			} else {
-				Utils.bigSleepBetweenClicks(2);
+				Utils.bigSleepBetweenClicks(0);
 				t.start();
 			}
 			count++;
@@ -115,6 +115,7 @@ public class App_portal extends Thread {
 		logFile.setFormatter(new MyHtmlFormatter());
 		log.addHandler(logFile);
 		WebDriver driver = null;
+		headless = getHeadless(csvCell);
 		if (url.contains("sp-jain")) {
 			portal = 1;
 		} else if (url.contains("SBMP")) {
@@ -191,7 +192,7 @@ public class App_portal extends Thread {
 				} else {
 					op.addArguments("--disable-notifications");
 				}
-				op.addArguments("--disable-notifications");
+				// op.addArguments("--disable-notifications");
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver(op);
 				driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -234,6 +235,7 @@ public class App_portal extends Thread {
 		CSVReader csvReader2;
 		csvReader2 = new CSVReader(new FileReader(CSV_PATH));
 		int count1 = 0;
+		
 		String[] csvCell;
 		while ((csvCell = csvReader2.readNext()) != null) {
 			String browser = csvCell[1];
@@ -245,8 +247,9 @@ public class App_portal extends Thread {
 				continue;
 			}
 			if (Multiple.equals("1")) {
+				headless = getHeadless(csvCell);
 				driver = initDriver(browser, sfurl);
-				spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
+				// spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				quitDriver(sfurl, driver);
 				count1++;
 			}
@@ -258,6 +261,7 @@ public class App_portal extends Thread {
 	public static Boolean getHeadless(String[] csvCell) throws Exception {
 		try {
 			String headless = csvCell[8];
+			System.out.println("Headless is set to "+headless);
 			if ("TRUE".equals(headless)) {
 				return true;
 			} else {
