@@ -443,7 +443,7 @@ public class sbmp {
             String count = null;
             String row = null;
             System.out.println(SfEmail);
-
+            Thread.sleep(2000);
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
@@ -461,58 +461,48 @@ public class sbmp {
             System.out.println("click on Application");
             Thread.sleep(5000);
 
-            String view = "(//span[text()='View All'])[1]";
-            Boolean isPresent2 = driver.findElements(By.xpath(view)).size() > 0;
+            // String view = "(//span[text()='View All'])[1]";
+            // Boolean isPresent2 = driver.findElements(By.xpath(view)).size() > 0;
             //
-            if (isPresent2) {
-                // WebDriverWait wait = new WebDriverWait(driver, 20);
-                WebElement elem = wait
-                        .until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[text()='View All'])[1]")));
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
-                Thread.sleep(2000);
-                count = Utils.getTEXT(driver, ActionXpath.deletecount);
-                Pattern pt = Pattern.compile("-?\\d+");
-                java.util.regex.Matcher m = pt.matcher(count);
-                while (m.find()) {
-                    row = m.group();
-                }
-                int count1 = Integer.parseInt(row);
+            // if (isPresent2) {
 
-                System.out.println(count1);
-                String delete = csvCell[14];
-                for (int i = 0; i < count1; i++) {
-                    String xp1 = "(//*[.='sachin student']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
-                    String xp2 = "(//*[text()='aa student test']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+            count = Utils.getTEXT(driver, ActionXpath.deletecount1);
+            Pattern pt = Pattern.compile("-?\\d+");
+            java.util.regex.Matcher m = pt.matcher(count);
+            while (m.find()) {
+                row = m.group();
+            }
+            int count1 = Integer.parseInt(row);
 
-                    Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
-                    if (isPresent) {
-                        WebElement el = driver.findElement(By.xpath(xp1));
-                        System.out.println("XP is there click it     " + el);
-                        el.click();
-                        Utils.smallSleepBetweenClicks(1);
+            System.out.println(count1);
+
+            for (int i = 0; i < count1; i++) {
+                String xp1 = "(//*[text()='sachin student']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+                String xp2 = "(//*[text()='aa student test']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+
+                Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
+                if (isPresent) {
+                    WebElement el = driver.findElement(By.xpath(xp1));
+                    System.out.println("XP is there click it     " + el);
+                    el.click();
+                    Utils.smallSleepBetweenClicks(1);
+                    Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation ");
+                    Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation ");
+                    Utils.smallSleepBetweenClicks(2);
+                    continue;
+                } else {
+                    Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
+                    if (isPresent1) {
+                        WebElement el2 = driver.findElement(By.xpath(xp2));
+                        System.out.println("XP1 is there click it" + el2);
+                        el2.click();
                         Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
-                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation 2022");
+                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
                         Utils.smallSleepBetweenClicks(2);
                         continue;
-                    } else {
-                        Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
-                        if (isPresent1) {
-                            WebElement el2 = driver.findElement(By.xpath(xp2));
-                            System.out.println("XP1 is there click it" + el2);
-                            el2.click();
-                            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
-                            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
-                            Utils.smallSleepBetweenClicks(2);
-                            continue;
-                        }
                     }
                 }
             }
-
-            else {
-                System.out.println("There is nothing to Delete");
-            }
-            driver.switchTo().window(tab.get(0));
 
             log.info("  TC-2:  the Salesforce backend  delete test case PASSED \n");
 
