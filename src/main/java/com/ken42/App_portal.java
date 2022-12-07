@@ -27,6 +27,7 @@ public class App_portal extends Thread {
 	public static Logger log = Logger.getLogger("App_portal");
 	public static String[] students = new String[5];
 	public static int ThreadCount = 0;
+	static Boolean headless;
 
 	@Override
 	public void run() {
@@ -105,7 +106,6 @@ public class App_portal extends Thread {
 		int to = Integer.parseInt(To);
 		Logger log = Logger.getLogger("App_portal" + count);
 		int portal = 0;
-
 		String folder = "";
 		String logFileName = "";
 		boolean append = false;
@@ -180,11 +180,17 @@ public class App_portal extends Thread {
 				FirefoxDriver = "Users/shared/geckodriver.exe";
 				// url="https://ltpct-reg-stg-w2l.ken42.com/form";
 			}
+
 			System.out.println("Browser is $$$$$$" + Browser);
 			System.out.println("URL is " + url);
 			if ("chrome".equals(Browser)) {
 				System.setProperty("webdriver.chrome.driver", ChromeDriver);
 				ChromeOptions op = new ChromeOptions();
+				if (headless) {
+					op.addArguments("--headless", "--window-size=1920,1080");
+				} else {
+					op.addArguments("--disable-notifications");
+				}
 				op.addArguments("--disable-notifications");
 				WebDriverManager.chromedriver().setup();
 				driver = new ChromeDriver(op);
@@ -214,7 +220,7 @@ public class App_portal extends Thread {
 		} catch (Exception e) {
 			// Utils.printException(e);
 			log.warning("UNABLE TO LAUNCH BROWSER \n\n\n");
-			// Utils.printException(e);
+			Utils.printException(e);
 			System.exit(01);
 		}
 		return null;
@@ -247,6 +253,20 @@ public class App_portal extends Thread {
 
 		}
 
+	}
+
+	public static Boolean getHeadless(String[] csvCell) throws Exception {
+		try {
+			String headless = csvCell[8];
+			if ("TRUE".equals(headless)) {
+				return true;
+			} else {
+				return false;
+			}
+		} catch (Exception e) {
+			Utils.printException(e);
+		}
+		return false;
 	}
 
 	@AfterMethod
