@@ -1001,6 +1001,7 @@ public class spjain {
             }
             String Sfurl = csvCell[9];
             driver.get(Sfurl);
+            String studentemail = csvCell[2];
             String SfEmail = csvCell[10];
             String SfPassword = csvCell[11];
             String studentname = csvCell[12];
@@ -1016,7 +1017,7 @@ public class spjain {
             Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts ");
             Utils.clickXpath(driver, ActionXpath.contacts, time, "click on clickcontacts");
             Utils.cleartext(driver, ActionXpath.listsearch);
-            Utils.callSendkeys(driver, ActionXpath.listsearch, studentname, "Search for student name");
+            Utils.callSendkeys(driver, ActionXpath.listsearch, studentemail, "Search for student name");
             Utils.bigSleepBetweenClicks(1);
             Actions qq = new Actions(driver);
             qq.moveByOffset(40, 40).click().perform();
