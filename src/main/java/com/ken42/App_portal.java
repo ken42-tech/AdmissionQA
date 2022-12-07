@@ -80,13 +80,21 @@ public class App_portal extends Thread {
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
 			if (count == 0) {
+<<<<<<< HEAD
 				Utils.bigSleepBetweenClicks(0);
+=======
+				Utils.bigSleepBetweenClicks(1);
+>>>>>>> 1a5c5b1711bed9ec040495a7274ba60de5faa0ee
 				count++;
 				t.start();
 				t.join();
 				continue;
 			} else {
+<<<<<<< HEAD
 				Utils.bigSleepBetweenClicks(0);
+=======
+				Utils.bigSleepBetweenClicks(1);
+>>>>>>> 1a5c5b1711bed9ec040495a7274ba60de5faa0ee
 				t.start();
 			}
 			count++;
@@ -127,6 +135,8 @@ public class App_portal extends Thread {
 
 		// Below If will execute all Student related test cases
 		for (int i = from; i <= to; i++) {
+			headless = getHeadless(csvCell);
+
 			switch (i) {
 				case 1:
 					switch (portal) {
@@ -150,6 +160,7 @@ public class App_portal extends Thread {
 							spjain.SalesforceBackendDELETE(driver, log, csvCell, "Launch Tab");
 							break;
 						case 2:
+							sbmp.SalesforceBackendDELETE(driver, log, csvCell);
 							break;
 					}
 					break;
@@ -221,7 +232,7 @@ public class App_portal extends Thread {
 		} catch (Exception e) {
 			// Utils.printException(e);
 			log.warning("UNABLE TO LAUNCH BROWSER \n\n\n");
-			Utils.printException(e);
+			// Utils.printException(e);
 			System.exit(01);
 		}
 		return null;
