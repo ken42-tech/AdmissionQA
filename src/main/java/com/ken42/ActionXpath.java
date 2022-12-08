@@ -375,12 +375,12 @@ public class ActionXpath {
     // documents
     static String clickdocument = "//*[text()='Documents']";
     static String selectdocumnentdropdown = "//*[@id='panel1a-header']";
-    static String mark10sheetupload = "(//input[@type='file'])[1]";
-    static String mark10view = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[2]";
-    static String mark10download = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[1]";
     static String mark12view = "(//*[text()='Std 12th Mark sheet']/../..//*[local-name()='svg'])[2]";
     static String mark12download = "(//*[text()='Std 12th Mark sheet']/../..//*[local-name()='svg'])[1]";
 
+    static String mark10sheetupload = "(//input[@type='file'])[1]";
+    static String mark10view = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[2]";
+    static String mark10download = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[1]";
     static String degreemarkupload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[3]";
     static String degreemarkview = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[2]";
     static String degreemarkdownload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[1]";
@@ -428,7 +428,7 @@ public class ActionXpath {
     // static String deletesf =
     // "/html/body/div[4]/div[1]/section/div[1]/div[2]/div[2]/div[1]/div/div/div/div[4]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div//table/tbody/tr";
     static String deletecount = "(//*[@class='countSortedByFilteredBy'])[2]";
-    static String deletecount1 = "(//*[@class='countSortedByFilteredBy'])[21]";
+    static String deletecount1 = "//*[@class='countSortedByFilteredBy']";
 
     static String deletesf = "(//*[text()='2023']/../../..//*[local-name()='svg']/../../..)[1]";
     static String delete2022 = "(//*[text()='2022'])[1]";
@@ -546,14 +546,14 @@ public class ActionXpath {
 
     static String parentclickonrelationship = "(//*[@id='outlined-select-currency'])[1]";
     static String parentsselectrelationship = "//li[@data-value='Father']";
-    static String parentfirstName = "//input[@name='Relationship.0.Relationship[firstName]']";
-    static String parentlastName = "//input[@name='Relationship.0.Relationship[lastName]']";
-    static String Parentmiddlename = "//input[@name='Relationship.0.Relationship[middleName]']";
+    static String parentfirstName = "//input[@id='mui-17']";
+    static String parentlastName = "//input[@id='mui-19']";
+    static String Parentmiddlename = "//input[@id='mui-18']";
 
     static String familyphone = "//input[@placeholder='Enter Number']";
 
-    static String familyemail = "//input[@name='Relationship.0.Relationship[email]']";
-    static String familyaadhara = "//input[@id='mui-17']";
+    static String familyemail = "//input[@id='mui-20']";
+    static String familyaadhara = "//input[@id='mui-21']";
 
     static String clickonQualification = "(//*[@id='outlined-select-currency'])[2]";
     static String Selecteducation = "//li[@data-value='Under Graduate']";
@@ -562,7 +562,7 @@ public class ActionXpath {
     static String clickonoccuption = "(//*[@id='outlined-select-currency'])[3]";
     static String Selectoccuption = "//li[@data-value='Salaried']";
 
-    static String familyannualincome = "//input[@name='Relationship.0.Relationship[annualIncome]']";
+    static String familyannualincome = "//input[@id='mui-22']";
 
     /////////////// ......................course details xpath
     /////////////// jalnagara............................////////
