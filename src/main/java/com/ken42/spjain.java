@@ -17,6 +17,8 @@ import java.util.regex.Pattern;
 
 import org.testng.annotations.Test;
 
+import net.bytebuddy.asm.Advice.Exit;
+
 public class spjain {
     public static Logger log = Logger.getLogger("App_portal");
     static int time = 2000;
@@ -1007,6 +1009,7 @@ public class spjain {
             String studentname = csvCell[12];
             String count = null;
             String row = null;
+            Boolean appPresent = false;
             System.out.println(SfEmail);
 
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
@@ -1031,16 +1034,14 @@ public class spjain {
             if (isPresent3) {
                 Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
                 Utils.smallSleepBetweenClicks(1);
+                String view = "(//span[text()='View All'])[1]";
+                appPresent = driver.findElements(By.xpath(view)).size() > 0;
+                Utils.bigSleepBetweenClicks(1);
             } else {
                 System.out.println("Application tab is not there");
-
             }
-            Utils.bigSleepBetweenClicks(2);
-
-            String view = "(//span[text()='View All'])[1]";
-            Boolean isPresent2 = driver.findElements(By.xpath(view)).size() > 0;
-
-            if (isPresent2) {
+            
+            if (appPresent) {
                 WebDriverWait wait = new WebDriverWait(driver, 20);
                 WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
                         By.xpath("(//span[text()='View All'])[1]")));
@@ -1057,30 +1058,34 @@ public class spjain {
                 System.out.println(count1);
 
                 for (int i = 0; i < count1; i++) {
-                    String xp1 = "(//*[text()='2022']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
-                    String xp2 = "(//*[text()='2023']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
-
-                    Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
-                    if (isPresent) {
-                        WebElement el = driver.findElement(By.xpath(xp1));
-                        System.out.println("XP is there click it     " + el);
+                    Boolean acad2022Present = driver.findElements(By.xpath(ActionXpath.acadYear2022)).size() > 0;
+                    Boolean acad2023Present = driver.findElements(By.xpath(ActionXpath.acadYear2023)).size() > 0;
+                    Boolean acad2024Present = driver.findElements(By.xpath(ActionXpath.acadYear2024)).size() > 0;
+                    if (acad2022Present) {
+                        WebElement el = driver.findElement(By.xpath(ActionXpath.acadYear2022));
+                        System.out.println("2022 is there click it     " + el);
                         el.click();
                         Utils.smallSleepBetweenClicks(1);
                         Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
                         Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation 2022");
                         Utils.smallSleepBetweenClicks(2);
                         continue;
-                    } else {
-                        Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
-                        if (isPresent1) {
-                            WebElement el2 = driver.findElement(By.xpath(xp2));
-                            System.out.println("XP1 is there click it" + el2);
-                            el2.click();
-                            Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2023");
-                            Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
-                            Utils.smallSleepBetweenClicks(2);
-                            continue;
-                        }
+                    } else if (acad2023Present) {
+                        WebElement el2 = driver.findElement(By.xpath(ActionXpath.acadYear2023));
+                        System.out.println("2023 is there click it" + el2);
+                        el2.click();
+                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2023");
+                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
+                        Utils.smallSleepBetweenClicks(2);
+                        continue;
+                    } else if (acad2024Present) {
+                        WebElement el2 = driver.findElement(By.xpath(ActionXpath.acadYear2024));
+                        System.out.println("2024 is there click it" + el2);
+                        el2.click();
+                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2023");
+                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
+                        Utils.smallSleepBetweenClicks(2);
+                        continue;
                     }
                 }
             } else {

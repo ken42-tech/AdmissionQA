@@ -204,11 +204,7 @@ public class App_portal extends Thread {
 				if (headless) {
 					op.addArguments("--headless", "--window-size=1920,1080");
 				} else {
-<<<<<<< HEAD
-					op.addArguments("--disable-notifications", "--force-device-scale-factor=2");
-=======
 					op.addArguments("--disable-notifications", "--force-device-scale-factor=1.10");
->>>>>>> 31fb1f3bc91dfd9a98191027e808c13f82dce7c5
 				}
 				// op.addArguments("--disable-notifications");
 				WebDriverManager.chromedriver().setup();

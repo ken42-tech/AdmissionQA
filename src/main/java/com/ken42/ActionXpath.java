@@ -277,6 +277,10 @@ public class ActionXpath {
     static String clickappname = "(//*[text()='Application Name']/../../../../../../../..//*[@class='slds-truncate'])[5]";
     static String clickappview = "//*[text()='Application View']";
 
+    static String acadYear2022 = "(//*[text()='2022']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
+    static String acadYear2023 = "(//*[text()='2023']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
+    static String acadYear2024 = "(//*[text()='2024']/.././../..//*[@class='slds-cell-edit cellContainer'])[5]";
+
     static String ClickApplication = "//span[text()='Applications']";
     static String SearchForAppliacant = "(//input[@type='search'])[2]";
     static String clickTheApplicanetName = "//a[@title='test Student']";
