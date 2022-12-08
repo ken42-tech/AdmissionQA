@@ -70,7 +70,7 @@ public class sbmp {
             String childfname = csvCell[90];
             String childlname = csvCell[92];
             String aadharnumber = csvCell[93];
-            String dob = csvCell[16];
+            // String cdob = csvCell[120];
             String placeofbirth = csvCell[104];
             String mothertong = csvCell[105];
             String nosib = csvCell[106];
@@ -105,9 +105,9 @@ public class sbmp {
                 Utils.cleartext(driver, ActionXpath.childMiddleName);
 
             }
+            Utils.cleartext(driver, ActionXpath.childMiddleName);
 
             Utils.callSendkeys(driver, ActionXpath.childMiddleName, middlename, "enter childMiddleName");
-            Utils.scrollUpOrDown(driver, time);
 
             if (validation.equals("TRUE")) {
                 Utils.cleartext(driver, ActionXpath.childlastName);
@@ -122,14 +122,9 @@ public class sbmp {
             Utils.callSendkeys(driver, ActionXpath.childlastName, childlname, "enter childlastName");
 
             Utils.scrollUpOrDown(driver, time);
-            Utils.cleartext(driver, ActionXpath.childdob);
-            Utils.callSendkeys(driver, ActionXpath.childdob, dob, "enter childdob");
-
-            Utils.scrollUpOrDown(driver, time);
             Utils.cleartext(driver, ActionXpath.placeofbirth);
             Utils.callSendkeys(driver, ActionXpath.placeofbirth, placeofbirth, "enter placeofbirth");
 
-            Utils.scrollUpOrDown(driver, time);
             Utils.cleartext(driver, ActionXpath.mothertongue);
             Utils.callSendkeys(driver, ActionXpath.mothertongue, mothertong, "enter mothertongue");
 
@@ -156,15 +151,15 @@ public class sbmp {
 
             }
 
-            // Utils.scrollUpOrDown(driver, time);
+            Utils.scrollUpOrDown(driver, time);
             Utils.cleartext(driver, ActionXpath.childaadharNumber);
 
             Utils.callSendkeys(driver, ActionXpath.childaadharNumber, aadharnumber, "enter childaadharNumber");
-            Utils.scrollUpOrDown(driver, time);
 
             Utils.scrollUpOrDown(driver, time);
+            Utils.cleartext(driver, ActionXpath.satsNumber);
+
             Utils.callSendkeys(driver, ActionXpath.satsNumber, satsno, "enter satsNumber");
-            Utils.scrollUpOrDown(driver, time);
 
             Utils.clickXpath(driver, ActionXpath.clickonbloodgroup, time, "clickonbloodgroup");
             Utils.selectFromDropDown(ActionXpath.selectxpath, bloodgroup, driver);
@@ -180,7 +175,6 @@ public class sbmp {
 
             Utils.callSendkeys(driver, ActionXpath.pickuppoint, pickuppoint, "enter pickuppoint");
 
-            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.clickonnationality, time, " clickonnationality");
             Utils.clickXpath(driver, ActionXpath.selectnationality1, time, " selectnationality1");
 
@@ -200,8 +194,6 @@ public class sbmp {
 
             Utils.callSendkeys(driver, ActionXpath.childsubcaste, subcaste, "enter childsubcaste");
 
-            // Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
 
             Utils.smallSleepBetweenClicks(1);
@@ -228,18 +220,20 @@ public class sbmp {
             Utils.clickXpath(driver, ActionXpath.parentclickonrelationship, time, "parentclickonrelationship");
 
             Utils.clickXpath(driver, ActionXpath.parentsselectrelationship, time, "parentsselectrelationship");
-            Utils.smallSleepBetweenClicks(1);
+            // Utils.smallSleepBetweenClicks(1);
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.parentfirstName, ActionXpath.fnameerror, log, 41);
                 Utils.cleartext(driver, ActionXpath.parentfirstName);
                 validate.specialcharacter(driver, ActionXpath.parentfirstName, ActionXpath.fnameerror, log);
                 validate.testForMandatoryField(driver, ActionXpath.parentfirstName, ActionXpath.fnameerror, log);
-            }
-            Utils.callSendkeys(driver, ActionXpath.parentfirstName, parentfirstName, "Enter Fist name");
-            Utils.scrollUpOrDown(driver, time);
 
+            }
+            Utils.cleartext(driver, ActionXpath.parentfirstName);
+            Utils.callSendkeys(driver, ActionXpath.parentfirstName, parentfirstName, "Enter Fist name");
+            // Utils.scrollUpOrDown(driver, time);
+            Utils.cleartext(driver, ActionXpath.Parentmiddlename);
             Utils.callSendkeys(driver, ActionXpath.Parentmiddlename, parentmiddleName, "Enter Parentmiddlename");
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
 
             if (validation.equals("TRUE")) {
                 validate.testForCharLength(driver, ActionXpath.parentlastName, ActionXpath.lnameerror, log, 41);
@@ -248,9 +242,9 @@ public class sbmp {
                 validate.testForMandatoryField(driver, ActionXpath.parentlastName, ActionXpath.lnameerror, log);
             }
             Utils.callSendkeys(driver, ActionXpath.parentlastName, parentlastName, "Enter Last NAme");
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
             Utils.callSendkeys(driver, ActionXpath.familyphone, parentphone, "enter the parentphone");
-
+            Thread.sleep(2000);
             if (validation.equals("TRUE")) {
                 validate.email(driver, ActionXpath.familyemail, ActionXpath.emailerror, log);
             }
@@ -259,7 +253,7 @@ public class sbmp {
             Utils.callSendkeys(driver, ActionXpath.familyemail, email, "Enter the Email");
 
             Utils.callSendkeys(driver, ActionXpath.familyaadhara, aadharnumber, "familyaadhara");
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
 
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.clickonQualification, time, "clickonQualification");
@@ -267,7 +261,7 @@ public class sbmp {
 
             Utils.clickXpath(driver, ActionXpath.clickonoccuption, time, "clickonoccuption");
             Utils.clickXpath(driver, ActionXpath.Selectoccuption, time, "Selectoccuption");
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
             if (validation.equals("TRUE")) {
                 validate.testForNumberLength(driver, ActionXpath.familyannualincome, ActionXpath.incomeerror, log, 16);
                 Utils.cleartext(driver, ActionXpath.familyannualincome);
@@ -277,7 +271,7 @@ public class sbmp {
             Utils.callSendkeys(driver, ActionXpath.familyannualincome, annualIncome, "Selct the Annual income");
 
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            Utils.smallSleepBetweenClicks(1);
+            // Utils.smallSleepBetweenClicks(1);
             log.info("TC-1:Sbmp Populating Family info PASSED");
         } catch (Exception e) {
             Utils.printException(e);
@@ -325,38 +319,38 @@ public class sbmp {
     public static void sbmp_Education_details(String url, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
-
+            String classcurrently = csvCell[114];
             String school = csvCell[115];
             String mediuminst = csvCell[116];
             String flang = csvCell[117];
             String slang = csvCell[118];
             String tlang = csvCell[119];
             Utils.clickXpath(driver, ActionXpath.clickoneducationclass, time, "clickonclass");
-            Utils.selectFromDropDown(ActionXpath.selectxpath, school, driver);
+            Utils.selectFromDropDown(ActionXpath.selectxpath, classcurrently, driver);
 
             Utils.cleartext(driver, ActionXpath.eduschool);
             Utils.callSendkeys(driver, ActionXpath.eduschool, school, "eduschool");
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
 
             Utils.cleartext(driver, ActionXpath.clickonmedium);
             Utils.clickXpath(driver, ActionXpath.clickonmedium, time, "click on medium");
             Utils.selectFromDropDown(ActionXpath.selectxpath, mediuminst, driver);
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
 
             Utils.cleartext(driver, ActionXpath.clickonflanguage);
             Utils.clickXpath(driver, ActionXpath.clickonflanguage, time, "clickonflanguage");
             Utils.selectFromDropDown(ActionXpath.selectxpath, flang, driver);
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
 
             Utils.cleartext(driver, ActionXpath.clickonslanguage);
             Utils.clickXpath(driver, ActionXpath.clickonslanguage, time, "clickonslanguage");
             Utils.selectFromDropDown(ActionXpath.selectxpath, slang, driver);
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
 
             Utils.cleartext(driver, ActionXpath.clickonsTlanguage);
             Utils.clickXpath(driver, ActionXpath.clickonsTlanguage, time, "clickonsTlanguage");
             Utils.selectFromDropDown(ActionXpath.selectxpath, tlang, driver);
-            Utils.scrollUpOrDown(driver, time);
+            // Utils.scrollUpOrDown(driver, time);
             Thread.sleep(4000);
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Thread.sleep(4000);
@@ -411,6 +405,7 @@ public class sbmp {
             sbmpBasicDetails(url, driver, csvCell, log);
             sbmpFamilyInfo(Sfurl, driver, csvCell, log);
             sbmp_permanentaddress_Info(Sfurl, driver, csvCell, log);
+            sbmp_Education_details(Sfurl, driver, csvCell, log);
             sbmp_document_upload(Sfurl, driver, csvCell, log);
 
             log.info("TC-1: Sbmp Fill form with validation test Completed and Passed ");
@@ -477,8 +472,11 @@ public class sbmp {
             System.out.println(count1);
 
             for (int i = 0; i < count1; i++) {
-                String xp1 = "(//*[text()='sachin student']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
-                String xp2 = "(//*[text()='aa student test']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+
+                String apply = csvCell[12];
+                String xp1 = "(//*[. and contains(text(),'" + apply
+                        + "')]/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+                String xp2 = "(//*[text()='" + apply + "']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
 
                 Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
                 if (isPresent) {

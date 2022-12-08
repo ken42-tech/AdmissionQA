@@ -83,10 +83,10 @@ public class documentupload {
                     .sendKeys(mark12sheetupload);
 
             Utils.smallSleepBetweenClicks(1);
-            Utils.clickXpath(driver, ActionXpath.mark12download, time, "mark10download");
+            Utils.clickXpath(driver, ActionXpath.mark12download, time, "mark12download");
             Utils.bigSleepBetweenClicks(1);
 
-            Utils.clickXpath(driver, ActionXpath.mark12view, time, "mark10view");
+            Utils.clickXpath(driver, ActionXpath.mark12view, time, "mark12view");
             driver.navigate().refresh();
 
         } catch (Exception e) {
