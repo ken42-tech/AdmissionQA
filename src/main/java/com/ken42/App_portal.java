@@ -85,7 +85,7 @@ public class App_portal extends Thread {
 				t.join();
 				continue;
 			} else {
-				Utils.bigSleepBetweenClicks(1);
+				// Utils.bigSleepBetweenClicks(1);
 				t.start();
 			}
 			count++;
