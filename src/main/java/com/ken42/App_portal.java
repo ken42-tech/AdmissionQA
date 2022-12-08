@@ -240,6 +240,7 @@ public class App_portal extends Thread {
 
 		String[] csvCell;
 		while ((csvCell = csvReader2.readNext()) != null) {
+			String url = csvCell[0];
 			String browser = csvCell[1];
 			String sfurl = csvCell[9];
 			String Multiple = csvCell[7];
@@ -251,7 +252,11 @@ public class App_portal extends Thread {
 			if (Multiple.equals("1")) {
 				headless = getHeadless(csvCell);
 				driver = initDriver(browser, sfurl);
-				spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
+				if (url.contains("sp-jain")){
+					spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
+				}else if (url.contains("sbmp")){
+					sbmp.SalesforceBackendDELETE(driver, log, csvCell, Tname);
+				}
 				quitDriver(sfurl, driver);
 				count1++;
 			}
