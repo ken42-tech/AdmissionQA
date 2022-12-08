@@ -118,7 +118,7 @@ public class App_portal extends Thread {
 		headless = getHeadless(csvCell);
 		if (url.contains("sp-jain")) {
 			portal = 1;
-		} else if (url.contains("SBMP")) {
+		} else if (url.contains("apply-sbmpps")) {
 			portal = 2;
 		}
 
