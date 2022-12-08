@@ -476,7 +476,8 @@ public class sbmp {
                 String apply = csvCell[12];
                 String xp1 = "(//*[. and contains(text(),'" + apply
                         + "')]/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
-                String xp2 = "(//*[text()='" + apply + "']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
+                // String xp2 = "(//*[text()='" + apply +
+                // "']/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
 
                 Boolean isPresent = driver.findElements(By.xpath(xp1)).size() > 0;
                 if (isPresent) {
@@ -488,17 +489,6 @@ public class sbmp {
                     Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation ");
                     Utils.smallSleepBetweenClicks(2);
                     continue;
-                } else {
-                    Boolean isPresent1 = driver.findElements(By.xpath(xp2)).size() > 0;
-                    if (isPresent1) {
-                        WebElement el2 = driver.findElement(By.xpath(xp2));
-                        System.out.println("XP1 is there click it" + el2);
-                        el2.click();
-                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
-                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
-                        Utils.smallSleepBetweenClicks(2);
-                        continue;
-                    }
                 }
             }
 
