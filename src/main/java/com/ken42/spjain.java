@@ -1010,6 +1010,7 @@ public class spjain {
             String count = null;
             String row = null;
             Boolean appPresent = false;
+            Boolean viewPresent = false;
             System.out.println(SfEmail);
 
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
@@ -1030,18 +1031,18 @@ public class spjain {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem21);
             Utils.bigSleepBetweenClicks(1);
             String Applicationtab = "//a[text()='Applications']";
-            Boolean isPresent3 = driver.findElements(By.xpath(Applicationtab)).size() > 0;
-            if (isPresent3) {
+            appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
+            if (appPresent) {
                 Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
                 Utils.smallSleepBetweenClicks(1);
                 String view = "(//span[text()='View All'])[1]";
-                appPresent = driver.findElements(By.xpath(view)).size() > 0;
+                viewPresent = driver.findElements(By.xpath(view)).size() > 0;
                 Utils.bigSleepBetweenClicks(1);
             } else {
                 System.out.println("Application tab is not there");
             }
             
-            if (appPresent) {
+            if (viewPresent) {
                 WebDriverWait wait = new WebDriverWait(driver, 20);
                 WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
                         By.xpath("(//span[text()='View All'])[1]")));
