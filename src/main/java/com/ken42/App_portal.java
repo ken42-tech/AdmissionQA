@@ -267,7 +267,7 @@ public class App_portal extends Thread {
 				driver = initDriver(browser, sfurl);
 				if (url.contains("sp-jain")){
 					spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
-				}else if (url.contains("sbmp")){
+				}else if (url.contains("apply-sbmp")){
 					sbmp.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				}
 				quitDriver(sfurl, driver);
