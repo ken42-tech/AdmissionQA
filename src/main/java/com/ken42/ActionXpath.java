@@ -378,6 +378,9 @@ public class ActionXpath {
     static String mark10sheetupload = "(//input[@type='file'])[1]";
     static String mark10view = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[2]";
     static String mark10download = "(//*[text()='Std 10th Mark sheet']/../..//*[local-name()='svg'])[1]";
+    static String mark12view = "(//*[text()='Std 12th Mark sheet']/../..//*[local-name()='svg'])[2]";
+    static String mark12download = "(//*[text()='Std 12th Mark sheet']/../..//*[local-name()='svg'])[1]";
+
     static String degreemarkupload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[3]";
     static String degreemarkview = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[2]";
     static String degreemarkdownload = "(//*[text()='Marksheet of all years of Graduate Degree']/../..//*[local-name()='svg'])[1]";

@@ -182,7 +182,6 @@ public class App_portal extends Thread {
 				ChromeDriver = "Users/shared/chromedriver.exe";
 				EdgeDriver = "Users/shared/msedgedriver.exe";
 				FirefoxDriver = "Users/shared/geckodriver.exe";
-				// url="https://ltpct-reg-stg-w2l.ken42.com/form";
 			}
 
 			System.out.println("Browser is $$$$$$" + Browser);

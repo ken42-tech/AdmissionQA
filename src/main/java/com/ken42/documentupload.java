@@ -37,6 +37,7 @@ public class documentupload {
 
             String subject = csvCell[13];
             String mark10sheetupload = "C:\\Users\\Public\\Documents\\demo.pdf";
+            String mark12sheetupload = "C:\\Users\\Public\\Documents\\demo.pdf";
 
             Utils.clickXpath(driver, ActionXpath.clickdocument, time, "clickdocument");
             Utils.smallSleepBetweenClicks(1);
@@ -54,17 +55,39 @@ public class documentupload {
             // "selectdocumnentdropdown");
 
             Thread.sleep(4000);
-            WebDriverWait wait1 = new WebDriverWait(driver, 20);
-            WebElement elem1 = wait1.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("(//*[text()='Std 10th Mark sheet']/../..//input[@type='file'])[1]")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem1);
-            Thread.sleep(2000);
 
+            driver.findElement(By.xpath("(//*[text()='Std 10th Mark sheet']/../..//input[@type='file'])[1]"))
+                    .sendKeys(mark10sheetupload);
+
+            Utils.smallSleepBetweenClicks(2);
             Utils.clickXpath(driver, ActionXpath.mark10download, time, "mark10download");
+            Utils.bigSleepBetweenClicks(1);
 
             Utils.clickXpath(driver, ActionXpath.mark10view, time, "mark10view");
-            Actions qq = new Actions(driver);
-            qq.moveByOffset(40, 40).click().perform();
+
+            driver.navigate().refresh();
+
+            Utils.bigSleepBetweenClicks(1);
+
+            Utils.clickXpath(driver, ActionXpath.clickdocument, time, "clickdocument");
+            Utils.smallSleepBetweenClicks(1);
+            System.out.println(subject);
+            Utils.smallSleepBetweenClicks(2);
+
+            WebDriverWait wait23 = new WebDriverWait(driver, 20);
+            WebElement elem23 = wait23.until(ExpectedConditions.elementToBeClickable(
+                    By.xpath("(//*[. and contains(text(),'" + subject + "')]/../../..//*[local-name()='svg'])[1]/..")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem23);
+            Thread.sleep(2000);
+            driver.findElement(By.xpath("(//*[text()='Std 12th Mark sheet']/../..//input[@type='file'])[1]"))
+                    .sendKeys(mark12sheetupload);
+
+            Utils.smallSleepBetweenClicks(1);
+            Utils.clickXpath(driver, ActionXpath.mark12download, time, "mark10download");
+            Utils.bigSleepBetweenClicks(1);
+
+            Utils.clickXpath(driver, ActionXpath.mark12view, time, "mark10view");
+            driver.navigate().refresh();
 
         } catch (Exception e) {
             Utils.printException(e);
@@ -78,7 +101,7 @@ public class documentupload {
             System.out.println("TC-3: Fill form with validation test started Executation ");
 
             login(url, driver, csvCell);
-            fess.sf_login(sfurl, driver, csvCell, log);
+            // fess.sf_login(sfurl, driver, csvCell, log);
             documents(url, driver, csvCell);
 
             log.info("TC-3: Fill form with validation test Completed and Passed ");
