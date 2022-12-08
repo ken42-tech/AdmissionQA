@@ -150,15 +150,15 @@ public class App_portal extends Thread {
 					}
 					break;
 				case 3:
-				switch (portal) {
-					case 1:
-						documentupload.documentUpload(sfurl, url, driver, csvCell, log);
-						break;
-					case 2:
-						System.out.println("SBMP no fee test case");
-						break;
-				}
-				break;
+					switch (portal) {
+						case 1:
+							documentupload.documentUpload(sfurl, url, driver, csvCell, log);
+							break;
+						case 2:
+							System.out.println("SBMP no fee test case");
+							break;
+					}
+					break;
 				case 4:
 					switch (portal) {
 						case 1:
@@ -204,7 +204,11 @@ public class App_portal extends Thread {
 				if (headless) {
 					op.addArguments("--headless", "--window-size=1920,1080");
 				} else {
+<<<<<<< HEAD
 					op.addArguments("--disable-notifications", "--force-device-scale-factor=2");
+=======
+					op.addArguments("--disable-notifications", "--force-device-scale-factor=1.10");
+>>>>>>> 31fb1f3bc91dfd9a98191027e808c13f82dce7c5
 				}
 				// op.addArguments("--disable-notifications");
 				WebDriverManager.chromedriver().setup();
@@ -264,9 +268,9 @@ public class App_portal extends Thread {
 			if (Multiple.equals("1")) {
 				headless = getHeadless(csvCell);
 				driver = initDriver(browser, sfurl);
-				if (url.contains("sp-jain")){
+				if (url.contains("sp-jain")) {
 					spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
-				}else if (url.contains("apply-sbmp")){
+				} else if (url.contains("apply-sbmp")) {
 					sbmp.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				}
 				quitDriver(sfurl, driver);
