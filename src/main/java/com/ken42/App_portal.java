@@ -80,7 +80,6 @@ public class App_portal extends Thread {
 			threads[count] = t;
 			threads[count].setName("T" + String.valueOf(count + 1));
 			if (count == 0) {
-				Utils.bigSleepBetweenClicks(1);
 				count++;
 				t.start();
 				t.join();
@@ -205,7 +204,7 @@ public class App_portal extends Thread {
 				if (headless) {
 					op.addArguments("--headless", "--window-size=1920,1080");
 				} else {
-					op.addArguments("--disable-notifications", "--force-device-scale-factor=0.75");
+					op.addArguments("--disable-notifications", "--force-device-scale-factor=2");
 				}
 				// op.addArguments("--disable-notifications");
 				WebDriverManager.chromedriver().setup();

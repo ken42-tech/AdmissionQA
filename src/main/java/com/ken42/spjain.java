@@ -233,7 +233,7 @@ public class spjain {
             Utils.callSendkeys(driver, ActionXpath.occupation, occupation, "Enter Occupation");
 
             if (validation.equals("TRUE")) {
-                validate.testForNumberLength(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log, 16);
+                validate.testForNumberLength(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log, 19);
                 Utils.cleartext(driver, ActionXpath.annualIncome);
                 validate.specialcharacter(driver, ActionXpath.annualIncome, ActionXpath.incomeerror, log);
                 Utils.cleartext(driver, ActionXpath.annualIncome);
