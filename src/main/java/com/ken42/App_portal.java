@@ -141,11 +141,25 @@ public class App_portal extends Thread {
 					}
 					break;
 				case 2:
-					spjain.fess_spjain(sfurl, timeStamp, driver, csvCell, log);
+					switch (portal) {
+						case 1:
+							spjain.fess_spjain(sfurl, timeStamp, driver, csvCell, log);
+							break;
+						case 2:
+							System.out.println("SBMP no fee test case");
+							break;
+					}
 					break;
 				case 3:
-					documentupload.documentUpload(sfurl, url, driver, csvCell, log);
-					break;
+				switch (portal) {
+					case 1:
+						documentupload.documentUpload(sfurl, url, driver, csvCell, log);
+						break;
+					case 2:
+						System.out.println("SBMP no fee test case");
+						break;
+				}
+				break;
 				case 4:
 					switch (portal) {
 						case 1:
@@ -156,9 +170,8 @@ public class App_portal extends Thread {
 							break;
 					}
 					break;
-				case 5:
-					sbmp.Admissionfillform(url, driver, csvCell, log);
-					break;
+				default:
+					System.out.println("Entered Default");
 			}
 		}
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);
