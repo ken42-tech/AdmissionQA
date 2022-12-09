@@ -1,5 +1,6 @@
 package com.ken42;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -95,6 +96,84 @@ public class documentupload {
         }
     }
 
+    public static void sf_login(String url, WebDriver driver, String[] csvCell, Logger log) {
+        try {
+            ((JavascriptExecutor) driver).executeScript("window.open()");
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tab.get(1));
+            String Sfurl = csvCell[9];
+
+            driver.get(Sfurl);
+            String SfEmail = csvCell[10];
+            String SfPassword = csvCell[11];
+
+            Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
+            Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
+            Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
+            Utils.bigSleepBetweenClicks(1);
+
+            Utils.clickXpath(driver, ActionXpath.clickondots, time, "click on clickondots");
+
+            Utils.clickXpath(driver, ActionXpath.spadmin, time, "click on spadmin");
+
+            Thread.sleep(7000);
+            WebDriverWait wait = new WebDriverWait(driver, 20);
+            WebElement e = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Applications']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e);
+
+            System.out.println("click on Application");
+            Thread.sleep(5000);
+            String Applicant = csvCell[12];
+            Utils.callSendkeys(driver, ActionXpath.listsearch, Applicant, "Search for student name");
+            Utils.clickXpath(driver, ActionXpath.clickstudent, time, "click on clickstudent");
+
+            // List<WebElement> clickapplicant =
+            // driver.findElements(By.xpath("//table//tbody//td[3]//a"));
+
+            // for (int i = 0; i < clickapplicant.size(); i++) {
+
+            // if (clickapplicant.get(i).getText().contains(Applicant)) {
+            // clickapplicant.get(i).click();
+
+            // break;
+            // }
+
+            // }
+            Thread.sleep(3000);
+
+            Utils.clickXpath(driver, ActionXpath.application, time, "click on application ");
+            Thread.sleep(2000);
+
+            Utils.clickXpath(driver, ActionXpath.window, time, "click on window ");
+
+            WebElement element = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+            Thread.sleep(4000);
+            // driver.switchTo().window(tab.get(0));
+
+            WebElement element41 = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element41);
+            Thread.sleep(4000);
+            // driver.switchTo().window(tab.get(0));
+
+            WebElement element42 = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element42);
+            Thread.sleep(4000);
+            driver.switchTo().window(tab.get(0));
+
+            // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
+
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void documentUpload(String url, String sfurl, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
@@ -102,7 +181,7 @@ public class documentupload {
             login(url, driver, csvCell);
 
             // fess.sf_login(sfurl, driver, csvCell, log);
-
+            sf_login(sfurl, driver, csvCell, log);
             documents(url, driver, csvCell);
 
             log.info("TC-3: Fill form with validation test Completed and Passed ");

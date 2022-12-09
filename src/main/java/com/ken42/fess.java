@@ -95,18 +95,6 @@ public class fess {
                     .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
             Thread.sleep(4000);
-            // driver.switchTo().window(tab.get(0));
-
-            WebElement element41 = wait.until(ExpectedConditions
-                    .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element41);
-            Thread.sleep(4000);
-            // driver.switchTo().window(tab.get(0));
-
-            WebElement element42 = wait.until(ExpectedConditions
-                    .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element42);
-            Thread.sleep(4000);
             driver.switchTo().window(tab.get(0));
 
             // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
