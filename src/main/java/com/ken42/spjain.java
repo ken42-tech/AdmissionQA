@@ -501,8 +501,9 @@ public class spjain {
                     validate.specialcharacter(driver, ActionXpath.pgpercentage, ActionXpath.pgpercentageerror,
                             log);
                     Utils.cleartext(driver, ActionXpath.pgpercentage);
-                    validate.testForNumberLength(driver, ActionXpath.pgpercentage, ActionXpath.pgpercentageerror, log,
-                            6);
+                    // validate.testForNumberLength(driver, ActionXpath.pgpercentage,
+                    // ActionXpath.pgpercentageerror, log,
+                    // 6);
                 }
                 Utils.cleartext(driver, ActionXpath.pgpercentage);
                 Utils.callSendkeys(driver, ActionXpath.pgpercentage, pgpercentage, "pgpercentage");
@@ -571,8 +572,9 @@ public class spjain {
                 if (validation.equals("TRUE")) {
                     validate.specialcharacter(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror, log);
                     Utils.cleartext(driver, ActionXpath.ugpercentage);
-                    validate.testForNumberLength(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror, log,
-                            6);
+                    // validate.testForNumberLength(driver, ActionXpath.ugpercentage,
+                    // ActionXpath.ugpercentageerror, log,
+                    // 6);
                     validate.testForMandatoryField(driver, ActionXpath.ugpercentage, ActionXpath.ugpercentageerror,
                             log);
                 }
@@ -628,8 +630,9 @@ public class spjain {
                     Utils.clickXpath(driver, ActionXpath.hscgradeselect, time, "hscgradeselect");
                 }
                 if (validation.equals("TRUE")) {
-                    validate.testForNumberLength(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror, log,
-                            6);
+                    // validate.testForNumberLength(driver, ActionXpath.hscpercentage,
+                    // ActionXpath.hscpercentageerror, log,
+                    // 6);
                     Utils.cleartext(driver, ActionXpath.hscpercentage);
                     validate.specialcharacter(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror, log);
                     validate.testForMandatoryField(driver, ActionXpath.hscpercentage, ActionXpath.hscpercentageerror,
@@ -1041,7 +1044,7 @@ public class spjain {
             } else {
                 System.out.println("Application tab is not there");
             }
-            
+
             if (viewPresent) {
                 WebDriverWait wait = new WebDriverWait(driver, 20);
                 WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(

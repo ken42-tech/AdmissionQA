@@ -409,18 +409,18 @@ public class ActionXpath {
     static String annualerror = "//*[text()='Annual Salary']/../../../..//P";
     static String pguniversityerror = "//*[text()='University']/../../../..//P";
     static String pgcollegeerror = "//*[text()='College']/../../../..//P";
-    static String pgpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String pgpercentageerror = "//*[. and contains(text(), 'Percentage')]/../../../..//P";
 
     static String uguniversityerror = "//*[text()='University']/../../../..//P";
     static String ugcollegeerror = "//*[text()='College']/../../../..//P";
-    static String ugpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
-    static String ugmark1error = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String ugpercentageerror = "//*[. and contains(text(), 'Percentage')]/../../../..//P";
+    static String ugmark1error = "//*[. and contains(text(), 'Percentage')]/../../../..//P";
     static String ugmarktotalmark1error = "//*[text()='Maximum CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
-    static String ugmark2error = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String ugmark2error = "//*[. and contains(text(), 'Percentage')]/../../../..//P";
     static String ugmarktotalmark2error = "//*[text()='Maximum CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
-    static String hscpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String hscpercentageerror = "//*[. and contains(text(), 'Percentage')]/../../../..//P";
     static String hscschoolerror = "//*[text()='School Name']/../../../..//P";
-    static String sslcpercentageerror = "//*[text()='Final CGPA/GPA/Grade/Percentage/Points']/../../../..//P";
+    static String sslcpercentageerror = "//*[. and contains(text(), 'Percentage')]/../../../..//P";
     static String sslcschoolerror = "//*[text()='School Name']/../../../..//P";
     static String sportsaccivemeterror = "//*[text()='Sport Achievement']/../../../..//P";
     static String professsionalerror = "//*[text()='Professional Achievement']/../../../..//P";
