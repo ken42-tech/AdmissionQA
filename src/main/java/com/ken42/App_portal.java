@@ -119,7 +119,7 @@ public class App_portal extends Thread {
 			portal = 1;
 		} else if (url.contains("apply-sbmpps")) {
 			portal = 2;
-		} else if (url.contains("ltpct")){
+		} else if (url.contains("ltpct")) {
 			portal = 3;
 		}
 
@@ -139,8 +139,8 @@ public class App_portal extends Thread {
 						case 2:
 							sbmp.Admissionfillform(url, driver, csvCell, log);
 							break;
-						case 3: 
-						// add ltptct ltpct.w2lfillfornm()
+						case 3:
+							// add ltptct ltpct.w2lfillfornm()
 							break;
 					}
 					break;
@@ -153,7 +153,8 @@ public class App_portal extends Thread {
 							System.out.println("SBMP no fee test case");
 							break;
 						case 3:
-							// add ltpct addmission fill form ltpct.Admissionfillform(url, driver, csvCell, log);
+							// add ltpct addmission fill form ltpct.Admissionfillform(url, driver, csvCell,
+							// log);
 							break;
 					}
 					break;
