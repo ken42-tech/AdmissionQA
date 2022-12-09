@@ -115,7 +115,8 @@ public class fess {
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(0));
-            login(url, driver, csvCell, log);
+            // login(url, driver, csvCell, log);
+            driver.navigate().refresh();
 
             String email = csvCell[83];
             String fname = csvCell[84];
@@ -204,7 +205,7 @@ public class fess {
             Thread.sleep(15000);
 
             js.executeScript("window.scrollBy(0,500)");
-            Thread.sleep(5000);
+            Thread.sleep(30000);
 
             driver.switchTo().frame(0);
 
@@ -237,7 +238,7 @@ public class fess {
             ct12.moveToElement(le12).click().perform();
 
             // reading otp
-            Thread.sleep(8000);
+            Thread.sleep(10000);
             WebElement elea = driver.findElement(By.xpath("//h3[@class='sc-dlnjwi dRMjYq']"));
 
             String otp = elea.getText();
@@ -249,7 +250,7 @@ public class fess {
             Actions c2 = new Actions(driver);
             c2.moveToElement(l2).click().perform();
 
-            Thread.sleep(3000);
+            Thread.sleep(31000);
 
             // driver.findElement(By.xpath("//span[text()='Continue']")).click();
             driver.findElement(By.xpath("(//div[@class='sc-giAqHp ijQirQ'])[2]")).click();
@@ -258,7 +259,7 @@ public class fess {
             Actions c = new Actions(driver);
             c.moveToElement(l).click().perform();
 
-            Thread.sleep(8000);
+            Thread.sleep(18000);
             WebElement elee = driver.findElement(By.xpath("//h3[@class='sc-dlnjwi dRMjYq']"));
 
             String otp1 = elee.getText();
