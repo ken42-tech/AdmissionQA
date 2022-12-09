@@ -99,9 +99,10 @@ public class documentupload {
             throws Exception {
         try {
             System.out.println("TC-3: Fill form with validation test started Executation ");
+            login(url, driver, csvCell);
 
-            // login(url, driver, csvCell);
             fess.sf_login(sfurl, driver, csvCell, log);
+
             documents(url, driver, csvCell);
 
             log.info("TC-3: Fill form with validation test Completed and Passed ");
