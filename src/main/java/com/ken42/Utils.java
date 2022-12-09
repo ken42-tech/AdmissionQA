@@ -245,15 +245,6 @@ public class Utils {
 		return num1;
 	}
 
-	// public static void executeLongWait(String url) throws InterruptedException {
-	// String urlToMatch = "ltpct";
-	// Pattern pt = Pattern.compile(urlToMatch);
-	// java.util.regex.Matcher m = pt.matcher(url);
-	// while (m.find()) {
-	// bigSleepBetweenClicks(2);
-	// }
-	// }
-
 	@Test
 	public static void basic_info(WebDriver driver, String[] csvCell, String url) throws Throwable {
 		String firstname = csvCell[5];
