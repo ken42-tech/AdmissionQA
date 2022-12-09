@@ -763,8 +763,9 @@ public class spjain {
 
             Utils.clickXpath(driver, ActionXpath.fundeducation, time, "fundeducation");
             Utils.clickXpath(driver, ActionXpath.fundselecteducation, time, "fundselecteducation");
-            Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.physicallychallenged, time, "physicallychallenged");
+            Utils.scrollUpOrDown(driver, time);
+
             Utils.callSendkeys(driver, ActionXpath.Statement, Statement, "Statement of purpose");
 
             Utils.callSendkeys(driver, ActionXpath.planmasterdegree, planmasterdegree, "planmasterdegree");
