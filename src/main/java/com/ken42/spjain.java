@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.Select;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -132,6 +133,9 @@ public class spjain {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.selectcountry, time, "Enter your selectcountry");
+            //Alternate way of selecting from dropdown
+            // String ctryxpath = "//*[@id=\"menu-addresses[0][mailingCountry]\"]//*[text()='United States']";
+            // Utils.clickXpath(driver, ctryxpath, time, "click on selected country");
             Utils.selectFromDropDown(ActionXpath.selectxpath, country, driver);
             Utils.clickXpath(driver, ActionXpath.selectstate, time, "Select the satet");
             Utils.selectFromDropDown(ActionXpath.selectxpath, state, driver);
