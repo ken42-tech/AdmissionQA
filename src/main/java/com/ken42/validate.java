@@ -87,7 +87,6 @@ public class validate {
         for (int i = 0; i < Email.length; i++) {
             try {
                 Utils.callSendkeys(driver, xpath, Email[i], "Sending an invalid Email ID");
-                Utils.cleartext(driver, xpath);
                 String emailErrorMessage = Utils.getTEXT(driver, errorXpath);
                 System.out.println("%%%%%%%%" + emailErrorMessage);
                 if (emailErrorMessage.equals("Please Input a valid Email")) {
