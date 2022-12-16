@@ -209,9 +209,14 @@ public class fess {
 
             driver.switchTo().frame(0);
 
+            Actions action21 = new Actions(driver);
+            System.out.println("click");
+            WebElement eleme21 = driver.findElement(By.xpath("//*[text()='Pay with Trustly']/.."));
+            action21.moveToElement(eleme21).click().build().perform();
+            Thread.sleep(5000);
             Actions action = new Actions(driver);
             System.out.println("click");
-            WebElement eleme = driver.findElement(By.xpath("(//div[@class='sc-gXfVKN iaWjVc'])[2]"));
+            WebElement eleme = driver.findElement(By.xpath("(//div[@class='sc-jgPyTC irGRoe'])[2]"));
 
             action.moveToElement(eleme).click().build().perform();
             Thread.sleep(5000);
@@ -239,7 +244,7 @@ public class fess {
 
             // reading otp
             Thread.sleep(10000);
-            WebElement elea = driver.findElement(By.xpath("//h3[@class='sc-dlnjwi dRMjYq']"));
+            WebElement elea = driver.findElement(By.xpath("//*[text()='One-time code']/../..//h3"));
 
             String otp = elea.getText();
             System.out.println(otp);
@@ -253,24 +258,24 @@ public class fess {
             Thread.sleep(31000);
 
             // driver.findElement(By.xpath("//span[text()='Continue']")).click();
-            driver.findElement(By.xpath("(//div[@class='sc-giAqHp ijQirQ'])[2]")).click();
+            driver.findElement(By.xpath("(//*[@data-testid='headline'])[2]/../..")).click();
             Thread.sleep(7000);
             WebElement l = driver.findElement(By.xpath("//span[text()='Continue']"));
             Actions c = new Actions(driver);
             c.moveToElement(l).click().perform();
 
             Thread.sleep(18000);
-            WebElement elee = driver.findElement(By.xpath("//h3[@class='sc-dlnjwi dRMjYq']"));
+            WebElement elee = driver.findElement(By.xpath("//*[text()='One-time code']/../..//h3"));
 
             String otp1 = elee.getText();
             Thread.sleep(5000);
             driver.findElement(By.xpath("//input[@type='password']")).sendKeys(otp1);
-            Thread.sleep(2000);
+            Thread.sleep(5000);
             WebElement lv = driver.findElement(By.xpath("//button[@data-testid='continue-button']"));
             Actions cv = new Actions(driver);
             cv.moveToElement(lv).click().perform();
 
-            Thread.sleep(2000);
+            Thread.sleep(8000);
             js.executeScript("window.scrollBy(0,1500)");
 
             Thread.sleep(2000);

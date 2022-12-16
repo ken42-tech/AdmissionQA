@@ -133,8 +133,9 @@ public class spjain {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.selectcountry, time, "Enter your selectcountry");
-            //Alternate way of selecting from dropdown
-            // String ctryxpath = "//*[@id=\"menu-addresses[0][mailingCountry]\"]//*[text()='United States']";
+            // Alternate way of selecting from dropdown
+            // String ctryxpath =
+            // "//*[@id=\"menu-addresses[0][mailingCountry]\"]//*[text()='United States']";
             // Utils.clickXpath(driver, ctryxpath, time, "click on selected country");
             Utils.selectFromDropDown(ActionXpath.selectxpath, country, driver);
             Utils.clickXpath(driver, ActionXpath.selectstate, time, "Select the satet");
@@ -845,7 +846,7 @@ public class spjain {
         try {
             System.out.println("TC-2:  Fess part with validation test started Executation ");
             fess.sf_login(url, driver, csvCell, log);
-
+            // login(url, driver, csvCell, log);
             fess.Sf_Fees_part(Sfurl, url, driver, csvCell, log);
             log.info("TC-2: Fess part with validation test Completed and Passed ");
 
