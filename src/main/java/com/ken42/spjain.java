@@ -845,8 +845,8 @@ public class spjain {
 
         try {
             System.out.println("TC-2:  Fess part with validation test started Executation ");
-            fess.sf_login(url, driver, csvCell, log);
-            // login(url, driver, csvCell, log);
+            // fess.sf_login(url, driver, csvCell, log);
+            login(url, driver, csvCell, log);
             fess.Sf_Fees_part(Sfurl, url, driver, csvCell, log);
             log.info("TC-2: Fess part with validation test Completed and Passed ");
 

@@ -209,14 +209,15 @@ public class fess {
 
             driver.switchTo().frame(0);
 
-            Actions action21 = new Actions(driver);
-            System.out.println("click");
-            WebElement eleme21 = driver.findElement(By.xpath("//*[text()='Pay with Trustly']/.."));
-            action21.moveToElement(eleme21).click().build().perform();
-            Thread.sleep(5000);
+            // Actions action21 = new Actions(driver);
+            // System.out.println("click");
+            // WebElement eleme21 = driver.findElement(By.xpath("//*[text()='Pay with
+            // Trustly']/.."));
+            // action21.moveToElement(eleme21).click().build().perform();
+            // Thread.sleep(5000);
             Actions action = new Actions(driver);
             System.out.println("click");
-            WebElement eleme = driver.findElement(By.xpath("(//div[@class='sc-jgPyTC irGRoe'])[2]"));
+            WebElement eleme = driver.findElement(By.xpath("//span[text()='HSBC UK']"));
 
             action.moveToElement(eleme).click().build().perform();
             Thread.sleep(5000);
@@ -258,7 +259,7 @@ public class fess {
             Thread.sleep(31000);
 
             // driver.findElement(By.xpath("//span[text()='Continue']")).click();
-            driver.findElement(By.xpath("(//*[@data-testid='headline'])[2]/../..")).click();
+            driver.findElement(By.xpath("//*[text()='Savings account']/../../..")).click();
             Thread.sleep(7000);
             WebElement l = driver.findElement(By.xpath("//span[text()='Continue']"));
             Actions c = new Actions(driver);
