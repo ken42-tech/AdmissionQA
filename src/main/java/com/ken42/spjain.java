@@ -133,8 +133,9 @@ public class spjain {
             Utils.scrollUpOrDown(driver, time);
             Utils.scrollUpOrDown(driver, time);
             Utils.clickXpath(driver, ActionXpath.selectcountry, time, "Enter your selectcountry");
-            //Alternate way of selecting from dropdown
-            // String ctryxpath = "//*[@id=\"menu-addresses[0][mailingCountry]\"]//*[text()='United States']";
+            // Alternate way of selecting from dropdown
+            // String ctryxpath =
+            // "//*[@id=\"menu-addresses[0][mailingCountry]\"]//*[text()='United States']";
             // Utils.clickXpath(driver, ctryxpath, time, "click on selected country");
             Utils.selectFromDropDown(ActionXpath.selectxpath, country, driver);
             Utils.clickXpath(driver, ActionXpath.selectstate, time, "Select the satet");
@@ -472,8 +473,7 @@ public class spjain {
                     Utils.cleartext(driver, ActionXpath.pguniversity);
                     validate.testAlphaOnly(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror, log);
                     Utils.cleartext(driver, ActionXpath.pguniversity);
-                    validate.testForMandatoryField(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror,
-                            log);
+
                 }
                 Utils.cleartext(driver, ActionXpath.pguniversity);
                 Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
@@ -485,7 +485,6 @@ public class spjain {
                     Utils.cleartext(driver, ActionXpath.pgcollege);
                     validate.testAlphaOnly(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
                     Utils.cleartext(driver, ActionXpath.pgcollege);
-                    validate.testForMandatoryField(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
                 }
                 Utils.cleartext(driver, ActionXpath.pgcollege);
                 Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");
@@ -845,7 +844,7 @@ public class spjain {
         try {
             System.out.println("TC-2:  Fess part with validation test started Executation ");
             fess.sf_login(url, driver, csvCell, log);
-
+            // login(url, driver, csvCell, log);
             fess.Sf_Fees_part(Sfurl, url, driver, csvCell, log);
             log.info("TC-2: Fess part with validation test Completed and Passed ");
 
