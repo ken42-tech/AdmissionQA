@@ -23,7 +23,7 @@ public class documentupload {
             Thread.sleep(3000);
             Utils.callSendkeys(driver, ActionXpath.EnterEmail, Email, "Enter r mail address ");
             Utils.clickXpath(driver, ActionXpath.Verify, time, "verify");
-            Utils.smallSleepBetweenClicks(1);
+            Utils.smallSleepBetweenClicks(3);
             Utils.getAndSentOTP(driver, Email, Password);
             Utils.clickXpath(driver, ActionXpath.Verifylogin, time, "Verift the Login ");
         } catch (Exception e) {
@@ -179,6 +179,7 @@ public class documentupload {
         try {
             System.out.println("TC-3: Fill form with validation test started Executation ");
             login(url, driver, csvCell);
+            Thread.sleep(15000);
 
             // fess.sf_login(sfurl, driver, csvCell, log);
             sf_login(sfurl, driver, csvCell, log);

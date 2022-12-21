@@ -473,8 +473,7 @@ public class spjain {
                     Utils.cleartext(driver, ActionXpath.pguniversity);
                     validate.testAlphaOnly(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror, log);
                     Utils.cleartext(driver, ActionXpath.pguniversity);
-                    validate.testForMandatoryField(driver, ActionXpath.pguniversity, ActionXpath.pguniversityerror,
-                            log);
+
                 }
                 Utils.cleartext(driver, ActionXpath.pguniversity);
                 Utils.callSendkeys(driver, ActionXpath.pguniversity, pguniversity, "pguniversity");
@@ -486,7 +485,6 @@ public class spjain {
                     Utils.cleartext(driver, ActionXpath.pgcollege);
                     validate.testAlphaOnly(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
                     Utils.cleartext(driver, ActionXpath.pgcollege);
-                    validate.testForMandatoryField(driver, ActionXpath.pgcollege, ActionXpath.pgcollegeerror, log);
                 }
                 Utils.cleartext(driver, ActionXpath.pgcollege);
                 Utils.callSendkeys(driver, ActionXpath.pgcollege, pgcollege, "pgcollege");

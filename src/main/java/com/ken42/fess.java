@@ -115,7 +115,7 @@ public class fess {
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(0));
-            // login(url, driver, csvCell, log);
+            login(url, driver, csvCell, log);
             driver.navigate().refresh();
 
             String email = csvCell[83];
