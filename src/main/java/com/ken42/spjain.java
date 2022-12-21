@@ -1038,8 +1038,13 @@ public class spjain {
                     By.xpath("(//*[text()='" + studentname + "'])[1]")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem21);
             Utils.bigSleepBetweenClicks(1);
-            String Applicationtab = "//a[text()='Applications']";
-            appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
+            // String Applicationtab = "//a[text()='Applications']";
+            String Applicationtab = "//*[@id=\"tab-1\"]/slot/flexipage-component2[2]/slot/lst-related-list-container/div/div[9]/lst-related-list-single-container/laf-progressive-container/slot/lst-related-list-single-app-builder-mapper/article/lst-related-list-view-manager/lst-common-list-internal/lst-list-view-manager-header/div/div[1]/div[1]/div/div/h2/a/span[1]']";
+            // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
+            // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
+            WebElement l=driver.findElement(By.xpath(Applicationtab));
+            // Javascript executor
+            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", l);
             if (appPresent) {
                 Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
                 Utils.smallSleepBetweenClicks(1);
