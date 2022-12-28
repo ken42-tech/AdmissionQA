@@ -1,6 +1,7 @@
 package com.ken42;
 
 import org.apache.commons.lang3.Validate;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
@@ -14,6 +15,7 @@ import org.openqa.selenium.support.ui.Select;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.testng.annotations.Test;
@@ -27,6 +29,7 @@ public class spjain {
 
     public static void login(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
+
             String email = csvCell[2];
             String password = csvCell[3];
 
@@ -845,6 +848,7 @@ public class spjain {
             System.out.println("TC-2:  Fess part with validation test started Executation ");
             fess.sf_login(url, driver, csvCell, log);
             // login(url, driver, csvCell, log);
+
             fess.Sf_Fees_part(Sfurl, url, driver, csvCell, log);
             log.info("TC-2: Fess part with validation test Completed and Passed ");
 
@@ -1041,9 +1045,9 @@ public class spjain {
             String Applicationtab = "//*[@id=\"tab-1\"]/slot/flexipage-component2[2]/slot/lst-related-list-container/div/div[9]/lst-related-list-single-container/laf-progressive-container/slot/lst-related-list-single-app-builder-mapper/article/lst-related-list-view-manager/lst-common-list-internal/lst-list-view-manager-header/div/div[1]/div[1]/div/div/h2/a/span[1]']";
             // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
             // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
-            WebElement l=driver.findElement(By.xpath(Applicationtab));
+            WebElement l = driver.findElement(By.xpath(Applicationtab));
             // Javascript executor
-            ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView(true);", l);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", l);
             if (appPresent) {
                 Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
                 Utils.smallSleepBetweenClicks(1);

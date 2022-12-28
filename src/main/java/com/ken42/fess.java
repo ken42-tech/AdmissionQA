@@ -115,9 +115,9 @@ public class fess {
             ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(0));
-            login(url, driver, csvCell, log);
             driver.navigate().refresh();
-
+            // login(url, driver, csvCell, log);
+            Utils.smallSleepBetweenClicks(1);
             String email = csvCell[83];
             String fname = csvCell[84];
             String sname = csvCell[85];
@@ -125,6 +125,7 @@ public class fess {
             String cityofpayer = csvCell[87];
             String pnumber = csvCell[88];
             String dateofbirth = csvCell[89];
+            Utils.smallSleepBetweenClicks(1);
 
             Utils.clickXpath(driver, ActionXpath.fees, time, "click on fees Payment ");
 

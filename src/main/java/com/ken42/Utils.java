@@ -255,6 +255,17 @@ public class Utils {
 	// }
 
 	@Test
+	public static Boolean userlogin(String url) {
+		String urlToMatch = "nitte|enquire-samsung";
+		Pattern pt = Pattern.compile(urlToMatch);
+		java.util.regex.Matcher m = pt.matcher(url);
+		while (m.find()) {
+			return true;
+		}
+		return false;
+	}
+
+	@Test
 	public static Boolean checkmiddlename(String url) {
 		String urlToMatch = "nitte|enquire-samsung";
 		Pattern pt = Pattern.compile(urlToMatch);

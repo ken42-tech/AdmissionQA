@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.text.SimpleDateFormat;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.logging.log4j.core.net.UrlConnectionFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -46,6 +47,9 @@ public class App_portal extends Thread {
 			e.printStackTrace();
 		} catch (java.lang.Exception e) {
 			e.printStackTrace();
+		} catch (Throwable e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		System.out.println("Thread- END " + Thread.currentThread().getName());
 	}
@@ -57,7 +61,7 @@ public class App_portal extends Thread {
 
 	public static void main(String[] args) throws Exception {
 		String CSV_PATH = "";
-		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
+		CSV_PATH = "C:\\Users\\Public\\Documents\\datatest.csv";
 		CSVReader csvReader;
 		int count = 0;
 		CSVReader csvReader1;
@@ -92,7 +96,7 @@ public class App_portal extends Thread {
 		}
 	}
 
-	public static void testAdmissionPortal(String[] csvCell, int count) throws Exception {
+	public static void testAdmissionPortal(String[] csvCell, int count) throws Throwable {
 		String url = csvCell[0];
 		String browser = csvCell[1];
 		String Email = csvCell[2];
@@ -140,7 +144,7 @@ public class App_portal extends Thread {
 							sbmp.Admissionfillform(url, driver, csvCell, log);
 							break;
 						case 3:
-							// add ltptct ltpct.w2lfillfornm()
+							ltpct.Admissionfillform(sfurl, driver, csvCell);
 							break;
 					}
 					break;
@@ -153,8 +157,7 @@ public class App_portal extends Thread {
 							System.out.println("SBMP no fee test case");
 							break;
 						case 3:
-							// add ltpct addmission fill form ltpct.Admissionfillform(url, driver, csvCell,
-							// log);
+							// ltpct.Admissionfillform(sfurl, driver, csvCell);
 							break;
 					}
 					break;
@@ -213,7 +216,7 @@ public class App_portal extends Thread {
 				if (headless) {
 					op.addArguments("--headless", "--window-size=1920,1080");
 				} else {
-					op.addArguments("--disable-notifications", "--force-device-scale-factor=1.10");
+					op.addArguments("--disable-notifications", "--force-device-scale-factor=0.95");
 				}
 				// op.addArguments("--disable-notifications");
 				WebDriverManager.chromedriver().setup();

@@ -96,6 +96,31 @@ public class documentupload {
         }
     }
 
+    public static void documentsupload(String url, WebDriver driver, String[] csvCell) throws Exception {
+        try {
+
+            driver.navigate().refresh();
+            String subject = csvCell[13];
+            String mark10sheetupload = "C:\\Users\\Public\\Documents\\demo.pdf";
+            // String mark12sheetupload = "C:\\Users\\Public\\Documents\\demo.pdf";
+            Utils.smallSleepBetweenClicks(1);
+            Utils.clickXpath(driver, ActionXpath.clickdocument, time, "clickdocument");
+            Utils.smallSleepBetweenClicks(1);
+            Utils.clickXpath(driver, ActionXpath.selectdocumnentdropdown, time, "upload photo");
+            Utils.smallSleepBetweenClicks(1);
+            driver.findElement(By.xpath("//input[@type='file']")).sendKeys(mark10sheetupload);
+
+            Utils.smallSleepBetweenClicks(1);
+
+            // Utils.clickXpath(driver, ActionXpath.mark12view, time, "mark12view");
+            driver.navigate().refresh();
+
+        } catch (Exception e) {
+            Utils.printException(e);
+            throw (e);
+        }
+    }
+
     public static void sf_login(String url, WebDriver driver, String[] csvCell, Logger log) {
         try {
             ((JavascriptExecutor) driver).executeScript("window.open()");
@@ -174,21 +199,60 @@ public class documentupload {
 
     }
 
+    public static void markasstatusdoc(WebDriver driver) {
+        try {
+            ((JavascriptExecutor) driver).executeScript("window.open()");
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tab.get(1));
+
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+
+            WebElement element = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
+            Thread.sleep(4000);
+            // driver.switchTo().window(tab.get(0));
+
+            WebElement element41 = wait.until(ExpectedConditions
+                    .elementToBeClickable(By.xpath("//span[.='Mark Application Status as Complete']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element41);
+            Thread.sleep(4000);
+            // driver.switchTo().window(tab.get(0));
+
+            // WebElement element42 = wait.until(ExpectedConditions
+            // .elementToBeClickable(By.xpath("//span[.='Mark Application Status as
+            // Complete']")));
+            // ((JavascriptExecutor) driver).executeScript("arguments[0].click();",
+            // element42);
+            // Thread.sleep(4000);
+            driver.switchTo().window(tab.get(0));
+
+            // driver.findElement(By.cssSelector("body")).sendKeys(Keys.CONTROL + "\t");
+
+        }
+
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void documentUpload(String url, String sfurl, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
             System.out.println("TC-3: Fill form with validation test started Executation ");
-            login(url, driver, csvCell);
-            Thread.sleep(15000);
+            // login(url, driver, csvCell);
+            Thread.sleep(4000);
 
-            // fess.sf_login(sfurl, driver, csvCell, log);
-            sf_login(sfurl, driver, csvCell, log);
-            documents(url, driver, csvCell);
+            // sf_login(sfurl, driver, csvCell, log);
+            markasstatusdoc(driver);
 
-            log.info("TC-3: Fill form with validation test Completed and Passed ");
+            documentsupload(url, driver, csvCell);
+
+            log.info("TC-3: Upload document test case Completed and Passed ");
 
         } catch (Exception e) {
-            log.warning("TC-3: Fill form with validation test Failed");
+            log.warning("TC-3: Upload document test case Completed test Failed");
             Utils.printException(e);
             throw (e);
 
