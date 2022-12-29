@@ -618,7 +618,7 @@ public class ActionXpath {
     //// ..............................ltpct
     //// xpath....................................................../////
 
-    static String firstname = "//input[@id='mui-28']";
+    static String firstname = "(//input[@type='input'])[1]|//input[@name='applicant[firstName]']";
     static String middlename = "//input[@name='middleName']";
     static String lastName2 = "//input[@name='lastName']";
     static String email2 = "//input[@name='email']";
@@ -630,12 +630,13 @@ public class ActionXpath {
     static String state2 = "Goa";
     static String stateselect = "//li[@data-value='Goa']";
 
-    static String mother = "//input[@name='applicant[mothersName]']";
+    static String mother = "//input[@name='applicant[mothersName]']|(//input[@type='input'])[4]";
     static String batch = "(//div[@aria-labelledby='outlined-select-currency'])[1]";
-    static String scrolldropdown = "///ul[contains(@role,'listbox')]//li";
+    static String scrolldropdown = "//ul//li";
     static String clickoncity = "//div[@aria-labelledby='mui-component-select-city']";
     static String selectcity = "//li[.='North Goa']";
     static String taluku = "//div[@aria-labelledby='mui-component-select-tehsil']";
+    static String currentaddressrole = "//div[@role='button']";
 
     static String gramPanchayat = "//div[@aria-labelledby='mui-component-select-gramPanchayat']";
     static String village = "//input[@name='village']";
@@ -673,15 +674,13 @@ public class ActionXpath {
 
     ///// ................................Application.........................................///
 
-    static String religion = "//input[@id='mui-37']";
+    static String religion = "(//input[@type='input'])[9]|//input[@name='applicant[religion]']";
 
-    static String age = "//input[@id='mui-38']";
+    static String age = "//input[@name='applicant[age]']|(//input[@type='input'])[10]";
 
+    // static String graud = "//input[@id='mui-39']";
 
- //static String graud = "//input[@id='mui-39']";
-
-   
-    static String Village = "//input[@id='mui-36']";
+    static String Village = "(//input[@type='input'])[8]|//input[@name='applicant[village]']";
 
     public static String addphone = "//input[@name='phone']";
 
@@ -697,43 +696,43 @@ public class ActionXpath {
     static String clickonyes = "//span[.='Yes']";
 
     // static String firstname1 = "//input[@name='firstName']";
-    static String surename = "//input[@id='mui-29']";
+    static String surename = "//input[@name='applicant[lastName]']|(//input[@type='input'])[2]";
 
-    static String enterfathername = "//input[@id='mui-30']";
+    static String enterfathername = "(//input[@type='input'])[3]|//input[@name='applicant[fatherName]']";
 
-    static String clickoncaste1 = "(//div[@id='outlined-select-currency'])[3]";
+    static String clickoncaste1 = "(//div[@id='outlined-select-currency'])[3]|(//div[@role='button'])[4]";
     static String selectcaste1 = "//li[.='OBC']";
 
-    static String enterdob = "//input[@id='mui-32']";
+    static String enterdob = "//input[@type='date']|//input[@name='applicant[dateOfBirth]']";
 
-    static String presentoccupation = "//input[@id='mui-33']";
-    static String gramPanchayat1 = "//input[@id='mui-34']";
+    static String presentoccupation = "(//input[@type='input'])[5]|//input[@name='applicant[presentOccupation]']";
+    static String gramPanchayat1 = "//input[@name='applicant[gramPanchayat]']|(//input[@type='input'])[6]";
     static String entermothername = "//input[@id='mui-31']";
-    static String enterguardianname = "//input[@id='mui-39']";
+    static String enterguardianname = "(//input[@type='input'])[11]|//input[@name='applicant[guardiansName]']";
 
-    static String Hamlet = "//input[@id='mui-35']";
+    static String Hamlet = "(//input[@type='input'])[7]|//input[@name='applicant[hamlet]']";
 
-    static String enterhobbies = "//input[@id='mui-40']";
+    static String enterhobbies = "//input[@name='applicant[hobbies]']|(//input[@type='input'])[12]";
 
-    static String clickonbloodgroup2 = "//div[@id='mui-component-select-bloodGroup']";
+    static String clickonbloodgroup2 = "(//div[@role='button'])[2]|(//div[@id='outlined-select-currency'])[2]";
     static String selectbloodgroup = "//li[.='A+']";
 
     static String clickonmale = "//span[.='Male']";
 
     static String clickonnext = "//button[.='Next']";
 
-    static String ffname = "//input[@id='mui-20']";
+    static String ffname = "(//input[@type='input'])[1]|//input[@name='applicantRelations.0.firstName']";
 
-    static String flname = "//input[@id='mui-21']";
+    static String flname = "//input[@name='applicantRelations.0.lastName']|(//input[@type='input'])[2]";
 
-    static String noOfFamilymembers = "//input[@id='mui-22']";
-    static String noOfFamilymembersAdults = "//input[@id='mui-23']";
+    static String noOfFamilymembers = "(//input[@type='input'])[3]|//input[@name='applicantRelations.0.noOfFamilyMembers']";
+    static String noOfFamilymembersAdults = "(//input[@type='input'])[4]|//input[@name='applicantRelations.0.noOfFamilyMembersAdults']";
 
-    static String noOfFamilymembersChildren = "//input[@id='mui-24']";
-    static String workingMembers = "//input[@id='mui-25']";
+    static String noOfFamilymembersChildren = "//input[@name='applicantRelations.0.noOfFamilyMembersChildren']|(//input[@type='input'])[5]";
+    static String workingMembers = "(//input[@type='input'])[6]|//input[@name='applicantRelations.0.workingMembers']";
 
-    static String nonWorkingMembers = " //input[@id='mui-26']";
-    static String familyIncome = "//input[@id='mui-27']";
+    static String nonWorkingMembers = " (//input[@type='input'])[7]|//input[@name='applicantRelations.0.nonWorkingMembers']";
+    static String familyIncome = "(//input[@type='input'])[8]|//input[@name='applicantRelations.0.annualIncome']";
 
     static String clickonmaritalstatus = "//div[@id='mui-component-select-maritalStatus']";
     static String selectmaritalstatus = "//li[.='Single']";
@@ -743,28 +742,28 @@ public class ActionXpath {
 
     static String clickon2ndnext = "//button[.='Next']";
 
-    static String address2 = "(//input[@type='input'])[1]";
-    static String pincode = "(//input[@type='input'])[2]";
+    static String address2 = "(//input[@type='input'])[1]|//input[@name='addresses[0][mailingStreet]']";
+    static String pincode = "(//input[@type='input'])[2]|//input[@name='addresses[0][mailingPostalCode]']";
 
     static String clcikonaddresscheckbox = "//input[@name='addressFlag']";
 
     static String clickon3rdnext = "//button[.='Next']";
-static String currentadd="(//div[.='Yes'])[1]";
-    static String startingdate = "//input[@id='mui-31']";
-    static String joiningdate = "//input[@id='mui-32']";
+    static String currentadd = "(//div[.='Yes'])[1]";
+    static String startingdate = "//input[@name='educationHistories[0][startDate]']|(//input[@type='date'])[1]";
+    static String joiningdate = "(//input[@type='date'])[2]|//input[@name='application[courseJoiningDate]']";
 
-    static String enddate = "//input[@id='mui-33']";
-    static String iwanttojoin = "//input[@id='mui-34']";
-    static String aftercompletion = "//input[@id='mui-35']";
+    static String enddate = "(//input[@type='date'])[3]|//input[@name='educationHistories[0][endDate]']";
+    static String iwanttojoin = "//input[@name='application[courseBecause]']|(//input[@type='input'])[4]";
+    static String aftercompletion = "(//input[@type='input'])[5]|//input[@name='application[afterCompletion]']";
 
-    static String clickon4thnext = "//button[.='Next']";
+    static String clickon4thnext = "//button[@type='submit']";
 
     static String uploadpassport = "(//input[@type='file'])[1]";
 
     static String uploadaddhar = "(//input[@type='file'])[3]";
     static String uploadschoolleaving = "(//input[@type='file'])[4]";
 
-    static String clickon5thnext = "//span[.='Next']";
+    static String clickon5thnext = "//button[.='Next']";
 
     static String clickoncheckbox1 = "//input[@type='checkbox']";
     static String clickon6thnext = "//span[.='Next']";
@@ -787,14 +786,14 @@ static String currentadd="(//div[.='Yes'])[1]";
     static String clickonbatch = "//div[@role='button']";
     static String selectbatch = "//li[.='June']";
 
-    static String qualification = "//input[@id='mui-28']";
-
-    static String finicial = "//input[@id='mui-30']";
+    static String educationquali = "(//input[@type='input'])[1]|//input[@name='applicantRelations[0][qualification]']";
+    static String course5 = "(//input[@type='input'])[2]";
+    static String finicial = "(//input[@type='input'])[3]|//input[@name='educationHistories[0][financialYear]']";
 
     /// ............................ upload file xpath.........................///
 
     static String passport2 = "//input[@type='file']";
-    static String addhar = "(//input[@type='file'])[3]";
+    static String addhar = "//input[@type='file']";
     static String school = "(//input[@type='file'])[4]";
     //// ..................................nsome
     //// xpath................................................../////
@@ -822,12 +821,12 @@ static String currentadd="(//div[.='Yes'])[1]";
     //// ...........................new add elements xpath in
     //// ltpct.......................................////
 
-    static String bankholder = "//input[@name='applicant[accountHoldername]']";
-    static String bankname = "//input[@name='applicant[bankName]']";
+    static String bankholder = "//input[@name='applicant[accountHoldername]']|(//input[@type='input'])[13]";
+    static String bankname = "//input[@name='applicant[bankName]']|(//input[@type='input'])[14]";
 
-    static String branchname = "//input[@name='applicant[branchName]']";
+    static String branchname = "//input[@name='applicant[branchName]']|(//input[@type='input'])[15]";
 
-    static String ifsccode = "//input[@name='applicant[ifsc]']";
+    static String ifsccode = "//input[@name='applicant[ifsc]']|(//input[@type='input'])[16]";
 
     static String selectstate2 = "(//div[@aria-labelledby='state'])[1]";
 

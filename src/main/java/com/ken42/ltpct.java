@@ -453,11 +453,9 @@ public class ltpct {
         String passbankname = csvCell[153];
         String passbranchname = csvCell[154];
         String passifsc = csvCell[155];
-
         Utils.smallSleepBetweenClicks(1);
-        Thread.sleep(1000);
         Utils.cleartext(driver, ActionXpath.firstname);
-        Utils.vsmallSleepBetweenClicks(1);
+
         Utils.callSendkeys(driver, ActionXpath.firstname, firstname, "enter fname");
 
         Utils.cleartext(driver, ActionXpath.surename);
@@ -467,15 +465,15 @@ public class ltpct {
         Utils.cleartext(driver, ActionXpath.enterfathername);
 
         Utils.callSendkeys(driver, ActionXpath.enterfathername, fathername, "enter fathername");
-
+        Thread.sleep(1000);
         Utils.cleartext(driver, ActionXpath.mother);
 
-        Utils.callSendkeys(driver, ActionXpath.mother, fathername, "enter mother");
+        Utils.callSendkeys(driver, ActionXpath.mother, mothername, "enter mother NAME ");
 
-        Utils.cleartext(driver, ActionXpath.enterdob);
+        // Utils.cleartext(driver, ActionXpath.enterdob);
 
-        Utils.callSendkeys(driver, ActionXpath.enterdob, dob, "enter dob ");
-
+        // Utils.callSendkeys(driver, ActionXpath.enterdob, dob, "enter dob ");
+        Thread.sleep(1000);
         Utils.clickXpath(driver, ActionXpath.batch, time, "click on batch");
 
         Utils.selectFromDropDown(ActionXpath.scrolldropdown, age, driver);
@@ -504,10 +502,6 @@ public class ltpct {
 
         Utils.callSendkeys(driver, ActionXpath.age, age, "enter age ");
 
-        Utils.cleartext(driver, ActionXpath.entermothername);
-
-        Utils.callSendkeys(driver, ActionXpath.entermothername, mothername, "enter mname ");
-
         Utils.cleartext(driver, ActionXpath.enterguardianname);
 
         Utils.callSendkeys(driver, ActionXpath.enterguardianname, guardianname, "enter guardianname ");
@@ -518,11 +512,11 @@ public class ltpct {
         Utils.cleartext(driver, ActionXpath.enterhobbies);
 
         Utils.callSendkeys(driver, ActionXpath.enterhobbies, hobbies, "enter hobbies ");
-
+        Thread.sleep(1000);
         Utils.clickXpath(driver, ActionXpath.clickonbloodgroup2, time, "clickonbloodgroup");
 
         Utils.selectFromDropDown(ActionXpath.scrolldropdown, bloodsel, driver);
-
+        Thread.sleep(1000);
         Utils.clickXpath(driver, ActionXpath.clickoncaste1, time, "clickoncaste1");
         Utils.selectFromDropDown(ActionXpath.scrolldropdown, castesel, driver);
 
@@ -584,7 +578,7 @@ public class ltpct {
         String martialsel = csvCell[61];
 
         String imponfosel = csvCell[157];
-        Thread.sleep(15000);
+        Thread.sleep(3000);
 
         Utils.cleartext(driver, ActionXpath.ffname);
         Utils.vsmallSleepBetweenClicks(1);
@@ -678,10 +672,7 @@ public class ltpct {
         Utils.callSendkeys(driver, ActionXpath.pincode, pincode, "enter pincode");
         Utils.smallSleepBetweenClicks(1);
 
-        WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement e = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@role='button']")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e);
-        Utils.smallSleepBetweenClicks(1);
+        Utils.clickXpath(driver, ActionXpath.currentaddressrole, time, "click on  current address");
 
         // JavascriptExecutor js = (JavascriptExecutor) driver;
         // js.executeScript("window.scrollBy(0,2000)");
@@ -712,14 +703,14 @@ public class ltpct {
         // // Thread.sleep(2000);
 
         Utils.clickXpath(driver, ActionXpath.clickon3rdnext, time, "clickon3rdnext");
-
+        Utils.smallSleepBetweenClicks(1);
     }
 
     @Test
     public static void qualification_info(String app_url, WebDriver driver, String[] csvCell) throws Exception
 
     {
-        String education = csvCell[137];
+        String quali = csvCell[119];
         String finic = csvCell[120];
 
         String startingdate = csvCell[121];
@@ -729,10 +720,10 @@ public class ltpct {
         String iwanttojoin = csvCell[124];
         String aftercompletion = csvCell[125];
         String batchsel1 = csvCell[148];
+        Thread.sleep(4000);
+        Utils.cleartext(driver, ActionXpath.educationquali);
         // Thread.sleep(2000);
-        Utils.cleartext(driver, ActionXpath.qualification);
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.qualification, education, "enter education");
+        Utils.callSendkeys(driver, ActionXpath.educationquali, quali, "enter education");
         // Thread.sleep(2000);
         Utils.clickXpath(driver, ActionXpath.clickonbatch, time, "clickonbatch");
 
@@ -768,8 +759,9 @@ public class ltpct {
 
         Utils.callSendkeys(driver, ActionXpath.aftercompletion, aftercompletion, "enter aftercomplietion");
         // Thread.sleep(2000);
-        Utils.clickXpath(driver, ActionXpath.clickon4thnext, time, "clickonnext");
 
+        Utils.clickXpath(driver, ActionXpath.clickon4thnext, time, "clickonnext");
+        Utils.bigSleepBetweenClicks(1);
     }
 
     @Test
@@ -793,16 +785,27 @@ public class ltpct {
     {
         Utils.smallSleepBetweenClicks(1);
 
-        Utils.callSendkeys(driver, ActionXpath.passport2, "C:\\Users\\Public\\Documents\\passport.png",
-                "upload passport");
+        driver.findElement(By.xpath("(//input[@type='file'])[1]"))
+                .sendKeys("C:\\Users\\Public\\Documents\\passport.jpg");
         Utils.smallSleepBetweenClicks(1);
-        Utils.callSendkeys(driver, ActionXpath.addhar, "C:\\Users\\Public\\Documents\\aadhar.png", "upload aadhar");
-        Utils.smallSleepBetweenClicks(1);
-        Utils.callSendkeys(driver, ActionXpath.school, "C:\\Users\\Public\\Documents\\school.png", "upload school");
+        driver.findElement(By.xpath("(//input[@type='file'])[2]"))
+                .sendKeys("C:\\Users\\Public\\Documents\\passport.jpg");
 
-        Utils.bigSleepBetweenClicks(1);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,2000)");
+        Utils.smallSleepBetweenClicks(1);
+
+        // Utils.callSendkeys(driver, ActionXpath.passport2,
+        // "C:\\Users\\Public\\Documents\\passport.png",
+        // "upload passport");
+        // Utils.smallSleepBetweenClicks(1);
+        // Utils.callSendkeys(driver, ActionXpath.addhar,
+        // "C:\\Users\\Public\\Documents\\aadhar.png", "upload aadhar");
+        // Utils.smallSleepBetweenClicks(1);
+        // Utils.callSendkeys(driver, ActionXpath.school,
+        // "C:\\Users\\Public\\Documents\\school.png", "upload school");
+
+        // Utils.bigSleepBetweenClicks(1);
+        // JavascriptExecutor js = (JavascriptExecutor) driver;
+        // js.executeScript("window.scrollBy(0,2000)");
         Utils.clickXpath(driver, ActionXpath.clickon5thnext, time, "clickonnext");
 
     }
