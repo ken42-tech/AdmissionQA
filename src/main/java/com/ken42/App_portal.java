@@ -144,7 +144,7 @@ public class App_portal extends Thread {
 							sbmp.Admissionfillform(url, driver, csvCell, log);
 							break;
 						case 3:
-							ltpct.Admissionfillform(sfurl, driver, csvCell);
+							ltpct.Admissionfillform(sfurl, driver, csvCell, log);
 							break;
 					}
 					break;

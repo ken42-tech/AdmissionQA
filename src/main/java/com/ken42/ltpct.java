@@ -104,6 +104,8 @@ public class ltpct {
 
     public static void ApplyforCourse(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
+
+            log.info("apply course execution started");
             String Programe = csvCell[13];
 
             Utils.callSendkeys(driver, ActionXpath.searchthecourse, Programe, "Enter program");
@@ -426,7 +428,7 @@ public class ltpct {
     }
 
     @Test
-    public static void Appbasic_info(String app_url, WebDriver driver, String[] csvCell) throws Throwable {
+    public static void Appbasic_info(String app_url, WebDriver driver, String[] csvCell, Logger log) throws Throwable {
         String vocation = csvCell[66];
         String firstname = csvCell[91];
         String surename = csvCell[102];
@@ -453,117 +455,124 @@ public class ltpct {
         String passbankname = csvCell[153];
         String passbranchname = csvCell[154];
         String passifsc = csvCell[155];
-        Utils.smallSleepBetweenClicks(1);
-        Utils.cleartext(driver, ActionXpath.firstname);
 
-        Utils.callSendkeys(driver, ActionXpath.firstname, firstname, "enter fname");
+        try {
+            Utils.smallSleepBetweenClicks(1);
+            Utils.cleartext(driver, ActionXpath.firstname);
 
-        Utils.cleartext(driver, ActionXpath.surename);
+            Utils.callSendkeys(driver, ActionXpath.firstname, firstname, "enter fname");
 
-        Utils.callSendkeys(driver, ActionXpath.surename, surename, "enter sname ");
+            Utils.cleartext(driver, ActionXpath.surename);
 
-        Utils.cleartext(driver, ActionXpath.enterfathername);
+            Utils.callSendkeys(driver, ActionXpath.surename, surename, "enter sname ");
 
-        Utils.callSendkeys(driver, ActionXpath.enterfathername, fathername, "enter fathername");
-        Thread.sleep(1000);
-        Utils.cleartext(driver, ActionXpath.mother);
+            Utils.cleartext(driver, ActionXpath.enterfathername);
 
-        Utils.callSendkeys(driver, ActionXpath.mother, mothername, "enter mother NAME ");
+            Utils.callSendkeys(driver, ActionXpath.enterfathername, fathername, "enter fathername");
+            Thread.sleep(1000);
+            Utils.cleartext(driver, ActionXpath.mother);
 
-        // Utils.cleartext(driver, ActionXpath.enterdob);
+            Utils.callSendkeys(driver, ActionXpath.mother, mothername, "enter mother NAME ");
 
-        // Utils.callSendkeys(driver, ActionXpath.enterdob, dob, "enter dob ");
-        Thread.sleep(1000);
-        Utils.clickXpath(driver, ActionXpath.batch, time, "click on batch");
+            // Utils.cleartext(driver, ActionXpath.enterdob);
 
-        Utils.selectFromDropDown(ActionXpath.scrolldropdown, age, driver);
+            // Utils.callSendkeys(driver, ActionXpath.enterdob, dob, "enter dob ");
+            Thread.sleep(1000);
+            Utils.clickXpath(driver, ActionXpath.batch, time, "click on batch");
 
-        Utils.cleartext(driver, ActionXpath.presentoccupation);
+            Utils.selectFromDropDown(ActionXpath.scrolldropdown, age, driver);
 
-        Utils.callSendkeys(driver, ActionXpath.presentoccupation, occupation, "enter occupation ");
+            Utils.cleartext(driver, ActionXpath.presentoccupation);
 
-        Utils.cleartext(driver, ActionXpath.gramPanchayat1);
+            Utils.callSendkeys(driver, ActionXpath.presentoccupation, occupation, "enter occupation ");
 
-        Utils.callSendkeys(driver, ActionXpath.gramPanchayat1, grampanchayat, "enter grampanchayat");
+            Utils.cleartext(driver, ActionXpath.gramPanchayat1);
 
-        Utils.cleartext(driver, ActionXpath.Hamlet);
+            Utils.callSendkeys(driver, ActionXpath.gramPanchayat1, grampanchayat, "enter grampanchayat");
 
-        Utils.callSendkeys(driver, ActionXpath.Hamlet, hamlet, "enter hamlet ");
+            Utils.cleartext(driver, ActionXpath.Hamlet);
 
-        Utils.cleartext(driver, ActionXpath.Village);
+            Utils.callSendkeys(driver, ActionXpath.Hamlet, hamlet, "enter hamlet ");
 
-        Utils.callSendkeys(driver, ActionXpath.Village, village, "enter village");
+            Utils.cleartext(driver, ActionXpath.Village);
 
-        Utils.cleartext(driver, ActionXpath.religion);
+            Utils.callSendkeys(driver, ActionXpath.Village, village, "enter village");
 
-        Utils.callSendkeys(driver, ActionXpath.religion, religion, "enter religion ");
+            Utils.cleartext(driver, ActionXpath.religion);
 
-        Utils.cleartext(driver, ActionXpath.age);
+            Utils.callSendkeys(driver, ActionXpath.religion, religion, "enter religion ");
 
-        Utils.callSendkeys(driver, ActionXpath.age, age, "enter age ");
+            Utils.cleartext(driver, ActionXpath.age);
 
-        Utils.cleartext(driver, ActionXpath.enterguardianname);
+            Utils.callSendkeys(driver, ActionXpath.age, age, "enter age ");
 
-        Utils.callSendkeys(driver, ActionXpath.enterguardianname, guardianname, "enter guardianname ");
+            Utils.cleartext(driver, ActionXpath.enterguardianname);
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,2000)");
+            Utils.callSendkeys(driver, ActionXpath.enterguardianname, guardianname, "enter guardianname ");
 
-        Utils.cleartext(driver, ActionXpath.enterhobbies);
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,2000)");
 
-        Utils.callSendkeys(driver, ActionXpath.enterhobbies, hobbies, "enter hobbies ");
-        Thread.sleep(1000);
-        Utils.clickXpath(driver, ActionXpath.clickonbloodgroup2, time, "clickonbloodgroup");
+            Utils.cleartext(driver, ActionXpath.enterhobbies);
 
-        Utils.selectFromDropDown(ActionXpath.scrolldropdown, bloodsel, driver);
-        Thread.sleep(1000);
-        Utils.clickXpath(driver, ActionXpath.clickoncaste1, time, "clickoncaste1");
-        Utils.selectFromDropDown(ActionXpath.scrolldropdown, castesel, driver);
+            Utils.callSendkeys(driver, ActionXpath.enterhobbies, hobbies, "enter hobbies ");
+            Thread.sleep(1000);
+            Utils.clickXpath(driver, ActionXpath.clickonbloodgroup2, time, "clickonbloodgroup");
 
-        Utils.vsmallSleepBetweenClicks(1);
+            Utils.selectFromDropDown(ActionXpath.scrolldropdown, bloodsel, driver);
+            Thread.sleep(1000);
+            Utils.clickXpath(driver, ActionXpath.clickoncaste1, time, "clickoncaste1");
+            Utils.selectFromDropDown(ActionXpath.scrolldropdown, castesel, driver);
 
-        Utils.cleartext(driver, ActionXpath.bankholder);
+            Utils.vsmallSleepBetweenClicks(1);
 
-        Utils.callSendkeys(driver, ActionXpath.bankholder, passbankholder, "enter bankholder ");
+            Utils.cleartext(driver, ActionXpath.bankholder);
 
-        Utils.cleartext(driver, ActionXpath.bankname);
+            Utils.callSendkeys(driver, ActionXpath.bankholder, passbankholder, "enter bankholder ");
 
-        Utils.callSendkeys(driver, ActionXpath.bankname, passbankname, "enter bankname ");
+            Utils.cleartext(driver, ActionXpath.bankname);
 
-        Utils.cleartext(driver, ActionXpath.branchname);
+            Utils.callSendkeys(driver, ActionXpath.bankname, passbankname, "enter bankname ");
 
-        Utils.callSendkeys(driver, ActionXpath.branchname, passbranchname, "enter branchname ");
+            Utils.cleartext(driver, ActionXpath.branchname);
 
-        Utils.cleartext(driver, ActionXpath.ifsccode);
+            Utils.callSendkeys(driver, ActionXpath.branchname, passbranchname, "enter branchname ");
 
-        Utils.callSendkeys(driver, ActionXpath.ifsccode, passifsc, "enter ifsccode ");
+            Utils.cleartext(driver, ActionXpath.ifsccode);
 
-        // Actions a = new Actions(driver);
-        // WebElement eee =
-        // driver.findElement(By.xpath("(//button[@name='gender'])[3]"));
-        // a.doubleClick(eee).build().perform();
-        // Utils.vsmallSleepBetweenClicks(1);
+            Utils.callSendkeys(driver, ActionXpath.ifsccode, passifsc, "enter ifsccode ");
 
-        // driver.findElement(By.xpath("(//button[@name='gender'])[1]")).click();
+            // Actions a = new Actions(driver);
+            // WebElement eee =
+            // driver.findElement(By.xpath("(//button[@name='gender'])[3]"));
+            // a.doubleClick(eee).build().perform();
+            // Utils.vsmallSleepBetweenClicks(1);
 
-        // WebElement el =
-        // driver.findElement(By.xpath("(//button[@name='gender'])[3]"));
-        //
-        // boolean actual = el.isSelected();
-        //
-        // if (actual) {
-        // System.out.println("true");
-        //
-        // } else {
-        // el.click();
-        // }
-        Utils.vsmallSleepBetweenClicks(1);
-        Utils.clickXpath(driver, ActionXpath.clickonnext, time, "clickonnext");
+            // driver.findElement(By.xpath("(//button[@name='gender'])[1]")).click();
 
+            // WebElement el =
+            // driver.findElement(By.xpath("(//button[@name='gender'])[3]"));
+            //
+            // boolean actual = el.isSelected();
+            //
+            // if (actual) {
+            // System.out.println("true");
+            //
+            // } else {
+            // el.click();
+            // }
+            Utils.vsmallSleepBetweenClicks(1);
+            Utils.clickXpath(driver, ActionXpath.clickonnext, time, "clickonnext");
+            log.info("apply vasic info passed");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.warning("App_basic info Failled");
+        }
     }
 
     @Test
-    public static void family_info(String app_url, WebDriver driver, String[] csvCell) throws Exception {
+    public static void family_info(String app_url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
 
         String firstname = csvCell[91];
         String surename = csvCell[102];
@@ -579,189 +588,217 @@ public class ltpct {
 
         String imponfosel = csvCell[157];
         Thread.sleep(3000);
+        try {
+            Utils.cleartext(driver, ActionXpath.ffname);
+            Utils.vsmallSleepBetweenClicks(1);
+            Utils.callSendkeys(driver, ActionXpath.ffname, firstname, "enter fname");
 
-        Utils.cleartext(driver, ActionXpath.ffname);
-        Utils.vsmallSleepBetweenClicks(1);
-        Utils.callSendkeys(driver, ActionXpath.ffname, firstname, "enter fname");
+            Utils.cleartext(driver, ActionXpath.flname);
 
-        Utils.cleartext(driver, ActionXpath.flname);
+            Utils.callSendkeys(driver, ActionXpath.flname, surename, "enter sname ");
 
-        Utils.callSendkeys(driver, ActionXpath.flname, surename, "enter sname ");
+            Utils.callSendkeys(driver, ActionXpath.noOfFamilymembers, noOfFamilymembers, "enter nooffamilymember");
+            // Thread.sleep(2000);
+            Utils.callSendkeys(driver, ActionXpath.noOfFamilymembersAdults, noOfFamilymembersAdults,
+                    "enter  nooffamilymemberadult");
+            Utils.callSendkeys(driver, ActionXpath.noOfFamilymembersChildren, noOfFamilymembersChildren,
+                    "enter nooffamilymemberchild ");
 
-        Utils.callSendkeys(driver, ActionXpath.noOfFamilymembers, noOfFamilymembers, "enter nooffamilymember");
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.noOfFamilymembersAdults, noOfFamilymembersAdults,
-                "enter  nooffamilymemberadult");
-        Utils.callSendkeys(driver, ActionXpath.noOfFamilymembersChildren, noOfFamilymembersChildren,
-                "enter nooffamilymemberchild ");
+            Utils.callSendkeys(driver, ActionXpath.workingMembers, workingMembers, "enter  working member");
+            Utils.callSendkeys(driver, ActionXpath.nonWorkingMembers, nonWorkingMembers, "enter no of nonworking");
 
-        Utils.callSendkeys(driver, ActionXpath.workingMembers, workingMembers, "enter  working member");
-        Utils.callSendkeys(driver, ActionXpath.nonWorkingMembers, nonWorkingMembers, "enter no of nonworking");
+            // Utils.clickXpath(driver, ActionXpath.clickonmaritalstatus, time,
+            // "clickonmaritalstatus");
+            // Thread.sleep(2000);
 
-        // Utils.clickXpath(driver, ActionXpath.clickonmaritalstatus, time,
-        // "clickonmaritalstatus");
-        // Thread.sleep(2000);
+            // Utils.selectFromDropDown(ActionXpath.scrolldropdown, martialsel, driver);
 
-        // Utils.selectFromDropDown(ActionXpath.scrolldropdown, martialsel, driver);
+            // // WebElement mar =
+            // driver.findElement(By.xpath("(//li[@role='option'])[1]"));
+            // String marital = mar.getText();
+            // System.out.println(marital);
+            // Thread.sleep(2000);
+            // driver.findElement(By.xpath("//li[@data-value='" + marital + "']")).click();
 
-        // // WebElement mar =
-        // driver.findElement(By.xpath("(//li[@role='option'])[1]"));
-        // String marital = mar.getText();
-        // System.out.println(marital);
-        // Thread.sleep(2000);
-        // driver.findElement(By.xpath("//li[@data-value='" + marital + "']")).click();
+            Utils.callSendkeys(driver, ActionXpath.familyIncome, familyIncome, "enter  fincome");
 
-        Utils.callSendkeys(driver, ActionXpath.familyIncome, familyIncome, "enter  fincome");
+            Utils.clickXpath(driver, ActionXpath.clickonanyImpInformation, time, "clickonanyImpInformation");
 
-        Utils.clickXpath(driver, ActionXpath.clickonanyImpInformation, time, "clickonanyImpInformation");
+            Utils.selectFromDropDown(ActionXpath.scrolldropdown, imponfosel, driver);
 
-        Utils.selectFromDropDown(ActionXpath.scrolldropdown, imponfosel, driver);
+            // WebElement imp = driver.findElement(By.xpath("(//li[@role='option'])[1]"));
+            // String Information = imp.getText();
+            // System.out.println(Information);
+            // Thread.sleep(2000);
+            // driver.findElement(By.xpath("//li[@data-value='" + Information +
+            // "']")).click();
 
-        // WebElement imp = driver.findElement(By.xpath("(//li[@role='option'])[1]"));
-        // String Information = imp.getText();
-        // System.out.println(Information);
-        // Thread.sleep(2000);
-        // driver.findElement(By.xpath("//li[@data-value='" + Information +
-        // "']")).click();
+            // JavascriptExecutor js = (JavascriptExecutor) driver;
+            // js.executeScript("window.scrollBy(0,2000)");
 
-        // JavascriptExecutor js = (JavascriptExecutor) driver;
-        // js.executeScript("window.scrollBy(0,2000)");
+            // Utils.callSendkeys(driver, ActionXpath.bankholder, "suri", "enter
+            // bankholder");
+            // Utils.callSendkeys(driver, ActionXpath.bankname, "sbi", "enter bankname");
+            // Utils.callSendkeys(driver, ActionXpath.branchname, "bangaluru", "enter
+            // branchname ");
+            // Utils.callSendkeys(driver, ActionXpath.ifsccode, "C00678", "enter ifsccode");
 
-        // Utils.callSendkeys(driver, ActionXpath.bankholder, "suri", "enter
-        // bankholder");
-        // Utils.callSendkeys(driver, ActionXpath.bankname, "sbi", "enter bankname");
-        // Utils.callSendkeys(driver, ActionXpath.branchname, "bangaluru", "enter
-        // branchname ");
-        // Utils.callSendkeys(driver, ActionXpath.ifsccode, "C00678", "enter ifsccode");
+            Utils.clickXpath(driver, ActionXpath.clickon2ndnext, time, "clickon2ndnext");
 
-        Utils.clickXpath(driver, ActionXpath.clickon2ndnext, time, "clickon2ndnext");
+            Thread.sleep(2000);
+            log.info("family info screen passed");
 
-        Thread.sleep(2000);
-        // Utils.clickXpath(driver, ActionXpath.clickon2ndnext, time, "clickon2ndnext");
+            // Utils.clickXpath(driver, ActionXpath.clickon2ndnext, time, "clickon2ndnext");
+        }
 
+        catch (Exception e) {
+            e.printStackTrace();
+            log.warning("family info screen Failed");
+        }
     }
 
     @Test
-    public static void Address_info(String app_url, WebDriver driver, String[] csvCell) throws Throwable
+    public static void Address_info(String app_url, WebDriver driver, String[] csvCell, Logger log) throws Throwable
 
     {
-        String address = csvCell[116];
-        String city = csvCell[31];
-        String pincode = csvCell[118];
-        String contrysel = csvCell[63];
-        String stateselc = csvCell[64];
-        Utils.vsmallSleepBetweenClicks(1);
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,-2000)");
-        // vsmallSleepBetweenClicks(1);
+        try {
 
-        Utils.callSendkeys(driver, ActionXpath.address2, address, "enter address");
+            String address = csvCell[116];
+            String city = csvCell[31];
+            String pincode = csvCell[118];
+            String contrysel = csvCell[63];
+            String stateselc = csvCell[64];
+            Utils.vsmallSleepBetweenClicks(1);
 
-        // Utils.clickXpath(driver, ActionXpath.clickoncountry, time, "clickoncountry");
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,-2000)");
+            // vsmallSleepBetweenClicks(1);
 
-        // Utils.selectFromDropDown(ActionXpath.scrolldropdown, contrysel, driver);
+            Utils.callSendkeys(driver, ActionXpath.address2, address, "enter address");
 
-        // Utils.clickXpath(driver, ActionXpath.clickonstate1, time, "clickonstate1");
+            // Utils.clickXpath(driver, ActionXpath.clickoncountry, time, "clickoncountry");
 
-        // Utils.selectFromDropDown(ActionXpath.scrolldropdown, stateselc, driver);
+            // Utils.selectFromDropDown(ActionXpath.scrolldropdown, contrysel, driver);
 
-        // Utils.cleartext(driver, ActionXpath.addcity);
-        // Utils.callSendkeys(driver, ActionXpath.addcity, city, "enter city");
+            // Utils.clickXpath(driver, ActionXpath.clickonstate1, time, "clickonstate1");
 
-        Utils.callSendkeys(driver, ActionXpath.pincode, pincode, "enter pincode");
-        Utils.smallSleepBetweenClicks(1);
+            // Utils.selectFromDropDown(ActionXpath.scrolldropdown, stateselc, driver);
 
-        Utils.clickXpath(driver, ActionXpath.currentaddressrole, time, "click on  current address");
+            // Utils.cleartext(driver, ActionXpath.addcity);
+            // Utils.callSendkeys(driver, ActionXpath.addcity, city, "enter city");
 
-        // JavascriptExecutor js = (JavascriptExecutor) driver;
-        // js.executeScript("window.scrollBy(0,2000)");
-        // Thread.sleep(2000);
-        Utils.clickXpath(driver, ActionXpath.currentadd, time, "click on  current address");
-        // Thread.sleep(2000);
-        //
-        // List<WebElement> country1 = driver
-        // .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiMenu-list
-        // MuiList-padding')]//li"));
-        // String contrysel1=csvCell[63];
-        // for (int i = 0; i < country1.size(); i++) {
-        //
-        // if (country1.get(i).getText().contains(contrysel1)) {
-        // country1.get(i).click();
-        // break;
-        // }
-        //
-        // }
+            Utils.callSendkeys(driver, ActionXpath.pincode, pincode, "enter pincode");
+            Utils.smallSleepBetweenClicks(1);
 
-        // WebElement coun1 =
-        // driver.findElement(By.xpath("(//li[@role='option'])[27]"));
-        // String country1 = coun1.getText();
-        // System.out.println(country1);
-        // Thread.sleep(2000);
-        // driver.findElement(By.xpath("//li[@data-value='" + country1 + "']")).click();
-        //
-        // // Thread.sleep(2000);
+            Utils.clickXpath(driver, ActionXpath.currentaddressrole, time, "click on  current address");
 
-        Utils.clickXpath(driver, ActionXpath.clickon3rdnext, time, "clickon3rdnext");
-        Utils.smallSleepBetweenClicks(1);
+            // JavascriptExecutor js = (JavascriptExecutor) driver;
+            // js.executeScript("window.scrollBy(0,2000)");
+            // Thread.sleep(2000);
+            Utils.clickXpath(driver, ActionXpath.currentadd, time, "click on  current address");
+            // Thread.sleep(2000);
+            //
+            // List<WebElement> country1 = driver
+            // .findElements(By.xpath("//ul[contains(@class,'MuiList-root MuiMenu-list
+            // MuiList-padding')]//li"));
+            // String contrysel1=csvCell[63];
+            // for (int i = 0; i < country1.size(); i++) {
+            //
+            // if (country1.get(i).getText().contains(contrysel1)) {
+            // country1.get(i).click();
+            // break;
+            // }
+            //
+            // }
+
+            // WebElement coun1 =
+            // driver.findElement(By.xpath("(//li[@role='option'])[27]"));
+            // String country1 = coun1.getText();
+            // System.out.println(country1);
+            // Thread.sleep(2000);
+            // driver.findElement(By.xpath("//li[@data-value='" + country1 + "']")).click();
+            //
+            // // Thread.sleep(2000);
+
+            Utils.clickXpath(driver, ActionXpath.clickon3rdnext, time, "clickon3rdnext");
+            Utils.smallSleepBetweenClicks(1);
+            log.warning("address screen passed");
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            log.warning("address screen Failed");
+        }
     }
 
     @Test
-    public static void qualification_info(String app_url, WebDriver driver, String[] csvCell) throws Exception
+    public static void qualification_info(String app_url, WebDriver driver, String[] csvCell, Logger log)
+            throws Exception
 
     {
-        String quali = csvCell[119];
-        String finic = csvCell[120];
 
-        String startingdate = csvCell[121];
-        String joiningdate = csvCell[122];
-        String enddate = csvCell[123];
+        try {
 
-        String iwanttojoin = csvCell[124];
-        String aftercompletion = csvCell[125];
-        String batchsel1 = csvCell[148];
-        Thread.sleep(4000);
-        Utils.cleartext(driver, ActionXpath.educationquali);
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.educationquali, quali, "enter education");
-        // Thread.sleep(2000);
-        Utils.clickXpath(driver, ActionXpath.clickonbatch, time, "clickonbatch");
+            String quali = csvCell[119];
+            String finic = csvCell[120];
 
-        Utils.selectFromDropDown(ActionXpath.scrolldropdown, batchsel1, driver);
+            String startingdate = csvCell[121];
+            String joiningdate = csvCell[122];
+            String enddate = csvCell[123];
 
-        Utils.cleartext(driver, ActionXpath.finicial);
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.finicial, finic, "enter finic");
+            String iwanttojoin = csvCell[124];
+            String aftercompletion = csvCell[125];
+            String batchsel1 = csvCell[148];
+            Thread.sleep(4000);
+            Utils.cleartext(driver, ActionXpath.educationquali);
+            // Thread.sleep(2000);
+            Utils.callSendkeys(driver, ActionXpath.educationquali, quali, "enter education");
+            // Thread.sleep(2000);
+            Utils.clickXpath(driver, ActionXpath.clickonbatch, time, "clickonbatch");
 
-        // Thread.sleep(2000);
-        Utils.cleartext(driver, ActionXpath.startingdate);
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.startingdate, startingdate, "enter start date");
+            Utils.selectFromDropDown(ActionXpath.scrolldropdown, batchsel1, driver);
 
-        // Thread.sleep(2000);
-        Utils.cleartext(driver, ActionXpath.joiningdate);
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.joiningdate, joiningdate, "enter joining date");
+            Utils.cleartext(driver, ActionXpath.finicial);
+            // Thread.sleep(2000);
+            Utils.callSendkeys(driver, ActionXpath.finicial, finic, "enter finic");
 
-        // Thread.sleep(2000);
-        Utils.cleartext(driver, ActionXpath.enddate);
+            // Thread.sleep(2000);
+            Utils.cleartext(driver, ActionXpath.startingdate);
+            // Thread.sleep(2000);
+            Utils.callSendkeys(driver, ActionXpath.startingdate, startingdate, "enter start date");
 
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.enddate, enddate, "enter enddate");
+            // Thread.sleep(2000);
+            Utils.cleartext(driver, ActionXpath.joiningdate);
+            // Thread.sleep(2000);
+            Utils.callSendkeys(driver, ActionXpath.joiningdate, joiningdate, "enter joining date");
 
-        // Thread.sleep(2000);
-        Utils.cleartext(driver, ActionXpath.iwanttojoin);
-        // Thread.sleep(2000);
-        Utils.callSendkeys(driver, ActionXpath.iwanttojoin, iwanttojoin, "enter joining");
+            // Thread.sleep(2000);
+            Utils.cleartext(driver, ActionXpath.enddate);
 
-        // Thread.sleep(2000);
-        Utils.cleartext(driver, ActionXpath.aftercompletion);
+            // Thread.sleep(2000);
+            Utils.callSendkeys(driver, ActionXpath.enddate, enddate, "enter enddate");
 
-        Utils.callSendkeys(driver, ActionXpath.aftercompletion, aftercompletion, "enter aftercomplietion");
-        // Thread.sleep(2000);
+            // Thread.sleep(2000);
+            Utils.cleartext(driver, ActionXpath.iwanttojoin);
+            // Thread.sleep(2000);
+            Utils.callSendkeys(driver, ActionXpath.iwanttojoin, iwanttojoin, "enter joining");
 
-        Utils.clickXpath(driver, ActionXpath.clickon4thnext, time, "clickonnext");
-        Utils.bigSleepBetweenClicks(1);
+            // Thread.sleep(2000);
+            Utils.cleartext(driver, ActionXpath.aftercompletion);
+
+            Utils.callSendkeys(driver, ActionXpath.aftercompletion, aftercompletion, "enter aftercomplietion");
+            // Thread.sleep(2000);
+
+            Utils.clickXpath(driver, ActionXpath.clickon4thnext, time, "clickonnext");
+            Utils.bigSleepBetweenClicks(1);
+
+            log.info("qualification screen passed");
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+            log.info("qualification screen Failled");
+        }
     }
 
     @Test
@@ -780,34 +817,43 @@ public class ltpct {
     }
 
     @Test
-    public static void Multipleuploadfile_info(String app_url, WebDriver driver, String[] csvCell) throws Throwable
+    public static void Multipleuploadfile_info(String app_url, WebDriver driver, String[] csvCell, Logger log)
+            throws Throwable
 
     {
-        Utils.smallSleepBetweenClicks(1);
 
-        driver.findElement(By.xpath("(//input[@type='file'])[1]"))
-                .sendKeys("C:\\Users\\Public\\Documents\\passport.jpg");
-        Utils.smallSleepBetweenClicks(1);
-        driver.findElement(By.xpath("(//input[@type='file'])[2]"))
-                .sendKeys("C:\\Users\\Public\\Documents\\passport.jpg");
+        try {
 
-        Utils.smallSleepBetweenClicks(1);
+            Utils.smallSleepBetweenClicks(1);
 
-        // Utils.callSendkeys(driver, ActionXpath.passport2,
-        // "C:\\Users\\Public\\Documents\\passport.png",
-        // "upload passport");
-        // Utils.smallSleepBetweenClicks(1);
-        // Utils.callSendkeys(driver, ActionXpath.addhar,
-        // "C:\\Users\\Public\\Documents\\aadhar.png", "upload aadhar");
-        // Utils.smallSleepBetweenClicks(1);
-        // Utils.callSendkeys(driver, ActionXpath.school,
-        // "C:\\Users\\Public\\Documents\\school.png", "upload school");
+            driver.findElement(By.xpath("(//input[@type='file'])[1]"))
+                    .sendKeys("C:\\Users\\Public\\Documents\\passport.jpg");
+            Utils.smallSleepBetweenClicks(1);
+            driver.findElement(By.xpath("(//input[@type='file'])[2]"))
+                    .sendKeys("C:\\Users\\Public\\Documents\\passport.jpg");
 
-        // Utils.bigSleepBetweenClicks(1);
-        // JavascriptExecutor js = (JavascriptExecutor) driver;
-        // js.executeScript("window.scrollBy(0,2000)");
-        Utils.clickXpath(driver, ActionXpath.clickon5thnext, time, "clickonnext");
+            Utils.smallSleepBetweenClicks(1);
 
+            // Utils.callSendkeys(driver, ActionXpath.passport2,
+            // "C:\\Users\\Public\\Documents\\passport.png",
+            // "upload passport");
+            // Utils.smallSleepBetweenClicks(1);
+            // Utils.callSendkeys(driver, ActionXpath.addhar,
+            // "C:\\Users\\Public\\Documents\\aadhar.png", "upload aadhar");
+            // Utils.smallSleepBetweenClicks(1);
+            // Utils.callSendkeys(driver, ActionXpath.school,
+            // "C:\\Users\\Public\\Documents\\school.png", "upload school");
+
+            // Utils.bigSleepBetweenClicks(1);
+            // JavascriptExecutor js = (JavascriptExecutor) driver;
+            // js.executeScript("window.scrollBy(0,2000)");
+            Utils.clickXpath(driver, ActionXpath.clickon5thnext, time, "clickonnext");
+            log.info("upload screen passed");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            log.info("upload screen Failled");
+        }
     }
 
     @Test
@@ -1184,7 +1230,7 @@ public class ltpct {
     {
         Thread.sleep(5000);
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        WebElement e111 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[.='Sign out']")));
+        WebElement e111 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[.='Sign out']")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e111);
 
     }
@@ -1411,7 +1457,7 @@ public class ltpct {
     }
 
     @Test(priority = 5)
-    public static void Application_fillandfilesizecheck(String app_url, WebDriver driver, String[] csvCell)
+    public static void Application_fillandfilesizecheck(String app_url, WebDriver driver, String[] csvCell, Logger log)
             throws Throwable
 
     {
@@ -1424,10 +1470,10 @@ public class ltpct {
             driver.get(url);
 
             ltpct.login_ltpct(app_url, driver, csvCell);
-            ltpct.Appbasic_info(app_url, driver, csvCell);
-            ltpct.family_info(app_url, driver, csvCell);
-            ltpct.Address_info(app_url, driver, csvCell);
-            ltpct.qualification_info(app_url, driver, csvCell);
+            ltpct.Appbasic_info(app_url, driver, csvCell, log);
+            ltpct.family_info(app_url, driver, csvCell, log);
+            ltpct.Address_info(app_url, driver, csvCell, log);
+            ltpct.qualification_info(app_url, driver, csvCell, log);
             ltpct.uploadfile_info(app_url, driver, csvCell);
             ltpct.signout_app(app_url, driver, csvCell);
 
@@ -1444,7 +1490,8 @@ public class ltpct {
     }
 
     @Test(priority = 6)
-    public static void Admissionfillform(String app_url, WebDriver driver, String[] csvCell) throws Throwable {
+    public static void Admissionfillform(String app_url, WebDriver driver, String[] csvCell, Logger log)
+            throws Throwable {
         try {
             // ((JavascriptExecutor) driver).executeScript("window.open()");
             // ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
@@ -1456,22 +1503,20 @@ public class ltpct {
 
             ltpct.login_ltpct(app_url, driver, csvCell);
             ltpct.ApplyforCourse(url, driver, csvCell, log);
-            ltpct.Appbasic_info(app_url, driver, csvCell);
-            ltpct.family_info(app_url, driver, csvCell);
-            ltpct.Address_info(app_url, driver, csvCell);
-            ltpct.qualification_info(app_url, driver, csvCell);
-            ltpct.Multipleuploadfile_info(app_url, driver, csvCell);
+            ltpct.Appbasic_info(app_url, driver, csvCell, log);
+            ltpct.family_info(app_url, driver, csvCell, log);
+            ltpct.Address_info(app_url, driver, csvCell, log);
+            ltpct.qualification_info(app_url, driver, csvCell, log);
+            ltpct.Multipleuploadfile_info(app_url, driver, csvCell, log);
             // ltpct.checkbox(app_url, driver, csvCell);
             ltpct.submit_app(app_url, driver, csvCell);
 
-            ltpct.signout_app(app_url, driver, csvCell);
+            // ltpct.signout_app(app_url, driver, csvCell);
             log.info("Tc6:-Application login,fileuploadandsubmit testcase passed");
-            System.out.println("Tc6:-Application login,fileuploadandsubmit testcase passed");
 
         } catch (Exception e) {
             e.printStackTrace();
-            log.info("Tc6:-Application login,fileuploadandsubmit testcase failed");
-            System.out.println("Tc6:-Application login,fileuploadandsubmit testcase failed");
+            log.warning("Tc6:-Application login,fileuploadandsubmit testcase failed");
 
         }
     }

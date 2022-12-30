@@ -102,7 +102,7 @@ public class spjain {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
             String validation = csvCell[6];
 
-            String dob = csvCell[16];
+            String dob = csvCell[35];
             String nationality = csvCell[17];
             String passport = csvCell[18];
             String country = csvCell[19];

@@ -66,22 +66,22 @@ public class sbmp {
         try {
             JavascriptExecutor js3 = (JavascriptExecutor) driver;
             String validation = csvCell[6];
-            String middlename = csvCell[91];
-            String childfname = csvCell[90];
-            String childlname = csvCell[92];
-            String aadharnumber = csvCell[93];
+            String middlename = csvCell[92];
+            String childfname = csvCell[158];
+            String childlname = csvCell[159];
+            String aadharnumber = csvCell[161];
             // String cdob = csvCell[120];
-            String placeofbirth = csvCell[104];
-            String mothertong = csvCell[105];
-            String nosib = csvCell[106];
+            String placeofbirth = csvCell[172];
+            String mothertong = csvCell[173];
+            String nosib = csvCell[174];
 
-            String satsno = csvCell[107];
-            String pickuppoint = csvCell[109];
-            String caste = csvCell[112];
-            String subcaste = csvCell[113];
-            String religion = csvCell[110];
-            String category = csvCell[111];
-            String bloodgroup = csvCell[108];
+            String satsno = csvCell[175];
+            String pickuppoint = csvCell[177];
+            String caste = csvCell[181];
+            String subcaste = csvCell[181];
+            String religion = csvCell[178];
+            String category = csvCell[179];
+            String bloodgroup = csvCell[176];
             Utils.smallSleepBetweenClicks(1);
 
             if (validation.equals("TRUE")) {
@@ -207,15 +207,15 @@ public class sbmp {
 
     public static void sbmpFamilyInfo(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-            String parentfirstName = csvCell[94];
-            String parentmiddleName = csvCell[95];
-            String parentlastName = csvCell[96];
-            String parentphone = csvCell[97];
-            String email = csvCell[98];
-            String aadharnumber = csvCell[93];
+            String parentfirstName = csvCell[162];
+            String parentmiddleName = csvCell[163];
+            String parentlastName = csvCell[164];
+            String parentphone = csvCell[165];
+            String email = csvCell[166];
+            String aadharnumber = csvCell[161];
 
-            String annualIncome = csvCell[99];
-            String validation = csvCell[27];
+            String annualIncome = csvCell[167];
+            String validation = csvCell[6];
             Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.parentclickonrelationship, time, "parentclickonrelationship");
 
@@ -283,10 +283,10 @@ public class sbmp {
     public static void sbmp_permanentaddress_Info(String url, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
-            String coursecountry = csvCell[100];
-            String coursestate = csvCell[101];
-            String coursecity = csvCell[102];
-            String perpincode = csvCell[103];
+            String coursecountry = csvCell[168];
+            String coursestate = csvCell[169];
+            String coursecity = csvCell[170];
+            String perpincode = csvCell[171];
 
             Utils.clickXpath(driver, ActionXpath.clickoncoursecountry, time, " clickoncoursecountry");
             Utils.selectFromDropDown(ActionXpath.selectxpath, coursecountry, driver);
@@ -319,12 +319,12 @@ public class sbmp {
     public static void sbmp_Education_details(String url, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
-            String classcurrently = csvCell[114];
-            String school = csvCell[115];
-            String mediuminst = csvCell[116];
-            String flang = csvCell[117];
-            String slang = csvCell[118];
-            String tlang = csvCell[119];
+            String classcurrently = csvCell[182];
+            String school = csvCell[183];
+            String mediuminst = csvCell[184];
+            String flang = csvCell[185];
+            String slang = csvCell[186];
+            String tlang = csvCell[187];
             Utils.clickXpath(driver, ActionXpath.clickoneducationclass, time, "clickonclass");
             Utils.selectFromDropDown(ActionXpath.selectxpath, classcurrently, driver);
 
@@ -383,6 +383,7 @@ public class sbmp {
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
             Thread.sleep(4000);
             Utils.clickXpath(driver, ActionXpath.clickonsubmit, time, "clickonsubmit");
+            Thread.sleep(4000);
             log.info("TC-1: Populating Others section PASSED");
         } catch (Exception e) {
             Utils.printException(e);
