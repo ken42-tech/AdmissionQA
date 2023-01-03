@@ -56,7 +56,7 @@ public class ltpct {
         try {
             driver.navigate().refresh();
             Thread.sleep(3000);
-            ((JavascriptExecutor) driver).executeScript("window.open()");
+           // ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(0));
 
@@ -482,7 +482,7 @@ public class ltpct {
             // Utils.cleartext(driver, ActionXpath.enterdob);
 
             // Utils.callSendkeys(driver, ActionXpath.enterdob, dob, "enter dob ");
-            Thread.sleep(1000);
+           // Thread.sleep(1000);
             Utils.clickXpath(driver, ActionXpath.batch, time, "click on batch");
 
             Utils.selectFromDropDown(ActionXpath.scrolldropdown, batch, driver);

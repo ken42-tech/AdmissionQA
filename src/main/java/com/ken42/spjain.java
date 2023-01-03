@@ -35,7 +35,7 @@ public class spjain {
 
             driver.navigate().refresh();
             Thread.sleep(3000);
-            ((JavascriptExecutor) driver).executeScript("window.open()");
+         //   ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(0));
             Thread.sleep(3000);

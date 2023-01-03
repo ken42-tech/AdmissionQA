@@ -123,7 +123,7 @@ public class documentupload {
 
     public static void sf_login(String url, WebDriver driver, String[] csvCell, Logger log) {
         try {
-            ((JavascriptExecutor) driver).executeScript("window.open()");
+            // ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
             String Sfurl = csvCell[9];
@@ -201,9 +201,9 @@ public class documentupload {
 
     public static void markasstatusdoc(WebDriver driver) {
         try {
-            ((JavascriptExecutor) driver).executeScript("window.open()");
+            // ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(tab.get(1));
+            driver.switchTo().window(tab.get(0));
 
             WebDriverWait wait = new WebDriverWait(driver, 10);
 

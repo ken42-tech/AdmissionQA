@@ -27,7 +27,7 @@ public class sbmp {
 
             driver.navigate().refresh();
             Thread.sleep(3000);
-            ((JavascriptExecutor) driver).executeScript("window.open()");
+            // ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(0));
             String email = csvCell[2];
@@ -484,7 +484,7 @@ public class sbmp {
             for (int i = 0; i < count1; i++) {
 
                 String apply = csvCell[12];
-                Thread.sleep(3000);
+                Thread.sleep(5000);
                 String xp1 = "(//*[. and contains(text(),'" + apply
                         + "')]/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
                 // String xp2 = "(//*[text()='" + apply +
