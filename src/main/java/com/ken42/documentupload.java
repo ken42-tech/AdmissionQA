@@ -123,7 +123,7 @@ public class documentupload {
 
     public static void sf_login(String url, WebDriver driver, String[] csvCell, Logger log) {
         try {
-            // ((JavascriptExecutor) driver).executeScript("window.open()");
+            ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(1));
             String Sfurl = csvCell[9];
@@ -201,9 +201,9 @@ public class documentupload {
 
     public static void markasstatusdoc(WebDriver driver) {
         try {
-            // ((JavascriptExecutor) driver).executeScript("window.open()");
+            //cd((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
-            driver.switchTo().window(tab.get(0));
+            driver.switchTo().window(tab.get(1));
 
             WebDriverWait wait = new WebDriverWait(driver, 10);
 
@@ -241,7 +241,7 @@ public class documentupload {
             throws Exception {
         try {
             System.out.println("TC-3: Fill form with validation test started Executation ");
-            // login(url, driver, csvCell);
+            //login(url, driver, csvCell);
             Thread.sleep(4000);
 
             // sf_login(sfurl, driver, csvCell, log);
