@@ -33,6 +33,11 @@ public class spjain {
             String email = csvCell[2];
             String password = csvCell[3];
 
+            driver.navigate().refresh();
+            Thread.sleep(3000);
+            ((JavascriptExecutor) driver).executeScript("window.open()");
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tab.get(0));
             Thread.sleep(3000);
             Utils.callSendkeys(driver, ActionXpath.EnterEmail, email, "Enter r mail address ");
             Utils.clickXpath(driver, ActionXpath.Verify, time, "verify");
@@ -821,7 +826,8 @@ public class spjain {
             System.out.println("TC-1: Fill form with validation test started Executation ");
             String Sfurl = csvCell[9];
 
-            // Thread.sleep(15000);
+            spjain.SalesforceBackendDELETE(driver, log, csvCell, Sfurl);
+            driver.get(url);
             login(url, driver, csvCell, log);
             ApplyforCourse(url, driver, csvCell, log);
             BasicDetails(url, driver, csvCell, log);
@@ -1000,6 +1006,80 @@ public class spjain {
         }
     }
 
+    // @Test(priority = 5)
+
+    // public static void SalesforceBackendDELETE(WebDriver driver, Logger log,
+    // String[] csvCell, String Tname)
+    // throws Exception {
+    // try {
+    // System.out.println("TC-4: Salesforce backend Verification along with delete
+    // Test Executation ");
+
+    // // ((JavascriptExecutor) driver).executeScript("window.open()");
+    // ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+    // if (!Tname.equals("T1")) {
+    // // driver.switchTo().window(tab.get(1));
+    // }
+    // String Sfurl = csvCell[9];
+    // driver.get(Sfurl);
+    // String studentemail = csvCell[2];
+    // String SfEmail = csvCell[10];
+    // String SfPassword = csvCell[11];
+    // String studentname = csvCell[12];
+    // String count = null;
+    // String row = null;
+    // Boolean appPresent = false;
+    // Boolean viewPresent = false;
+    // System.out.println(SfEmail);
+
+    // Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter
+    // salesforce email");
+    // Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter
+    // your password");
+    // Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login
+    // salesforce");
+    // Utils.bigSleepBetweenClicks(1);
+    // Utils.clickXpath(driver, ActionXpath.applauncher, time, "click on
+    // applauncher");
+    // Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts
+    // ");
+    // Utils.clickXpath(driver, ActionXpath.contacts, time, "click on
+    // clickcontacts");
+    // Utils.cleartext(driver, ActionXpath.listsearch);
+    // Utils.callSendkeys(driver, ActionXpath.listsearch, studentemail, "Search for
+    // student name");
+    // Utils.bigSleepBetweenClicks(1);
+    // Actions qq = new Actions(driver);
+    // // qq.moveByOffset(40, 40).click().perform();
+    // WebDriverWait wait21 = new WebDriverWait(driver, 20);
+    // WebElement elem21 = wait21.until(ExpectedConditions.elementToBeClickable(
+    // By.xpath("(//*[text()='" + studentname + "'])[1]")));
+    // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem21);
+    // Utils.bigSleepBetweenClicks(1);
+
+    // Utils.clickXpath(driver, ActionXpath.ClickApplication1, time, "click on
+    // ClickApplication1");
+
+    // WebDriverWait wait2 = new WebDriverWait(driver, 20);
+    // WebElement elem2 = wait21.until(ExpectedConditions.elementToBeClickable(
+    // By.xpath("(//*[text()='" + studentname + "'])[1]")));
+    // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem2);
+
+    // // Utils.clickXpath(driver, ActionXpath.view, time, "click on view");
+
+    // Utils.clickXpath(driver, ActionXpath.apptab, time, "click on apptab");
+
+    // Utils.smallSleepBetweenClicks(1);
+    // Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation ");
+    // Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation
+    // ");
+
+    // } catch (Exception e) {
+    // // TODO: handle exception
+    // }
+
+    // }
+
     @Test(priority = 4)
 
     public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell, String Tname)
@@ -1031,32 +1111,34 @@ public class spjain {
             Utils.clickXpath(driver, ActionXpath.applauncher, time, "click on applauncher");
             Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts ");
             Utils.clickXpath(driver, ActionXpath.contacts, time, "click on clickcontacts");
-            Utils.cleartext(driver, ActionXpath.listsearch);
+            // Utils.cleartext(driver, ActionXpath.listsearch);
+            Thread.sleep(2000);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentemail, "Search for student name");
             Utils.bigSleepBetweenClicks(1);
             Actions qq = new Actions(driver);
-            qq.moveByOffset(40, 40).click().perform();
+            // qq.moveByOffset(40, 40).click().perform();
             WebDriverWait wait21 = new WebDriverWait(driver, 20);
             WebElement elem21 = wait21.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("(//*[text()='" + studentname + "'])[1]")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem21);
             Utils.bigSleepBetweenClicks(1);
             // String Applicationtab = "//a[text()='Applications']";
-            String Applicationtab = "//*[@id=\"tab-1\"]/slot/flexipage-component2[2]/slot/lst-related-list-container/div/div[9]/lst-related-list-single-container/laf-progressive-container/slot/lst-related-list-single-app-builder-mapper/article/lst-related-list-view-manager/lst-common-list-internal/lst-list-view-manager-header/div/div[1]/div[1]/div/div/h2/a/span[1]']";
+            // String Applicationtab =
+            // "//*[@id=\"tab-1\"]/slot/flexipage-component2[2]/slot/lst-related-list-container/div/div[9]/lst-related-list-single-container/laf-progressive-container/slot/lst-related-list-single-app-builder-mapper/article/lst-related-list-view-manager/lst-common-list-internal/lst-list-view-manager-header/div/div[1]/div[1]/div/div/h2/a/span[1]']";
             // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
             // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
-            WebElement l = driver.findElement(By.xpath(Applicationtab));
+            // WebElement l = driver.findElement(By.xpath(Applicationtab));
             // Javascript executor
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", l);
-            if (appPresent) {
-                Utils.clickXpath(driver, ActionXpath.ClickApplicationtab, time, "click on the appliation tab");
-                Utils.smallSleepBetweenClicks(1);
-                String view = "(//span[text()='View All'])[1]";
-                viewPresent = driver.findElements(By.xpath(view)).size() > 0;
-                Utils.bigSleepBetweenClicks(1);
-            } else {
-                System.out.println("Application tab is not there");
-            }
+            // ((JavascriptExecutor)
+            // driver).executeScript("arguments[0].scrollIntoView(true);", l);
+            Utils.clickXpath(driver, ActionXpath.ClickApplication1, time, "click on the appliation tab");
+
+            Utils.smallSleepBetweenClicks(1);
+            String view = "(//span[text()='View All'])[1]";
+            viewPresent = driver.findElements(By.xpath(view)).size() > 0;
+            Utils.bigSleepBetweenClicks(1);
+
+            System.out.println("Application tab is not there");
 
             if (viewPresent) {
                 WebDriverWait wait = new WebDriverWait(driver, 20);
@@ -1108,7 +1190,8 @@ public class spjain {
             } else {
                 System.out.println("There is nothing to Delete");
             }
-            driver.switchTo().window(tab.get(0));
+
+            // driver.switchTo().window(tab.get(0));
 
             log.info("  TC-4:  the Salesforce backend  delete test case PASSED \n");
 

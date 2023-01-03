@@ -344,6 +344,16 @@ public class ActionXpath {
     // sf check
     static String clickcontacts = "//*[text()='Contacts']";
     static String contacts = "//b[text()='Contacts']";
+
+    static String admi = "//p[.='SP Jain Admissions']";
+
+    static String view = "//span[text()='View All']";
+
+    static String apptab = "(//a[@class='rowActionsPlaceHolder slds-button slds-button--icon-x-small slds-button--icon-border-filled keyboardMode--trigger'])";
+
+    static String apptab1 = "(//a[@class='rowActionsPlaceHolder slds-button slds-button--icon-x-small slds-button--icon-border-filled keyboardMode--trigger'])[12]";
+
+    static String ClickApplication1 = "(//a[.='Applications'])[2]";
     static String ClickApplicationtab = "//a[text()='Applications']";
     static String ClickEdit = "(//button[@type='button' and text()='Edit'])[3]";
     static String passportcheck = "(//lightning-formatted-text[@slot='outputField'])[9]";
@@ -373,6 +383,9 @@ public class ActionXpath {
     static String selectxpath = "//ul[contains(@class,'MuiList-root MuiList-padding MuiMenu-list css-r8u8y9')]//li//div//div";
     static String clickondrop = "//a[@role='button'  and @title='Show 2 more actions']";
     static String delete = "//a[@title='Delete']";
+
+    static String delete1 = "//div[@title='Delete']";
+
     static String Delete2 = "//span[text()='Delete']";
     static String viewAll = "//span[text()='View All']";
     static String sfviewall = "(//span[text()='View All'])[1]";

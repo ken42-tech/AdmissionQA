@@ -48,7 +48,7 @@ public class App_portal extends Thread {
 		} catch (java.lang.Exception e) {
 			e.printStackTrace();
 		} catch (Throwable e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
 		System.out.println("Thread- END " + Thread.currentThread().getName());
@@ -89,10 +89,11 @@ public class App_portal extends Thread {
 				t.join();
 				continue;
 			} else {
-				// Utils.bigSleepBetweenClicks(1);
+				Utils.bigSleepBetweenClicks(1);
 				t.start();
 			}
 			count++;
+			// Utils.bigSleepBetweenClicks(2);
 		}
 	}
 
@@ -174,11 +175,15 @@ public class App_portal extends Thread {
 				case 4:
 					switch (portal) {
 						case 1:
-							spjain.SalesforceBackendDELETE(driver, log, csvCell, "Launch Tab");
+							spjain.SalesforceBackendDELETE(driver, log, csvCell, logFileName);
 							break;
 						case 2:
 							sbmp.SalesforceBackendDELETE(driver, log, csvCell, logFileName);
 							break;
+						case 3:
+							ltpct.SalesforceBackendDELETE(driver, log, csvCell, logFileName);
+							break;
+
 					}
 					break;
 				default:
@@ -280,6 +285,8 @@ public class App_portal extends Thread {
 					spjain.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				} else if (url.contains("apply-sbmp")) {
 					sbmp.SalesforceBackendDELETE(driver, log, csvCell, Tname);
+				} else if (url.contains("ltpct")) {
+					ltpct.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				}
 				quitDriver(sfurl, driver);
 				count1++;

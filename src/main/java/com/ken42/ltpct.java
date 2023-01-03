@@ -54,6 +54,11 @@ public class ltpct {
     {
 
         try {
+            driver.navigate().refresh();
+            Thread.sleep(3000);
+            ((JavascriptExecutor) driver).executeScript("window.open()");
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tab.get(0));
 
             String mobile = csvCell[90];
             int time = 2000;
@@ -444,7 +449,7 @@ public class ltpct {
 
         String religion = csvCell[105];
         String age = csvCell[106];
-
+        String batch = csvCell[189];
         String mothername = csvCell[107];
         String bloodsel = csvCell[143];
         String guardianname = csvCell[108];
@@ -480,7 +485,7 @@ public class ltpct {
             Thread.sleep(1000);
             Utils.clickXpath(driver, ActionXpath.batch, time, "click on batch");
 
-            Utils.selectFromDropDown(ActionXpath.scrolldropdown, age, driver);
+            Utils.selectFromDropDown(ActionXpath.scrolldropdown, batch, driver);
 
             Utils.cleartext(driver, ActionXpath.presentoccupation);
 
@@ -673,7 +678,7 @@ public class ltpct {
 
             JavascriptExecutor js = (JavascriptExecutor) driver;
             js.executeScript("window.scrollBy(0,-2000)");
-            // vsmallSleepBetweenClicks(1);
+            Utils.smallSleepBetweenClicks(1);
 
             Utils.callSendkeys(driver, ActionXpath.address2, address, "enter address");
 
@@ -982,8 +987,8 @@ public class ltpct {
 
     public static void salesforce_login(String sal_url, WebDriver driver, String[] csvCell) throws Exception {
 
-        String username = csvCell[41];
-        String password = csvCell[42];
+        String username = csvCell[10];
+        String password = csvCell[11];
 
         Utils.callSendkeys(driver, ActionXpath.username, username, "enter username");
 
@@ -1035,7 +1040,7 @@ public class ltpct {
         Thread.sleep(5000);
 
         List<WebElement> clickapplicant = driver.findElements(By.xpath("//table//tbody//td[3]//a"));
-        String Applicant = csvCell[67];
+        String Applicant = csvCell[12];
         for (int i = 0; i < clickapplicant.size(); i++) {
 
             if (clickapplicant.get(i).getText().contains(Applicant)) {
@@ -1046,67 +1051,103 @@ public class ltpct {
 
         }
 
-        Thread.sleep(3000);
-
+        WebDriverWait wait2 = new WebDriverWait(driver, 20);
+        WebElement elem2 = wait2.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("(//span[@class='view-all-label'])[1]")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem2);
+        // JavascriptExecutor js = (JavascriptExecutor) driver;
+        // js.executeScript("window.scrollBy(0,100)");
         Thread.sleep(4000);
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,2300)");
-        Thread.sleep(3000);
-        WebElement e111 = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("(//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small'])[4]")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e111);
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//a[@title='Delete']")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[.='Delete']")).click();
+        Actions aa = new Actions(driver);
+        WebElement ee = driver.findElement(By.xpath(
+                "/html/body/div[4]/div[1]/section/div[1]/div[2]/div[2]/div[1]/div/div/div/div/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div/div/table/tbody/tr/td[3]/span/div/a"));
+        aa.moveToElement(ee).click().build().perform();
 
-        Thread.sleep(8000);
-        // JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,1200)");
+        // Thread.sleep(5000);
+        // WebElement elqq = wait.until(ExpectedConditions
+        // .elementToBeClickable(By.xpath(
+        // "//*[@class='forceVirtualActionMarker forceVirtualAction']")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elqq);
 
-        Thread.sleep(3000);
-        // WebDriverWait wait = new WebDriverWait(driver, 20);
-        WebElement e111q = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("(//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small'])[4]")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e111q);
-
-        WebElement e1q = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e1q);
-
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[.='Delete']")).click();
-
-        Thread.sleep(8000);
-        // JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,-3000)");
-
-        Thread.sleep(3000);
-
-        WebElement e11q = wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("(//button[@class='slds-button slds-button_icon-border slds-button_icon-x-small'])[1]")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e11q);
-
-        WebElement eq = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", eq);
-
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//span[.='Delete']")).click();
-        Thread.sleep(3000);
-
-        WebElement elqq = wait.until(ExpectedConditions
-                .elementToBeClickable(By.xpath("//button[@class='slds-button slds-button_icon-border-filled']")));
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elqq);
-
-        WebElement we1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@name='Delete']")));
+        WebElement we1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", we1);
 
         ///// a[@title='Delete']
 
         Thread.sleep(5000);
-        WebElement le = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[.='Delete'])[2]")));
+        WebElement le = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[.='Delete']")));
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", le);
 
         Thread.sleep(5000);
+
+        // Thread.sleep(3000);
+
+        // Thread.sleep(4000);
+        // JavascriptExecutor js = (JavascriptExecutor) driver;
+        // js.executeScript("window.scrollBy(0,2300)");
+        // Thread.sleep(3000);
+        // WebElement e111 = wait.until(ExpectedConditions.elementToBeClickable(
+        // By.xpath("(//button[@class='slds-button slds-button_icon-border
+        // slds-button_icon-x-small'])[4]")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e111);
+        // Thread.sleep(3000);
+        // driver.findElement(By.xpath("//a[@title='Delete']")).click();
+        // Thread.sleep(3000);
+        // driver.findElement(By.xpath("//span[.='Delete']")).click();
+
+        // Thread.sleep(8000);
+        // // JavascriptExecutor js = (JavascriptExecutor) driver;
+        // js.executeScript("window.scrollBy(0,1200)");
+
+        // Thread.sleep(3000);
+        // // WebDriverWait wait = new WebDriverWait(driver, 20);
+        // WebElement e111q = wait.until(ExpectedConditions.elementToBeClickable(
+        // By.xpath("(//button[@class='slds-button slds-button_icon-border
+        // slds-button_icon-x-small'])[4]")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e111q);
+
+        // WebElement e1q =
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e1q);
+
+        // Thread.sleep(3000);
+        // driver.findElement(By.xpath("//span[.='Delete']")).click();
+
+        // Thread.sleep(8000);
+        // // JavascriptExecutor js = (JavascriptExecutor) driver;
+        // js.executeScript("window.scrollBy(0,-3000)");
+
+        // Thread.sleep(3000);
+
+        // WebElement e11q = wait.until(ExpectedConditions.elementToBeClickable(
+        // By.xpath("(//button[@class='slds-button slds-button_icon-border
+        // slds-button_icon-x-small'])[1]")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", e11q);
+
+        // WebElement eq =
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", eq);
+
+        // Thread.sleep(3000);
+        // driver.findElement(By.xpath("//span[.='Delete']")).click();
+        // Thread.sleep(3000);
+
+        // WebElement elqq = wait.until(ExpectedConditions
+        // .elementToBeClickable(By.xpath("(//div[@class='uiMenu'])[4]")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elqq);
+
+        // WebElement we1 =
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", we1);
+
+        // ///// a[@title='Delete']
+
+        // Thread.sleep(5000);
+        // WebElement le =
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//span[.='Delete'])[2]")));
+        // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", le);
+
+        // Thread.sleep(5000);
 
     }
 
@@ -1493,14 +1534,14 @@ public class ltpct {
     public static void Admissionfillform(String app_url, WebDriver driver, String[] csvCell, Logger log)
             throws Throwable {
         try {
-            // ((JavascriptExecutor) driver).executeScript("window.open()");
-            // ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
-            // driver.switchTo().window(tab.get(3));
-            log.info("Tc6:-Started filling Application form");
 
+            log.info("Tc:-Started filling Application form");
+            String Sfurl = csvCell[9];
             String url = csvCell[0];
-            driver.get(url);
 
+            ltpct.SalesforceBackendDELETE(driver, log, csvCell, Sfurl);
+
+            driver.get(url);
             ltpct.login_ltpct(app_url, driver, csvCell);
             ltpct.ApplyforCourse(url, driver, csvCell, log);
             ltpct.Appbasic_info(app_url, driver, csvCell, log);
@@ -1512,11 +1553,11 @@ public class ltpct {
             ltpct.submit_app(app_url, driver, csvCell);
 
             // ltpct.signout_app(app_url, driver, csvCell);
-            log.info("Tc6:-Application login,fileuploadandsubmit testcase passed");
+            log.info("Tc:-Application login,fileuploadandsubmit testcase passed");
 
         } catch (Exception e) {
             e.printStackTrace();
-            log.warning("Tc6:-Application login,fileuploadandsubmit testcase failed");
+            log.warning("Tc:-Application login,fileuploadandsubmit testcase failed");
 
         }
     }
@@ -1549,22 +1590,26 @@ public class ltpct {
     }
 
     @Test(priority = 8)
-    public static void salesforce_applicationviewanddelete1(String sal_url, WebDriver driver, String[] csvCell)
-            throws java.lang.Exception
-
-    {
+    public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell, String Tname)
+            throws Exception {
         try {
+
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            if (!Tname.equals("T1")) {
+                // driver.switchTo().window(tab.get(1));
+            }
 
             // ((JavascriptExecutor) driver).executeScript("window.open()");
             // ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             // driver.switchTo().window(tab.get(5));
 
-            String url = csvCell[40];
-            driver.get(url);
+            // String url = csvCell[40];
+            String sal_url = csvCell[9];
+            driver.get(sal_url);
             ltpct.salesforce_login(sal_url, driver, csvCell);
             ltpct.clickonApplicationandselect(sal_url, driver, csvCell);
 
-            ltpct.profile_logout(sal_url, driver, csvCell);
+            // ltpct.profile_logout(sal_url, driver, csvCell);
             log.info("Tc8:-Salesforce Application view and delete testcase passed");
             System.out.println("Tc8:-Salesforce Application view and delete testcase passed");
         } catch (Exception e) {
@@ -1605,6 +1650,6 @@ public class ltpct {
     public static void quitDriver(String Url) throws Exception {
         log.info("Close window  of portal" + Url);
         log.info("\n");
-        driver.quit();
+        // driver.quit();
     }
 }

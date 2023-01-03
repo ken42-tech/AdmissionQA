@@ -24,6 +24,12 @@ public class sbmp {
 
     public static void login(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
+
+            driver.navigate().refresh();
+            Thread.sleep(3000);
+            ((JavascriptExecutor) driver).executeScript("window.open()");
+            ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
+            driver.switchTo().window(tab.get(0));
             String email = csvCell[2];
             String password = csvCell[3];
 
@@ -82,7 +88,7 @@ public class sbmp {
             String religion = csvCell[178];
             String category = csvCell[179];
             String bloodgroup = csvCell[176];
-            Utils.smallSleepBetweenClicks(1);
+            Utils.bigSleepBetweenClicks(1);
 
             if (validation.equals("TRUE")) {
                 Utils.cleartext(driver, ActionXpath.childfirstName);
@@ -393,17 +399,19 @@ public class sbmp {
     }
 
     @Test(priority = 1)
-    public static void Admissionfillform(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
+    public static void Admissionfillform(String surl, WebDriver driver, String[] csvCell, Logger log) throws Exception {
 
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
             String Sfurl = csvCell[9];
-
+            String url = csvCell[0];
             // Thread.sleep(15000);
-            login(url, driver, csvCell, log);
 
+            sbmp.SalesforceBackendDELETE(driver, log, csvCell, Sfurl);
+            driver.get(url);
+            login(surl, driver, csvCell, log);
             sbmpApplyforCourse(Sfurl, driver, csvCell, log);
-            sbmpBasicDetails(url, driver, csvCell, log);
+            sbmpBasicDetails(surl, driver, csvCell, log);
             sbmpFamilyInfo(Sfurl, driver, csvCell, log);
             sbmp_permanentaddress_Info(Sfurl, driver, csvCell, log);
             sbmp_Education_details(Sfurl, driver, csvCell, log);
@@ -423,6 +431,7 @@ public class sbmp {
 
     public static void SalesforceBackendDELETE(WebDriver driver, Logger log, String[] csvCell, String Tname)
             throws Exception {
+
         try {
             System.out.println("TC-2: Salesforce backend Verification along with delete  Test Executation ");
 
@@ -475,6 +484,7 @@ public class sbmp {
             for (int i = 0; i < count1; i++) {
 
                 String apply = csvCell[12];
+                Thread.sleep(3000);
                 String xp1 = "(//*[. and contains(text(),'" + apply
                         + "')]/.././../..//*[@class='slds-cell-edit cellContainer'])[12]";
                 // String xp2 = "(//*[text()='" + apply +
