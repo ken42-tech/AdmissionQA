@@ -56,7 +56,7 @@ public class ltpct {
         try {
             driver.navigate().refresh();
             Thread.sleep(3000);
-           // ((JavascriptExecutor) driver).executeScript("window.open()");
+            // ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
             driver.switchTo().window(tab.get(0));
 
@@ -470,7 +470,7 @@ public class ltpct {
             Utils.cleartext(driver, ActionXpath.surename);
 
             Utils.callSendkeys(driver, ActionXpath.surename, surename, "enter sname ");
-
+            Thread.sleep(1000);
             Utils.cleartext(driver, ActionXpath.enterfathername);
 
             Utils.callSendkeys(driver, ActionXpath.enterfathername, fathername, "enter fathername");
@@ -482,9 +482,9 @@ public class ltpct {
             // Utils.cleartext(driver, ActionXpath.enterdob);
 
             // Utils.callSendkeys(driver, ActionXpath.enterdob, dob, "enter dob ");
-           // Thread.sleep(1000);
-            Utils.clickXpath(driver, ActionXpath.batch, time, "click on batch");
 
+            Utils.clickXpath(driver, ActionXpath.batch, time, "click on batch");
+            Thread.sleep(2000);
             Utils.selectFromDropDown(ActionXpath.scrolldropdown, batch, driver);
 
             Utils.cleartext(driver, ActionXpath.presentoccupation);
@@ -676,8 +676,8 @@ public class ltpct {
             String stateselc = csvCell[64];
             Utils.vsmallSleepBetweenClicks(1);
 
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("window.scrollBy(0,-2000)");
+            // JavascriptExecutor js = (JavascriptExecutor) driver;
+            // js.executeScript("window.scrollBy(0,-2000)");
             Utils.smallSleepBetweenClicks(1);
 
             Utils.callSendkeys(driver, ActionXpath.address2, address, "enter address");

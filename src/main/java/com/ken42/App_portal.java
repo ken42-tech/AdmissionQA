@@ -126,6 +126,8 @@ public class App_portal extends Thread {
 			portal = 2;
 		} else if (url.contains("ltpct")) {
 			portal = 3;
+		} else if (url.contains("apply-samsung")) {
+			portal = 4;
 		}
 
 		driver = initDriver(browser, url);
@@ -146,6 +148,9 @@ public class App_portal extends Thread {
 							break;
 						case 3:
 							ltpct.Admissionfillform(sfurl, driver, csvCell, log);
+							break;
+						case 4:
+							esscisamsung.Admissionfillform(sfurl, driver, csvCell, log);
 							break;
 					}
 					break;
