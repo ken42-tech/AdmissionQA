@@ -61,7 +61,7 @@ public class App_portal extends Thread {
 
 	public static void main(String[] args) throws Exception {
 		String CSV_PATH = "";
-		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
+		CSV_PATH = "C:\\Users\\Public\\Documents\\APpessci.csv";
 		CSVReader csvReader;
 		int count = 0;
 		CSVReader csvReader1;
@@ -188,6 +188,9 @@ public class App_portal extends Thread {
 						case 3:
 							ltpct.SalesforceBackendDELETE(driver, log, csvCell, logFileName);
 							break;
+						case 4:
+							esscisamsung.SalesforceBackendDELETE(driver, log, csvCell, logFileName);
+							break;
 
 					}
 					break;
@@ -196,8 +199,8 @@ public class App_portal extends Thread {
 			}
 		}
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);
-		// SendMail.sendEmail(logFileName);
-		driver.quit();
+		SendMail.sendEmail(logFileName);
+		// driver.quit();
 	}
 
 	@BeforeSuite
@@ -267,7 +270,7 @@ public class App_portal extends Thread {
 		String Tname = "T1";
 		WebDriver driver = null;
 		String CSV_PATH = "";
-		CSV_PATH = "C:\\Users\\Public\\Documents\\APplication.csv";
+		CSV_PATH = "C:\\Users\\Public\\Documents\\Appessci.csv";
 		CSVReader csvReader2;
 		csvReader2 = new CSVReader(new FileReader(CSV_PATH));
 		int count1 = 0;
@@ -292,11 +295,12 @@ public class App_portal extends Thread {
 					sbmp.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				} else if (url.contains("ltpct")) {
 					ltpct.SalesforceBackendDELETE(driver, log, csvCell, Tname);
+				} else if (url.contains("apply-samsung")) {
+					esscisamsung.SalesforceBackendDELETE(driver, log, csvCell, Tname);
 				}
-				quitDriver(sfurl, driver);
-				count1++;
 			}
-
+			quitDriver(sfurl, driver);
+			count1++;
 		}
 
 	}

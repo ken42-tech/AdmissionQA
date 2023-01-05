@@ -68,29 +68,6 @@ public class esscisamsung {
             Utils.clickXpath(driver, ActionXpath.ApplyNow, time, "Click on apply");
             Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
 
-            Utils.scrollUpOrDown(driver, time);
-            Utils.scrollUpOrDown(driver, time);
-
-            if (csvCell[13].equals("Global MBA") || csvCell[13].equals("Masters of Global Business Management VS-1")
-                    || csvCell[13].equals("Doctor of Business Administration")) {
-                System.out.println("No campus selection for Global MBA");
-            } else {
-                Utils.clickXpath(driver, ActionXpath.campus, time, "Select the campus");
-                String campus = csvCell[14];
-                Utils.selectFromDropDown(ActionXpath.selectxpath, campus, driver);
-                Utils.scrollUpOrDown(driver, time);
-            }
-
-            if (csvCell[13].equals("Bachelor of Business Communication")) {
-                System.out.println("No Specialization for BBC");
-            } else {
-                String Specilization = csvCell[15];
-                Utils.clickXpath(driver, ActionXpath.Specilization, time, "Specilization");
-                Utils.selectFromDropDown(ActionXpath.selectxpath, Specilization, driver);
-            }
-
-            Utils.clickXpath(driver, ActionXpath.ClickNext, time, "click on Next");
-            Utils.smallSleepBetweenClicks(1);
             log.info("TC-1: Course deatil screen PASSED");
         } catch (
 
@@ -112,28 +89,29 @@ public class esscisamsung {
             String training = csvCell[19];
             String aadhar = csvCell[20];
             String email = csvCell[21];
+            Utils.smallSleepBetweenClicks(1);
 
-            // Utils.clickXpath(driver, ActionXpath.selectmale, time, "click on Male");
+            // Actions act1 = new Actions(driver);
+            // WebElement ele1 = driver.findElement(By.xpath("//input[@value='Female']"));
 
-            // Utils.callSendkeys(driver, ActionXpath.enterdateofbirth, dateofbirth, "Set
-            // date of birth");
+            // String ee = ele1.getText();
+            // System.out.println(ee);
 
-            // Utils.callSendkeys(driver, ActionXpath.enterhighquali, highquali, "enter high
-            // qualification");
+            // act1.moveToElement(ele1).click().build().perform();
+
+            // driver.findElement(By.xpath("//input[@value='Other']")).click();
+            // Thread.sleep(2000);
+
+            // Utils.cleartext(driver, ActionXpath.enterdateofbirth);
+            // Utils.callSendkeys(driver, ActionXpath.enterdateofbirth, dateofbirth,
+            // "Setdate of birth");
+            // Thread.sleep(2000);
+            // Utils.cleartext(driver, ActionXpath.enterhighquali);
+            // Utils.callSendkeys(driver, ActionXpath.enterhighquali, highquali, "enter
+            // highqualification");
 
             Utils.clickXpath(driver, ActionXpath.selecttrain, time, "open Training");
-            Utils.selectFromDropDown(ActionXpath.selectdropdown, training, driver);
-
-            // if (validation.equals("TRUE")) {
-            // Utils.cleartext(driver, ActionXpath.passport);
-            // validate.testForCharLength(driver, ActionXpath.passport,
-            // ActionXpath.passporterror, log, 13);
-            // Utils.cleartext(driver, ActionXpath.passport);
-            // validate.specialcharacter(driver, ActionXpath.passport,
-            // ActionXpath.passporterror, log);
-            // Utils.cleartext(driver, ActionXpath.passport);
-
-            // }
+            Utils.clickXpath(driver, ActionXpath.selecttrainning, time, "select Training");
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
@@ -227,12 +205,13 @@ public class esscisamsung {
             Utils.callSendkeys(driver, ActionXpath.enterhighschool, highschool, "enter highschool");
 
             Utils.clickXpath(driver, ActionXpath.selectgraud, time, "open graud");
-            Utils.selectFromDropDown(ActionXpath.selectdropdown, graduated, driver);
+            // Utils.selectFromDropDown(ActionXpath.selectdropdown, graduated, driver);
+            Utils.clickXpath(driver, ActionXpath.selecgr, time, "select graud");
 
             Utils.callSendkeys(driver, ActionXpath.enterfinalgpa, finalgpa, "enter finalgpa");
 
             Utils.clickXpath(driver, ActionXpath.selectenroll, time, "open enroll");
-            Utils.selectFromDropDown(ActionXpath.selectdropdown, univerenroll, driver);
+            Utils.clickXpath(driver, ActionXpath.selecrole, time, "select enroll");
 
             Utils.callSendkeys(driver, ActionXpath.enteruniversity, universityname, "enteruniversity");
 
@@ -279,9 +258,10 @@ public class esscisamsung {
 
             Utils.callSendkeys(driver, ActionXpath.plinst, plnameofinst, "enter pl nameofinst");
 
-            Utils.clickXpath(driver, ActionXpath.clickdatabase, time, "open and clickdatabase");
+            // Utils.clickXpath(driver, ActionXpath.clickdatabase, time, "open and
+            // clickdatabase");
 
-            Utils.clickXpath(driver, ActionXpath.selectdata, time, "click on no");
+            // Utils.clickXpath(driver, ActionXpath.selectdata, time, "click on no");
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
@@ -326,7 +306,7 @@ public class esscisamsung {
             String achieve = csvCell[38];
 
             String findoutsic = csvCell[39];
-
+            Utils.smallSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.careergoal, carrergole, "enter carrergole");
 
             Utils.callSendkeys(driver, ActionXpath.achievethrosic, achieve, "enter achieve through sic");
@@ -352,7 +332,7 @@ public class esscisamsung {
             String duration = csvCell[42];
 
             String role = csvCell[43];
-
+            Utils.smallSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.org, organization, "enter organization");
 
             Utils.callSendkeys(driver, ActionXpath.positi, position, "enter position");
@@ -385,7 +365,7 @@ public class esscisamsung {
             String applysic = csvCell[48];
 
             String paasive = csvCell[49];
-
+            Utils.smallSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.certif, certification, "enter certification");
 
             Utils.callSendkeys(driver, ActionXpath.orgcert, organization, "enter organization");
@@ -444,27 +424,25 @@ public class esscisamsung {
 
         try {
             System.out.println("TC-1: Fill form with validation test started Executation ");
-            // String Sfurl = csvCell[9];
+            String Sfurl = csvCell[9];
             String surl = csvCell[0];
             // esscisamsung.SalesforceBackendDELETE(driver, log, csvCell, Sfurl);
-            driver.get(surl);
+            // driver.get(surl);
             login(url, driver, csvCell, log);
-            ApplyforCourse(url, driver, csvCell, log);
-            BasicDetails(url, driver, csvCell, log);
-            FamilyInfo(url, driver, csvCell, log);
-            addressInfo(url, driver, csvCell, log);
-            educationInfo(url, driver, csvCell, log);
-            courseInfo(url, driver, csvCell, log);
+            ApplyforCourse(surl, driver, csvCell, log);
+            BasicDetails(surl, driver, csvCell, log);
+            FamilyInfo(surl, driver, csvCell, log);
+            addressInfo(surl, driver, csvCell, log);
+            educationInfo(surl, driver, csvCell, log);
+            courseInfo(surl, driver, csvCell, log);
 
-            priorInfo(url, driver, csvCell, log);
+            priorInfo(surl, driver, csvCell, log);
 
-            courseInfo(url, driver, csvCell, log);
+            carrergoalsInfo(surl, driver, csvCell, log);
 
-            carrergoalsInfo(url, driver, csvCell, log);
+            workexperienceInfo(surl, driver, csvCell, log);
 
-            workexperienceInfo(url, driver, csvCell, log);
-
-            certificationandotherInfo(url, driver, csvCell, log);
+            certificationandotherInfo(surl, driver, csvCell, log);
 
             log.info("TC-1: Fill form with validation test Completed and Passed ");
 
@@ -499,7 +477,7 @@ public class esscisamsung {
             Boolean appPresent = false;
             Boolean viewPresent = false;
             System.out.println(SfEmail);
-
+            Utils.smallSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.SalesforceEmail, SfEmail, "enter salesforce email");
             Utils.callSendkeys(driver, ActionXpath.SalesforcePassword, SfPassword, "Enter your password");
             Utils.clickXpath(driver, ActionXpath.loginSalesforce, time, "click on login salesforce");
@@ -507,9 +485,10 @@ public class esscisamsung {
             Utils.clickXpath(driver, ActionXpath.applauncher, time, "click on applauncher");
             Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts ");
             Utils.clickXpath(driver, ActionXpath.contacts, time, "click on clickcontacts");
-            // Utils.cleartext(driver, ActionXpath.listsearch);
+            Utils.cleartext(driver, ActionXpath.listsearch);
             Thread.sleep(2000);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentemail, "Search for student name");
+            Utils.clickXpath(driver, ActionXpath.listsearch, time, "listsearch");
             Utils.bigSleepBetweenClicks(1);
             Actions qq = new Actions(driver);
             // qq.moveByOffset(40, 40).click().perform();
@@ -517,84 +496,48 @@ public class esscisamsung {
             WebElement elem21 = wait21.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("(//*[text()='" + studentname + "'])[1]")));
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem21);
-            Utils.bigSleepBetweenClicks(1);
-            // String Applicationtab = "//a[text()='Applications']";
-            // String Applicationtab =
-            // "//*[@id=\"tab-1\"]/slot/flexipage-component2[2]/slot/lst-related-list-container/div/div[9]/lst-related-list-single-container/laf-progressive-container/slot/lst-related-list-single-app-builder-mapper/article/lst-related-list-view-manager/lst-common-list-internal/lst-list-view-manager-header/div/div[1]/div[1]/div/div/h2/a/span[1]']";
-            // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
-            // appPresent = driver.findElements(By.xpath(Applicationtab)).size() > 0;
-            // WebElement l = driver.findElement(By.xpath(Applicationtab));
-            // Javascript executor
-            // ((JavascriptExecutor)
-            // driver).executeScript("arguments[0].scrollIntoView(true);", l);
-            Utils.clickXpath(driver, ActionXpath.ClickApplication1, time, "click on the appliation tab");
-
             Utils.smallSleepBetweenClicks(1);
-            String view = "(//span[text()='View All'])[1]";
-            viewPresent = driver.findElements(By.xpath(view)).size() > 0;
-            Utils.bigSleepBetweenClicks(1);
 
-            System.out.println("Application tab is not there");
+            Actions act1 = new Actions(driver);
+            WebElement ele1 = driver.findElement(By.xpath("(//span[text()='View All'])[1]"));
+            act1.moveToElement(ele1).click().build().perform();
 
-            if (viewPresent) {
-                WebDriverWait wait = new WebDriverWait(driver, 20);
-                WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
-                        By.xpath("(//span[text()='View All'])[1]")));
-                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
-                Thread.sleep(2000);
-                count = Utils.getTEXT(driver, ActionXpath.deletecount);
-                Pattern pt = Pattern.compile("-?\\d+");
-                java.util.regex.Matcher m = pt.matcher(count);
-                while (m.find()) {
-                    row = m.group();
-                }
-                int count1 = Integer.parseInt(row);
+            // WebDriverWait wait211 = new WebDriverWait(driver, 20);
+            // WebElement elem211 = wait211.until(ExpectedConditions.elementToBeClickable(
+            // By.xpath("(//span[text()='View All'])[1]")));
+            // ((JavascriptExecutor) driver).executeScript("arguments[0].click();",
+            // elem211);
 
-                System.out.println(count1);
+            // Utils.clickXpath(driver, ActionXpath.vie, time, "click on view all");
 
-                for (int i = 0; i < count1; i++) {
-                    Boolean acad2022Present = driver.findElements(By.xpath(ActionXpath.acadYear2022)).size() > 0;
-                    Boolean acad2023Present = driver.findElements(By.xpath(ActionXpath.acadYear2023)).size() > 0;
-                    Boolean acad2024Present = driver.findElements(By.xpath(ActionXpath.acadYear2024)).size() > 0;
-                    if (acad2022Present) {
-                        WebElement el = driver.findElement(By.xpath(ActionXpath.acadYear2022));
-                        System.out.println("2022 is there click it     " + el);
-                        el.click();
-                        Utils.smallSleepBetweenClicks(1);
-                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2022");
-                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciation 2022");
-                        Utils.smallSleepBetweenClicks(2);
-                        continue;
-                    } else if (acad2023Present) {
-                        WebElement el2 = driver.findElement(By.xpath(ActionXpath.acadYear2023));
-                        System.out.println("2023 is there click it" + el2);
-                        el2.click();
-                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2023");
-                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
-                        Utils.smallSleepBetweenClicks(2);
-                        continue;
-                    } else if (acad2024Present) {
-                        WebElement el2 = driver.findElement(By.xpath(ActionXpath.acadYear2024));
-                        System.out.println("2024 is there click it" + el2);
-                        el2.click();
-                        Utils.clickXpath(driver, ActionXpath.delete, time, "Delete theapplciation 2023");
-                        Utils.clickXpath(driver, ActionXpath.Delete2, time, "Delete theapplciatnet 2023");
-                        Utils.smallSleepBetweenClicks(2);
-                        continue;
-                    }
-                }
-            } else {
-                System.out.println("There is nothing to Delete");
-            }
+            // Utils.bigSleepBetweenClicks(1);
+
+            Thread.sleep(4000);
+            Actions aa = new Actions(driver);
+            WebElement ee = driver.findElement(By.xpath(
+                    "//*[@id='brandBand_2']/div/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div/div/table/tbody/tr/td[3]/span/div/a"));
+            aa.moveToElement(ee).click().build().perform();
+
+            WebDriverWait wait = new WebDriverWait(driver, 10);
+            WebElement we1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", we1);
+
+            ///// a[@title='Delete']
+
+            Thread.sleep(5000);
+            WebElement le = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[.='Delete']")));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", le);
+
+            Thread.sleep(5000);
 
             // driver.switchTo().window(tab.get(0));
 
-            log.info("  TC-4:  the Salesforce backend  delete test case PASSED \n");
+            log.info("  TC-2:  the Salesforce backend  delete test case PASSED \n");
 
         }
 
         catch (Exception e) {
-            log.warning("TC-4: the Salesforce backend  delete test case FAILED \n");
+            log.warning("TC-2: the Salesforce backend  delete test case FAILED \n");
             Utils.printException(e);
             throw (e);
         }

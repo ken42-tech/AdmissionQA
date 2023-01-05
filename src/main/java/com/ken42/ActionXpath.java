@@ -869,7 +869,7 @@ public class ActionXpath {
 
     static String selecttrain = "//div[@id='outlined-select-currency']";
 
-    static String selecttrainning = "(//div[.='NSIC, Delhi'])[2]";
+    static String selecttrainning = "(//div[.='Lucknow University, Lucknow'])[1]";
 
     static String selectnext = "//button[@type='submit']";
     //// ........................essci family
@@ -915,6 +915,7 @@ public class ActionXpath {
     static String selectenroll = "(//div[@id='outlined-select-currency'])[2]";
 
     static String selecgr = "(//div[.='Yes'])[1]";
+    static String selecrole = "//li[.='Yes']";
 
     static String enterfinalgpa = "//input[@name='educationHistories[0][cumulativegpa]']|(//input[@type='input'])[2]";
 
@@ -940,13 +941,11 @@ public class ActionXpath {
 
     static String planguage = "(//div[@id='outlined-select-currency'])[2]";
 
-    static String plcoyrse = "(//div[.='Yes'])[1]";
-
+    static String plcoyrse = "//li[.='Yes']";
 
     static String clickdatabase = "(//div[@id='outlined-select-currency'])[3]";
 
     static String selectdata = "(//div[.='No'])[1]";
-
 
     static String plcour = "//input[@name='Skills[0][courseName]']|(//input[@type='input'])[3]";
 
@@ -965,53 +964,49 @@ public class ActionXpath {
     //// .................................career goal.............................
     //// xpath...................................////
 
+    static String careergoal = "//input[@name='career[0][specifyYourCareerGoal]']|(//input[@type='input'])[1]";
 
-static String careergoal="//input[@name='career[0][specifyYourCareerGoal]']|(//input[@type='input'])[1]";
+    static String achievethrosic = "//input[@name='career[0][yourWishtoAchieveThroughSICProgram]']|(//input[@type='input'])[2]";
 
-static String achievethrosic="//input[@name='career[0][yourWishtoAchieveThroughSICProgram]']|(//input[@type='input'])[2]";
+    static String findoutsic = "//input[@name='career[0][hearAboutSIC]']|(//input[@type='input'])[3]";
+    //// ........................work exp essci
+    //// xpath....................................////
 
-static String findoutsic="//input[@name='career[0][hearAboutSIC]']|(//input[@type='input'])[3]";
-////........................work exp essci xpath....................................////
+    static String org = "//input[@name='workExperiences.0.organisationName']|(//input[@type='input'])[1]";
 
+    static String positi = "//input[@name='workExperiences.0.designation']|(//input[@type='input'])[2]";
 
-static String org="//input[@name='workExperiences.0.organisationName']|(//input[@type='input'])[1]";
+    static String dur = "//input[@name='workExperiences.0.noOfMonths']|(//input[@type='input'])[3]";
 
-static String positi="//input[@name='workExperiences.0.designation']|(//input[@type='input'])[2]";
+    static String roledes = "//input[@name='workExperiences.0.roleDescription']|(//input[@type='input'])[4]";
 
-static String dur="//input[@name='workExperiences.0.noOfMonths']|(//input[@type='input'])[3]";
+    //// ....................certification essci
+    //// xpath..............................////
 
-static String roledes="//input[@name='workExperiences.0.roleDescription']|(//input[@type='input'])[4]";
+    static String certif = "//input[@name='Skills.0.certification Name']|(//input[@type='input'])[1]";
 
-////....................certification essci xpath..............................////
+    static String orgcert = "//input[@name='Skills.0.organization']|(//input[@type='input'])[2]";
 
-static String certif="//input[@name='Skills.0.certification Name']|(//input[@type='input'])[1]";
+    static String date = "//input[@name='Skills.0.dates']|//input[@type='date']";
 
-static String orgcert="//input[@name='Skills.0.organization']|(//input[@type='input'])[2]";
+    static String certdes = "//input[@name='Skills.0.roleDescription']|(//input[@type='input'])[3]";
 
-static String date="//input[@name='Skills.0.dates']|//input[@type='date']";
+    //// ...................essay essci xapth.................................////
 
-static String certdes="//input[@name='Skills.0.roleDescription']|(//input[@type='input'])[3]";
+    static String essaysic = "//input[@name='application[applyingForSIC]']|(//input[@type='input'])[1]";
 
-////...................essay essci xapth.................................////
+    static String essaydesc = "//input[@name='application[passionInCourse]']|(//input[@type='input'])[2]";
 
-static String essaysic="//input[@name='application[applyingForSIC]']|(//input[@type='input'])[1]";
+    //// ...........................unpriv essci
+    //// xpath................................////
 
-static String essaydesc="//input[@name='application[passionInCourse]']|(//input[@type='input'])[2]";
+    static String unpriv = "(//div[@id='outlined-select-currency'])[1]";
+    static String selectunpriv = "(//div[.='Yes'])[1]";
 
+    static String submitesci = "//button[@type='submit']";
 
+    static String returnhomeessci = "//span[.='Homepage']";
 
-
-////...........................unpriv essci xpath................................////
-
-
-
-static String unpriv = "(//div[@id='outlined-select-currency'])[1]";
-static String selectunpriv = "(//div[.='Yes'])[1]";
-
-
-static String submitesci = "//button[@type='submit']";
-
-
-static String returnhomeessci = "//span[.='Homepage']";
+    static String vie="(//span[text()='View All'])[1]";
 
 }
