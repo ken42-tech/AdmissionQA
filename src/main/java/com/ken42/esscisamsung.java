@@ -201,7 +201,7 @@ public class esscisamsung {
             String major = csvCell[29];
             String cumulative = csvCell[31];
             String currentuniver = csvCell[30];
-
+            String voccgp = csvCell[51];
             Utils.callSendkeys(driver, ActionXpath.enterhighschool, highschool, "enter highschool");
 
             Utils.clickXpath(driver, ActionXpath.selectgraud, time, "open graud");
@@ -221,6 +221,13 @@ public class esscisamsung {
             Utils.selectFromDropDown(ActionXpath.selectdropdown, currentuniver, driver);
 
             Utils.callSendkeys(driver, ActionXpath.cumulativegpa, cumulative, "enter cumulativegpa");
+            if (csvCell[13].equals("C and P")) {
+                Utils.clickXpath(driver, ActionXpath.vocation, time, "open vocation");
+                Utils.clickXpath(driver, ActionXpath.vocationselect, time, "click vocationselect");
+
+                Utils.callSendkeys(driver, ActionXpath.vocationselectcgp, voccgp, "enter vocationselectcgp");
+                Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+            }
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
             Utils.smallSleepBetweenClicks(1);
@@ -241,7 +248,7 @@ public class esscisamsung {
 
             String plnameofcourse = csvCell[34];
             String plnameofinst = csvCell[35];
-
+            String Programe = csvCell[13];
             Utils.clickXpath(driver, ActionXpath.coursecomp, time, "open course");
 
             Utils.clickXpath(driver, ActionXpath.selectcoyrse, time, "click on yes");
@@ -258,12 +265,18 @@ public class esscisamsung {
 
             Utils.callSendkeys(driver, ActionXpath.plinst, plnameofinst, "enter pl nameofinst");
 
-            // Utils.clickXpath(driver, ActionXpath.clickdatabase, time, "open and
-            // clickdatabase");
+            if (csvCell[13].equals("Big Data")) {
 
-            // Utils.clickXpath(driver, ActionXpath.selectdata, time, "click on no");
+                Utils.clickXpath(driver, ActionXpath.clickdatabase, time, "open and clickdatabase");
+
+                Utils.clickXpath(driver, ActionXpath.selectdata, time, "click on no");
+
+                Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+
+            }
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+
             Utils.smallSleepBetweenClicks(1);
 
             log.info("TC-1: Populating course info PASSED");
@@ -278,7 +291,7 @@ public class esscisamsung {
         try {
 
             String pleaseexp = csvCell[36];
-
+            String mat = csvCell[50];
             Utils.clickXpath(driver, ActionXpath.pythonpl, time, "open current pythonpl");
 
             Utils.clickXpath(driver, ActionXpath.selectexp, time, "select exp");
@@ -287,9 +300,18 @@ public class esscisamsung {
 
             Utils.clickXpath(driver, ActionXpath.selectsomeexp, time, "select some exp");
 
+            if (csvCell[13].equals("Artificial Intelligence")) {
+
+                Utils.clickXpath(driver, ActionXpath.havemath, time, "open maths");
+
+                Utils.selectFromDropDown(ActionXpath.selectdropdown, mat, driver);
+
+                Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+            }
             Utils.callSendkeys(driver, ActionXpath.expofpl, pleaseexp, "enter experience ofpl");
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+
             Utils.smallSleepBetweenClicks(1);
             log.info("TC-1: Populating prior info PASSED");
         } catch (Exception e) {
@@ -376,7 +398,7 @@ public class esscisamsung {
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
 
-            Utils.smallSleepBetweenClicks(1);
+            Utils.bigSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.essaysic, applysic, "enter applysic");
 
             Utils.callSendkeys(driver, ActionXpath.essaydesc, paasive, "enter paasive");

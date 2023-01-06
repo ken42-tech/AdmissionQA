@@ -927,6 +927,12 @@ public class ActionXpath {
 
     static String selecuniver = "(//div[.='Second year'])[1]";
 
+    static String vocation = "(//div[@id='outlined-select-currency'])[4]";
+
+    static String vocationselect = "(//li[.='Yes'])[1]";
+
+    static String vocationselectcgp = "(//input[@type='input'])[6]|//input[@name='educationHistories[2][cumulativegpa]']";
+
     static String cumulativegpa = "//input[@name='educationHistories[1][cumulativegpa]']|(//input[@type='input'])[5]";
 
     /////////////////// .............course essci
@@ -958,6 +964,8 @@ public class ActionXpath {
 
     static String havesomeexp = "(//div[@id='outlined-select-currency'])[2]";
     static String selectsomeexp = "(//div[.='JavaScript'])[1]";
+
+    static String havemath = "(//div[@id='outlined-select-currency'])[3]";
 
     static String expofpl = "//input[@name='Skills[0][yearofProgrammmingExperience]']|//input[@type='input']";
 
@@ -1007,6 +1015,6 @@ public class ActionXpath {
 
     static String returnhomeessci = "//span[.='Homepage']";
 
-    static String vie="(//span[text()='View All'])[1]";
+    static String vie = "(//span[text()='View All'])[1]";
 
 }

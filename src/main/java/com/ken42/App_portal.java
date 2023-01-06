@@ -93,7 +93,7 @@ public class App_portal extends Thread {
 				t.start();
 			}
 			count++;
-			// Utils.bigSleepBetweenClicks(2);
+			//Utils.bigSleepBetweenClicks(20);
 		}
 	}
 
