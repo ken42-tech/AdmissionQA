@@ -965,9 +965,27 @@ public class ActionXpath {
     static String havesomeexp = "(//div[@id='outlined-select-currency'])[2]";
     static String selectsomeexp = "(//div[.='JavaScript'])[1]";
 
+
+
+
+
+
+
+
     static String havemath = "(//div[@id='outlined-select-currency'])[3]";
 
     static String expofpl = "//input[@name='Skills[0][yearofProgrammmingExperience]']|//input[@type='input']";
+
+
+    static String proficimath = "(//div[@id='outlined-select-currency'])[1]";
+   // static String selectexp = "(//div[.='Some experience in classroom setting'])[1]";
+
+    static String comforbasic = "(//div[@id='outlined-select-currency'])[2]";
+  //  static String selectsomeexp = "(//div[.='JavaScript'])[1]";
+
+
+
+
 
     //// .................................career goal.............................
     //// xpath...................................////

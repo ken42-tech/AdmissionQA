@@ -202,6 +202,8 @@ public class esscisamsung {
             String cumulative = csvCell[31];
             String currentuniver = csvCell[30];
             String voccgp = csvCell[51];
+            String Programe = csvCell[13];
+            Utils.smallSleepBetweenClicks(2);
             Utils.callSendkeys(driver, ActionXpath.enterhighschool, highschool, "enter highschool");
 
             Utils.clickXpath(driver, ActionXpath.selectgraud, time, "open graud");
@@ -221,12 +223,31 @@ public class esscisamsung {
             Utils.selectFromDropDown(ActionXpath.selectdropdown, currentuniver, driver);
 
             Utils.callSendkeys(driver, ActionXpath.cumulativegpa, cumulative, "enter cumulativegpa");
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,400)");
+            // Utils.bigSleepBetweenClicks(1);
+            // String Programe = csvCell[13];
             if (csvCell[13].equals("C and P")) {
+
+                String prof = csvCell[52];
+                String compskills = csvCell[53];
+                Utils.smallSleepBetweenClicks(1);
                 Utils.clickXpath(driver, ActionXpath.vocation, time, "open vocation");
                 Utils.clickXpath(driver, ActionXpath.vocationselect, time, "click vocationselect");
 
                 Utils.callSendkeys(driver, ActionXpath.vocationselectcgp, voccgp, "enter vocationselectcgp");
                 Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+
+                Utils.smallSleepBetweenClicks(2);
+
+                Utils.clickXpath(driver, ActionXpath.proficimath, time, "open proficimath");
+                Utils.selectFromDropDown(ActionXpath.selectdropdown, prof, driver);
+
+                Utils.clickXpath(driver, ActionXpath.comforbasic, time, "open comforbasic");
+                Utils.selectFromDropDown(ActionXpath.selectdropdown, compskills, driver);
+
+                Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+
             }
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
@@ -242,43 +263,50 @@ public class esscisamsung {
 
     public static void courseInfo(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
-
-            String nameofcourse = csvCell[32];
-            String nameofinstuation = csvCell[33];
-
-            String plnameofcourse = csvCell[34];
-            String plnameofinst = csvCell[35];
             String Programe = csvCell[13];
-            Utils.clickXpath(driver, ActionXpath.coursecomp, time, "open course");
+            if (csvCell[13].equals("C and P")) {
 
-            Utils.clickXpath(driver, ActionXpath.selectcoyrse, time, "click on yes");
+                System.out.println("no course info");
+            }
 
-            Utils.callSendkeys(driver, ActionXpath.nameofcour, nameofcourse, "enter nameofcourse");
+            else {
+                String nameofcourse = csvCell[32];
+                String nameofinstuation = csvCell[33];
 
-            Utils.callSendkeys(driver, ActionXpath.nameofinst, nameofinstuation, "enter nameofinst");
+                String plnameofcourse = csvCell[34];
+                String plnameofinst = csvCell[35];
+                // String Programe = csvCell[13];
+                Utils.smallSleepBetweenClicks(2);
+                Utils.clickXpath(driver, ActionXpath.coursecomp, time, "open course");
 
-            Utils.clickXpath(driver, ActionXpath.planguage, time, "open plang");
+                Utils.clickXpath(driver, ActionXpath.selectcoyrse, time, "click on yes");
 
-            Utils.clickXpath(driver, ActionXpath.plcoyrse, time, "click on yes");
+                Utils.callSendkeys(driver, ActionXpath.nameofcour, nameofcourse, "enter nameofcourse");
 
-            Utils.callSendkeys(driver, ActionXpath.plcour, plnameofcourse, "enter pl nameofcourse");
+                Utils.callSendkeys(driver, ActionXpath.nameofinst, nameofinstuation, "enter nameofinst");
 
-            Utils.callSendkeys(driver, ActionXpath.plinst, plnameofinst, "enter pl nameofinst");
+                Utils.clickXpath(driver, ActionXpath.planguage, time, "open plang");
 
-            if (csvCell[13].equals("Big Data")) {
+                Utils.clickXpath(driver, ActionXpath.plcoyrse, time, "click on yes");
 
-                Utils.clickXpath(driver, ActionXpath.clickdatabase, time, "open and clickdatabase");
+                Utils.callSendkeys(driver, ActionXpath.plcour, plnameofcourse, "enter pl nameofcourse");
 
-                Utils.clickXpath(driver, ActionXpath.selectdata, time, "click on no");
+                Utils.callSendkeys(driver, ActionXpath.plinst, plnameofinst, "enter pl nameofinst");
+
+                if (csvCell[13].equals("Big Data")) {
+
+                    Utils.clickXpath(driver, ActionXpath.clickdatabase, time, "open and clickdatabase");
+
+                    Utils.clickXpath(driver, ActionXpath.selectdata, time, "click on no");
+
+                    Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+
+                }
 
                 Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
 
+                Utils.smallSleepBetweenClicks(1);
             }
-
-            Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
-
-            Utils.smallSleepBetweenClicks(1);
-
             log.info("TC-1: Populating course info PASSED");
         } catch (Exception e) {
             Utils.printException(e);
@@ -290,30 +318,40 @@ public class esscisamsung {
     public static void priorInfo(String url, WebDriver driver, String[] csvCell, Logger log) throws Exception {
         try {
 
-            String pleaseexp = csvCell[36];
-            String mat = csvCell[50];
-            Utils.clickXpath(driver, ActionXpath.pythonpl, time, "open current pythonpl");
+            String Programe = csvCell[13];
+            if (csvCell[13].equals("C and P")) {
 
-            Utils.clickXpath(driver, ActionXpath.selectexp, time, "select exp");
+                System.out.println("no course info");
+            }
 
-            Utils.clickXpath(driver, ActionXpath.havesomeexp, time, "open havesomeexp");
+            else {
 
-            Utils.clickXpath(driver, ActionXpath.selectsomeexp, time, "select some exp");
+                String pleaseexp = csvCell[36];
+                String mat = csvCell[50];
+                Utils.clickXpath(driver, ActionXpath.pythonpl, time, "open current pythonpl");
 
-            if (csvCell[13].equals("Artificial Intelligence")) {
+                Utils.clickXpath(driver, ActionXpath.selectexp, time, "select exp");
 
-                Utils.clickXpath(driver, ActionXpath.havemath, time, "open maths");
+                Utils.clickXpath(driver, ActionXpath.havesomeexp, time, "open havesomeexp");
 
-                Utils.selectFromDropDown(ActionXpath.selectdropdown, mat, driver);
+                Utils.clickXpath(driver, ActionXpath.selectsomeexp, time, "select some exp");
+
+                if (csvCell[13].equals("Artificial Intelligence")) {
+
+                    Utils.clickXpath(driver, ActionXpath.havemath, time, "open maths");
+
+                    Utils.selectFromDropDown(ActionXpath.selectdropdown, mat, driver);
+
+                    Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+                }
+                Utils.callSendkeys(driver, ActionXpath.expofpl, pleaseexp, "enter experience ofpl");
 
                 Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
+
+                Utils.smallSleepBetweenClicks(1);
+                log.info("TC-1: Populating prior info PASSED");
             }
-            Utils.callSendkeys(driver, ActionXpath.expofpl, pleaseexp, "enter experience ofpl");
 
-            Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
-
-            Utils.smallSleepBetweenClicks(1);
-            log.info("TC-1: Populating prior info PASSED");
         } catch (Exception e) {
             Utils.printException(e);
             log.warning("TC-1: Populating prior info FAILED");
@@ -328,6 +366,7 @@ public class esscisamsung {
             String achieve = csvCell[38];
 
             String findoutsic = csvCell[39];
+            Utils.smallSleepBetweenClicks(1);
             Utils.smallSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.careergoal, carrergole, "enter carrergole");
 

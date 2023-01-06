@@ -89,11 +89,11 @@ public class App_portal extends Thread {
 				t.join();
 				continue;
 			} else {
-				Utils.bigSleepBetweenClicks(1);
+				Utils.bigSleepBetweenClicks(2);
 				t.start();
 			}
 			count++;
-			//Utils.bigSleepBetweenClicks(20);
+			Utils.bigSleepBetweenClicks(10);
 		}
 	}
 
@@ -200,7 +200,7 @@ public class App_portal extends Thread {
 		}
 		log.info("***************** COMPLETED TESTTING OF PORTAL" + url);
 		SendMail.sendEmail(logFileName);
-		// driver.quit();
+		driver.quit();
 	}
 
 	@BeforeSuite
