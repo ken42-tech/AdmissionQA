@@ -34,6 +34,7 @@ public class esscisamsung {
             String password = csvCell[3];
 
             driver.navigate().refresh();
+
             Thread.sleep(3000);
             // ((JavascriptExecutor) driver).executeScript("window.open()");
             ArrayList<String> tab = new ArrayList<String>(driver.getWindowHandles());
@@ -92,20 +93,29 @@ public class esscisamsung {
             Utils.smallSleepBetweenClicks(1);
 
             // Actions act1 = new Actions(driver);
-            // WebElement ele1 = driver.findElement(By.xpath("//input[@value='Female']"));
+            // WebElement ele1 =
+            // driver.findElement(By.xpath("(//input[@type='radio'])[2]"));
 
             // String ee = ele1.getText();
             // System.out.println(ee);
 
             // act1.moveToElement(ele1).click().build().perform();
 
-            // driver.findElement(By.xpath("//input[@value='Other']")).click();
-            // Thread.sleep(2000);
+            // WebElement el = driver.findElement(By.xpath("(//input[@type='radio'])[3]"));
+
+            // boolean actual = el.isSelected();
+
+            // if (actual) {
+            // System.out.println("true");
+
+            // } else {
+            // el.click();
+            // }
 
             // Utils.cleartext(driver, ActionXpath.enterdateofbirth);
             // Utils.callSendkeys(driver, ActionXpath.enterdateofbirth, dateofbirth,
             // "Setdate of birth");
-            // Thread.sleep(2000);
+            // // Thread.sleep(2000);
             // Utils.cleartext(driver, ActionXpath.enterhighquali);
             // Utils.callSendkeys(driver, ActionXpath.enterhighquali, highquali, "enter
             // highqualification");
@@ -129,23 +139,28 @@ public class esscisamsung {
             String lastName = csvCell[17];
             String Realtionship = csvCell[18];
             String validation = csvCell[6];
-
+            Utils.smallSleepBetweenClicks(1);
             Utils.clickXpath(driver, ActionXpath.selectreal, time, "open realtionship");
             Utils.selectFromDropDown(ActionXpath.selectdropdown, Realtionship, driver);
 
             if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.selectfirstname, ActionXpath.firsterror, log, 41);
+                // validate.testForCharLength(driver, ActionXpath.selectfirstname,
+                // ActionXpath.firsterror, log, 41);
                 Utils.cleartext(driver, ActionXpath.selectfirstname);
                 validate.specialcharacter(driver, ActionXpath.selectfirstname, ActionXpath.firsterror, log);
                 validate.testForMandatoryField(driver, ActionXpath.selectfirstname, ActionXpath.firsterror, log);
+                Utils.cleartext(driver, ActionXpath.selectfirstname);
             }
             Utils.callSendkeys(driver, ActionXpath.selectfirstname, firstName, "enter firstname");
 
             if (validation.equals("TRUE")) {
-                validate.testForCharLength(driver, ActionXpath.selectlastname, ActionXpath.Lnameerror, log, 41);
-                Utils.cleartext(driver, ActionXpath.selectlastname);
+                // validate.testForCharLength(driver, ActionXpath.selectlastname,
+                // ActionXpath.Lnameerror, log, 41);
+                // Utils.cleartext(driver, ActionXpath.selectlastname);
                 validate.specialcharacter(driver, ActionXpath.selectlastname, ActionXpath.Lnameerror, log);
                 validate.testForMandatoryField(driver, ActionXpath.selectlastname, ActionXpath.Lnameerror, log);
+                Utils.cleartext(driver, ActionXpath.selectlastname);
+
             }
             Utils.callSendkeys(driver, ActionXpath.selectlastname, lastName, "enter last name");
 
@@ -167,7 +182,7 @@ public class esscisamsung {
             String city = csvCell[21];
             String address = csvCell[24];
             String pincode = csvCell[23];
-
+            String validation = csvCell[6];
             Utils.clickXpath(driver, ActionXpath.selectcountryess, time, "open countryess");
             Utils.selectFromDropDown(ActionXpath.selectdropdown, country, driver);
 
@@ -178,6 +193,17 @@ public class esscisamsung {
             Utils.selectFromDropDown(ActionXpath.selectdropdown, city, driver);
 
             Utils.callSendkeys(driver, ActionXpath.selectaddress, address, "enter address");
+
+            if (validation.equals("TRUE")) {
+                validate.testForCharLength(driver, ActionXpath.selectpincode,
+                        ActionXpath.pinerror, log, 41);
+                // Utils.cleartext(driver, ActionXpath.selectpincode);
+                // validate.specialcharacter(driver, ActionXpath.selectpincode,
+                // ActionXpath.pinerror, log);
+                validate.testForMandatoryField(driver, ActionXpath.selectpincode, ActionXpath.pinerror, log);
+                Utils.cleartext(driver, ActionXpath.selectpincode);
+            }
+
             Utils.callSendkeys(driver, ActionXpath.selectpincode, pincode, "enter pincode");
 
             Utils.clickXpath(driver, ActionXpath.selectnext, time, "click on Next");
@@ -204,6 +230,7 @@ public class esscisamsung {
             String voccgp = csvCell[51];
             String Programe = csvCell[13];
             Utils.smallSleepBetweenClicks(2);
+
             Utils.callSendkeys(driver, ActionXpath.enterhighschool, highschool, "enter highschool");
 
             Utils.clickXpath(driver, ActionXpath.selectgraud, time, "open graud");
@@ -280,19 +307,19 @@ public class esscisamsung {
                 Utils.clickXpath(driver, ActionXpath.coursecomp, time, "open course");
 
                 Utils.clickXpath(driver, ActionXpath.selectcoyrse, time, "click on yes");
-
+                
                 Utils.callSendkeys(driver, ActionXpath.nameofcour, nameofcourse, "enter nameofcourse");
-
+                
                 Utils.callSendkeys(driver, ActionXpath.nameofinst, nameofinstuation, "enter nameofinst");
 
                 Utils.clickXpath(driver, ActionXpath.planguage, time, "open plang");
 
                 Utils.clickXpath(driver, ActionXpath.plcoyrse, time, "click on yes");
-
+              
                 Utils.callSendkeys(driver, ActionXpath.plcour, plnameofcourse, "enter pl nameofcourse");
-
+              
                 Utils.callSendkeys(driver, ActionXpath.plinst, plnameofinst, "enter pl nameofinst");
-
+               
                 if (csvCell[13].equals("Big Data")) {
 
                     Utils.clickXpath(driver, ActionXpath.clickdatabase, time, "open and clickdatabase");
@@ -367,7 +394,8 @@ public class esscisamsung {
 
             String findoutsic = csvCell[39];
             Utils.smallSleepBetweenClicks(1);
-            Utils.smallSleepBetweenClicks(1);
+
+            Utils.cleartext(driver, ActionXpath.careergoal);
             Utils.callSendkeys(driver, ActionXpath.careergoal, carrergole, "enter carrergole");
 
             Utils.callSendkeys(driver, ActionXpath.achievethrosic, achieve, "enter achieve through sic");
@@ -391,14 +419,44 @@ public class esscisamsung {
             String position = csvCell[41];
 
             String duration = csvCell[42];
-
+            String validation = csvCell[6];
             String role = csvCell[43];
             Utils.smallSleepBetweenClicks(1);
             Utils.callSendkeys(driver, ActionXpath.org, organization, "enter organization");
 
+            if (validation.equals("TRUE")) {
+                validate.testForNumberLength(driver, ActionXpath.positi, ActionXpath.posierror,
+                        log, 6);
+                Utils.cleartext(driver, ActionXpath.positi);
+                validate.specialcharacter(driver, ActionXpath.positi, ActionXpath.posierror, log);
+                // validate.testForMandatoryField(driver, ActionXpath.positi,
+                // ActionXpath.posierror, log);
+                Utils.cleartext(driver, ActionXpath.positi);
+            }
+            // Utils.cleartext(driver, ActionXpath.positi);
             Utils.callSendkeys(driver, ActionXpath.positi, position, "enter position");
 
+            if (validation.equals("TRUE")) {
+                validate.testForCharLength(driver, ActionXpath.dur, ActionXpath.durationerror,
+                        log, 41);
+                Utils.cleartext(driver, ActionXpath.dur);
+                validate.specialcharacter(driver, ActionXpath.dur, ActionXpath.durationerror, log);
+                // validate.testForMandatoryField(driver, ActionXpath.dur,
+                // ActionXpath.durationerror, log);
+                Utils.cleartext(driver, ActionXpath.dur);
+            }
+
             Utils.callSendkeys(driver, ActionXpath.dur, duration, "enter duration");
+
+            if (validation.equals("TRUE")) {
+                // validate.testForCharLength(driver, ActionXpath.roledes,
+                // ActionXpath.posierror, log, 41);
+                Utils.cleartext(driver, ActionXpath.roledes);
+                validate.specialcharacter(driver, ActionXpath.roledes, ActionXpath.roleerror, log);
+                // validate.testForMandatoryField(driver, ActionXpath.roledes,
+                // ActionXpath.roleerror, log);
+                Utils.cleartext(driver, ActionXpath.roledes);
+            }
 
             Utils.callSendkeys(driver, ActionXpath.roledes, role, "enter role");
 
@@ -415,7 +473,7 @@ public class esscisamsung {
     public static void certificationandotherInfo(String url, WebDriver driver, String[] csvCell, Logger log)
             throws Exception {
         try {
-
+            String validation = csvCell[6];
             String certification = csvCell[44];
             String organization = csvCell[45];
 
@@ -427,11 +485,31 @@ public class esscisamsung {
 
             String paasive = csvCell[49];
             Utils.smallSleepBetweenClicks(1);
+
+            if (validation.equals("TRUE")) {
+                // validate.testForCharLength(driver, ActionXpath.certif, ActionXpath.posierror,
+                // log, 41);
+                Utils.cleartext(driver, ActionXpath.certif);
+                validate.specialcharacter(driver, ActionXpath.certif, ActionXpath.certiferror, log);
+                // validate.testForMandatoryField(driver, ActionXpath.certif,
+                // ActionXpath.certiferror, log);
+                Utils.cleartext(driver, ActionXpath.certif);
+            }
             Utils.callSendkeys(driver, ActionXpath.certif, certification, "enter certification");
 
             Utils.callSendkeys(driver, ActionXpath.orgcert, organization, "enter organization");
 
             Utils.callSendkeys(driver, ActionXpath.date, dob, "enter dob");
+
+            if (validation.equals("TRUE")) {
+                // validate.testForCharLength(driver, ActionXpath.certdes,
+                // ActionXpath.posierror, log, 41);
+                Utils.cleartext(driver, ActionXpath.certdes);
+                validate.specialcharacter(driver, ActionXpath.certdes, ActionXpath.certdeserror, log);
+                // validate.testForMandatoryField(driver, ActionXpath.certdes,
+                // ActionXpath.certdeserror, log);
+                Utils.cleartext(driver, ActionXpath.certdes);
+            }
 
             Utils.callSendkeys(driver, ActionXpath.certdes, desc, "enter desc");
 
@@ -487,9 +565,11 @@ public class esscisamsung {
             System.out.println("TC-1: Fill form with validation test started Executation ");
             String Sfurl = csvCell[9];
             String surl = csvCell[0];
+
             // esscisamsung.SalesforceBackendDELETE(driver, log, csvCell, Sfurl);
-            // driver.get(surl);
-            login(url, driver, csvCell, log);
+
+            driver.get(surl);
+            login(surl, driver, csvCell, log);
             ApplyforCourse(surl, driver, csvCell, log);
             BasicDetails(surl, driver, csvCell, log);
             FamilyInfo(surl, driver, csvCell, log);
@@ -546,9 +626,10 @@ public class esscisamsung {
             Utils.clickXpath(driver, ActionXpath.applauncher, time, "click on applauncher");
             Utils.callSendkeys(driver, ActionXpath.search, "Contacts", "click on contacts ");
             Utils.clickXpath(driver, ActionXpath.contacts, time, "click on clickcontacts");
-            Utils.cleartext(driver, ActionXpath.listsearch);
-            Thread.sleep(2000);
+            // Utils.cleartext(driver, ActionXpath.listsearch);
+            // Thread.sleep(3000);
             Utils.callSendkeys(driver, ActionXpath.listsearch, studentemail, "Search for student name");
+            Thread.sleep(1000);
             Utils.clickXpath(driver, ActionXpath.listsearch, time, "listsearch");
             Utils.bigSleepBetweenClicks(1);
             Actions qq = new Actions(driver);
@@ -559,39 +640,72 @@ public class esscisamsung {
             ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem21);
             Utils.smallSleepBetweenClicks(1);
 
-            Actions act1 = new Actions(driver);
-            WebElement ele1 = driver.findElement(By.xpath("(//span[text()='View All'])[1]"));
-            act1.moveToElement(ele1).click().build().perform();
+            JavascriptExecutor js = (JavascriptExecutor) driver;
+            js.executeScript("window.scrollBy(0,100)");
 
-            // WebDriverWait wait211 = new WebDriverWait(driver, 20);
-            // WebElement elem211 = wait211.until(ExpectedConditions.elementToBeClickable(
-            // By.xpath("(//span[text()='View All'])[1]")));
-            // ((JavascriptExecutor) driver).executeScript("arguments[0].click();",
-            // elem211);
+            Utils.bigSleepBetweenClicks(1);
+            String view = "(//span[@title='Applications (Applicant)'])/../../../../../../../../../../..//span[text()='View All']";
+            viewPresent = driver.findElements(By.xpath(view)).size() > 0;
+            Utils.bigSleepBetweenClicks(1);
 
-            // Utils.clickXpath(driver, ActionXpath.vie, time, "click on view all");
+            System.out.println("Application tab is not there");
 
-            // Utils.bigSleepBetweenClicks(1);
+            if (viewPresent) {
+                WebDriverWait wait = new WebDriverWait(driver, 20);
+                WebElement elem = wait.until(ExpectedConditions.elementToBeClickable(
+                        By.xpath(
+                                "(//span[@title='Applications (Applicant)'])/../../../../../../../../../../..//span[text()='View All']")));
+                ((JavascriptExecutor) driver).executeScript("arguments[0].click();", elem);
+                Thread.sleep(2000);
+                count = Utils.getTEXT(driver, ActionXpath.deletecount);
+                Pattern pt = Pattern.compile("-?\\d+");
+                java.util.regex.Matcher m = pt.matcher(count);
+                while (m.find()) {
+                    row = m.group();
+                }
+                int count1 = Integer.parseInt(row);
 
-            Thread.sleep(4000);
-            Actions aa = new Actions(driver);
-            WebElement ee = driver.findElement(By.xpath(
-                    "//*[@id='brandBand_2']/div/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div/div/table/tbody/tr/td[3]/span/div/a"));
-            aa.moveToElement(ee).click().build().perform();
+                System.out.println(count1);
 
-            WebDriverWait wait = new WebDriverWait(driver, 10);
-            WebElement we1 = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", we1);
+                for (int i = 0; i < count1; i++) {
 
-            ///// a[@title='Delete']
+                    Thread.sleep(4000);
+                    Actions aa = new Actions(driver);
+                    WebElement ee = driver.findElement(By.xpath(
+                            "//*[@id='brandBand_2']/div/div/div[3]/div/div/div[2]/div/div[1]/div[2]/div[2]/div[1]/div/div/table/tbody/tr/td[3]/span/div/a"));
+                    aa.moveToElement(ee).click().build().perform();
 
-            Thread.sleep(5000);
-            WebElement le = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[.='Delete']")));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].click();", le);
+                    WebDriverWait wait1 = new WebDriverWait(driver, 10);
+                    WebElement we1 = wait1
+                            .until(ExpectedConditions.elementToBeClickable(By.xpath("//a[@title='Delete']")));
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", we1);
 
-            Thread.sleep(5000);
+                    ///// a[@title='Delete']
 
-            // driver.switchTo().window(tab.get(0));
+                    Thread.sleep(5000);
+                    WebElement le = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[.='Delete']")));
+                    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", le);
+                    continue;
+                    // Actions a = new Actions(driver);
+                    // WebElement eee =
+                    // driver.findElement(By.xpath("(//span[@data-aura-class='uiImage'])[1]"));
+
+                    // a.moveToElement(eee).click().build().perform();
+                    // Utils.vsmallSleepBetweenClicks(1);
+
+                    // Thread.sleep(5000);
+                    // WebElement le681 = wait
+                    // .until(ExpectedConditions.elementToBeClickable(
+                    // By.xpath("//a[@class='profile-link-label logout uiOutputURL']")));
+                    // ((JavascriptExecutor) driver).executeScript("arguments[0].click();", le681);
+
+                }
+
+            }
+
+            else {
+                System.out.println("There is nothing to Delete");
+            }
 
             log.info("  TC-2:  the Salesforce backend  delete test case PASSED \n");
 

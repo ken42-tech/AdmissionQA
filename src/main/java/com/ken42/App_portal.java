@@ -93,7 +93,7 @@ public class App_portal extends Thread {
 				t.start();
 			}
 			count++;
-			Utils.bigSleepBetweenClicks(10);
+			Utils.bigSleepBetweenClicks(30);
 		}
 	}
 
@@ -149,6 +149,7 @@ public class App_portal extends Thread {
 						case 3:
 							ltpct.Admissionfillform(sfurl, driver, csvCell, log);
 							break;
+
 						case 4:
 							esscisamsung.Admissionfillform(sfurl, driver, csvCell, log);
 							break;
@@ -163,7 +164,7 @@ public class App_portal extends Thread {
 							System.out.println("SBMP no fee test case");
 							break;
 						case 3:
-							// ltpct.Admissionfillform(sfurl, driver, csvCell);
+							esscisamsung.Admissionfillform(sfurl, driver, csvCell, log);
 							break;
 					}
 					break;

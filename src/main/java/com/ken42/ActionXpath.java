@@ -881,8 +881,8 @@ public class ActionXpath {
 
     static String selectfirstname = "//input[@name='applicantRelations.0.firstName']|(//input[@type='input'])[1]";
 
-    static String firsterror = "//p[.='Please Input a valid First Name']";
-    static String Lnameerror = "//p[.='Please Input a valid Last Name']";
+    static String firsterror = "//*[text()='First Name']/../../../..//P";
+    static String Lnameerror = "//*[text()='Last Name']/../../../..//P";
 
     ////////////// ....................end essci
     ////////////// family......................//////////////////////
@@ -892,6 +892,9 @@ public class ActionXpath {
     static String selectcountryess = "//div[@id='outlined-select-currency']";
 
     static String selectcountryes = "(//div[.='India'])[1]";
+
+    static String pinerror = "//*[text()='PIN / PO BOX/ ZIP']/../../../..//P";
+
 
     static String selectstateess = "(//div[@id='outlined-select-currency'])[2]";
 
@@ -941,9 +944,9 @@ public class ActionXpath {
     static String coursecomp = "(//div[@id='outlined-select-currency'])[1]";
     static String selectcoyrse = "(//div[.='Yes'])[1]";
 
-    static String nameofcour = "//input[@name='Skills[0][courseNameIoT]']|(//input[@type='input'])[1]";
+    static String nameofcour = "//input[@name='Skills[0][courseName]']|(//input[@type='input'])[1]";
 
-    static String nameofinst = "//input[@name='Skills[0][instituteNameIoT]']|(//input[@type='input'])[2]";
+    static String nameofinst = "//input[@name='Skills[0][institutionName]']|(//input[@type='input'])[2]";
 
     static String planguage = "(//div[@id='outlined-select-currency'])[2]";
 
@@ -953,9 +956,9 @@ public class ActionXpath {
 
     static String selectdata = "(//div[.='No'])[1]";
 
-    static String plcour = "//input[@name='Skills[0][courseName]']|(//input[@type='input'])[3]";
+    static String plcour = "//input[@name='Skills[0][courseNameLinux]']|(//input[@type='input'])[3]";
 
-    static String plinst = "//input[@name='Skills[0][institutionName]']|(//input[@type='input'])[4]";
+    static String plinst = "//input[@name='Skills[0][instituteLinux]']|(//input[@type='input'])[4]";
 
     ///////////// ..............prior essci samsung...........................////
 
@@ -999,7 +1002,11 @@ public class ActionXpath {
     //// xpath....................................////
 
     static String org = "//input[@name='workExperiences.0.organisationName']|(//input[@type='input'])[1]";
+static String posierror="//*[text()='Position']/../../../..//P";
 
+static String durationerror="//*[text()='Duration(in Months)']/../../../..//P";
+
+static String roleerror="//*[text()='Role Description']/../../../..//P";
     static String positi = "//input[@name='workExperiences.0.designation']|(//input[@type='input'])[2]";
 
     static String dur = "//input[@name='workExperiences.0.noOfMonths']|(//input[@type='input'])[3]";
@@ -1008,6 +1015,7 @@ public class ActionXpath {
 
     //// ....................certification essci
     //// xpath..............................////
+    static String certiferror = "//*[text()='Certification Name']/../../../..//P";
 
     static String certif = "//input[@name='Skills.0.certification Name']|(//input[@type='input'])[1]";
 
@@ -1016,6 +1024,7 @@ public class ActionXpath {
     static String date = "//input[@name='Skills.0.dates']|//input[@type='date']";
 
     static String certdes = "//input[@name='Skills.0.roleDescription']|(//input[@type='input'])[3]";
+    static String certdeserror = "//*[text()='Description']/../../../..//P";
 
     //// ...................essay essci xapth.................................////
 
